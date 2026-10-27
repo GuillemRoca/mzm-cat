@@ -31,9 +31,10 @@ jobs:
       - name: Install binutils
         run: sudo apt-get update -qq && sudo apt-get install -y -qq binutils-arm-none-eabi
 
-      - name: Cache agbcc
+      # Restore and save are separate so the build is cached even when a later step fails.
+      - name: Restore agbcc
         id: agbcc
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: ~/agbcc
           key: agbcc-${{ env.AGBCC_COMMIT }}-ubuntu-24.04
@@ -44,6 +45,13 @@ jobs:
           git clone -q https://github.com/jiangzhengwenjz/agbcc ~/agbcc
           git -C ~/agbcc checkout -q "$AGBCC_COMMIT"
           cd ~/agbcc && ./build.sh > build.log 2>&1 || { tail -50 build.log; exit 1; }
+
+      - name: Save agbcc
+        if: steps.agbcc.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/agbcc
+          key: agbcc-${{ env.AGBCC_COMMIT }}-ubuntu-24.04
 
       - name: Put agbcc on PATH
         run: echo "$HOME/agbcc" >> "$GITHUB_PATH"
