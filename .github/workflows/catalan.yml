@@ -1,0 +1,75 @@
+# Catalan translation CI. Builds vanilla EU and checks its SHA1 against mzm_eu.sha1.
+# The LANG_CA=1 build, the linter and the .bps patch are added as their tooling lands.
+#
+# The base ROM is never in this repository. See translation/ca/README.md ("Base ROM in CI")
+# for the two ways to supply it: a private ROM repository (vars.BASEROM_REPO plus
+# secrets.BASEROM_REPO_KEY), or a private link (secrets.BASEROM_EU_URL).
+name: Catalan
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalan-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AGBCC_COMMIT: 59b966ed1b8f371856dcf99f1546c2fe89c678ca
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install binutils
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq binutils-arm-none-eabi
+
+      - name: Cache agbcc
+        id: agbcc
+        uses: actions/cache@v4
+        with:
+          path: ~/agbcc
+          key: agbcc-${{ env.AGBCC_COMMIT }}-ubuntu-24.04
+
+      - name: Build agbcc
+        if: steps.agbcc.outputs.cache-hit != 'true'
+        run: |
+          git clone -q https://github.com/jiangzhengwenjz/agbcc ~/agbcc
+          git -C ~/agbcc checkout -q "$AGBCC_COMMIT"
+          cd ~/agbcc && ./build.sh > build.log 2>&1 || { tail -50 build.log; exit 1; }
+
+      - name: Put agbcc on PATH
+        run: echo "$HOME/agbcc" >> "$GITHUB_PATH"
+
+      - name: Checkout private ROM repository
+        if: vars.BASEROM_REPO != ''
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.BASEROM_REPO }}
+          ssh-key: ${{ secrets.BASEROM_REPO_KEY }}
+          path: .baserom
+          persist-credentials: false
+
+      - name: Get base ROM
+        env:
+          BASEROM_DIR: ${{ github.workspace }}/.baserom
+          BASEROM_EU_URL: ${{ secrets.BASEROM_EU_URL }}
+        run: |
+          translation/ca/tools/get_baserom.sh eu
+          rm -rf .baserom
+
+      - name: Extract
+        run: make extract REGION=eu > extract.log
+
+      - name: Build vanilla EU
+        run: make eu -j"$(nproc)"
+
+      - name: Check vanilla EU SHA1
+        run: sha1sum -c mzm_eu.sha1
