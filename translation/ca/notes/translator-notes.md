@@ -30,9 +30,9 @@ save prompts use the same verb: Guardar？, Partida guardada), Sala de mapes, Ru
 last two are never shown by the game). Area names (BRINSTAR … CHOZODIA) are kept, and NAU
 NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 
-## PROPOSED terms in use (Description block)
+## Terms used in the Description block — APPROVED
 
-New terms from the equipment descriptions, option 1 of each glossary row. To confirm:
+Approved by Guillem:
 
 | Term | Where | Notes |
 |---|---|---|
@@ -61,6 +61,26 @@ New terms from the equipment descriptions, option 1 of each glossary row. To con
   label font either and is drawn.
 - REPÒS and ESTAT checked in game (map, world map, status screen). "CANVIA ZONA" fits its box
   (41 of 47 px) but isn't on screen at the start of the game: **not yet seen in game**.
+
+## Equipment names (status screen graphic)
+
+- `gfx/menus/pause_screen/equipment_names_spanish.png`, made by `tools/gfx_equipment_names.py`
+  from the glyphs of the English, Spanish and Italian sheets. Every name has a fixed run of
+  tiles (5 to 7, the POWER bomb only 4); names are left-aligned like vanilla. The headings'
+  letters touch, so they are cut by hand; the item letters are cut automatically, keeping the
+  vanilla kerning (LT) and word gap. ENERGIA is the Italian bar as is.
+- Headings: ENERGIA, RAIG, MÍSSIL (the accent on the bar's top line, like ENERGÍA's in the
+  Spanish item font; the Spanish heading drops it), BOMBA, VESTIT, ALTRES, ARMA (suitless).
+- Items: LLARG, CÀRREGA, GEL, ONES, PLASMA, NORMAL, SÚPER, NORMAL, ENERGIA (31 of 31 px, like
+  the Spanish ENERGÍA), CLIMÀTIC, GRAVITATORI, MORFOSFERA, ARRAPADA, ACCELERACIÓ, SUPERSALT,
+  ATAC ESPIRAL, SALT ESPACIAL (55 of 55 px), PISTOLA.
+- Checked in game with the normal suit (unknown items), the fully powered suit and suitless.
+
+### PROPOSED terms in use (equipment names) — to confirm
+
+Option 1 of each glossary row: Míssil (heading MÍSSIL), Vestit gravitatori (GRAVITATORI), Raig
+de plasma (PLASMA), Salt espacial (SALT ESPACIAL), Pistola (PISTOLA), and the status groups
+Energia, Raig, Altres, and Arma (new: the suitless group, GUN in English).
 
 ## Language selector
 
@@ -110,8 +130,8 @@ after the text, so lines are kept to 206 px (vanilla goes up to 208) rather than
 - **Second person imperatives**, as in the messages: "Prem", "Mantén", "Fes", "Arrapa't".
 - **"Obren les comportes…"**: plural verb, agreeing with the items (Míssils, Supermíssils,
   Bombes d'energia); the English and Spanish use a singular "Opens / Abre".
-- **DESCRIPTION_TEXT_CHARGE_BEAM**: "Mantén B per carregar. Amolla'l i dispara." ("amollar":
-  let go). "Deixa'l anar per disparar" didn't fit (240 px).
+- **DESCRIPTION_TEXT_CHARGE_BEAM** — DECIDED: "Mantén B per carregar. Allibera i dispara."
+  (Guillem's wording; "Deixa'l anar per disparar" didn't fit at 240 px).
 - **DESCRIPTION_TEXT_SUPER_MISSILES**: "Arm with SELECT" becomes "Tria'ls amb SELECT" (SELECT
   switches to them); "Activa'ls" and "Arma'ls" were too wide with the SELECT glyph.
 - **DESCRIPTION_TEXT_BOMBS**: two lines like the Spanish ("En morfosfera, prem B per /

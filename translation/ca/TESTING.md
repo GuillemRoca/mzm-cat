@@ -108,6 +108,9 @@ Press **L + R + Down** again (before pausing) to cycle the suit: normal (Plasma 
 Suit and Space Jump show "Anàlisi no concloent."), fully powered (their real descriptions),
 suitless (the pistol). In the release build, the descriptions appear as items are collected.
 
+The same screens show the equipment names (the graphic): headings ENERGIA, RAIG, MÍSSIL,
+BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its bar.
+
 ## Game over prompt (pilot graphic)
 
 Preview build: hold **L + R** and press **A**. Energy drops to 0 and the game over screen

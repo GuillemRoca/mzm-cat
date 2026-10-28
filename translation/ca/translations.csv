@@ -112,7 +112,7 @@ Pulsa [L] + [B] para disparos diagonales.","Aquest raig dispara trets de llarg a
 Prem [L] + [B] per disparar en diagonal.",translated,
 description,DESCRIPTION_TEXT_CHARGE_BEAM,"Pause screen, equipment description","Hold [B] to charge. Release to fire.
 Charge Attack: Jump with a full charge.","Mantén [B] para cargar. Luego suelta.
-Ataque carga: salta una vez cargado.","Mantén [B] per carregar. Amolla'l i dispara.
+Ataque carga: salta una vez cargado.","Mantén [B] per carregar. Allibera i dispara.
 Atac de càrrega: salta amb el raig carregat.",translated,
 description,DESCRIPTION_TEXT_ICE_BEAM,"Pause screen, equipment description","This beam can freeze enemies in place.
 You can safely stand on frozen enemies.","Este rayo congela a algunos enemigos.
@@ -360,5 +360,30 @@ NO (SURT)",translated,
 graphics,pause_tab_l,"Pause screen, L tab (Easy Sleep)",SLEEP,SALVAP.,REPÒS,translated,
 graphics,pause_tab_r,"Pause screen, R tab (status)",STATUS,ESTADO,ESTAT,translated,
 graphics,pause_change_area,"Pause screen, map: change area",CHANGE AREAS,CAMBIAR ZONA,CANVIA ZONA,translated,
+graphics,status_energy,"Status screen, equipment heading",ENERGY,ENERGÍA,ENERGIA,translated,
+graphics,status_beam,"Status screen, equipment heading",BEAM,RAYO,RAIG,translated,
+graphics,status_long,"Status screen, equipment item",LONG,LARGO,LLARG,translated,
+graphics,status_charge,"Status screen, equipment item",CHARGE,RECARGA,CÀRREGA,translated,
+graphics,status_ice,"Status screen, equipment item",ICE,HIELO,GEL,translated,
+graphics,status_wave,"Status screen, equipment item",WAVE,ONDAS,ONES,translated,
+graphics,status_plasma,"Status screen, equipment item",PLASMA,PLASMA,PLASMA,translated,
+graphics,status_missile,"Status screen, equipment heading",MISSILE,MISIL,MÍSSIL,translated,
+graphics,status_missile_normal,"Status screen, equipment item",NORMAL,NORMAL,NORMAL,translated,
+graphics,status_super,"Status screen, equipment item",SUPER,SÚPER,SÚPER,translated,
+graphics,status_bomb,"Status screen, equipment heading",BOMB,BOMBA,BOMBA,translated,
+graphics,status_bomb_normal,"Status screen, equipment item",NORMAL,NORMAL,NORMAL,translated,
+graphics,status_power,"Status screen, equipment item",POWER,ENERGÍA,ENERGIA,translated,
+graphics,status_suit,"Status screen, equipment heading",SUIT,TRAJE,VESTIT,translated,
+graphics,status_varia,"Status screen, equipment item",VARIA,CLIMÁTICO,CLIMÀTIC,translated,
+graphics,status_gravity,"Status screen, equipment item",GRAVITY,GRAVITATORIO,GRAVITATORI,translated,
+graphics,status_misc,"Status screen, equipment heading",MISC.,OTROS,ALTRES,translated,
+graphics,status_morph,"Status screen, equipment item",MORPH BALL,MORFOSFERA,MORFOSFERA,translated,
+graphics,status_grip,"Status screen, equipment item",POWER GRIP,AGARRE,ARRAPADA,translated,
+graphics,status_speed,"Status screen, equipment item",SPEED BOOSTER,ACELERACIÓN,ACCELERACIÓ,translated,
+graphics,status_hijump,"Status screen, equipment item",HI-JUMP,SUPERSALTO,SUPERSALT,translated,
+graphics,status_screw,"Status screen, equipment item",SCREW ATTACK,S. EN BARRENA,ATAC ESPIRAL,translated,
+graphics,status_space,"Status screen, equipment item",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
+graphics,status_gun,"Status screen, equipment heading",GUN,PISTOLA,ARMA,translated,
+graphics,status_pistol,"Status screen, equipment item",PISTOL,LÁSER,PISTOLA,translated,
 credits,translation,"Staff credits, TRANSLATION section",,,"CATALAN
 Guillem Roca Castany",translated,

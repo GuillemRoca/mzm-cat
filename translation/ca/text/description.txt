@@ -3,7 +3,7 @@
 # One entry per line: ID = "text", with the IDs and codes of src/data/text_data.c.
 # IDs missing here show in English. See translation/ca/README.md.
 DESCRIPTION_TEXT_LONG_BEAM = "Aquest raig dispara trets de llarg abast.\nPrem {L_button} + {B_button} per disparar en diagonal."
-DESCRIPTION_TEXT_CHARGE_BEAM = "Mantén {B_button} per carregar. Amolla'l i dispara.\nAtac de càrrega: salta amb el raig carregat."
+DESCRIPTION_TEXT_CHARGE_BEAM = "Mantén {B_button} per carregar. Allibera i dispara.\nAtac de càrrega: salta amb el raig carregat."
 DESCRIPTION_TEXT_ICE_BEAM = "Aquest raig congela els enemics on són.\nPots pujar sense risc als enemics congelats."
 DESCRIPTION_TEXT_WAVE_BEAM = "Aquest raig, fet d'ones d'energia,\npot travessar objectes sòlids."
 DESCRIPTION_TEXT_PLASMA_BEAM = "Aquest potent raig pot travessar\ndiversos enemics d'un sol tret."

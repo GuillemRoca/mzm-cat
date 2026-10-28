@@ -77,10 +77,10 @@ approving them.
 | Power Grip | Agarre | Arrapada | APPROVED | *pause box* |
 | Pistol (Zero Suit) | Pistola | Pistola | PROPOSED | 1. Pistola: only option. *pause box* |
 | Unknown Item | Objeto desconocido | Objecte desconegut | APPROVED | literal. |
-| Hatch (door) | escotilla | 1. comporta<br>2. escotilla<br>3. porta | PROPOSED | 1. A sealed door that opens like a gate; reads as sci-fi. Used in the descriptions ("comportes vermelles").<br>2. Mirrors the Spanish, but in Catalan mostly a ship's deck opening.<br>3. Plain and clear, loses the "hatch" flavour. |
-| Charge Attack | Ataque carga | 1. Atac de càrrega<br>2. Atac carregat | PROPOSED | 1. Parallel to "Raig de càrrega".<br>2. Describes the result. |
-| Somersault (spin jump) | voltereta | 1. tombarella (gir for short)<br>2. voltereta | PROPOSED | 1. Standard Catalan for a somersault; "en ple gir" where space is short.<br>2. Castilianism, avoid. |
-| Damage (noun) | daño | dany | PROPOSED | Standard; "mal" is more colloquial. "Ferir" for "damage enemies" (verb). |
+| Hatch (door) | escotilla | comporta | APPROVED | A sealed door that opens like a gate; reads as sci-fi. Used in the descriptions ("comportes vermelles"). |
+| Charge Attack | Ataque carga | Atac de càrrega | APPROVED | Parallel to "Raig de càrrega". |
+| Somersault (spin jump) | voltereta | tombarella (gir for short) | APPROVED | Standard Catalan for a somersault; "en ple gir" where space is short. |
+| Damage (noun) | daño | dany | APPROVED | Standard; "mal" is more colloquial. "Ferir" for "damage enemies" (verb). |
 
 ## Enemies
 
@@ -110,6 +110,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Beam (status group) | RAYO | Raig | PROPOSED | Only option. *pause box* |
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
 | Misc (status group) | OTROS | 1. Altres<br>2. Diversos | PROPOSED | 1. Mirrors the Spanish. *pause box*<br>2. Slightly more precise. |
+| Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | PROPOSED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
 | Gallery | Galería | Galeria | PROPOSED | Only option. |
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |

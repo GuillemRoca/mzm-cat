@@ -22,6 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 import gencredits  # noqa: E402
+import gfx_equipment_names  # noqa: E402
 import gfx_game_over  # noqa: E402
 import gfx_menu_names  # noqa: E402
 
@@ -91,6 +92,11 @@ def graphic_rows():
         ("pause_change_area", "Pause screen, map: change area", "CHANGE AREAS", "CAMBIAR ZONA", menu["area"],
          "menus/pause_screen/menu_names_spanish"),
     ]
+    eq = gfx_equipment_names
+    for key, (en, es) in eq.SHOWN.items():
+        kind = "heading" if key in eq.HEADINGS else "item"
+        g.append((f"status_{key}", f"Status screen, equipment {kind}", en, es, eq.catalan(key),
+                  "menus/pause_screen/equipment_names_spanish"))
     rows = [{"section": "graphics", "id": id_, "where": where, "english": en, "spanish": es, "catalan": ca,
              "status": "translated" if (catext.CA / "gfx" / f"{key}.png").exists() else "untranslated"}
             for id_, where, en, es, ca, key in g]
