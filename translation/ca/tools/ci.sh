@@ -67,6 +67,7 @@ VERSION=$(cat "$CA/VERSION")
 if git describe --always --dirty > /dev/null 2>&1; then
     VERSION="$VERSION+$(git describe --always --dirty)"
 fi
+rm -f "$DIST"/*.bps
 PATCH="$DIST/mzm-cat-$VERSION.bps"
 python3 "$CA/tools/bps.py" create mzm_eu_baserom.gba mzm_eu_ca.gba "$PATCH" \
     --metadata "Metroid: Zero Mission en catala $VERSION. Base: EU ROM, SHA1 $VANILLA."
@@ -75,6 +76,16 @@ if pkg-config --exists libmgba 2>/dev/null || [ -f /usr/include/mgba/core/core.h
     "$CA/build/bpscheck" mzm_eu_baserom.gba "$PATCH" mzm_eu_ca.gba
 else
     echo "warning: libmgba not installed, patch not checked with mGBA's loader"
+fi
+endstep
+
+step "Preview patch (testing only, never released: see translation/ca/TESTING.md)"
+make REGION=eu LANG_CA=1 CA_PREVIEW=1 -j"$JOBS" > /dev/null
+PREVIEW="$DIST/mzm-cat-$VERSION-PREVIEW-TEST-ONLY.bps"
+python3 "$CA/tools/bps.py" create mzm_eu_baserom.gba mzm_eu_ca_preview.gba "$PREVIEW" \
+    --metadata "TEST BUILD, do not distribute. Metroid: Zero Mission en catala $VERSION preview."
+if [ -x "$CA/build/bpscheck" ]; then
+    "$CA/build/bpscheck" mzm_eu_baserom.gba "$PREVIEW" mzm_eu_ca_preview.gba
 fi
 ls -l "$DIST"
 endstep

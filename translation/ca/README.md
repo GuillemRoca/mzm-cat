@@ -70,6 +70,8 @@ overflow their VRAM space or a fixed-size C array. Never commit the vanilla expo
 
 ## Testing in the emulator
 
+See `TESTING.md` for playtesting in mGBA, with the preview build that shows every message.
+
 `make ca-emu-tools` builds `build/gbashot` (headless mGBA: scripted input, screenshots, save
 states) and `build/bpscheck` (checks a patch with mGBA's own loader).
 

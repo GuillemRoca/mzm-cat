@@ -51,6 +51,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 
 ## Patch
 
+- [ ] Publish only `mzm-cat-<version>.bps`, never the `-PREVIEW-TEST-ONLY` patch (test
+      shortcuts) or any ROM.
 - [ ] Patch applied with Flips and with Rom Patcher JS to a **clean EU dump** (SHA1 above): the
       result boots and matches the CI build's SHA1.
 - [ ] Vanilla EU saves load and play correctly with the patched ROM (language slot = Catalan).
