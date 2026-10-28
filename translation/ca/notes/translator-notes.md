@@ -28,19 +28,28 @@ APPROVED and the lines below are updated.
 | Desar | MESSAGE_SAVE_PROMPT ("Desar？") | |
 | Partida desada | MESSAGE_SAVE_COMPLETE | |
 | Vestit complet | MESSAGE_FULLY_POWERED_SUIT ("el vestit complet", lowercase in prose) | |
-| Mode repòs | MESSAGE_ACTIVATE_EASY_SLEEP | The pause screen's L tab still shows the Spanish graphic "SALVAP."; it must say the same (e.g. REPÒS) when menu_names is redrawn. |
+| Mode repòs | MESSAGE_ACTIVATE_EASY_SLEEP | The pause screen's L tab now says REPÒS (menu_names). |
 
-## Game over prompt (pilot graphic)
+## Game over prompt (pilot graphic) — DECIDED
 
 - `gfx/menus/game_over/text_prompt_spanish.png`, made by `tools/gfx_game_over.py` from the
-  glyphs of the five vanilla prompts: "TORNAR A PROVAR?" / "SÍ (CONTINUA)" / "NO (SURT)".
-- The font has no hyphen, which rules out "TORNAR-HO A PROVAR?". No space before "?"
-  (Catalan typography), unlike the EU art. The katakana label off-screen at the right edge
+  glyphs of the five vanilla prompts: "TORNAR-HO A PROVAR?" / "SÍ (CONTINUA)" / "NO (SURT)".
+  Imperatives and the hyphenated "tornar-ho" chosen by Guillem; the hyphen isn't in any vanilla
+  prompt, so it is drawn like the middle bar of the red E.
+- No space before "?" (Catalan typography), unlike the EU art. The off-screen katakana label
   (a developer note, "Spanish") is dropped.
-- Layout: options left-aligned at x = 86, helmet at 88 px
-  (`include/ca/layout.h`, vanilla Spanish 82 px). Checked in game for both options.
-- **To confirm:** imperatives (continua / surt) or infinitives (continuar / sortir); see the
-  glossary row.
+- Layout: options left-aligned at x = 86, helmet at 88 px (`include/ca/layout.h`, vanilla
+  Spanish 82 px). Checked in game for both options.
+
+## Pause menu names (menu_names graphic)
+
+- `gfx/menus/pause_screen/menu_names_spanish.png`, made by `tools/gfx_menu_names.py`: L tab
+  "REPÒS", R tab "ESTAT", area label "CANVIA ZONA" (both copies).
+- No vanilla tab has an accented letter: Ò follows the German Ä of the label font (accent on top,
+  4-row body), with a 2-px grave stroke (candidates a/b/c in the tool; c chosen). V isn't in any
+  label font either and is drawn.
+- REPÒS and ESTAT checked in game (map, world map, status screen). "CANVIA ZONA" fits its box
+  (41 of 47 px) but isn't on screen at the start of the game: **not yet seen in game**.
 
 ## Line notes (Message block)
 
@@ -49,9 +58,9 @@ APPROVED and the lines below are updated.
 - **MESSAGE_POWER_BOMB_TANK_ACQUIRED**: like the English, line 1 has no "obtingut" (the
   Spanish adds "almacenado"). Line 2, "Capacitat de bombes d'energia augmentada.", is the
   widest Message line at 208 px of 224.
-- **MESSAGE_SAVE_PROMPT**: keeps the Spanish (and Italian) extra `{GAP(8)}` after the
-  centring GAP, so "Desar？" sits where the Spanish prompt does over Sí/No. Without it the
-  text is exactly centred, as in English. Check in game which reads better.
+- **MESSAGE_SAVE_PROMPT** — DECIDED: "Desar？" exactly centred, like the English. The Spanish
+  and Italian add an extra `{GAP(8)}` after the centring GAP; we don't (the linter accepts the
+  GAP layout of either the Spanish or the English).
 - **MESSAGE_WEAPON_RESUPPLY_COMPLETE**: "Reposició de l'armament / completada."
   ("resupply" = replenishment). Alternatives: "Armament recarregat / del tot.", or
   "Recàrrega de l'armament / completada." (parallel to the energy message, but loses the

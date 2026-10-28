@@ -101,6 +101,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | PROPOSED | Only option; each label must fit 40 px (difficulty graphic). |
 | Time Attack | TIME ATTACK | 1. Contrarellotge<br>2. Time Attack | PROPOSED | 1. Natural Catalan sports term.<br>2. Kept as in the Spanish. |
 | Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | PROPOSED | Only option. *pause box* |
+| Change area (map) | CAMBIAR ZONA | 1. Canvia zona<br>2. Canvia d'àrea | PROPOSED | 1. Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn).<br>2. Uses "àrea" like the English, needs À. |
 | Energy (status) | ENERGÍA | Energia | PROPOSED | Only option. *pause box* |
 | Beam (status group) | RAYO | Raig | PROPOSED | Only option. *pause box* |
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
@@ -108,7 +109,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Gallery | Galería | Galeria | PROPOSED | Only option. |
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |
-| Easy Sleep | salvapantallas | 1. Mode repòs<br>2. Repòs | PROPOSED | 1. Describes the feature (the GBA sleeps).<br>2. Shorter. |
-| Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | 1. TORNAR A PROVAR? / SÍ (CONTINUA) / NO (SURT)<br>2. TORNAR A PROVAR? / SÍ (CONTINUAR) / NO (SORTIR) | PROPOSED | 1. Imperatives, like the other menu commands; in the pilot graphic. The prompt font has no hyphen, so "TORNAR-HO" can't be drawn.<br>2. Infinitives, mirroring the Spanish. |
+| Easy Sleep | salvapantallas (tab SALVAP.) | 1. Mode repòs (tab REPÒS)<br>2. Repòs | PROPOSED | 1. Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä).<br>2. Shorter. |
+| Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |
 | New Record | ¡NUEVO RÉCORD! | Nou rècord! | PROPOSED | Only option. |

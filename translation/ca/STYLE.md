@@ -7,6 +7,8 @@
   copied verbatim.
 - Sentence case for item and UI names ("Raig de càrrega"). Proper names and the Galactic
   Federation keep their capitals. Location banners are written in capitals, as in vanilla.
+- Menu commands and options use the imperative (Softcatalà style): "Continua", "Surt",
+  "Canvia zona". Decided at the Phase 3 checkpoint.
 - "la Samus" in prose, with the personal article.
 - Keep untranslated: Samus Aran, Ridley, Kraid, Mecha Ridley, Zebes, Chozo, Mother Brain and the
   area names (Brinstar, Norfair, Crateria, Tourian, Chozodia).
