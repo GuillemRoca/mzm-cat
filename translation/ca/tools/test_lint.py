@@ -141,7 +141,7 @@ class GapTest(unittest.TestCase):
 class CreditsTest(unittest.TestCase):
     def test_same_length_after_italian(self):
         _, vanilla = gencredits.vanilla()
-        for names in (["Guillem Roca"], ["Guillem Roca", "Second Person"]):
+        for names in (["Guillem Roca Castany"], ["Guillem Roca Castany", "Second Person"]):
             out, _ = gencredits.catalan(vanilla, "CATALAN", names)
             self.assertEqual((len(out), gencredits.rows(out)), (len(vanilla), gencredits.rows(vanilla)))
             at = out.index(("BLUE", "CATALAN"))

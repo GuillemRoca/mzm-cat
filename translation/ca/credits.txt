@@ -3,4 +3,4 @@
 #   heading = the language line, blue: A-Z . , & only (the credits fonts have no accents)
 #   name    = one line per person, white: A-Z a-z space . , - (30 characters at most)
 heading = CATALAN
-name = Guillem Roca
+name = Guillem Roca Castany

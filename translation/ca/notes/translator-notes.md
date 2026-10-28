@@ -10,8 +10,8 @@ Option A: dot at mid x-height, width 2. Confirmed by Guillem at the Phase 2 chec
 
 ### Credits — DECIDED
 A Catalan translation credit, alongside the other languages: in the TRANSLATION section of the
-EU staff credits, after "ITALIAN / Massimo Maietti", comes "CATALAN / Guillem Roca", laid out
-like the other languages. Names are in `credits.txt`; `tools/gencredits.py` builds the credits
+EU staff credits, after "ITALIAN / Massimo Maietti", comes "CATALAN / Guillem Roca Castany",
+laid out like the other languages. Names are in `credits.txt`; `tools/gencredits.py` builds the credits
 from the vanilla array. The rows added are taken from the empty lines before the copyright, so
 the credits scroll for exactly as long as vanilla and stay in time with the music. The credits
 fonts have no accents (the heading would read "CATALA"), so the heading is in English like the

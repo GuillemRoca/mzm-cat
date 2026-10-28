@@ -46,8 +46,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 
 ## Credits
 
-- [ ] "CATALAN / Guillem Roca" shows after the Italian translator, and the credits still end in
-      time with the music (`credits.txt`, decided in `notes/translator-notes.md`).
+- [ ] "CATALAN / Guillem Roca Castany" shows after the Italian translator, and the credits
+      still end in time with the music (`credits.txt`, decided in `notes/translator-notes.md`).
 
 ## Patch
 

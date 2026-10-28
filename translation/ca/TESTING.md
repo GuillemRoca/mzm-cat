@@ -108,8 +108,8 @@ must sit just left of the option text for both options. In the release build, di
 
 Preview build: hold **L + R** and press **Up**. The credits start right away (no ending save is
 written). In the TRANSLATION section, after "ITALIAN / Massimo Maietti", comes
-"CATALAN / Guillem Roca" (`credits.txt`); the credits must still end in time with the music. In the release
-build, finish the game.
+"CATALAN / Guillem Roca Castany" (`credits.txt`); the credits must still end in time with the
+music. In the release build, finish the game.
 
 ## Where the messages appear in normal play
 
