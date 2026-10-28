@@ -16,8 +16,7 @@ Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same
    automatically (Flips or Rom Patcher JS work too).
 2. Open `mzm.gba`. Default keys: A = X, B = Z, L = A, R = S, Start = Enter, Select = Backspace.
    Save state: Shift+F1…F9; load: F1…F9.
-3. On the language screen pick the **5th entry ("Español")**: that slot is Catalan. Its label
-   is still the Spanish graphic until the language selector is redrawn.
+3. On the language screen pick the **5th entry ("Català")**: it is the Spanish slot.
 4. Title: press Start, then A on the first option. File A → A → pick a difficulty. Skip the
    intro with A. Once Samus can move, save a state (Shift+F1) to come back here.
 

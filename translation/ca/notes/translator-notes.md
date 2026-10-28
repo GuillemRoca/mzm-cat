@@ -54,6 +54,14 @@ Area names (BRINSTAR … CHOZODIA) are kept, and NAU NODRISSA PIRATA is APPROVED
 - REPÒS and ESTAT checked in game (map, world map, status screen). "CANVIA ZONA" fits its box
   (41 of 47 px) but isn't on screen at the start of the game: **not yet seen in game**.
 
+## Language selector
+
+- `gfx/menus/language_select/background.png`, made by `tools/gfx_language_select.py`: "Català"
+  in the Spanish slot (5th entry), left-aligned like the other labels, 38 of 48 px, so the
+  tilemap is unchanged. "a", "t" and "l" are cut from "Italiano"; the capital C (stair corners
+  like the D of "Deutsch", mirrored) and the grave accent (rows 3-5 like the ñ tilde, 2-px
+  stroke; candidates a/b in the tool, a chosen) are drawn. Checked in game, selected and not.
+
 ## Line notes (Message block)
 
 - **Tanks: "obtingut"** for "acquired" throughout (tanks, maps, suit), and "augmentada" for
