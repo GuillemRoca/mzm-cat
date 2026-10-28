@@ -1,2 +1,7 @@
-# IDs whose Catalan text is meant to be exactly the English text (e.g. a name that stays
-# as is). One per line. The linter counts them as translated.
+# IDs whose Catalan text is intentionally the same as the English or the Spanish (e.g. a name
+# that stays as is, or Sí/No). One per line. The linter counts them as translated and doesn't
+# warn that they match the Spanish.
+MESSAGE_DUMMY  # debug placeholder, never shown
+MESSAGE_EASY_SLEEP_PROMPT  # Sí / No
+MESSAGE_BOMB  # Bomba: same word in Catalan and Spanish
+MESSAGE_MORPH_BALL  # Morfosfera: approved term, same as the Spanish
