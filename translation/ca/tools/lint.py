@@ -10,7 +10,8 @@ Errors (exit 1):
     Spanish original, in order; or a different number of lines (\\n) where the box is fixed
   - a line that crosses 224 px (the game would wrap it and, in banners, lose the rest)
 Warnings (exit 1 with --release):
-  - stale centring GAPs (fix with gap.py fix), a different number of GAPs on a line, or a
+  - stale centring GAPs (fix with gap.py fix), a number of GAPs on a line that matches neither
+    the Spanish nor the English, or a
     different FileScreen GAP value (those are Yes/No positions)
   - a FileScreen line wider than any shipped language's (the pop-up may be narrower)
   - text identical to the Spanish original (copied by mistake?)
@@ -107,10 +108,12 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
                                  default=0)
                     if lay["pen_end"] > widest:
                         warn(f"line {ln} is {lay['pen_end']} px, wider than any shipped language ({widest} px)")
-            ca_gaps, es_gaps = gaps_per_line(text), gaps_per_line(es)
+            ca_gaps, es_gaps, en_gaps = gaps_per_line(text), gaps_per_line(es), gaps_per_line(en)
             for ln, (cg, eg) in enumerate(zip(ca_gaps, es_gaps), 1):
-                if len(cg) != len(eg):
-                    warn(f"line {ln} has {len(cg)} GAPs, the Spanish has {len(eg)}")
+                # Either vanilla layout is fine (e.g. the save prompt centred like the English)
+                eng = en_gaps[ln - 1] if ln <= len(en_gaps) else eg
+                if len(cg) != len(eg) and len(cg) != len(eng):
+                    warn(f"line {ln} has {len(cg)} GAPs, the Spanish has {len(eg)} and the English {len(eng)}")
                 elif category == "file_screen" and cg != eg:
                     warn(f"line {ln} GAPs {cg} differ from the Spanish {eg} (Yes/No positions)")
             for line, old, new in gap.recompute(category, idx, text, w)[1]:

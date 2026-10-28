@@ -98,6 +98,14 @@ class LintTest(unittest.TestCase):
         items, _ = self.run_lint({"message": [f'MESSAGE_ZEBES_ESCAPE = "{long}\\n{{GAP(56)}}Evacueu immediatament!"']})
         self.assertFalse(any("GAP(-" in m for _, _, m in items), items)
 
+    def test_gap_layout_of_english_or_spanish(self):
+        centred = 'MESSAGE_SAVE_PROMPT = "{GAP(93)}Desar？\\n{GAP(99)}{INDENT(64)}Sí{INDENT(160)}No"'
+        items, _ = self.run_lint({"message": [centred]})
+        self.assertEqual(items, [])
+        extra = 'MESSAGE_LONG_BEAM = "{GAP(88)}{GAP(8)}{COLOR(5)}Raig llarg\\n{GAP(110)}"'
+        items, _ = self.run_lint({"message": [extra]})
+        self.assertTrue(any("2 GAPs" in m for _, _, m in items), items)
+
     def test_file_screen_gap_positions(self):
         line = 'FILE_SCREEN_TEXT_COPY_CONFIRM = "Vols sobreescriure\\naquest fitxer？\\n{GAP(30)}Sí{GAP(34)}No"'
         items, _ = self.run_lint({"file_screen": [line]})
