@@ -2,7 +2,7 @@
 // frame, before SpriteUpdate().
 //
 //   L + R + SELECT  show the next message banner (MESSAGE_DUMMY .. MESSAGE_ENEMY_LOCATION_ABNORMAL)
-//   L + R + START   set energy to 0, to reach the game over screen
+//   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
 //
 // The banner is spawned with a harmless message as its behaviour (no item, save or escape side
 // effects), then its text is swapped for the previewed one: TextStartMessage() copies the
@@ -43,7 +43,7 @@ static void CaPreviewUpdate(void)
     if ((gButtonInput & (KEY_L | KEY_R)) != (KEY_L | KEY_R))
         return;
 
-    if (gChangedInput & KEY_START)
+    if (gChangedInput & KEY_A)
     {
         gEquipment.currentEnergy = 0;
         return;

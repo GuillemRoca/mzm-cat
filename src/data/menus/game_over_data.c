@@ -5,6 +5,10 @@
 
 #include "constants/game_over.h"
 
+#ifdef LANG_CA
+#include "ca/layout.h"
+#endif // LANG_CA
+
 const u16 sGameOverMenuPal[16 * 5] = {
     #include "extracted/data/menus/game_over/palette.pal.inc"
 };
@@ -57,7 +61,11 @@ const u16 sGameOverSamusHeadXPositions[LANGUAGE_COUNT] = {
     [LANGUAGE_GERMAN] = BLOCK_SIZE * 4 + EIGHTH_BLOCK_SIZE,
     [LANGUAGE_FRENCH] = BLOCK_SIZE * 3 + HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE,
     [LANGUAGE_ITALIAN] = BLOCK_SIZE * 2 + HALF_BLOCK_SIZE + EIGHTH_BLOCK_SIZE,
+#ifdef LANG_CA
+    [LANGUAGE_SPANISH] = CA_GAME_OVER_SAMUS_HEAD_X
+#else // !LANG_CA
     [LANGUAGE_SPANISH] = BLOCK_SIZE * 5 + EIGHTH_BLOCK_SIZE
+#endif // LANG_CA
 #else // !REGION_EU
     [LANGUAGE_GERMAN] = BLOCK_SIZE * 3 + EIGHTH_BLOCK_SIZE,
     [LANGUAGE_FRENCH] = BLOCK_SIZE * 3 + EIGHTH_BLOCK_SIZE,

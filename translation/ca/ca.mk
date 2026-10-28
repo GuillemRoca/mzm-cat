@@ -4,13 +4,14 @@
 #   make eu LANG_CA=1 CA_SELFTEST=1   same plumbing with the vanilla Spanish text, font and
 #                                     widths: must be byte-identical to vanilla mzm_eu.gba
 #   make eu LANG_CA=1 CA_PREVIEW=1    mzm_eu_ca_preview.gba, a test build that is never released:
-#                                     L+R+SELECT shows the next message, L+R+START game over
+#                                     L+R+SELECT shows the next message, L+R+A game over
 #                                     (translation/ca/preview/ca_preview.c, translation/ca/TESTING.md)
 #
 # With LANG_CA=1, generated includes go in $(CA_INC), which is searched before include/:
 #   ca/text_<category>.inc     the Spanish blocks of src/data/text_data.c, in Catalan
 #   ca/char_widths.inc         the EU sCharacterWidths with font/widths.txt applied
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
+# and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
 # Objects are built in-tree for both modes, so every object that depends on the mode
 # also depends on $(CA_STAMP), which changes whenever the mode does.
 
@@ -33,6 +34,7 @@ CA_WIDTHS_INC := $(CA_INC)/ca/char_widths.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
+  CPPFLAGS += -DCA_SELFTEST
   CA_GENTEXT_FLAGS := --fallback spanish
   CA_FONT_FLAGS := --vanilla
   CA_GFX_PNGS :=
@@ -57,7 +59,7 @@ CA_AFFECTED := $(shell grep -rlF --include='*.c' $(foreach p,LANG_CA CA_PREVIEW 
 $(CA_AFFECTED:.c=.s): $(CA_STAMP)
 
 ifeq ($(LANG_CA),1)
-  CPPFLAGS += -DLANG_CA -I$(CA_INC)
+  CPPFLAGS += -DLANG_CA -I$(CA_INC) -I$(CA_DIR)/include
   TARGET := $(TARGET)_ca
 
   # Drop overrides of graphics whose PNG is gone, so they can't leak into the build.
@@ -66,7 +68,7 @@ ifeq ($(LANG_CA),1)
   src/data/text_data.s: $(CA_TEXT_INCS) $(CA_FONT_INC)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
-  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS)
+  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
 
   ifeq ($(CA_PREVIEW),1)
     CPPFLAGS += -DCA_PREVIEW -I$(CA_DIR)/preview

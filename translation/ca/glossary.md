@@ -109,5 +109,6 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |
 | Easy Sleep | salvapantallas | 1. Mode repòs<br>2. Repòs | PROPOSED | 1. Describes the feature (the GBA sleeps).<br>2. Shorter. |
+| Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | 1. TORNAR A PROVAR? / SÍ (CONTINUA) / NO (SURT)<br>2. TORNAR A PROVAR? / SÍ (CONTINUAR) / NO (SORTIR) | PROPOSED | 1. Imperatives, like the other menu commands; in the pilot graphic. The prompt font has no hyphen, so "TORNAR-HO" can't be drawn.<br>2. Infinitives, mirroring the Spanish. |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |
 | New Record | ¡NUEVO RÉCORD! | Nou rècord! | PROPOSED | Only option. |

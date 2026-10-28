@@ -30,6 +30,18 @@ APPROVED and the lines below are updated.
 | Vestit complet | MESSAGE_FULLY_POWERED_SUIT ("el vestit complet", lowercase in prose) | |
 | Mode repòs | MESSAGE_ACTIVATE_EASY_SLEEP | The pause screen's L tab still shows the Spanish graphic "SALVAP."; it must say the same (e.g. REPÒS) when menu_names is redrawn. |
 
+## Game over prompt (pilot graphic)
+
+- `gfx/menus/game_over/text_prompt_spanish.png`, made by `tools/gfx_game_over.py` from the
+  glyphs of the five vanilla prompts: "TORNAR A PROVAR?" / "SÍ (CONTINUA)" / "NO (SURT)".
+- The font has no hyphen, which rules out "TORNAR-HO A PROVAR?". No space before "?"
+  (Catalan typography), unlike the EU art. The katakana label off-screen at the right edge
+  (a developer note, "Spanish") is dropped.
+- Layout: options left-aligned at x = 86, helmet at 88 px
+  (`include/ca/layout.h`, vanilla Spanish 82 px). Checked in game for both options.
+- **To confirm:** imperatives (continua / surt) or infinitives (continuar / sortir); see the
+  glossary row.
+
 ## Line notes (Message block)
 
 - **Tanks: "obtingut"** for "acquired" throughout (tanks, maps, suit), and "augmentada" for
