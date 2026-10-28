@@ -89,6 +89,15 @@ class LintTest(unittest.TestCase):
         items, _ = self.run_lint({"message": [line]}, middot_glyph=False)
         self.assertEqual([l for l, _, _ in items], ["todo"])
 
+    def test_lookalike_hint(self):
+        items, _ = self.run_lint({"message": ['MESSAGE_WAVE_BEAM = "{GAP(80)}{COLOR(5)}Raig d’ones\\n{GAP(110)}"']})
+        self.assertOnly(items, "error", "use ' instead of ’")
+
+    def test_overflow_does_not_suggest_negative_gap(self):
+        long = "{GAP(0)}" + "Evacueu immediatament la zona! " * 3
+        items, _ = self.run_lint({"message": [f'MESSAGE_ZEBES_ESCAPE = "{long}\\n{{GAP(56)}}Evacueu immediatament!"']})
+        self.assertFalse(any("GAP(-" in m for _, _, m in items), items)
+
     def test_file_screen_gap_positions(self):
         line = 'FILE_SCREEN_TEXT_COPY_CONFIRM = "Vols sobreescriure\\naquest fitxer？\\n{GAP(30)}Sí{GAP(34)}No"'
         items, _ = self.run_lint({"file_screen": [line]})

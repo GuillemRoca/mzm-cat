@@ -51,7 +51,7 @@ def recompute(category, idx, text, w):
             line = lines[n] = "{GAP(0)}" + line
             m = LEAD_GAP.match(line)
         glyphs = catext.line_layout(line, w)["glyph_width"]
-        new = f(glyphs)
+        new = max(0, f(glyphs))  # an overflowing line is the linter's error, not a negative GAP
         old = int(m.group(1))
         if new != old:
             changes.append((n + 1, old, new))

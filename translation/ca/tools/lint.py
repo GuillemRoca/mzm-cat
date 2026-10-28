@@ -28,6 +28,7 @@ import catext  # noqa: E402
 import gap  # noqa: E402
 
 FIXED_LINES = {"message", "location", "story", "file_screen"}
+LOOKALIKES = {"’": "'", "‘": "'", "“": "”", "–": "-", "—": "-", "€": "(not in the font)"}
 
 
 def control_codes(text):
@@ -84,7 +85,9 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
             try:
                 catext.tokens(text)
             except KeyError as e:
-                err(str(e).strip('"'))
+                msg = str(e).strip('"')
+                bad = next((c for c in text if c in LOOKALIKES), None)
+                err(msg + (f"; use {LOOKALIKES[bad]} instead of {bad}" if bad and repr(bad) in msg else ""))
                 continue
             if "·" in text and not middot_fixed:
                 rep.add("todo", rel, n, idx, "uses · before font/glyphs/0357.png exists")
