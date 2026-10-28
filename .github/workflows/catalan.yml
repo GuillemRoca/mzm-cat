@@ -93,7 +93,7 @@ jobs:
         with:
           name: mzm-cat-${{ github.sha }}
           path: |
-            dist/*.bps
-            dist/lint.txt
-            dist/lint.json
+            translation/ca/dist/*.bps
+            translation/ca/dist/lint.txt
+            translation/ca/dist/lint.json
           if-no-files-found: ignore

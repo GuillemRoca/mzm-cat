@@ -6,14 +6,15 @@
 #
 # Needs the base ROM (see translation/ca/README.md), agbcc and arm-none-eabi binutils on PATH,
 # libpng-dev for gbagfx, and libmgba-dev to check the patch with mGBA's own loader.
-# Outputs in dist/: mzm-cat-<version>.bps, lint.txt, lint.json. No ROM is ever copied there.
+# Outputs in translation/ca/dist/: mzm-cat-<version>.bps, lint.txt, lint.json. No ROM is ever copied there.
 set -euo pipefail
 
 ROOT=$(cd "$(dirname "$0")/../../.." && pwd)
 cd "$ROOT"
 CA=translation/ca
 JOBS=$(nproc)  # `make eu` would drop to -j1 (no jobserver in the sub-make), so call REGION=eu directly
-mkdir -p dist
+DIST=$CA/dist
+mkdir -p "$DIST"
 
 step() { echo "::group::$*" 2>/dev/null || true; echo "== $*"; }
 endstep() { echo "::endgroup::" 2>/dev/null || true; }
@@ -50,7 +51,7 @@ step "Lint"
 LINT_FLAGS=()
 [ "${RELEASE:-0}" = 1 ] && LINT_FLAGS+=(--release)
 set +e
-python3 "$CA/tools/lint.py" --json dist/lint.json "${LINT_FLAGS[@]}" | tee dist/lint.txt
+python3 "$CA/tools/lint.py" --json "$DIST/lint.json" "${LINT_FLAGS[@]}" | tee "$DIST/lint.txt"
 LINT=${PIPESTATUS[0]}
 set -e
 [ "$LINT" = 0 ] || { echo "error: lint failed" >&2; exit 1; }
@@ -66,7 +67,7 @@ VERSION=$(cat "$CA/VERSION")
 if git describe --always --dirty > /dev/null 2>&1; then
     VERSION="$VERSION+$(git describe --always --dirty)"
 fi
-PATCH="dist/mzm-cat-$VERSION.bps"
+PATCH="$DIST/mzm-cat-$VERSION.bps"
 python3 "$CA/tools/bps.py" create mzm_eu_baserom.gba mzm_eu_ca.gba "$PATCH" \
     --metadata "Metroid: Zero Mission en catala $VERSION. Base: EU ROM, SHA1 $VANILLA."
 if pkg-config --exists libmgba 2>/dev/null || [ -f /usr/include/mgba/core/core.h ]; then
@@ -75,5 +76,5 @@ if pkg-config --exists libmgba 2>/dev/null || [ -f /usr/include/mgba/core/core.h
 else
     echo "warning: libmgba not installed, patch not checked with mGBA's loader"
 fi
-ls -l dist
+ls -l "$DIST"
 endstep
