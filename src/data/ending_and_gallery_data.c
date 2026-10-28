@@ -4242,6 +4242,9 @@ const u16* const sEndingImagesPalPointers[ENDING_IMAGE_COUNT] = {
 
 #if defined(REGION_EU)
 
+#ifdef LANG_CA
+#include "ca/credits.inc"
+#else // !LANG_CA
 const struct CreditsEntry sCredits[308] = {
     [0] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
@@ -5363,9 +5366,6 @@ const struct CreditsEntry sCredits[308] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
         .text = "Iwata Satoru"
     },
-#ifdef LANG_CA
-#include "ca/credits.inc"
-#else // !LANG_CA
     [280] = {
         .type = CREDIT_LINE_TYPE_BLUE,
         .text = "               "
@@ -5426,7 +5426,6 @@ const struct CreditsEntry sCredits[308] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
         .text = "               "
     },
-#endif // LANG_CA
     [295] = {
         .type = CREDIT_LINE_TYPE_ALL_RIGHTS,
         .text = ""
@@ -5480,6 +5479,7 @@ const struct CreditsEntry sCredits[308] = {
         .text = ""
     }
 };
+#endif // LANG_CA
 
 #elif defined(REGION_JP)
 

@@ -55,6 +55,7 @@ python3 "$CA/tools/lint.py" --json "$DIST/lint.json" "${LINT_FLAGS[@]}" | tee "$
 LINT=${PIPESTATUS[0]}
 set -e
 [ "$LINT" = 0 ] || { echo "error: lint failed" >&2; exit 1; }
+python3 "$CA/tools/review.py" --check
 endstep
 
 step "Catalan EU"

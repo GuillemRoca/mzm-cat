@@ -11,9 +11,9 @@
 # With LANG_CA=1, generated includes go in $(CA_INC), which is searched before include/:
 #   ca/text_<category>.inc     the Spanish blocks of src/data/text_data.c, in Catalan
 #   ca/char_widths.inc         the EU sCharacterWidths with font/widths.txt applied
+#   ca/credits.inc             the EU sCredits with the translators in credits.txt
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
-# and $(CA_DIR)/include holds hand-written includes (ca/layout.h: per-language layout constants;
-# ca/credits.inc: the Catalan translation credit).
+# and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
 # Objects are built in-tree for both modes, so every object that depends on the mode
 # also depends on $(CA_STAMP), which changes whenever the mode does.
 
@@ -33,16 +33,19 @@ CA_PREVIEW ?= 0
 
 CA_TEXT_INCS := $(foreach c,message location description story file_screen,$(CA_INC)/ca/text_$(c).inc)
 CA_WIDTHS_INC := $(CA_INC)/ca/char_widths.inc
+CA_CREDITS_INC := $(CA_INC)/ca/credits.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
   CPPFLAGS += -DCA_SELFTEST
   CA_GENTEXT_FLAGS := --fallback spanish
   CA_FONT_FLAGS := --vanilla
+  CA_CREDITS_FLAGS := --vanilla
   CA_GFX_PNGS :=
 else
   CA_GENTEXT_FLAGS :=
   CA_FONT_FLAGS :=
+  CA_CREDITS_FLAGS :=
   CA_GFX_PNGS := $(sort $(shell find $(CA_DIR)/gfx -name '*.png' 2>/dev/null))
 endif
 # translation/ca/gfx/<data path minus .gfx.lz>.png overrides data/<data path>
@@ -69,8 +72,9 @@ ifeq ($(LANG_CA),1)
 
   src/data/text_data.s: $(CA_TEXT_INCS) $(CA_FONT_INC)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
+  src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
-  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*)
+  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
 
   ifeq ($(CA_PREVIEW),1)
     CPPFLAGS += -DCA_PREVIEW -I$(CA_DIR)/preview
@@ -89,6 +93,10 @@ $(CA_INC)/ca/text_%.inc: $(CA_DIR)/text/%.txt src/data/text_data.c charmap.txt $
 $(CA_WIDTHS_INC): $(wildcard $(CA_DIR)/font/widths.txt) src/data/menus/pause_screen_data.c $(CA_TOOLS)/font.py $(CA_TOOLS)/catext.py $(CA_STAMP)
 	$(MSG) WIDTHS $@
 	$Q$(PYTHON) $(CA_TOOLS)/font.py widths $@ $(CA_FONT_FLAGS)
+
+$(CA_CREDITS_INC): $(CA_DIR)/credits.txt src/data/ending_and_gallery_data.c $(CA_TOOLS)/gencredits.py $(CA_STAMP)
+	$(MSG) CREDITS $@
+	$Q$(PYTHON) $(CA_TOOLS)/gencredits.py $@ $(CA_CREDITS_FLAGS)
 
 $(CA_FONT_INC): data/text_characters.gfx $(wildcard $(CA_DIR)/font/glyphs/*.png) $(wildcard $(CA_DIR)/font/widths.txt) $(CA_TOOLS)/font.py $(CA_GBAGFX) $(CA_STAMP)
 	$(MSG) FONT $@

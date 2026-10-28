@@ -17,7 +17,9 @@ glossary.md           terminology (APPROVED / PROPOSED), STYLE.md, notes/transla
 RELEASE_CHECKLIST.md  what a release needs
 VERSION               version in the patch name
 ca.mk                 the LANG_CA build, included from the top-level Makefile
-include/ca/           hand-written includes: layout.h (layout constants), credits.inc
+include/ca/layout.h   per-language layout constants
+credits.txt           the Catalan translators, added to the staff credits
+translations.csv      every string in English, Spanish and Catalan, for playtesting (generated)
 tools/                generators, linter, GAP tool, graphics and font tools, CI
 reference/            your private references (e.g. am2r-glossary.csv); gitignored
 build/, dist/         generated files and CI outputs; gitignored
@@ -26,7 +28,7 @@ build/, dist/         generated files and CI outputs; gitignored
 Upstream files touched: `Makefile` (one `include`); `#ifdef LANG_CA` wraps around vanilla code
 in `src/data/text_data.c`, the EU half of `sCharacterWidths` in
 `src/data/menus/pause_screen_data.c`, the Spanish helmet position in
-`src/data/menus/game_over_data.c` and `sCredits[280..294]` in
+`src/data/menus/game_over_data.c` and the EU `sCredits` in
 `src/data/ending_and_gallery_data.c`; the `CA_PREVIEW` hook in `src/in_game.c`; and
 `.github/workflows/catalan.yml`.
 
@@ -53,7 +55,12 @@ out show in English, so the game always builds.
 python3 translation/ca/tools/gap.py fix      # recompute the centring GAPs
 python3 translation/ca/tools/lint.py         # check everything (--release: also completeness)
 python3 translation/ca/tools/render.py out.png "{GAP(88)}{COLOR(5)}Raig llarg"   # quick preview
+python3 translation/ca/tools/review.py       # refresh translations.csv (CI checks it is current)
 ```
+
+`translations.csv` lists every string side by side (English, Spanish, Catalan, where it shows,
+status) for checking during a playthrough. Write your remarks in its `notes` column:
+regenerating keeps them.
 
 The linter compares each entry with the Spanish original: control codes, line count, and width
 (no line may pass 224 px). `gap.py vanilla` shows the GAP rules reproduce all 545 shipped GAPs.

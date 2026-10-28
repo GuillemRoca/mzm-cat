@@ -1,0 +1,347 @@
+section,id,where,english,spanish,catalan,status,notes
+message,MESSAGE_DUMMY,Message banner,DUMMY MESSAGE (OBJ Cell B1),DUMMY MESSAGE (OBJ Cell B1),DUMMY MESSAGE (OBJ Cell B1),same as English,
+message,MESSAGE_ENERGY_TANK_ACQUIRED,Message banner,"Energy Tank acquired.
+Energy capacity increased.","Tanque de energía almacenado.
+Capacidad de energía ampliada.","Tanc d'energia obtingut.
+Capacitat d'energia augmentada.",translated,
+message,MESSAGE_MISSILE_TANK_ACQUIRED,Message banner,"Missile Tank acquired.
+Missile capacity increased.","Tanque de misiles almacenado.
+Capacidad de misiles ampliada.","Tanc de míssils obtingut.
+Capacitat de míssils augmentada.",translated,
+message,MESSAGE_FIRST_MISSILE_TANK,Message banner,Missile Tank,Tanque de misiles,Tanc de míssils,translated,
+message,MESSAGE_SUPER_MISSILE_TANK_ACQUIRED,Message banner,"Super Missile Tank acquired.
+Super Missile capacity increased.","Tanque de supermisiles almacenado.
+Capacidad de supermisiles ampliada.","Tanc de supermíssils obtingut.
+Capacitat de supermíssils augmentada.",translated,
+message,MESSAGE_FIRST_SUPER_MISSILE_TANK,Message banner,Super Missile Tank,Tanque de supermisiles,Tanc de supermíssils,translated,
+message,MESSAGE_POWER_BOMB_TANK_ACQUIRED,Message banner,"Power Bomb Tank
+Power Bomb capacity increased.","Tanque de bomba de energía almacenado
+Capacidad de bomba de energía ampliada.","Tanc de bombes d'energia
+Capacitat de bombes d'energia augmentada.",translated,
+message,MESSAGE_FIRST_POWER_BOMB_TANK,Message banner,Power Bomb Tank,Tanque de bomba de energía,Tanc de bombes d'energia,translated,
+message,MESSAGE_LONG_BEAM,Message banner,Long Beam,Rayo Largo,Raig llarg,translated,
+message,MESSAGE_CHARGE_BEAM,Message banner,Charge Beam,Rayo Recarga,Raig de càrrega,translated,
+message,MESSAGE_ICE_BEAM,Message banner,Ice Beam,Rayo de Hielo,Raig de gel,translated,
+message,MESSAGE_WAVE_BEAM,Message banner,Wave Beam,Rayo de Ondas,Raig d'ones,translated,
+message,MESSAGE_UKNOWN_ITEM_PLASMA,Message banner,Unknown Item,Objeto desconocido,Objecte desconegut,translated,
+message,MESSAGE_BOMB,Message banner,Bomb,Bomba,Bomba,translated,
+message,MESSAGE_VARIA_SUIT,Message banner,Varia Suit,Traje climático,Vestit climàtic,translated,
+message,MESSAGE_UNKNOWN_ITEM_GRAVITY,Message banner,Unknown Item,Objeto desconocido,Objecte desconegut,translated,
+message,MESSAGE_MORPH_BALL,Message banner,Morph Ball,Morfosfera,Morfosfera,translated,
+message,MESSAGE_SPEED_BOOSTER,Message banner,Speed Booster,Aceleración,Acceleració,translated,
+message,MESSAGE_HIGH_JUMP,Message banner,Hi-Jump,Supersalto,Supersalt,translated,
+message,MESSAGE_SCREW_ATTACK,Message banner,Screw Attack,Salto en barrena,Atac espiral,translated,
+message,MESSAGE_UNKNOWN_ITEM_SPACE_JUMP,Message banner,Unknown Item,Objeto desconocido,Objecte desconegut,translated,
+message,MESSAGE_POWER_GRIP,Message banner,Power Grip,Agarre,Arrapada,translated,
+message,MESSAGE_SAVE_PROMPT,Message banner,"Save?
+Yes  No","¿Guardar?
+Sí  No","Guardar?
+Sí  No",translated,
+message,MESSAGE_SAVE_COMPLETE,Message banner,Save Complete,Datos almacenados,Partida guardada,translated,
+message,MESSAGE_WEAPON_RESUPPLY_COMPLETE,Message banner,"Weapons system
+resupply complete.","Restablecimiento del
+armamento completado.","Reposició de l'armament
+completada.",translated,
+message,MESSAGE_ENERGY_TANK_RECHARGE_COMPLETE,Message banner,"Energy Tank
+recharge complete.","Recarga de los tanques
+de energía completada.","Recàrrega dels tancs
+d'energia completada.",translated,
+message,MESSAGE_WEAPONS_AND_ENERGY_RESTORED,Message banner,"Weapons and energy
+fully restored.","Munición y energía
+totalmente restablecidas.","Armament i energia
+restablerts del tot.",translated,
+message,MESSAGE_BRINSTAR_MAP_ACQUIRED,Message banner,Brinstar map data acquired.,Mapa de Brinstar adquirido.,Mapa de Brinstar obtingut.,translated,
+message,MESSAGE_KRAID_MAP_ACQUIRED,Message banner,Kraid map data acquired.,Mapa de Kraid adquirido.,Mapa de Kraid obtingut.,translated,
+message,MESSAGE_NORFAIR_MAP_ACQUIRED,Message banner,Norfair map data acquired.,Mapa de Norfair adquirido.,Mapa de Norfair obtingut.,translated,
+message,MESSAGE_RIDLEY_MAP_ACQUIRED,Message banner,Ridley map data acquired.,Mapa de Ridley adquirido.,Mapa de Ridley obtingut.,translated,
+message,MESSAGE_MOTHER_SHIP_MAP_ACQUIRED,Message banner,Mother Ship map data acquired.,Mapa de la nave nodriza  adquirido.,Mapa de la nau nodrissa obtingut.,translated,
+message,MESSAGE_FULLY_POWERED_SUIT,Message banner,You got your fully powered suit.,Tienes el traje totalmente equipado.,Has obtingut el vestit complet.,translated,
+message,MESSAGE_ZEBES_ESCAPE,Message banner,"Self-destruct mechanism activated!
+Evacuate immediately!","¡Mecanismo de autodestrucción activado!
+¡Evacuación inmediata!","Mecanisme d'autodestrucció activat!
+Evacuació immediata!",translated,
+message,MESSAGE_CHOZODIA_ESCAPE,Message banner,"Self-destruct mechanism activated!
+Evacuate immediately!","¡Mecanismo de autodestrucción activado!
+¡Evacuación inmediata!","Mecanisme d'autodestrucció activat!
+Evacuació immediata!",translated,
+message,MESSAGE_ENEMY_LOCATION_ABNORMAL,Message banner,"Enemy location abnormal.
+Check message frame position.","Posición anormal del enemigo.
+Revisa el origen del mensaje.","Posició anòmala de l'enemic.
+Revisa la posició del missatge.",translated,
+message,MESSAGE_ACTIVATE_EASY_SLEEP,Message banner,"Activate Easy Sleep?
+To exit Easy Sleep,","¿Usar el salvapantallas?
+Para anularlo, pulsa","Vols activar el mode repòs?
+Per sortir-ne, prem",translated,
+message,MESSAGE_PRESS_SELECT_L_AND_R,Message banner,"press [SELECT], [L], and [R]
+simultaneously.","[SELECT], [L] y [R]
+al mismo tiempo.","[SELECT], [L] i [R]
+alhora.",translated,
+message,MESSAGE_EASY_SLEEP_PROMPT,Message banner,"Yes
+No","Sí
+No","Sí
+No",translated,
+location,LT_BRINSTAR,Area / room banner,BRINSTAR,BRINSTAR,BRINSTAR,same as English,
+location,LT_KRAID,Area / room banner,KRAID,KRAID,KRAID,same as English,
+location,LT_NORFAIR,Area / room banner,NORFAIR,NORFAIR,NORFAIR,same as English,
+location,LT_RIDLEY,Area / room banner,RIDLEY,RIDLEY,RIDLEY,same as English,
+location,LT_TOURIAN,Area / room banner,TOURIAN,TOURIAN,TOURIAN,same as English,
+location,LT_CRATERIA,Area / room banner,CRATERIA,CRATERIA,CRATERIA,same as English,
+location,LT_CHOZODIA,Area / room banner,CHOZODIA,CHOZODIA,CHOZODIA,same as English,
+location,LT_MOTHERSHIP,Area / room banner,SPACE PIRATE MOTHER SHIP,NAVE NODRIZA PIRATA,NAU NODRISSA PIRATA,translated,
+location,LT_PLANET_ZEBES,Area / room banner,PLANET ZEBES,PLANETA ZEBES,PLANETA ZEBES,translated,
+location,LT_SAVE_ROOM,Area / room banner,SAVE ROOM,ESTACIÓN DE GUARDADO,SALA DE GUARDAT,translated,
+location,LT_RESEARCH_ROOM,Area / room banner,RESEARCH ROOM,SALA DE INVESTIGACIÓN,SALA D'INVESTIGACIÓ,translated,
+location,LT_MAP_ROOM,Area / room banner,MAP ROOM,SALA DE MAPAS,SALA DE MAPES,translated,
+location,LT_CHOZO_RUINS,Area / room banner,CHOZO RUINS,RUINAS CHOZO,RUÏNES CHOZO,translated,
+location,LT_STARSHIP,Area / room banner,STARSHIP,STARSHIP,NAU DE LA SAMUS,translated,
+location,LT_UNUSED_7,Area / room banner,UNUSED OBJ 7,CONTROL SHIP,UNUSED OBJ 7,same as English,
+location,LT_UNUSED_8,Area / room banner,UNUSED OBJ 8,UNUSED OBJ 8,UNUSED OBJ 8,same as English,
+location,LT_UNUSED_9,Area / room banner,UNUSED OBJ 9,UNUSED OBJ 9,UNUSED OBJ 9,same as English,
+location,LT_UNUSED_10,Area / room banner,UNUSED OBJ 10,UNUSED OBJ 10,UNUSED OBJ 10,same as English,
+location,LT_UNUSED_11,Area / room banner,UNUSED OBJ 11,UNUSED OBJ 11,UNUSED OBJ 11,same as English,
+location,LT_UNUSED_12,Area / room banner,UNUSED OBJ 12,UNUSED OBJ 12,UNUSED OBJ 12,same as English,
+location,LT_UNUSED_13,Area / room banner,UNUSED OBJ 13,UNUSED OBJ 13,UNUSED OBJ 13,same as English,
+location,LT_UNUSED_14,Area / room banner,UNUSED OBJ 14,UNUSED OBJ 14,UNUSED OBJ 14,same as English,
+location,LT_UNUSED_15,Area / room banner,UNUSED OBJ 15,UNUSED OBJ 15,UNUSED OBJ 15,same as English,
+location,LT_UNUSED_16,Area / room banner,UNUSED OBJ 16,UNUSED OBJ 16,UNUSED OBJ 16,same as English,
+location,LT_UNUSED_17,Area / room banner,UNUSED OBJ 17,UNUSED OBJ 17,UNUSED OBJ 17,same as English,
+location,LT_UNUSED_18,Area / room banner,UNUSED OBJ 18,UNUSED OBJ 18,UNUSED OBJ 18,same as English,
+description,DESCRIPTION_TEXT_LONG_BEAM,"Pause screen, equipment description","Fire long-distance shots with this beam.
+Press [L] + [B] to fire diagonally.","Dispara desde lejos con este rayo.
+Pulsa [L] + [B] para disparos diagonales.",,untranslated,
+description,DESCRIPTION_TEXT_CHARGE_BEAM,"Pause screen, equipment description","Hold [B] to charge. Release to fire.
+Charge Attack: Jump with a full charge.","Mantén [B] para cargar. Luego suelta.
+Ataque carga: salta una vez cargado.",,untranslated,
+description,DESCRIPTION_TEXT_ICE_BEAM,"Pause screen, equipment description","This beam can freeze enemies in place.
+You can safely stand on frozen enemies.","Este rayo congela a algunos enemigos.
+Un enemigo congelado es inofensivo.",,untranslated,
+description,DESCRIPTION_TEXT_WAVE_BEAM,"Pause screen, equipment description","This beam, which is made up of energy
+waves, can pass through solid objects.","Este rayo, hecho de ondas de energía,
+puede atravesar objetos sólidos.",,untranslated,
+description,DESCRIPTION_TEXT_PLASMA_BEAM,"Pause screen, equipment description","This powerful beam can blast through
+multiple enemies.","Este poderoso rayo puede destrozar
+a varios enemigos a la vez.",,untranslated,
+description,DESCRIPTION_TEXT_MISSILES,"Pause screen, equipment description","Press [R] + [B] to fire.
+Opens red hatches.","Pulsa [R] + [B] para disparar.
+Abre las escotillas rojas.",,untranslated,
+description,DESCRIPTION_TEXT_SUPER_MISSILES,"Pause screen, equipment description","Arm with [SELECT]. Fire with [R] + [B].
+Opens green hatches.","Cargar: [SELECT]. Disparar: [R] + [B].
+Abre las escotillas verdes.",,untranslated,
+description,DESCRIPTION_TEXT_BOMBS,"Pause screen, equipment description",Press [B] in Morph Ball form to set.,"Pulsa [B] en forma de morfosfera
+para activarla.",,untranslated,
+description,DESCRIPTION_TEXT_POWER_BOMBS,"Pause screen, equipment description","Set with [R] + [B] in Morph Ball form.
+Opens yellow hatches.","Activa con [R] + [B] en morfosfera.
+Abre las escotillas amarillas.",,untranslated,
+description,DESCRIPTION_TEXT_VARIA_SUIT,"Pause screen, equipment description","Decreases damage taken from enemies.
+Prevents damage from acid and heat.","Reduce el daño infligido por enemigos.
+Evita heridas de ácido y calor.",,untranslated,
+description,DESCRIPTION_TEXT_GRAVITY_SUIT,"Pause screen, equipment description","Reduces damage from foes. Enables free
+movement in water. Stops lava damage.","Reduce el daño sufrido. Permite moverse
+libremente por el agua y la lava.",,untranslated,
+description,DESCRIPTION_TEXT_MORPH_BALL,"Pause screen, equipment description","Double-tap [DOWN] to take ball form and
+gain access to narrow passageways.","Pulsa dos veces [DOWN] para pasar a
+morfosfera y acceder a sitios estrechos.",,untranslated,
+description,DESCRIPTION_TEXT_POWER_GRIP,"Pause screen, equipment description",Grab and hang from ledges and corners.,Cuélgate de cornisas y esquinas.,,untranslated,
+description,DESCRIPTION_TEXT_SPEEDBOOSTER,"Pause screen, equipment description","Run until speed boost begins to break
+certain blocks and damage enemies.","Alcanza gran velocidad para
+romper ciertos bloques.",,untranslated,
+description,DESCRIPTION_TEXT_HIGH_JUMP,"Pause screen, equipment description","Increases maximum jump height.
+Adds Morph Ball jumping capability.","Aumenta la distancia de salto y añade
+capacidad de salto a la morfosfera.",,untranslated,
+description,DESCRIPTION_TEXT_SCREW_ATTACK,"Pause screen, equipment description",Damage enemies while somersaulting.,Ataca a tus enemigos con volteretas.,,untranslated,
+description,DESCRIPTION_TEXT_SPACE_JUMP,"Pause screen, equipment description","Somersault continually in the air.
+Use [A] mid-somersault to jump again.","Volteretas continuas en el aire. Usa [A]
+en plena voltereta para volver a saltar.",,untranslated,
+description,DESCRIPTION_TEXT_UNKNOWN_ITEM,"Pause screen, equipment description","Analysis inconclusive.
+Item incompatible with current suit.","Análisis no concluyente.
+Objeto incompatible.",,untranslated,
+description,DESCRIPTION_TEXT_PISTOL,"Pause screen, equipment description","An auto-charging pistol.
+Stun enemies with charged shots.","Una pistola autocargable.
+Atonta a  enemigos con tiros cargados.",,untranslated,
+story,STORY_TEXT_PLANET_ZEBES,"Story text (intro, escapes, ending)","Planet Zebes... I called this place home
+once, in peaceful times, long before evil
+haunted the caverns below. Now, I shall
+finally tell the tale of my first battle
+here... My so-called Zero Mission.
+-Samus Aran-","El Planeta Zebes... Hace mucho, en
+tiempos de paz, antes de que el mal
+arrasara las cavernas, era mi hogar.
+Ahora debo narrar la historia de mi
+primera batalla... La Misión Zero.
+-Samus Aran-",,untranslated,
+story,STORY_TEXT_THE_TIMING,"Story text (intro, escapes, ending)","The timing of my escape couldn't have
+been worse. I was attacked by Space
+Pirates and left nearly defenseless,
+stripped of my Power Suit. All I had for
+protection was my rather useless
+emergency pistol. Infiltrating the Space
+Pirate Mother Ship so armed may have
+been foolish, but I had no choice...","Mi huida me dejó indefensa, sin mi traje.
+Como única protección tenía mi pistola
+de emergencia, que no es precisamente
+una gran arma. Puede que infiltrarme en
+la nave nodriza pirata así armada fuera
+estúpido, pero no tenía otra opción...",,untranslated,
+story,STORY_TEXT_COULD_I_SURVIVE,"Story text (intro, escapes, ending)",Could I survive long enough to escape?,"¿Podría sobrevivir lo suficiente
+para escapar?",,untranslated,
+story,STORY_TEXT_EMERGENCY,"Story text (intro, escapes, ending)",Emergency Order,Orden de emergencia,,untranslated,
+story,STORY_TEXT_EXTERMINATE,"Story text (intro, escapes, ending)","Exterminate all Metroid organisms
+on Planet Zebes...","Exterminar a todos los organismos
+Metroid del Planeta Zebes...",,untranslated,
+story,STORY_TEXT_DEFEAT,"Story text (intro, escapes, ending)","And defeat the mechanical life-form,
+Mother Brain.","Y derrotar a la forma de vida mecánica
+Mother Brain.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_START_GAME,File select,"Start Game
+Start Game (Link)","Jugar
+Jugar (Link)",,untranslated,
+file_screen,FILE_SCREEN_TEXT_COPY_SOURCE_CHOOSE,File select,"Choose a data file
+to copy.","Elige el archivo
+que quieres copiar.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_COPY_DESTINATION_CHOOSE,File select,"Choose a file to copy
+the data to.","Elige un archivo al
+que copiar los datos.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_COPY_CONFIRM,File select,"OK to copy over
+this data?
+Yes  No","¿Quieres sobrescribir
+este archivo?
+Sí  No",,untranslated,
+file_screen,FILE_SCREEN_TEXT_ERASE_CHOOSE,File select,"Choose a data file to
+erase.","Elige el archivo
+que quieres borrar.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_ERASE_CONFIRM,File select,"OK to erase this
+data file?
+Yes  No","¿Quieres borrar
+este archivo?
+Sí  No",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_A_CORRUPT_REVERT,File select,"File A is corrupted.
+Reverting to past data.","Archivo A dañado.
+Usando datos
+anteriores.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_B_CORRUPT_REVERT,File select,"File B is corrupted.
+Reverting to past data.","Archivo B dañado.
+Usando datos
+anteriores.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_C_CORRUPT_REVERT,File select,"File C is corrupted.
+Reverting to past data.","Archivo C dañado.
+Usando datos
+anteriores.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_A_CORRUPT_ERASE,File select,"File A is corrupted.
+Erasing File A...","Archivo A dañado.
+Borrando archivo A...",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_B_CORRUPT_ERASE,File select,"File B is corrupted.
+Erasing File B...","Archivo B dañado.
+Borrando archivo B...",,untranslated,
+file_screen,FILE_SCREEN_TEXT_FILE_C_CORRUPT_ERASE,File select,"File C is corrupted.
+Erasing File C...","Archivo C dañado.
+Borrando archivo C...",,untranslated,
+file_screen,FILE_SCREEN_TEXT_ERASE_ALL_REFORMAT,File select,"OK to erase all Samus data
+and reformat save files?","¿Quieres borrar todos los datos
+y reformatear los archivos?",,untranslated,
+file_screen,FILE_SCREEN_TEXT_ERASE_ALL,File select,"OK to erase all Samus
+save data?","¿Quieres borrar todos los
+datos guardados?",,untranslated,
+file_screen,FILE_SCREEN_TEXT_CONTINUE_NEW,File select,"Continue
+New","Continuar
+Nuevo",,untranslated,
+file_screen,FILE_SCREEN_TEXT_CONTINUE_NEW_TIME_ATTACK,File select,"Continue
+New
+New Time Attack","Continuar
+Nuevo
+Nuevo reto de tiempo",,untranslated,
+file_screen,FILE_SCREEN_TEXT_MESSAGE_OPTION,File select,"Message Options
+  Kanji
+  Hiragana","Opciones de mensaje
+  Kanji
+  Hiragana",,untranslated,
+file_screen,FILE_SCREEN_TEXT_DIFFICULTY,File select,"Difficulty Setting
+  EASY
+  NORMAL","Dificultad
+  FÁCIL
+  NORMAL",,untranslated,
+file_screen,FILE_SCREEN_TEXT_DIFFICULTY_HARD,File select,"Difficulty Level
+  EASY
+  NORMAL
+  HARD","Nivel de dificultad
+  FÁCIL
+  NORMAL
+  DIFÍCIL",,untranslated,
+file_screen,FILE_SCREEN_TEXT_ERASE_FILE_CONFIRM,File select,"OK to erase all saved
+data?
+(　　　 will not be erased.)
+Yes  No","¿Quieres borrar todos
+los datos guardados?
+(　　　no se borrará).
+Sí  No",,untranslated,
+file_screen,FILE_SCREEN_TEXT_LINKING_PLEASE_WAIT,File select,"Linking...
+Please wait a moment.","Conectando...
+Espera un momento.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_UNABLE_TO_DETECT_FUSION,File select,"Unable to detect a
+Metroid Fusion
+Game Pak.","No se ha detectado
+ningún cartucho de
+Metroid Fusion.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_LINKING_ERROR,File select,Linking error.,Error de conexión.,,untranslated,
+file_screen,FILE_SCREEN_TEXT_TURN_OFF_CONFIRM_LINK,File select,"Turn the system OFF
+and confirm that the
+Game Link cable is
+properly connected.","Apaga la consola y
+comprueba que el cable
+Game Link está bien
+conectado.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_DO_NOT_TURN_POWER_OFF,File select,"Do not turn the
+POWER OFF.","No apagues
+la consola (OFF).",,untranslated,
+file_screen,FILE_SCREEN_TEXT_DATA_UPLOAD_COMPLETE,File select,"Data upload
+complete.","Descarga de
+datos finalizada.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_LINK_COMPLETE,File select,Link complete. You may turn POWER OFF.,"Conexión finalizada.
+Puedes apagar la consola (OFF).",,untranslated,
+file_screen,FILE_SCREEN_TEXT_BEST_TIME,File select,Best Time,Mejor tiempo,,untranslated,
+file_screen,FILE_SCREEN_TEXT_BEST_TIME_100,File select,Best Time100%,Mejor tiempo100%,,untranslated,
+file_screen,FILE_SCREEN_TEXT_ID_PASSWORD,File select,"ID
+Password","ID
+Contraseña",,untranslated,
+file_screen,FILE_SCREEN_TEXT_CANT_COPY_TIME_ATTACK,File select,"You can't copy
+Time Attack data.","No puedes copiar datos
+de retos de tiempo.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_LINKING_ERROR_TRY_AGAIN,File select,Linking error. Try again.,Error de conexión. Vuelve a intentarlo.,,untranslated,
+file_screen,FILE_SCREEN_TEXT_LINKING_ERROR_CHECK_CONNECTION,File select,"A linking error has
+occurred. Please
+check the connection
+and try again.","Se ha producido un
+error de conexión.
+Comprueba los cables
+y vuelve a intentarlo.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_GALLERY_UNLOCK,File select,"Gallery has been
+added to the
+OPTIONS screen.","Se ha añadido Galería
+a la pantalla
+OPCIONES.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_TIME_ATTACK_RECORD_UNLOCK,File select,"Time Attack Records
+has been added to
+the OPTIONS screen.","Se ha añadido Récords
+de reto de tiempo a la
+pantalla OPCIONES.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK,File select,"Sound Test has
+been added to the
+OPTIONS screen.","Se ha añadido Prueba
+de sonido a la
+pantalla OPCIONES.",,untranslated,
+file_screen,FILE_SCREEN_TEXT_NES_METROID_UNLOCK,File select,"Original Metroid has
+been added to the
+OPTIONS screen.","Se ha añadido Metroid
+original a la
+pantalla OPCIONES.",,untranslated,
+graphics,language_select,"Language selector, 5th entry",(Spanish slot),Español,Català,translated,
+graphics,game_over_prompt,Game over screen,"TRY AGAIN?
+YES (RETURN TO GAME)
+NO (TO TITLE SCREEN)","¿VOLVER A INTENTARLO?
+SÍ (CONTINUAR)
+NO (SALIR)","TORNAR-HO A PROVAR?
+SÍ (CONTINUA)
+NO (SURT)",translated,
+graphics,pause_tab_l,"Pause screen, L tab (Easy Sleep)",SLEEP,SALVAP.,REPÒS,translated,
+graphics,pause_tab_r,"Pause screen, R tab (status)",STATUS,ESTADO,ESTAT,translated,
+graphics,pause_change_area,"Pause screen, map: change area",CHANGE AREAS,CAMBIAR ZONA,CANVIA ZONA,translated,
+credits,translation,"Staff credits, TRANSLATION section",,,"CATALAN
+Guillem Roca",translated,

@@ -41,7 +41,7 @@ approving them.
 | Mother Ship | nave nodriza | Nau nodrissa | APPROVED | |
 | Space Pirate Mother Ship (banner) | NAVE NODRIZA PIRATA | Nau nodrissa pirata | APPROVED | Banner shows NAU NODRISSA PIRATA. |
 | Planet Zebes | PLANETA ZEBES | Planeta Zebes | APPROVED | Banner text, as in Spanish and English. |
-| Save Room | ESTACIÓN DE GUARDADO | Sala de guardat | APPROVED | Chosen by Guillem. The verb stays "desar" (Desar？, Partida desada). |
+| Save Room | ESTACIÓN DE GUARDADO | Sala de guardat | APPROVED | Chosen by Guillem; same verb as the save prompts (Guardar？, Partida guardada). |
 | Research Room | SALA DE INVESTIGACIÓN | Sala d'investigació | APPROVED | Literal, matches the other "Sala de…" rooms. |
 | Map Room | SALA DE MAPAS | Sala de mapes | APPROVED | Matches the Spanish and the other rooms. |
 | Chozo Ruins | RUINAS CHOZO | Ruïnes chozo | APPROVED | "chozo" as an adjective like "ruïnes romanes". |
@@ -91,8 +91,8 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 
 | English | Spanish (EU) | Catalan | status | notes |
 |---|---|---|---|---|
-| Save (verb) | Guardar | Desar | APPROVED | the standard computing verb (Softcatalà). |
-| Save complete | Datos almacenados | Partida desada | APPROVED | |
+| Save (verb) | Guardar | Guardar | APPROVED | Chosen by Guillem over "desar", to match "Sala de guardat". |
+| Save complete | Datos almacenados | Partida guardada | APPROVED | |
 | Yes / No | Sí / No | Sí / No | PROPOSED | Only option; widths match the Spanish, so the cursor positions carry over. |
 | Start Game | Jugar | 1. Juga<br>2. Comença la partida<br>3. Jugar | PROPOSED | 1. Imperative, like the other menu commands (Softcatalà style).<br>2. Literal, may not fit.<br>3. Infinitive, mirrors the Spanish. |
 | Language (title menu) | Idioma | Idioma | APPROVED | Common in menus. |

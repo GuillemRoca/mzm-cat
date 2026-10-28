@@ -53,8 +53,8 @@ save happens and the escape timer doesn't start.
 | 20 | `MESSAGE_SCREW_ATTACK` | Atac espiral |
 | 21 | `MESSAGE_UNKNOWN_ITEM_SPACE_JUMP` | Objecte desconegut |
 | 22 | `MESSAGE_POWER_GRIP` | Arrapada |
-| 23 | `MESSAGE_SAVE_PROMPT` | Desar？ / SíNo |
-| 24 | `MESSAGE_SAVE_COMPLETE` | Partida desada |
+| 23 | `MESSAGE_SAVE_PROMPT` | Guardar？ / SíNo |
+| 24 | `MESSAGE_SAVE_COMPLETE` | Partida guardada |
 | 25 | `MESSAGE_WEAPON_RESUPPLY_COMPLETE` | Reposició de l'armament / completada. |
 | 26 | `MESSAGE_ENERGY_TANK_RECHARGE_COMPLETE` | Recàrrega dels tancs / d'energia completada. |
 | 27 | `MESSAGE_WEAPONS_AND_ENERGY_RESTORED` | Armament i energia / restablerts del tot. |
@@ -107,13 +107,13 @@ must sit just left of the option text for both options. In the release build, di
 ## Credits
 
 Preview build: hold **L + R** and press **Up**. The credits start right away (no ending save is
-written). After "EXECUTIVE PRODUCER / Iwata Satoru" comes "CATALAN TRANSLATION / Guillem Roca",
-then the copyright lines; the credits must still end in time with the music. In the release
+written). In the TRANSLATION section, after "ITALIAN / Massimo Maietti", comes
+"CATALAN / Guillem Roca" (`credits.txt`); the credits must still end in time with the music. In the release
 build, finish the game.
 
 ## Where the messages appear in normal play
 
-Item and tank banners appear when collecting them, "Desar？ / Partida desada" at any save
+Item and tank banners appear when collecting them, "Guardar？ / Partida guardada" at any save
 station, "Mapa de … obtingut." at map stations, the recharge messages at Chozo statues and
 recharge stations, the escape messages after Mother Brain and in Chozodia, and "Has obtingut el
 vestit complet." after the ruins test. `MESSAGE_ENEMY_LOCATION_ABNORMAL` is a debug message and

@@ -9,22 +9,24 @@ who still needs to confirm it.
 Option A: dot at mid x-height, width 2. Confirmed by Guillem at the Phase 2 checkpoint.
 
 ### Credits — DECIDED
-Add a Catalan translation credit (Guillem). `include/ca/credits.inc` replaces `sCredits[280..294]`,
-the blank lines between the executive producer and the copyright: "CATALAN TRANSLATION" (blue)
-and "Guillem Roca" (white), with the same entry count and height, so the credits scroll for as
-long as vanilla and stay in time with the music. The heading is in English like every other
-credit, and because the blue font has no accents ("TRADUCCIO AL CATALA" would lose them).
+A Catalan translation credit, alongside the other languages: in the TRANSLATION section of the
+EU staff credits, after "ITALIAN / Massimo Maietti", comes "CATALAN / Guillem Roca", laid out
+like the other languages. Names are in `credits.txt`; `tools/gencredits.py` builds the credits
+from the vanilla array. The rows added are taken from the empty lines before the copyright, so
+the credits scroll for exactly as long as vanilla and stay in time with the music. The credits
+fonts have no accents (the heading would read "CATALA"), so the heading is in English like the
+other languages'. Checked in game.
 
 ## Terms used in the Message block — APPROVED
 
 Approved by Guillem after the Message pilot playtest: Tanc d'energia, Tanc de míssils,
 Supermíssil (Tanc de supermíssils), Bomba, Raig llarg, Raig de gel, Raig d'ones, Objecte
-desconegut, Desar, Partida desada, Vestit complet, Mode repòs (pause tab REPÒS).
+desconegut, Guardar (was "Desar", changed with the save room), Partida guardada, Vestit complet, Mode repòs (pause tab REPÒS).
 
 ## Terms used in the Location block — APPROVED
 
 Approved by Guillem: Planeta Zebes, Sala de guardat (Guillem's choice over "Sala de desament"; the
-verb stays "desar"), Sala de mapes, Ruïnes chozo, Sala d'investigació and Nau de la Samus (the
+save prompts use the same verb: Guardar？, Partida guardada), Sala de mapes, Ruïnes chozo, Sala d'investigació and Nau de la Samus (the
 last two are never shown by the game). Area names (BRINSTAR … CHOZODIA) are kept, and NAU
 NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 
@@ -64,7 +66,7 @@ NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 - **MESSAGE_POWER_BOMB_TANK_ACQUIRED**: like the English, line 1 has no "obtingut" (the
   Spanish adds "almacenado"). Line 2, "Capacitat de bombes d'energia augmentada.", is the
   widest Message line at 208 px of 224.
-- **MESSAGE_SAVE_PROMPT** — DECIDED: "Desar？" exactly centred, like the English. The Spanish
+- **MESSAGE_SAVE_PROMPT** — DECIDED: "Guardar？" exactly centred, like the English. The Spanish
   and Italian add an extra `{GAP(8)}` after the centring GAP; we don't (the linter accepts the
   GAP layout of either the Spanish or the English).
 - **MESSAGE_WEAPON_RESUPPLY_COMPLETE**: "Reposició de l'armament / completada."

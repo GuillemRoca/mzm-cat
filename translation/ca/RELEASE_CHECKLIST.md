@@ -10,7 +10,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Vanilla EU still matches `mzm_eu.sha1`, and the LANG_CA self-test is byte-identical (CI).
 - [ ] `translation/ca/VERSION` bumped (e.g. `1.0.0`), committed and tagged `ca-v1.0.0`; the patch
       file name carries that version.
-- [ ] `gap.py check` clean; `gfx.py roundtrip` all identical.
+- [ ] `gap.py check` clean; `gfx.py roundtrip` all identical; `translations.csv` current and
+      every row "translated" or "same as English".
 - [ ] Every PROPOSED glossary term in use is confirmed (APPROVED) or listed as an open choice
       in `notes/translator-notes.md`.
 
@@ -45,9 +46,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 
 ## Credits
 
-- [ ] "CATALAN TRANSLATION / Guillem Roca" shows after the executive producer, and the credits
-      still end in time with the music (`include/ca/credits.inc`, decided in
-      `notes/translator-notes.md`).
+- [ ] "CATALAN / Guillem Roca" shows after the Italian translator, and the credits still end in
+      time with the music (`credits.txt`, decided in `notes/translator-notes.md`).
 
 ## Patch
 

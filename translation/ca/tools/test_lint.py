@@ -8,6 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 import gap  # noqa: E402
+import gencredits  # noqa: E402
 import lint  # noqa: E402
 
 GOOD_LONG_BEAM = 'MESSAGE_LONG_BEAM = "{GAP(88)}{COLOR(5)}Raig llarg\\n{GAP(110)}"'
@@ -107,7 +108,7 @@ class LintTest(unittest.TestCase):
         self.assertFalse(any("GAP(-" in m for _, _, m in items), items)
 
     def test_gap_layout_of_english_or_spanish(self):
-        centred = 'MESSAGE_SAVE_PROMPT = "{GAP(93)}Desar？\\n{GAP(99)}{INDENT(64)}Sí{INDENT(160)}No"'
+        centred = 'MESSAGE_SAVE_PROMPT = "{GAP(88)}Guardar？\\n{GAP(99)}{INDENT(64)}Sí{INDENT(160)}No"'
         items, _ = self.run_lint({"message": [centred]})
         self.assertEqual(items, [])
         extra = 'MESSAGE_LONG_BEAM = "{GAP(88)}{GAP(8)}{COLOR(5)}Raig llarg\\n{GAP(110)}"'
@@ -135,6 +136,20 @@ class GapTest(unittest.TestCase):
         w = catext.widths(catalan=False)
         text = "{GAP(8)}Línia\\n{GAP(138)}-Samus Aran-"
         self.assertEqual(gap.recompute("story", "STORY_TEXT_PLANET_ZEBES", text, w), (text, []))
+
+
+class CreditsTest(unittest.TestCase):
+    def test_same_length_after_italian(self):
+        _, vanilla = gencredits.vanilla()
+        for names in (["Guillem Roca"], ["Guillem Roca", "Second Person"]):
+            out, _ = gencredits.catalan(vanilla, "CATALAN", names)
+            self.assertEqual((len(out), gencredits.rows(out)), (len(vanilla), gencredits.rows(vanilla)))
+            at = out.index(("BLUE", "CATALAN"))
+            self.assertEqual(out[at - 4], ("WHITE_BIG", "Massimo Maietti"))
+            self.assertEqual(out[at + 3], ("WHITE_BIG", names[0]))
+            # the copyright still has the same blank rows below it before END
+            tail = out[out.index(("RESERVED", "")) + 1:]
+            self.assertEqual(gencredits.rows(tail), gencredits.rows(vanilla[vanilla.index(("RESERVED", "")) + 1:]))
 
 
 if __name__ == "__main__":
