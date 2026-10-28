@@ -3,7 +3,7 @@
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships.
-- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus two test shortcuts. Never
+- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus three test shortcuts. Never
   distribute it.
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
@@ -71,6 +71,33 @@ save happens and the escape timer doesn't start.
 
 The last three messages are the Easy Sleep screen. In any build: **Start** (pause), then **L** on
 the map screen. A on "No" closes it; "Sí" puts the GBA to sleep until Select + L + R.
+
+## Every Location banner (preview build)
+
+Hold **L + R** and press **B**: the next area or room banner appears, as a room load would show
+it (area names at the bottom, rooms in the middle). Save and map room banners only stay for
+under a second, as in vanilla.
+
+| Press | ID | Catalan |
+|---|---|---|
+| 1 | `LT_BRINSTAR` | BRINSTAR |
+| 2 | `LT_KRAID` | KRAID |
+| 3 | `LT_NORFAIR` | NORFAIR |
+| 4 | `LT_RIDLEY` | RIDLEY |
+| 5 | `LT_TOURIAN` | TOURIAN |
+| 6 | `LT_CRATERIA` | CRATERIA |
+| 7 | `LT_CHOZODIA` | CHOZODIA |
+| 8 | `LT_MOTHERSHIP` | NAU NODRISSA PIRATA |
+| 9 | `LT_PLANET_ZEBES` | PLANETA ZEBES |
+| 10 | `LT_SAVE_ROOM` | SALA DE DESAMENT |
+| 11 | `LT_RESEARCH_ROOM` | SALA D'INVESTIGACIÓ |
+| 12 | `LT_MAP_ROOM` | SALA DE MAPES |
+| 13 | `LT_CHOZO_RUINS` | RUÏNES CHOZO |
+| 14 | `LT_STARSHIP` | NAU DE LA SAMUS |
+
+Only the first nine IDs, plus the save room, map room and Chozo ruins, appear in normal play
+(entering the area or room). `LT_RESEARCH_ROOM` and `LT_STARSHIP` are never used by the game;
+`LT_UNUSED_*` are placeholders.
 
 ## Game over prompt (pilot graphic)
 

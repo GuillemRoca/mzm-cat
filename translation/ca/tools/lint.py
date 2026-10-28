@@ -51,11 +51,12 @@ class Report:
         return sum(1 for i in self.items if i["level"] == level)
 
 
-def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs" / "0357.png"):
+def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs" / "0357.png",
+         identical_path=catext.CA / "identical.txt"):
     rep = Report()
     strings, tables = catext.vanilla_text()
     w = catext.widths(catalan=True)
-    identical = catext.identical_ids()
+    identical = catext.identical_ids(Path(identical_path))
     middot_fixed = Path(middot_glyph).exists()
     progress = {}
     for category in catext.CATEGORIES:

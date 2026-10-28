@@ -19,7 +19,9 @@ class LintTest(unittest.TestCase):
             for category, (_, name) in catext.CATEGORIES.items():
                 (Path(tmp) / name).write_text("\n".join(files.get(category, [])) + "\n", encoding="utf-8")
             glyph = catext.CA / "font" / "glyphs" / "0357.png" if middot_glyph else Path(tmp) / "none.png"
-            rep, progress = lint.lint(Path(tmp), glyph)
+            identical = Path(tmp) / "identical.txt"
+            identical.write_text("\n".join(files.get("identical", [])) + "\n")
+            rep, progress = lint.lint(Path(tmp), glyph, identical)
         return [(i["level"], i["id"], i["message"]) for i in rep.items], progress
 
     def assertOnly(self, items, level, fragment):
@@ -81,6 +83,12 @@ class LintTest(unittest.TestCase):
         es = 'LT_BRINSTAR = "{GAP(86)}BRINSTAR"'
         items, progress = self.run_lint({"location": [es]})
         self.assertOnly(items, "warning", "identical to the Spanish")
+
+    def test_identical_list_silences_spanish_match(self):
+        items, progress = self.run_lint({"location": ['LT_BRINSTAR = "{GAP(86)}BRINSTAR"'],
+                                         "identical": ["LT_BRINSTAR  # area name"]})
+        self.assertEqual(items, [])
+        self.assertEqual(progress["location"], (1, 26))
 
     def test_middot_todo_only_without_glyph(self):
         line = 'MESSAGE_LONG_BEAM = "{GAP(90)}{COLOR(5)}Col·lecció\\n{GAP(110)}"'

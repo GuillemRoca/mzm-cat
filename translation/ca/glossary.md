@@ -54,20 +54,20 @@ approving them.
 | Power Suit | traje | Vestit | APPROVED | *pause box* |
 | Varia Suit | Traje climático | Vestit climàtic | APPROVED | *pause box* |
 | Gravity Suit | (Traje) gravitatorio | 1. Vestit gravitatori<br>2. Vestit de gravetat | PROPOSED | 1. Your preference; mirrors "climàtic" as an adjective. *pause box*<br>2. Noun complement; also common. |
-| Fully Powered Suit | traje totalmente equipado | 1. Vestit complet<br>2. Vestit potenciat<br>3. Vestit amb tota la potència | PROPOSED | 1. Your preference; short.<br>2. Closer to "powered".<br>3. Most literal; only fits in prose. |
+| Fully Powered Suit | traje totalmente equipado | Vestit complet | APPROVED | short. |
 | Zero Suit | (no name in text) | 1. Vestit Zero<br>2. vestit zero | PROPOSED | 1. Your preference; "Zero" as the suit's name, like "Mission Zero".<br>2. Fully sentence case. |
-| Energy Tank | Tanque de energía | 1. Tanc d'energia<br>2. Dipòsit d'energia | PROPOSED | 1. Your preference; the established series term.<br>2. More idiomatic for a container, but breaks with AM2R-cat if it uses "tanc". |
+| Energy Tank | Tanque de energía | Tanc d'energia | APPROVED | the established series term. |
 | Missile | Misil | Míssil | PROPOSED | 1. Míssil: only option. *pause box* (MISIL) |
-| Missile Tank | Tanque de misiles | 1. Tanc de míssils<br>2. Dipòsit de míssils | PROPOSED | 1. Your preference; parallel to "Tanc d'energia".<br>2. As above. |
-| Super Missile | Supermisil | 1. Supermíssil<br>2. Míssil súper | PROPOSED | 1. Your preference; one word like the Spanish. *pause box* (SÚPER)<br>2. Matches the pause label "SÚPER". |
-| Super Missile Tank | Tanque de supermisiles | Tanc de supermíssils | PROPOSED | Follows "Tanc de míssils" and "Supermíssil". |
-| Bomb | Bomba | Bomba | PROPOSED | 1. Bomba: only option; your preference. *pause box* |
+| Missile Tank | Tanque de misiles | Tanc de míssils | APPROVED | parallel to "Tanc d'energia". |
+| Super Missile | Supermisil | Supermíssil | APPROVED | one word like the Spanish. *pause box* (SÚPER) |
+| Super Missile Tank | Tanque de supermisiles | Tanc de supermíssils | APPROVED | Follows "Tanc de míssils" and "Supermíssil". |
+| Bomb | Bomba | Bomba | APPROVED | Bomba: only option. *pause box* |
 | Power Bomb | Bomba de energía | Bomba d'energia | APPROVED | |
 | Power Bomb Tank | Tanque de bomba de energía | Tanc de bombes d'energia | APPROVED | |
-| Long Beam | Rayo Largo | 1. Raig llarg<br>2. Raig de llarg abast | PROPOSED | 1. Your preference; short. *pause box* (LARGO)<br>2. Clearer, but too long for the pause box. |
+| Long Beam | Rayo Largo | Raig llarg | APPROVED | short. *pause box* (LARGO) |
 | Charge Beam | Rayo Recarga | Raig de càrrega | APPROVED | *pause box* (RECARGA) |
-| Ice Beam | Rayo de Hielo | 1. Raig de gel<br>2. Raig gelat | PROPOSED | 1. Your preference; parallel to the Spanish. *pause box* (HIELO)<br>2. Adjective; reads as "a frozen beam". |
-| Wave Beam | Rayo de Ondas | 1. Raig d'ones<br>2. Raig ondulatori | PROPOSED | 1. Your preference. *pause box* (ONDAS)<br>2. More technical. |
+| Ice Beam | Rayo de Hielo | Raig de gel | APPROVED | parallel to the Spanish. *pause box* (HIELO) |
+| Wave Beam | Rayo de Ondas | Raig d'ones | APPROVED | Your preference. *pause box* (ONDAS) |
 | Plasma Beam | (Rayo) Plasma | 1. Raig de plasma<br>2. Raig plasmàtic | PROPOSED | 1. Your preference. *pause box* (PLASMA)<br>2. Adjective, less natural. |
 | Morph Ball | Morfosfera | Morfosfera | APPROVED | *pause box* |
 | Speed Booster | Aceleración | Acceleració | APPROVED | *pause box* |
@@ -76,7 +76,7 @@ approving them.
 | Space Jump | Salto espacial | 1. Salt espacial<br>2. Salt a l'espai | PROPOSED | 1. Your preference; mirrors the Spanish. *pause box*<br>2. More literal, longer. |
 | Power Grip | Agarre | Arrapada | APPROVED | *pause box* |
 | Pistol (Zero Suit) | Pistola | Pistola | PROPOSED | 1. Pistola: only option. *pause box* |
-| Unknown Item | Objeto desconocido | 1. Objecte desconegut<br>2. Objecte no identificat<br>3. Element desconegut | PROPOSED | 1. Your preference; literal.<br>2. Matches "Analysis inconclusive" in the description.<br>3. If "objecte" sounds too generic. |
+| Unknown Item | Objeto desconocido | Objecte desconegut | APPROVED | literal. |
 
 ## Enemies
 
@@ -91,8 +91,8 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 
 | English | Spanish (EU) | Catalan | status | notes |
 |---|---|---|---|---|
-| Save (verb) | Guardar | 1. Desar<br>2. Guardar | PROPOSED | 1. Your preference; the standard computing verb (Softcatalà).<br>2. Also correct Catalan, but reads as a castellanism here. |
-| Save complete | Datos almacenados | 1. Partida desada<br>2. Dades desades | PROPOSED | 1. Your preference.<br>2. Mirrors the Spanish "datos". |
+| Save (verb) | Guardar | Desar | APPROVED | the standard computing verb (Softcatalà). |
+| Save complete | Datos almacenados | Partida desada | APPROVED | |
 | Yes / No | Sí / No | Sí / No | PROPOSED | Only option; widths match the Spanish, so the cursor positions carry over. |
 | Start Game | Jugar | 1. Juga<br>2. Comença la partida<br>3. Jugar | PROPOSED | 1. Imperative, like the other menu commands (Softcatalà style).<br>2. Literal, may not fit.<br>3. Infinitive, mirrors the Spanish. |
 | Language (title menu) | Idioma | 1. Idioma<br>2. Llengua | PROPOSED | 1. Common in menus.<br>2. Preferred by IEC usage for languages as such. |
@@ -109,7 +109,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Gallery | Galería | Galeria | PROPOSED | Only option. |
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |
-| Easy Sleep | salvapantallas (tab SALVAP.) | 1. Mode repòs (tab REPÒS)<br>2. Repòs | PROPOSED | 1. Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä).<br>2. Shorter. |
+| Easy Sleep | salvapantallas (tab SALVAP.) | Mode repòs (tab REPÒS) | APPROVED | Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä). |
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |
 | New Record | ¡NUEVO RÉCORD! | Nou rècord! | PROPOSED | Only option. |

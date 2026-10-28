@@ -2,14 +2,19 @@
 // frame, before SpriteUpdate().
 //
 //   L + R + SELECT  show the next message banner (MESSAGE_DUMMY .. MESSAGE_ENEMY_LOCATION_ABNORMAL)
+//   L + R + B       show the next location banner (LT_BRINSTAR .. LT_STARSHIP)
 //   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
 //
 // The banner is spawned with a harmless message as its behaviour (no item, save or escape side
 // effects), then its text is swapped for the previewed one: TextStartMessage() copies the
 // message ID once, when the banner initializes, and the text is drawn from that copy.
+// Location banners are drawn the way a room load does it (TextDrawLocation into the banner's
+// graphics slot, then an area banner sprite that shows it).
 // State lives in RAM padding that the game never uses, so the RAM layout doesn't change.
 
 #include "sprite.h"
+#include "text.h"
+#include "location_text.h"
 #include "constants/sprite.h"
 #include "constants/text.h"
 #include "structs/samus.h"
@@ -19,6 +24,46 @@ extern u8 gUnk_3001670[28];
 #define CA_PREVIEW_PENDING (gUnk_3001670[0]) // previewed message + 1, 0 if none
 #define CA_PREVIEW_NEXT (gUnk_3001670[1])
 #define CA_PREVIEW_SLOT (gUnk_3001670[2])
+#define CA_PREVIEW_NEXT_LOCATION (gUnk_3001670[3])
+
+static void CaPreviewLocation(void)
+{
+    u8 lt;
+    u8 gfxSlot;
+    u8 i;
+    u8 slot;
+
+    lt = CA_PREVIEW_NEXT_LOCATION;
+    CA_PREVIEW_NEXT_LOCATION = lt >= LT_STARSHIP ? 0 : lt + 1;
+
+    // Same slot choice as a room load: the spriteset's banner slot, else the last slot
+    gfxSlot = SPRITE_GFX_SLOT_MAX;
+    for (i = 0; i < MAX_AMOUNT_OF_SPRITE_TYPES; i++)
+    {
+        if (gSpritesetSpritesId[i] == PSPRITE_AREA_BANNER)
+        {
+            gfxSlot = gSpritesetGfxSlots[i];
+            break;
+        }
+    }
+    if (gfxSlot >= SPRITE_GFX_SLOT_MAX)
+    {
+        gfxSlot = SPRITE_GFX_SLOT_MAX - 1;
+        SpriteLoadGfx(PSPRITE_AREA_BANNER, gfxSlot);
+        SpriteLoadPal(PSPRITE_AREA_BANNER, gfxSlot, 1);
+    }
+
+    TextDrawLocation(lt, gfxSlot);
+    slot = SpriteSpawnPrimary(PSPRITE_AREA_BANNER, lt, gfxSlot, gSamusData.yPosition, gSamusData.xPosition, 0);
+    if (slot < MAX_AMOUNT_OF_SPRITES)
+    {
+        // As SpriteUtilInitLocationText(): screen coordinates, drawn on top
+        gSpriteData[slot].properties |= SP_ABSOLUTE_POSITION;
+        gSpriteData[slot].status |= SPRITE_STATUS_HIGH_PRIORITY;
+        gSpriteData[slot].bgPriority = 0;
+        gSpriteData[slot].drawOrder = 1;
+    }
+}
 
 static void CaPreviewUpdate(void)
 {
@@ -46,6 +91,12 @@ static void CaPreviewUpdate(void)
     if (gChangedInput & KEY_A)
     {
         gEquipment.currentEnergy = 0;
+        return;
+    }
+
+    if (gChangedInput & KEY_B)
+    {
+        CaPreviewLocation();
         return;
     }
 

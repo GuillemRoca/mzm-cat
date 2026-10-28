@@ -5,3 +5,23 @@ MESSAGE_DUMMY  # debug placeholder, never shown
 MESSAGE_EASY_SLEEP_PROMPT  # Sí / No
 MESSAGE_BOMB  # Bomba: same word in Catalan and Spanish
 MESSAGE_MORPH_BALL  # Morfosfera: approved term, same as the Spanish
+LT_BRINSTAR  # area name, kept
+LT_KRAID  # area name, kept
+LT_NORFAIR  # area name, kept
+LT_RIDLEY  # area name, kept
+LT_TOURIAN  # area name, kept
+LT_CRATERIA  # area name, kept
+LT_CHOZODIA  # area name, kept
+LT_UNUSED_7  # placeholder, never shown
+LT_UNUSED_8  # placeholder, never shown
+LT_UNUSED_9  # placeholder, never shown
+LT_UNUSED_10  # placeholder, never shown
+LT_UNUSED_11  # placeholder, never shown
+LT_UNUSED_12  # placeholder, never shown
+LT_UNUSED_13  # placeholder, never shown
+LT_UNUSED_14  # placeholder, never shown
+LT_UNUSED_15  # placeholder, never shown
+LT_UNUSED_16  # placeholder, never shown
+LT_UNUSED_17  # placeholder, never shown
+LT_UNUSED_18  # placeholder, never shown
+LT_PLANET_ZEBES  # PLANETA ZEBES: same as the Spanish

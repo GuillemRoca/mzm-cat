@@ -12,23 +12,26 @@ Option A: dot at mid x-height, width 2. Confirmed by Guillem at the Phase 2 chec
 Keep the vanilla staff credits, or add a "CATALAN TRANSLATION" entry (fixed-size `sCredits`,
 uppercase credits font without accents). To decide before release.
 
-## PROPOSED terms in use (Message block)
+## Terms used in the Message block — APPROVED
 
-Each is option 1 of its glossary row. Confirm or pick another; `glossary.md` then becomes
-APPROVED and the lines below are updated.
+Approved by Guillem after the Message pilot playtest: Tanc d'energia, Tanc de míssils,
+Supermíssil (Tanc de supermíssils), Bomba, Raig llarg, Raig de gel, Raig d'ones, Objecte
+desconegut, Desar, Partida desada, Vestit complet, Mode repòs (pause tab REPÒS).
 
-| Term | Used in | Notes |
+## PROPOSED terms in use (Location block)
+
+Option 1 of each glossary row, in capitals as the banners are drawn. To confirm:
+
+| Term | ID | Notes |
 |---|---|---|
-| Tanc d'energia | MESSAGE_ENERGY_TANK_ACQUIRED, ..._RECHARGE_COMPLETE ("tancs d'energia") | |
-| Tanc de míssils | MESSAGE_MISSILE_TANK_ACQUIRED, MESSAGE_FIRST_MISSILE_TANK | |
-| Supermíssil | MESSAGE_SUPER_MISSILE_TANK_ACQUIRED, MESSAGE_FIRST_SUPER_MISSILE_TANK ("Tanc de supermíssils") | Line 2 is 197 px of 224. |
-| Bomba | MESSAGE_BOMB | Same word as the Spanish (in identical.txt). |
-| Raig llarg, Raig de gel, Raig d'ones | MESSAGE_LONG_BEAM, MESSAGE_ICE_BEAM, MESSAGE_WAVE_BEAM | |
-| Objecte desconegut | the three MESSAGE_UNKNOWN_ITEM_* | |
-| Desar | MESSAGE_SAVE_PROMPT ("Desar？") | |
-| Partida desada | MESSAGE_SAVE_COMPLETE | |
-| Vestit complet | MESSAGE_FULLY_POWERED_SUIT ("el vestit complet", lowercase in prose) | |
-| Mode repòs | MESSAGE_ACTIVATE_EASY_SLEEP | The pause screen's L tab now says REPÒS (menu_names). |
+| Planeta Zebes | LT_PLANET_ZEBES | Same as the Spanish (identical.txt). |
+| Sala de desament | LT_SAVE_ROOM | Every save room banner. |
+| Sala de mapes | LT_MAP_ROOM | Every map station banner. |
+| Ruïnes chozo | LT_CHOZO_RUINS | First Ï on screen; checked in game. |
+| Sala d'investigació | LT_RESEARCH_ROOM | Never shown by the game. The Japanese text says "recharge room". |
+| Nau de la Samus | LT_STARSHIP | Never shown by the game. |
+
+Area names (BRINSTAR … CHOZODIA) are kept, and NAU NODRISSA PIRATA is APPROVED.
 
 ## Game over prompt (pilot graphic) — DECIDED
 
