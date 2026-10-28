@@ -1,0 +1,2 @@
+# IDs whose Catalan text is meant to be exactly the English text (e.g. a name that stays
+# as is). One per line. The linter counts them as translated.

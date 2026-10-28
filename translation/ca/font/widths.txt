@@ -1,0 +1,2 @@
+# Width overrides for glyphs we edit, applied to the EU sCharacterWidths with LANG_CA=1.
+# One per line: HEXID WIDTH  # comment

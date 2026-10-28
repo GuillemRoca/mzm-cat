@@ -1,0 +1,4 @@
+# FileScreen (file select pop-ups and menus)
+#
+# One entry per line: ID = "text", with the IDs and codes of src/data/text_data.c.
+# IDs missing here show in English. See translation/ca/README.md.
