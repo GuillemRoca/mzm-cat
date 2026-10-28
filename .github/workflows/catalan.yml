@@ -1,5 +1,7 @@
-# Catalan translation CI. Builds vanilla EU and checks its SHA1 against mzm_eu.sha1.
-# The LANG_CA=1 build, the linter and the .bps patch are added as their tooling lands.
+# Catalan translation CI: translation/ca/tools/ci.sh does the work and runs the same locally.
+# It checks vanilla EU against mzm_eu.sha1, runs the LANG_CA self-test (vanilla text through
+# the Catalan plumbing must be byte-identical), lints the translation, builds mzm_eu_ca.gba and
+# uploads the .bps patch and the lint report. The ROMs themselves are never uploaded.
 #
 # The base ROM is never in this repository. See translation/ca/README.md ("Base ROM in CI")
 # for the two ways to supply it: a private ROM repository (vars.BASEROM_REPO plus
@@ -10,6 +12,11 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      release:
+        description: Release mode (fail on lint warnings and untranslated text)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -28,8 +35,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install binutils
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq binutils-arm-none-eabi
+      - name: Install packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq binutils-arm-none-eabi libpng-dev libmgba-dev pkg-config
 
       # Restore and save are separate so the build is cached even when a later step fails.
       - name: Restore agbcc
@@ -73,11 +82,18 @@ jobs:
           translation/ca/tools/get_baserom.sh eu
           rm -rf .baserom
 
-      - name: Extract
-        run: make extract REGION=eu > extract.log
+      - name: Build, test, lint and patch
+        env:
+          RELEASE: ${{ inputs.release && '1' || '0' }}
+        run: translation/ca/tools/ci.sh
 
-      - name: Build vanilla EU
-        run: make eu -j"$(nproc)"
-
-      - name: Check vanilla EU SHA1
-        run: sha1sum -c mzm_eu.sha1
+      - name: Upload patch and lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mzm-cat-${{ github.sha }}
+          path: |
+            dist/*.bps
+            dist/lint.txt
+            dist/lint.json
+          if-no-files-found: ignore

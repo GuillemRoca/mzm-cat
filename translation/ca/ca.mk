@@ -87,7 +87,14 @@ $(CA_GBAGFX): $(CA_GBAGFX_SRC) $(wildcard $(CA_TOOLS)/gbagfx/*.h)
 	$(MSG) CC $@
 	$Q$(HOSTCC) -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng 2>/dev/null) $(CA_GBAGFX_SRC) -o $@ $(shell pkg-config --libs-only-L libpng 2>/dev/null) -lpng -lz
 
-.PHONY: ca-tools ca-clean
+# Headless mGBA tools (need libmgba-dev): scripted screenshots, and patch checks with mGBA's
+# own BPS loader.
+$(CA_BUILD)/gbashot $(CA_BUILD)/bpscheck: $(CA_BUILD)/%: $(CA_TOOLS)/gbashot/%.c
+	$(MSG) CC $@
+	$Q$(HOSTCC) -O2 -Wall $< -o $@ -lmgba
+
+.PHONY: ca-tools ca-emu-tools ca-clean
 ca-tools: $(CA_GBAGFX)
+ca-emu-tools: $(CA_BUILD)/gbashot $(CA_BUILD)/bpscheck
 ca-clean:
 	$(RM) -r $(CA_BUILD)
