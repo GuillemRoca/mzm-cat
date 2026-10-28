@@ -45,9 +45,11 @@ CA_MODE := LANG_CA=$(LANG_CA) CA_SELFTEST=$(CA_SELFTEST) GFX=$(CA_GFX_PNGS)
 $(shell mkdir -p $(CA_BUILD) && (echo '$(CA_MODE)' | cmp -s - $(CA_STAMP) || echo '$(CA_MODE)' > $(CA_STAMP)))
 
 # Objects whose output depends on the mode: sources that mention LANG_CA, plus sources that
-# include an asset we can override (the font always; graphics that have an edited PNG).
-CA_SHADOWED := extracted/data/text_characters.gfx.inc $(patsubst $(CA_INC)/%,%,$(CA_GFX_INCS))
-CA_AFFECTED := $(shell grep -rlF --include='*.c' $(foreach p,LANG_CA $(CA_SHADOWED),-e '$(p)') src)
+# include any asset we can override (the font, every graphic in gfx_assets.json), whether or
+# not it has a PNG right now: removing a PNG must rebuild its object too.
+CA_GFX_KEYS := $(shell sed -n 's/^  "\([a-z][^"]*\)": *{.*/\1/p' $(CA_TOOLS)/gfx_assets.json)
+CA_SHADOWABLE := extracted/data/text_characters.gfx.inc $(CA_GFX_KEYS:%=extracted/data/%.gfx.lz.inc)
+CA_AFFECTED := $(shell grep -rlF --include='*.c' $(foreach p,LANG_CA $(CA_SHADOWABLE),-e '$(p)') src)
 $(CA_AFFECTED:.c=.s): $(CA_STAMP)
 
 ifeq ($(LANG_CA),1)

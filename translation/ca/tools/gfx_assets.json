@@ -1,0 +1,20 @@
+{
+  "_doc": "Language-specific graphics. Key = data path without .gfx.lz; the edited PNG lives at translation/ca/gfx/<key>.png. palette/row only affect how the PNG looks (pixel indices are what gets encoded). vram_max = decompressed bytes before the asset overwrites what the game loads next (Phase 1 loader trace). The C array size limit is read from the source.",
+  "menus/pause_screen/equipment_names_spanish":            {"palette": "menus/pause_screen/3fcef0.pal", "row": 6, "vram_max": 5120},
+  "menus/pause_screen/menu_names_spanish":                 {"palette": "menus/pause_screen/3fcef0.pal", "row": 6, "vram_max": 1024},
+  "menus/pause_screen/map_screen_unknown_items_names_spanish": {"palette": "menus/pause_screen/tank_icons.pal", "row": 12, "vram_max": 1024},
+  "menus/pause_screen/map_screen_area_names_english":      {"palette": "menus/pause_screen/tank_icons.pal", "row": 5, "vram_max": 3072},
+  "menus/pause_screen/map_screen_chozo_statue_area_names_english": {"palette": "menus/pause_screen/tank_icons.pal", "row": 5, "vram_max": 6144},
+  "menus/pause_screen/minimap_tiles_area_names_english":   {"palette": "menus/pause_screen/minimap_tiles.pal", "row": 0, "vram_max": 4096},
+  "menus/erase_sram/question_spanish":                     {"palette": "menus/erase_sram/objects.pal", "row": 2, "vram_max": 4096},
+  "menus/erase_sram/confirm_spanish":                      {"palette": "menus/erase_sram/objects.pal", "row": 2, "vram_max": 4096},
+  "menus/title_screen/spanish_menu_top":                   {"palette": "menus/title_screen/palette.pal", "row": 13, "vram_max": 1024},
+  "menus/title_screen/spanish_menu_bottom":                {"palette": "menus/title_screen/palette.pal", "row": 13, "vram_max": 5120},
+  "menus/game_over/text_prompt_spanish":                   {"palette": "menus/game_over/palette.pal", "row": 2, "vram_max": 6144},
+  "menus/file_select/options_text_spanish":                {"palette": "menus/file_select/palette.pal", "row": 0, "vram_max": 6144},
+  "menus/file_select/large_text_spanish":                  {"palette": "menus/file_select/palette.pal", "row": 0, "vram_max": 4096},
+  "menus/file_select/difficulty_text_spanish":             {"palette": "menus/file_select/palette.pal", "row": 5, "vram_max": 1024},
+  "ending/text_spanish":                                   {"palette": "ending/image_text.pal", "row": 0, "vram_max": 28672},
+  "ending/numbers_misc_spanish":                           {"palette": "ending/image_text.pal", "row": 0, "vram_max": 4096},
+  "menus/language_select/background":                      {"palette": "menus/language_select/background.pal", "row": 0, "vram_max": 63488}
+}
