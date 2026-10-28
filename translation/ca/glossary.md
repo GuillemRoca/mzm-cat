@@ -10,7 +10,7 @@ Naming policy: sentence case for item and UI names ("Raig de càrrega", not "Rai
 Proper names and the Galactic Federation keep their capitals. Location banners are drawn in
 capitals by the game data itself ("NAU NODRISSA PIRATA"). In prose write "la Samus".
 
-`tools/glossary.py import translation/ca/reference/am2r-glossary.<csv|tsv|md>` approves every
+Optional: `tools/glossary.py import translation/ca/reference/am2r-glossary.<csv|tsv|md>` approves every
 PROPOSED term that AM2R-cat already translates, and reports any APPROVED term that AM2R-cat
 translates differently. The reference folder is gitignored.
 
@@ -40,12 +40,12 @@ approving them.
 | Kraid, Ridley (areas) | KRAID, RIDLEY | KRAID, RIDLEY | APPROVED | |
 | Mother Ship | nave nodriza | Nau nodrissa | APPROVED | |
 | Space Pirate Mother Ship (banner) | NAVE NODRIZA PIRATA | Nau nodrissa pirata | APPROVED | Banner shows NAU NODRISSA PIRATA. |
-| Planet Zebes | PLANETA ZEBES | 1. Planeta Zebes<br>2. Zebes | PROPOSED | 1. Banner text, as in Spanish and English.<br>2. Shorter, if the banner ever needs it. |
-| Save Room | ESTACIÓN DE GUARDADO | 1. Sala de desament<br>2. Estació de desament | PROPOSED | 1. Your preference; "desar" is the standard computing verb.<br>2. Mirrors the Spanish "estación", fits the save pod. |
-| Research Room | SALA DE INVESTIGACIÓN | 1. Sala d'investigació<br>2. Laboratori | PROPOSED | 1. Literal, matches the other "Sala de…" rooms.<br>2. Shorter and natural, but loses the parallel. |
-| Map Room | SALA DE MAPAS | 1. Sala de mapes<br>2. Sala del mapa | PROPOSED | 1. Matches the Spanish and the other rooms.<br>2. Each room holds one area's map; slightly more precise. |
-| Chozo Ruins | RUINAS CHOZO | 1. Ruïnes chozo<br>2. Ruïnes dels chozo | PROPOSED | 1. "chozo" as an adjective like "ruïnes romanes"; first use of Ï on screen.<br>2. Possessive, clearer but longer. |
-| Starship (Samus's ship) | STARSHIP | 1. Nau de la Samus<br>2. Starship | PROPOSED | 1. Says what it is; fits the banner.<br>2. Kept as a name, as the Spanish did. |
+| Planet Zebes | PLANETA ZEBES | Planeta Zebes | APPROVED | Banner text, as in Spanish and English. |
+| Save Room | ESTACIÓN DE GUARDADO | Sala de guardat | APPROVED | Chosen by Guillem. The verb stays "desar" (Desar？, Partida desada). |
+| Research Room | SALA DE INVESTIGACIÓN | Sala d'investigació | APPROVED | Literal, matches the other "Sala de…" rooms. |
+| Map Room | SALA DE MAPAS | Sala de mapes | APPROVED | Matches the Spanish and the other rooms. |
+| Chozo Ruins | RUINAS CHOZO | Ruïnes chozo | APPROVED | "chozo" as an adjective like "ruïnes romanes". |
+| Starship (Samus's ship) | STARSHIP | Nau de la Samus | APPROVED | Says what it is; fits the banner. |
 
 ## Equipment and items
 
@@ -95,7 +95,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Save complete | Datos almacenados | Partida desada | APPROVED | |
 | Yes / No | Sí / No | Sí / No | PROPOSED | Only option; widths match the Spanish, so the cursor positions carry over. |
 | Start Game | Jugar | 1. Juga<br>2. Comença la partida<br>3. Jugar | PROPOSED | 1. Imperative, like the other menu commands (Softcatalà style).<br>2. Literal, may not fit.<br>3. Infinitive, mirrors the Spanish. |
-| Language (title menu) | Idioma | 1. Idioma<br>2. Llengua | PROPOSED | 1. Common in menus.<br>2. Preferred by IEC usage for languages as such. |
+| Language (title menu) | Idioma | Idioma | APPROVED | Common in menus. |
 | Copy / Erase / Options | COPIAR / BORRAR / OPCIONES | 1. Copia / Esborra / Opcions<br>2. Copiar / Esborrar / Opcions | PROPOSED | 1. Imperative commands (Softcatalà).<br>2. Infinitives like the Spanish. |
 | Samus Data (file select title) | DATOS DE SAMUS | 1. Dades de la Samus<br>2. Partides | PROPOSED | 1. Literal, with the personal article.<br>2. Shorter, says what the screen holds. |
 | Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | PROPOSED | Only option; each label must fit 40 px (difficulty graphic). |

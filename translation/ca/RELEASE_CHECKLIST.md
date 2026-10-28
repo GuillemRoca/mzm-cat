@@ -45,9 +45,9 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 
 ## Credits
 
-- [ ] Decision recorded in `notes/translator-notes.md`: keep the vanilla credits, or add a
-      Catalan translation credit (needs extra entries in the fixed-size `sCredits` array, which
-      uses its own uppercase font).
+- [ ] "CATALAN TRANSLATION / Guillem Roca" shows after the executive producer, and the credits
+      still end in time with the music (`include/ca/credits.inc`, decided in
+      `notes/translator-notes.md`).
 
 ## Patch
 

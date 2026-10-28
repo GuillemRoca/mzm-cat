@@ -5363,6 +5363,9 @@ const struct CreditsEntry sCredits[308] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
         .text = "Iwata Satoru"
     },
+#ifdef LANG_CA
+#include "ca/credits.inc"
+#else // !LANG_CA
     [280] = {
         .type = CREDIT_LINE_TYPE_BLUE,
         .text = "               "
@@ -5423,6 +5426,7 @@ const struct CreditsEntry sCredits[308] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
         .text = "               "
     },
+#endif // LANG_CA
     [295] = {
         .type = CREDIT_LINE_TYPE_ALL_RIGHTS,
         .text = ""

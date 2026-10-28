@@ -4,14 +4,16 @@
 #   make eu LANG_CA=1 CA_SELFTEST=1   same plumbing with the vanilla Spanish text, font and
 #                                     widths: must be byte-identical to vanilla mzm_eu.gba
 #   make eu LANG_CA=1 CA_PREVIEW=1    mzm_eu_ca_preview.gba, a test build that is never released:
-#                                     L+R+SELECT shows the next message, L+R+A game over
+#                                     L+R+SELECT next message, L+R+B next location banner,
+#                                     L+R+A game over, L+R+UP credits
 #                                     (translation/ca/preview/ca_preview.c, translation/ca/TESTING.md)
 #
 # With LANG_CA=1, generated includes go in $(CA_INC), which is searched before include/:
 #   ca/text_<category>.inc     the Spanish blocks of src/data/text_data.c, in Catalan
 #   ca/char_widths.inc         the EU sCharacterWidths with font/widths.txt applied
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
-# and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
+# and $(CA_DIR)/include holds hand-written includes (ca/layout.h: per-language layout constants;
+# ca/credits.inc: the Catalan translation credit).
 # Objects are built in-tree for both modes, so every object that depends on the mode
 # also depends on $(CA_STAMP), which changes whenever the mode does.
 
@@ -68,7 +70,7 @@ ifeq ($(LANG_CA),1)
   src/data/text_data.s: $(CA_TEXT_INCS) $(CA_FONT_INC)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
-  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
+  $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*)
 
   ifeq ($(CA_PREVIEW),1)
     CPPFLAGS += -DCA_PREVIEW -I$(CA_DIR)/preview

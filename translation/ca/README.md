@@ -17,14 +17,18 @@ glossary.md           terminology (APPROVED / PROPOSED), STYLE.md, notes/transla
 RELEASE_CHECKLIST.md  what a release needs
 VERSION               version in the patch name
 ca.mk                 the LANG_CA build, included from the top-level Makefile
+include/ca/           hand-written includes: layout.h (layout constants), credits.inc
 tools/                generators, linter, GAP tool, graphics and font tools, CI
 reference/            your private references (e.g. am2r-glossary.csv); gitignored
 build/, dist/         generated files and CI outputs; gitignored
 ```
 
-Upstream files touched: `Makefile` (one `include`), `src/data/text_data.c` and the EU half of
-`sCharacterWidths` in `src/data/menus/pause_screen_data.c` (`#ifdef LANG_CA` wraps around
-vanilla code), and `.github/workflows/catalan.yml`.
+Upstream files touched: `Makefile` (one `include`); `#ifdef LANG_CA` wraps around vanilla code
+in `src/data/text_data.c`, the EU half of `sCharacterWidths` in
+`src/data/menus/pause_screen_data.c`, the Spanish helmet position in
+`src/data/menus/game_over_data.c` and `sCredits[280..294]` in
+`src/data/ending_and_gallery_data.c`; the `CA_PREVIEW` hook in `src/in_game.c`; and
+`.github/workflows/catalan.yml`.
 
 ## Building
 

@@ -3,7 +3,7 @@
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships.
-- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus three test shortcuts. Never
+- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus four test shortcuts. Never
   distribute it.
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
@@ -88,7 +88,7 @@ under a second, as in vanilla.
 | 7 | `LT_CHOZODIA` | CHOZODIA |
 | 8 | `LT_MOTHERSHIP` | NAU NODRISSA PIRATA |
 | 9 | `LT_PLANET_ZEBES` | PLANETA ZEBES |
-| 10 | `LT_SAVE_ROOM` | SALA DE DESAMENT |
+| 10 | `LT_SAVE_ROOM` | SALA DE GUARDAT |
 | 11 | `LT_RESEARCH_ROOM` | SALA D'INVESTIGACIÓ |
 | 12 | `LT_MAP_ROOM` | SALA DE MAPES |
 | 13 | `LT_CHOZO_RUINS` | RUÏNES CHOZO |
@@ -101,8 +101,15 @@ Only the first nine IDs, plus the save room, map room and Chozo ruins, appear in
 ## Game over prompt (pilot graphic)
 
 Preview build: hold **L + R** and press **A**. Energy drops to 0 and the game over screen
-appears: "TORNAR A PROVAR? / SÍ (CONTINUA) / NO (SURT)". Up/Down moves the Samus helmet, which
+appears: "TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT)". Up/Down moves the Samus helmet, which
 must sit just left of the option text for both options. In the release build, die normally.
+
+## Credits
+
+Preview build: hold **L + R** and press **Up**. The credits start right away (no ending save is
+written). After "EXECUTIVE PRODUCER / Iwata Satoru" comes "CATALAN TRANSLATION / Guillem Roca",
+then the copyright lines; the credits must still end in time with the music. In the release
+build, finish the game.
 
 ## Where the messages appear in normal play
 

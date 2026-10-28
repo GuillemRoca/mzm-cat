@@ -8,9 +8,12 @@ who still needs to confirm it.
 ### Middle dot glyph (font/glyphs/0357.png) — DECIDED
 Option A: dot at mid x-height, width 2. Confirmed by Guillem at the Phase 2 checkpoint.
 
-### Credits — OPEN
-Keep the vanilla staff credits, or add a "CATALAN TRANSLATION" entry (fixed-size `sCredits`,
-uppercase credits font without accents). To decide before release.
+### Credits — DECIDED
+Add a Catalan translation credit (Guillem). `include/ca/credits.inc` replaces `sCredits[280..294]`,
+the blank lines between the executive producer and the copyright: "CATALAN TRANSLATION" (blue)
+and "Guillem Roca" (white), with the same entry count and height, so the credits scroll for as
+long as vanilla and stay in time with the music. The heading is in English like every other
+credit, and because the blue font has no accents ("TRADUCCIO AL CATALA" would lose them).
 
 ## Terms used in the Message block — APPROVED
 
@@ -18,20 +21,12 @@ Approved by Guillem after the Message pilot playtest: Tanc d'energia, Tanc de m�
 Supermíssil (Tanc de supermíssils), Bomba, Raig llarg, Raig de gel, Raig d'ones, Objecte
 desconegut, Desar, Partida desada, Vestit complet, Mode repòs (pause tab REPÒS).
 
-## PROPOSED terms in use (Location block)
+## Terms used in the Location block — APPROVED
 
-Option 1 of each glossary row, in capitals as the banners are drawn. To confirm:
-
-| Term | ID | Notes |
-|---|---|---|
-| Planeta Zebes | LT_PLANET_ZEBES | Same as the Spanish (identical.txt). |
-| Sala de desament | LT_SAVE_ROOM | Every save room banner. |
-| Sala de mapes | LT_MAP_ROOM | Every map station banner. |
-| Ruïnes chozo | LT_CHOZO_RUINS | First Ï on screen; checked in game. |
-| Sala d'investigació | LT_RESEARCH_ROOM | Never shown by the game. The Japanese text says "recharge room". |
-| Nau de la Samus | LT_STARSHIP | Never shown by the game. |
-
-Area names (BRINSTAR … CHOZODIA) are kept, and NAU NODRISSA PIRATA is APPROVED.
+Approved by Guillem: Planeta Zebes, Sala de guardat (Guillem's choice over "Sala de desament"; the
+verb stays "desar"), Sala de mapes, Ruïnes chozo, Sala d'investigació and Nau de la Samus (the
+last two are never shown by the game). Area names (BRINSTAR … CHOZODIA) are kept, and NAU
+NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 
 ## Game over prompt (pilot graphic) — DECIDED
 

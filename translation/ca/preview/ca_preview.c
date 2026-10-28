@@ -4,6 +4,7 @@
 //   L + R + SELECT  show the next message banner (MESSAGE_DUMMY .. MESSAGE_ENEMY_LOCATION_ABNORMAL)
 //   L + R + B       show the next location banner (LT_BRINSTAR .. LT_STARSHIP)
 //   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
+//   L + R + UP      play the credits (no ending save is written)
 //
 // The banner is spawned with a harmless message as its behaviour (no item, save or escape side
 // effects), then its text is swapped for the previewed one: TextStartMessage() copies the
@@ -15,8 +16,10 @@
 #include "sprite.h"
 #include "text.h"
 #include "location_text.h"
+#include "constants/game_state.h"
 #include "constants/sprite.h"
 #include "constants/text.h"
+#include "structs/game_state.h"
 #include "structs/samus.h"
 #include "structs/text.h"
 
@@ -97,6 +100,14 @@ static void CaPreviewUpdate(void)
     if (gChangedInput & KEY_B)
     {
         CaPreviewLocation();
+        return;
+    }
+
+    if (gChangedInput & KEY_UP)
+    {
+        // As the Chozodia escape does once it ends, without its ending save
+        gMainGameMode = GM_CREDITS;
+        gSubGameMode1 = 0;
         return;
     }
 
