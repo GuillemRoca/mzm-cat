@@ -30,6 +30,10 @@
 #include "structs/sprite.h"
 #include "structs/connection.h"
 
+#ifdef CA_PREVIEW
+#include "ca_preview.c" // translation/ca/preview: dev-only text preview
+#endif // CA_PREVIEW
+
 /**
  * @brief c4b4 | 244 | Main loop in game
  * 
@@ -149,6 +153,9 @@ u32 InGameHandler(void)
     else if (gSubGameMode1 != 0)
     {
         RoomUpdateAnimatedGraphicsAndPalettes();
+#ifdef CA_PREVIEW
+        CaPreviewUpdate();
+#endif // CA_PREVIEW
         SpriteUpdate();
     
         if (!gDisableDrawingSamusAndScrolling)
