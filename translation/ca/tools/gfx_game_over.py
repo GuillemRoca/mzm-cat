@@ -6,7 +6,8 @@
 The prompt (menus/game_over/text_prompt_*.gfx.lz) is three 16-px lines of an outlined font:
 the question in red, the two options in blue. Each glyph's fill is cut out of a vanilla line
 whose text is known, with one outline column on each side, and the Catalan lines are set with
-the vanilla spacing. Options are left-aligned, and the options block plus the Samus helmet
+the vanilla spacing. Glyphs no prompt has (the hyphen) are drawn in DRAWN, in the same style.
+Options are left-aligned, and the options block plus the Samus helmet
 (~24 px to the left) is centred on screen, as in vanilla. Prints the helmet X for
 translation/ca/include/ca/layout.h: in every EU language it is the options' left edge + 2 px.
 """
@@ -21,7 +22,17 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[3]
 GBAGFX = ROOT / "translation" / "ca" / "build" / "gbagfx"
 
-CATALAN = ["TORNAR A PROVAR?", "SÍ (CONTINUA)", "NO (SURT)"]
+CATALAN = ["TORNAR-HO A PROVAR?", "SÍ (CONTINUA)", "NO (SURT)"]
+
+# Glyphs no vanilla prompt has, drawn in the same style: rows of the 16-px line, outline 5 and
+# fill 3 like the middle bar of the red E (rows 7-9).
+DRAWN = {
+    (0, "-"): ["", "", "", "", "", "", "",
+               "555555",
+               "533335",
+               "555555",
+               "", "", "", "", "", ""],
+}
 VANILLA = {
     "spanish": ["¿VOLVERAINTENTARLO?", "SÍ(CONTINUAR)", "NO(SALIR)"],
     "italian": ["VUOIRIPROVARE?", "SÍ(RITORNAALGIOCO)", None],
@@ -74,6 +85,9 @@ def atlas(images):
                 glyphs.setdefault((min(line, 1), ch), cols)
             for (_, e), (s, _) in zip(segs, segs[1:]):
                 (letter_gaps if s - e <= 4 else word_gaps)[s - e] += 1
+    for key, rows in DRAWN.items():
+        w = max(len(r) for r in rows)
+        glyphs[key] = [[int(r[x], 16) if x < len(r) and r[x] != "." else 0 for r in rows] for x in range(w)]
     return glyphs, letter_gaps.most_common(1)[0][0], word_gaps.most_common(1)[0][0]
 
 
