@@ -5,6 +5,74 @@ A Catalan fan translation built from this decompilation. Catalan replaces the Sp
 (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`, also in `mzm_eu.sha1`). Everything about the
 translation lives under `translation/ca/`. The ROM is never committed or distributed.
 
+## Layout
+
+```
+text/<category>.txt   the Catalan text: message, location, description, story, file_screen
+font/glyphs/XXXX.png  edited glyphs (char ID in hex), drawn over the extracted EU font
+font/widths.txt       sCharacterWidths overrides for those glyphs
+gfx/<asset>.png       edited graphics; <asset> is the path under data/ without .gfx.lz
+identical.txt         IDs whose Catalan is meant to equal the English
+glossary.md           terminology (APPROVED / PROPOSED), STYLE.md, notes/translator-notes.md
+RELEASE_CHECKLIST.md  what a release needs
+VERSION               version in the patch name
+ca.mk                 the LANG_CA build, included from the top-level Makefile
+tools/                generators, linter, GAP tool, graphics and font tools, CI
+reference/            your private references (e.g. am2r-glossary.csv); gitignored
+build/, dist/         generated files and CI outputs; gitignored
+```
+
+Upstream files touched: `Makefile` (one `include`), `src/data/text_data.c` and the EU half of
+`sCharacterWidths` in `src/data/menus/pause_screen_data.c` (`#ifdef LANG_CA` wraps around
+vanilla code), and `.github/workflows/catalan.yml`.
+
+## Building
+
+```sh
+make extract REGION=eu                       # once, from your base ROM (below)
+make eu                                      # vanilla: still matches mzm_eu.sha1
+make eu LANG_CA=1                            # mzm_eu_ca.gba, Catalan in the Spanish slot
+make eu LANG_CA=1 CA_SELFTEST=1              # plumbing self-test: byte-identical to vanilla
+translation/ca/tools/ci.sh                   # everything CI runs, plus the .bps in dist/
+```
+
+Switching between these is safe: objects that depend on the mode are rebuilt automatically.
+Tools need python3, cpp, libpng-dev (gbagfx) and, for the emulator tools, libmgba-dev.
+
+## Translating text
+
+Each `text/<category>.txt` line is `ID = "text"`, with the IDs of the Spanish pointer tables in
+`src/data/text_data.c` and the same codes and escapes (`{COLOR(5)}`, `{A_button}`, `\n`). IDs left
+out show in English, so the game always builds.
+
+```sh
+python3 translation/ca/tools/gap.py fix      # recompute the centring GAPs
+python3 translation/ca/tools/lint.py         # check everything (--release: also completeness)
+python3 translation/ca/tools/render.py out.png "{GAP(88)}{COLOR(5)}Raig llarg"   # quick preview
+```
+
+The linter compares each entry with the Spanish original: control codes, line count, and width
+(no line may pass 224 px). `gap.py vanilla` shows the GAP rules reproduce all 545 shipped GAPs.
+
+## Graphics and font
+
+```sh
+make ca-tools                                            # builds the vendored gbagfx
+python3 translation/ca/tools/gfx.py export --all         # vanilla assets -> build/gfx/*.png
+cp translation/ca/build/gfx/menus/game_over/text_prompt_spanish.png \
+   translation/ca/gfx/menus/game_over/                   # then edit it
+python3 translation/ca/tools/font.py export 357 g.png    # a glyph, to edit
+```
+
+Keep each PNG's palette and indices; the build re-encodes the PNG and refuses graphics that
+overflow their VRAM space or a fixed-size C array. Never commit the vanilla exports in `build/`.
+`gfx_assets.json` records each asset's palette row and VRAM limit.
+
+## Testing in the emulator
+
+`make ca-emu-tools` builds `build/gbashot` (headless mGBA: scripted input, screenshots, save
+states) and `build/bpscheck` (checks a patch with mGBA's own loader).
+
 ## Base ROM
 
 Every build starts from your own EU dump. `tools/get_baserom.sh` puts it at `mzm_eu_baserom.gba`
