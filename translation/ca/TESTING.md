@@ -3,7 +3,7 @@
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships.
-- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus four test shortcuts. Never
+- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus five test shortcuts. Never
   distribute it.
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
@@ -97,6 +97,16 @@ under a second, as in vanilla.
 Only the first nine IDs, plus the save room, map room and Chozo ruins, appear in normal play
 (entering the area or room). `LT_RESEARCH_ROOM` and `LT_STARSHIP` are never used by the game;
 `LT_UNUSED_*` are placeholders.
+
+## Every equipment description (preview build)
+
+Hold **L + R** and press **Down**: Samus gets every item and full ammo. Pause (Start), press R
+for the status screen, and move over each item: its description types out at the bottom, one
+line per page (A for the next page). Every page must fit, with the arrow after the text.
+
+Press **L + R + Down** again (before pausing) to cycle the suit: normal (Plasma Beam, Gravity
+Suit and Space Jump show "Anàlisi no concloent."), fully powered (their real descriptions),
+suitless (the pistol). In the release build, the descriptions appear as items are collected.
 
 ## Game over prompt (pilot graphic)
 

@@ -30,6 +30,17 @@ save prompts use the same verb: Guardar？, Partida guardada), Sala de mapes, Ru
 last two are never shown by the game). Area names (BRINSTAR … CHOZODIA) are kept, and NAU
 NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 
+## PROPOSED terms in use (Description block)
+
+New terms from the equipment descriptions, option 1 of each glossary row. To confirm:
+
+| Term | Where | Notes |
+|---|---|---|
+| comporta (hatch) | Missiles, Super Missiles, Power Bombs | "Obren les comportes vermelles / verdes / grogues". |
+| Atac de càrrega | Charge Beam | "Charge Attack". |
+| tombarella, gir | Screw Attack, Space Jump | "Fes tombarelles…", "en ple gir" (short form in the same entry). |
+| dany | Varia Suit, Gravity Suit | "Redueix el dany…". |
+
 ## Game over prompt (pilot graphic) — DECIDED
 
 - `gfx/menus/game_over/text_prompt_spanish.png`, made by `tools/gfx_game_over.py` from the
@@ -90,3 +101,26 @@ NODRISSA PIRATA is APPROVED. All banners shown by the game were checked in game.
 - **MESSAGE_ENEMY_LOCATION_ABNORMAL**: a debug message (enemy placed outside a message frame);
   translated literally.
 - **MESSAGE_DUMMY**: debug placeholder, left as is (identical.txt).
+
+## Line notes (Description block)
+
+Each line of a description is a page of its own (A turns the page), with an arrow drawn 10 px
+after the text, so lines are kept to 206 px (vanilla goes up to 208) rather than 224.
+
+- **Second person imperatives**, as in the messages: "Prem", "Mantén", "Fes", "Arrapa't".
+- **"Obren les comportes…"**: plural verb, agreeing with the items (Míssils, Supermíssils,
+  Bombes d'energia); the English and Spanish use a singular "Opens / Abre".
+- **DESCRIPTION_TEXT_CHARGE_BEAM**: "Mantén B per carregar. Amolla'l i dispara." ("amollar":
+  let go). "Deixa'l anar per disparar" didn't fit (240 px).
+- **DESCRIPTION_TEXT_SUPER_MISSILES**: "Arm with SELECT" becomes "Tria'ls amb SELECT" (SELECT
+  switches to them); "Activa'ls" and "Arma'ls" were too wide with the SELECT glyph.
+- **DESCRIPTION_TEXT_BOMBS**: two lines like the Spanish ("En morfosfera, prem B per /
+  col·locar-ne una."); one line was 232 px.
+- **DESCRIPTION_TEXT_GRAVITY_SUIT**: "damage from foes" as "dany rebut" (the Spanish "daño
+  sufrido") so the sentence fits its two pages; lava protection kept as its own sentence.
+- **DESCRIPTION_TEXT_SPACE_JUMP**: "en ple gir" on line 2 ("en plena tombarella" was 230 px).
+- **DESCRIPTION_TEXT_PISTOL**: "Una pistola de càrrega automàtica." The vanilla text has no
+  colour reset after "auto-charging" (the full stop is yellow in every language); the codes are
+  kept as they are.
+- Morph Ball is "morfosfera" in lowercase in running text, like "vestit complet".
+- All 19 checked in game, every page, including the unknown-item text and the pistol.

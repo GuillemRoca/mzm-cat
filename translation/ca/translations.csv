@@ -108,56 +108,73 @@ location,LT_UNUSED_17,Area / room banner,UNUSED OBJ 17,UNUSED OBJ 17,UNUSED OBJ 
 location,LT_UNUSED_18,Area / room banner,UNUSED OBJ 18,UNUSED OBJ 18,UNUSED OBJ 18,same as English,
 description,DESCRIPTION_TEXT_LONG_BEAM,"Pause screen, equipment description","Fire long-distance shots with this beam.
 Press [L] + [B] to fire diagonally.","Dispara desde lejos con este rayo.
-Pulsa [L] + [B] para disparos diagonales.",,untranslated,
+Pulsa [L] + [B] para disparos diagonales.","Aquest raig dispara trets de llarg abast.
+Prem [L] + [B] per disparar en diagonal.",translated,
 description,DESCRIPTION_TEXT_CHARGE_BEAM,"Pause screen, equipment description","Hold [B] to charge. Release to fire.
 Charge Attack: Jump with a full charge.","Mantén [B] para cargar. Luego suelta.
-Ataque carga: salta una vez cargado.",,untranslated,
+Ataque carga: salta una vez cargado.","Mantén [B] per carregar. Amolla'l i dispara.
+Atac de càrrega: salta amb el raig carregat.",translated,
 description,DESCRIPTION_TEXT_ICE_BEAM,"Pause screen, equipment description","This beam can freeze enemies in place.
 You can safely stand on frozen enemies.","Este rayo congela a algunos enemigos.
-Un enemigo congelado es inofensivo.",,untranslated,
+Un enemigo congelado es inofensivo.","Aquest raig congela els enemics on són.
+Pots pujar sense risc als enemics congelats.",translated,
 description,DESCRIPTION_TEXT_WAVE_BEAM,"Pause screen, equipment description","This beam, which is made up of energy
 waves, can pass through solid objects.","Este rayo, hecho de ondas de energía,
-puede atravesar objetos sólidos.",,untranslated,
+puede atravesar objetos sólidos.","Aquest raig, fet d'ones d'energia,
+pot travessar objectes sòlids.",translated,
 description,DESCRIPTION_TEXT_PLASMA_BEAM,"Pause screen, equipment description","This powerful beam can blast through
 multiple enemies.","Este poderoso rayo puede destrozar
-a varios enemigos a la vez.",,untranslated,
+a varios enemigos a la vez.","Aquest potent raig pot travessar
+diversos enemics d'un sol tret.",translated,
 description,DESCRIPTION_TEXT_MISSILES,"Pause screen, equipment description","Press [R] + [B] to fire.
 Opens red hatches.","Pulsa [R] + [B] para disparar.
-Abre las escotillas rojas.",,untranslated,
+Abre las escotillas rojas.","Prem [R] + [B] per disparar.
+Obren les comportes vermelles.",translated,
 description,DESCRIPTION_TEXT_SUPER_MISSILES,"Pause screen, equipment description","Arm with [SELECT]. Fire with [R] + [B].
 Opens green hatches.","Cargar: [SELECT]. Disparar: [R] + [B].
-Abre las escotillas verdes.",,untranslated,
+Abre las escotillas verdes.","Tria'ls amb [SELECT]. Dispara amb [R] + [B].
+Obren les comportes verdes.",translated,
 description,DESCRIPTION_TEXT_BOMBS,"Pause screen, equipment description",Press [B] in Morph Ball form to set.,"Pulsa [B] en forma de morfosfera
-para activarla.",,untranslated,
+para activarla.","En morfosfera, prem [B] per
+col·locar-ne una.",translated,
 description,DESCRIPTION_TEXT_POWER_BOMBS,"Pause screen, equipment description","Set with [R] + [B] in Morph Ball form.
 Opens yellow hatches.","Activa con [R] + [B] en morfosfera.
-Abre las escotillas amarillas.",,untranslated,
+Abre las escotillas amarillas.","En morfosfera, col·loca-les amb [R] + [B].
+Obren les comportes grogues.",translated,
 description,DESCRIPTION_TEXT_VARIA_SUIT,"Pause screen, equipment description","Decreases damage taken from enemies.
 Prevents damage from acid and heat.","Reduce el daño infligido por enemigos.
-Evita heridas de ácido y calor.",,untranslated,
+Evita heridas de ácido y calor.","Redueix el dany causat pels enemics.
+Protegeix de l'àcid i de la calor.",translated,
 description,DESCRIPTION_TEXT_GRAVITY_SUIT,"Pause screen, equipment description","Reduces damage from foes. Enables free
 movement in water. Stops lava damage.","Reduce el daño sufrido. Permite moverse
-libremente por el agua y la lava.",,untranslated,
+libremente por el agua y la lava.","Redueix el dany rebut i permet moure's
+lliurement a l'aigua. Protegeix de la lava.",translated,
 description,DESCRIPTION_TEXT_MORPH_BALL,"Pause screen, equipment description","Double-tap [DOWN] to take ball form and
 gain access to narrow passageways.","Pulsa dos veces [DOWN] para pasar a
-morfosfera y acceder a sitios estrechos.",,untranslated,
-description,DESCRIPTION_TEXT_POWER_GRIP,"Pause screen, equipment description",Grab and hang from ledges and corners.,Cuélgate de cornisas y esquinas.,,untranslated,
+morfosfera y acceder a sitios estrechos.","Prem [DOWN] dos cops per transformar-te en
+bola i passar per llocs estrets.",translated,
+description,DESCRIPTION_TEXT_POWER_GRIP,"Pause screen, equipment description",Grab and hang from ledges and corners.,Cuélgate de cornisas y esquinas.,Arrapa't i penja't de cornises i cantonades.,translated,
 description,DESCRIPTION_TEXT_SPEEDBOOSTER,"Pause screen, equipment description","Run until speed boost begins to break
 certain blocks and damage enemies.","Alcanza gran velocidad para
-romper ciertos bloques.",,untranslated,
+romper ciertos bloques.","Corre fins que s'activi l'acceleració per
+trencar alguns blocs i ferir els enemics.",translated,
 description,DESCRIPTION_TEXT_HIGH_JUMP,"Pause screen, equipment description","Increases maximum jump height.
 Adds Morph Ball jumping capability.","Aumenta la distancia de salto y añade
-capacidad de salto a la morfosfera.",,untranslated,
-description,DESCRIPTION_TEXT_SCREW_ATTACK,"Pause screen, equipment description",Damage enemies while somersaulting.,Ataca a tus enemigos con volteretas.,,untranslated,
+capacidad de salto a la morfosfera.","Augmenta l'alçada màxima del salt.
+Permet saltar en forma de morfosfera.",translated,
+description,DESCRIPTION_TEXT_SCREW_ATTACK,"Pause screen, equipment description",Damage enemies while somersaulting.,Ataca a tus enemigos con volteretas.,Fereix els enemics mentre fas tombarelles.,translated,
 description,DESCRIPTION_TEXT_SPACE_JUMP,"Pause screen, equipment description","Somersault continually in the air.
 Use [A] mid-somersault to jump again.","Volteretas continuas en el aire. Usa [A]
-en plena voltereta para volver a saltar.",,untranslated,
+en plena voltereta para volver a saltar.","Fes tombarelles sense parar per l'aire.
+Prem [A] en ple gir per tornar a saltar.",translated,
 description,DESCRIPTION_TEXT_UNKNOWN_ITEM,"Pause screen, equipment description","Analysis inconclusive.
 Item incompatible with current suit.","Análisis no concluyente.
-Objeto incompatible.",,untranslated,
+Objeto incompatible.","Anàlisi no concloent.
+Objecte incompatible amb el vestit actual.",translated,
 description,DESCRIPTION_TEXT_PISTOL,"Pause screen, equipment description","An auto-charging pistol.
 Stun enemies with charged shots.","Una pistola autocargable.
-Atonta a  enemigos con tiros cargados.",,untranslated,
+Atonta a  enemigos con tiros cargados.","Una pistola de càrrega automàtica.
+Atordeix els enemics amb trets carregats.",translated,
 story,STORY_TEXT_PLANET_ZEBES,"Story text (intro, escapes, ending)","Planet Zebes... I called this place home
 once, in peaceful times, long before evil
 haunted the caverns below. Now, I shall

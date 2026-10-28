@@ -77,6 +77,10 @@ approving them.
 | Power Grip | Agarre | Arrapada | APPROVED | *pause box* |
 | Pistol (Zero Suit) | Pistola | Pistola | PROPOSED | 1. Pistola: only option. *pause box* |
 | Unknown Item | Objeto desconocido | Objecte desconegut | APPROVED | literal. |
+| Hatch (door) | escotilla | 1. comporta<br>2. escotilla<br>3. porta | PROPOSED | 1. A sealed door that opens like a gate; reads as sci-fi. Used in the descriptions ("comportes vermelles").<br>2. Mirrors the Spanish, but in Catalan mostly a ship's deck opening.<br>3. Plain and clear, loses the "hatch" flavour. |
+| Charge Attack | Ataque carga | 1. Atac de càrrega<br>2. Atac carregat | PROPOSED | 1. Parallel to "Raig de càrrega".<br>2. Describes the result. |
+| Somersault (spin jump) | voltereta | 1. tombarella (gir for short)<br>2. voltereta | PROPOSED | 1. Standard Catalan for a somersault; "en ple gir" where space is short.<br>2. Castilianism, avoid. |
+| Damage (noun) | daño | dany | PROPOSED | Standard; "mal" is more colloquial. "Ferir" for "damage enemies" (verb). |
 
 ## Enemies
 

@@ -5,6 +5,9 @@
 //   L + R + B       show the next location banner (LT_BRINSTAR .. LT_STARSHIP)
 //   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
 //   L + R + UP      play the credits (no ending save is written)
+//   L + R + DOWN    give every item and full ammo; again: cycle the suit (normal, fully powered,
+//                   suitless) to see the unknown-item, real and pistol descriptions in the pause
+//                   screen
 //
 // The banner is spawned with a harmless message as its behaviour (no item, save or escape side
 // effects), then its text is swapped for the previewed one: TextStartMessage() copies the
@@ -17,6 +20,7 @@
 #include "text.h"
 #include "location_text.h"
 #include "constants/game_state.h"
+#include "constants/samus.h"
 #include "constants/sprite.h"
 #include "constants/text.h"
 #include "structs/game_state.h"
@@ -100,6 +104,26 @@ static void CaPreviewUpdate(void)
     if (gChangedInput & KEY_B)
     {
         CaPreviewLocation();
+        return;
+    }
+
+    if (gChangedInput & KEY_DOWN)
+    {
+        if (gEquipment.beamBombs == (BBF_LONG_BEAM | BBF_ICE_BEAM | BBF_WAVE_BEAM | BBF_PLASMA_BEAM |
+            BBF_CHARGE_BEAM | BBF_BOMBS))
+        {
+            gEquipment.suitType = gEquipment.suitType >= SUIT_SUITLESS ? SUIT_NORMAL : gEquipment.suitType + 1;
+            return;
+        }
+        gEquipment.beamBombs = BBF_LONG_BEAM | BBF_ICE_BEAM | BBF_WAVE_BEAM | BBF_PLASMA_BEAM |
+            BBF_CHARGE_BEAM | BBF_BOMBS;
+        gEquipment.beamBombsActivation = gEquipment.beamBombs;
+        gEquipment.suitMisc = SMF_HIGH_JUMP | SMF_SPEEDBOOSTER | SMF_SPACE_JUMP | SMF_SCREW_ATTACK |
+            SMF_VARIA_SUIT | SMF_GRAVITY_SUIT | SMF_MORPH_BALL | SMF_POWER_GRIP;
+        gEquipment.suitMiscActivation = gEquipment.suitMisc;
+        gEquipment.maxMissiles = gEquipment.currentMissiles = 250;
+        gEquipment.maxSuperMissiles = gEquipment.currentSuperMissiles = 30;
+        gEquipment.maxPowerBombs = gEquipment.currentPowerBombs = 9;
         return;
     }
 

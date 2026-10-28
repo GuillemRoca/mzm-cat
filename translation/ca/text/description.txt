@@ -2,3 +2,22 @@
 #
 # One entry per line: ID = "text", with the IDs and codes of src/data/text_data.c.
 # IDs missing here show in English. See translation/ca/README.md.
+DESCRIPTION_TEXT_LONG_BEAM = "Aquest raig dispara trets de llarg abast.\nPrem {L_button} + {B_button} per disparar en diagonal."
+DESCRIPTION_TEXT_CHARGE_BEAM = "Mantén {B_button} per carregar. Amolla'l i dispara.\nAtac de càrrega: salta amb el raig carregat."
+DESCRIPTION_TEXT_ICE_BEAM = "Aquest raig congela els enemics on són.\nPots pujar sense risc als enemics congelats."
+DESCRIPTION_TEXT_WAVE_BEAM = "Aquest raig, fet d'ones d'energia,\npot travessar objectes sòlids."
+DESCRIPTION_TEXT_PLASMA_BEAM = "Aquest potent raig pot travessar\ndiversos enemics d'un sol tret."
+DESCRIPTION_TEXT_MISSILES = "Prem {R_button} + {B_button} per disparar.\nObren les {COLOR(6)}comportes vermelles{COLOR(0)}."
+DESCRIPTION_TEXT_SUPER_MISSILES = "Tria'ls amb {Select_button}. Dispara amb {R_button} + {B_button}.\nObren les {COLOR(8)}comportes verdes{COLOR(0)}."
+DESCRIPTION_TEXT_BOMBS = "En morfosfera, prem {B_button} per\ncol·locar-ne una."
+DESCRIPTION_TEXT_POWER_BOMBS = "En morfosfera, col·loca-les amb {R_button} + {B_button}.\nObren les {COLOR(5)}comportes grogues{COLOR(0)}."
+DESCRIPTION_TEXT_VARIA_SUIT = "Redueix el dany causat pels enemics.\nProtegeix de l'àcid i de la calor."
+DESCRIPTION_TEXT_GRAVITY_SUIT = "Redueix el dany rebut i permet moure's\nlliurement a l'aigua. Protegeix de la lava."
+DESCRIPTION_TEXT_MORPH_BALL = "Prem {Down_button} dos cops per transformar-te en\nbola i passar per llocs estrets."
+DESCRIPTION_TEXT_POWER_GRIP = "Arrapa't i penja't de {COLOR(5)}cornises i cantonades{COLOR(0)}."
+DESCRIPTION_TEXT_SPEEDBOOSTER = "Corre fins que s'activi l'acceleració per\ntrencar alguns blocs i ferir els enemics."
+DESCRIPTION_TEXT_HIGH_JUMP = "Augmenta l'alçada màxima del salt.\nPermet saltar en forma de morfosfera."
+DESCRIPTION_TEXT_SCREW_ATTACK = "Fereix els enemics mentre fas tombarelles."
+DESCRIPTION_TEXT_SPACE_JUMP = "Fes tombarelles sense parar per l'aire.\nPrem {A_button} en ple gir per tornar a saltar."
+DESCRIPTION_TEXT_UNKNOWN_ITEM = "{COLOR(6)}Anàlisi no concloent.{COLOR(0)}\nObjecte incompatible amb el vestit actual."
+DESCRIPTION_TEXT_PISTOL = "Una pistola de {COLOR(5)}càrrega automàtica{COLOR(5)}.\n{COLOR(6)}Atordeix{COLOR(0)} els enemics amb {COLOR(5)}trets carregats{COLOR(0)}."

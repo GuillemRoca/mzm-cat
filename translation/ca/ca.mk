@@ -5,7 +5,7 @@
 #                                     widths: must be byte-identical to vanilla mzm_eu.gba
 #   make eu LANG_CA=1 CA_PREVIEW=1    mzm_eu_ca_preview.gba, a test build that is never released:
 #                                     L+R+SELECT next message, L+R+B next location banner,
-#                                     L+R+A game over, L+R+UP credits
+#                                     L+R+A game over, L+R+UP credits, L+R+DOWN all items
 #                                     (translation/ca/preview/ca_preview.c, translation/ca/TESTING.md)
 #
 # With LANG_CA=1, generated includes go in $(CA_INC), which is searched before include/:
