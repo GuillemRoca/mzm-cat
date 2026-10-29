@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 import gencredits  # noqa: E402
 import gfx_equipment_names  # noqa: E402
+import gfx_file_select  # noqa: E402
 import gfx_game_over  # noqa: E402
 import gfx_unknown_items  # noqa: E402
 import gfx_menu_names  # noqa: E402
@@ -100,6 +101,14 @@ def graphic_rows():
         kind = "heading" if key in eq.HEADINGS else "item"
         g.append((f"status_{key}", f"Status screen, equipment {kind}", en, es, eq.catalan(key),
                   "menus/pause_screen/equipment_names_spanish"))
+    fs = gfx_file_select
+    for asset, labels in fs.VANILLA.items():
+        for slot, texts in labels.items():
+            en, es = texts[fs.LANGS.index("english")], texts[fs.LANGS.index("spanish")]
+            g.append((f"file_select_{slot}", f"File select ({asset.replace('_text', '')} graphic)", en, es,
+                      fs.CATALAN[asset].get(slot, es), f"menus/file_select/{asset}_spanish"))
+    g.append(("file_select_time_attack", "File select (difficulty graphic)", "TIMEATTACK", "TIMEATTACK",
+              "TIMEATTACK", "menus/file_select/difficulty_text_spanish"))
     for key, (_, _, es, en, ca) in gfx_unknown_items.NAMES.items():
         es = {"SALTOESPACIAL": "SALTO ESPACIAL"}.get(es, es)    # drawn without the space
         g.append((f"unknown_{key}", "Status screen, unknown item revealed (fully powered suit)", en, es,

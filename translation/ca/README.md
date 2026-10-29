@@ -28,8 +28,9 @@ build/, dist/         generated files and CI outputs; gitignored
 Upstream files touched: `Makefile` (one `include`); `#ifdef LANG_CA` wraps around vanilla code
 in `src/data/text_data.c`, the EU half of `sCharacterWidths` in
 `src/data/menus/pause_screen_data.c`, the Spanish helmet position in
-`src/data/menus/game_over_data.c` and the EU `sCredits` in
-`src/data/ending_and_gallery_data.c`; the `CA_PREVIEW` hook in `src/in_game.c`; and
+`src/data/menus/game_over_data.c`, the EU `sCredits` in `src/data/ending_and_gallery_data.c`,
+and the size of `sFileSelectLargeTextSpanishGfx` in `src/data/menus/file_select_data.c` and
+its header; the `CA_PREVIEW` hook in `src/in_game.c`; and
 `.github/workflows/catalan.yml`.
 
 ## Building

@@ -101,17 +101,20 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Yes / No | Sí / No | Sí / No | APPROVED | Only option; widths match the Spanish, so the cursor positions carry over. |
 | Start Game | Jugar | Juga | APPROVED | Imperative, like the other menu commands (Softcatalà style). |
 | Language (title menu) | Idioma | Idioma | APPROVED | Common in menus. |
-| Copy / Erase / Options | COPIAR / BORRAR / OPCIONES | 1. Copia / Esborra / Opcions<br>2. Copiar / Esborrar / Opcions | PROPOSED | 1. Imperative commands (Softcatalà).<br>2. Infinitives like the Spanish. |
-| Samus Data (file select title) | DATOS DE SAMUS | 1. Dades de la Samus<br>2. Partides | PROPOSED | 1. Literal, with the personal article.<br>2. Shorter, says what the screen holds. |
+| Copy / Erase / Options | COPIAR / BORRAR / OPCIONES | Copia / Esborra / Opcions | APPROVED | Imperative commands (Softcatalà). |
+| Samus Data (file select title) | DATOS DE SAMUS | Dades de la Samus | APPROVED | Literal, with the personal article. |
 | Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | APPROVED | Only option; each label must fit 40 px (difficulty graphic). |
 | Time Attack | TIME ATTACK | Contrarellotge | APPROVED | Natural Catalan sports term. |
-| Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | PROPOSED | Only option. *pause box* |
-| Change area (map) | CAMBIAR ZONA | 1. Canvia zona<br>2. Canvia d'àrea | PROPOSED | 1. Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn).<br>2. Uses "àrea" like the English, needs À. |
+| Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | APPROVED | Only option. *pause box* |
+| Change area (map) | CAMBIAR ZONA | Canvia zona | APPROVED | Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn). |
 | Energy (status) | ENERGÍA | Energia | APPROVED | Only option. *pause box* |
 | Beam (status group) | RAYO | Raig | APPROVED | Only option. *pause box* |
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
 | Misc (status group) | OTROS | Altres | APPROVED | Mirrors the Spanish. *pause box* |
 | Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | APPROVED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
+| Sound (options: stereo/mono) | SONIDO | So | PROPOSED | Only option. |
+| Time Attack Records (options) | RÉCORDS DE RETO DE TIEMPO | Rècords contrarellotge | PROPOSED | "contrarellotge" as an adjective, like "etapa contrarellotge"; "Rècords de contrarellotge" doesn't fit the options graphic (138 of 128 px). |
+| Metroid Fusion link (options) | CONEXIÓN CON METROID FUSION | Connexió a Metroid Fusion | PROPOSED | Like "connexió a Internet"; "amb" doesn't fit (131 of 128 px) and the font has no B. |
 | Gallery | Galería | Galeria | APPROVED | Only option. |
 | Sound Test | Prueba de sonido | Prova de so | APPROVED | Literal. |
 | Original Metroid | Metroid original | Metroid original | APPROVED | Only option. |
@@ -121,5 +124,5 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Linking / link (Fusion link) | Conectando / conexión | Connectant / connexió | APPROVED | Only option. |
 | Easy Sleep | salvapantallas (tab SALVAP.) | Mode repòs (tab REPÒS) | APPROVED | Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä). |
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
-| Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |
-| New Record | ¡NUEVO RÉCORD! | Nou rècord! | PROPOSED | Only option. |
+| Mission Accomplished | ¡MISIÓN CUMPLIDA! | Missió complerta! | APPROVED | Standard; buildable from the existing ending glyphs. |
+| New Record | ¡NUEVO RÉCORD! | Nou rècord! | APPROVED | Only option. |

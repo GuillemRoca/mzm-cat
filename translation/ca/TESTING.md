@@ -132,7 +132,8 @@ highlight between them.
 
 ## File select
 
-Title → JUGA → file select. On an empty file, A shows "Juga" and then "Dificultat / FÀCIL /
+The file select shows "DADES DE LA SAMUS" and COPIA / ESBORRA / OPCIONS; OPCIONS lists SO and
+CONNEXIÓ A METROID FUSION (the other options appear as they are unlocked). Title → JUGA → file select. On an empty file, A shows "Juga" and then "Dificultat / FÀCIL /
 NORMAL". With a saved game (save once at a save station): A on that file shows "Continua /
 Nova partida", COPIAR shows "Tria el fitxer que vols copiar." and "Tria el fitxer on vols
 copiar les dades.", BORRAR "Tria el fitxer que vols esborrar." and "Vols esborrar aquest

@@ -401,7 +401,7 @@ has been added to
 the OPTIONS screen.","Se ha añadido Récords
 de reto de tiempo a la
 pantalla OPCIONES.","S'ha afegit Rècords
-de contrarellotge a la
+contrarellotge a la
 pantalla OPCIONS.",translated,
 file_screen,FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK,File select,"Sound Test has
 been added to the
@@ -455,6 +455,21 @@ graphics,status_screw,"Status screen, equipment item",SCREW ATTACK,S. EN BARRENA
 graphics,status_space,"Status screen, equipment item",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
 graphics,status_gun,"Status screen, equipment heading",GUN,PISTOLA,ARMA,translated,
 graphics,status_pistol,"Status screen, equipment item",PISTOL,LÁSER,PISTOLA,translated,
+graphics,file_select_title,File select (large graphic),SAMUS DATA,DATOS DE SAMUS,DADES DE LA SAMUS,translated,
+graphics,file_select_options,File select (large graphic),OPTIONS,OPCIONES,OPCIONS,translated,
+graphics,file_select_copy,File select (large graphic),COPY,COPIAR,COPIA,translated,
+graphics,file_select_erase,File select (large graphic),ERASE,BORRAR,ESBORRA,translated,
+graphics,file_select_sound,File select (options graphic),SOUND,SONIDO,SO,translated,
+graphics,file_select_sound_test,File select (options graphic),SOUND TEST,PRUEBA DE SONIDO,PROVA DE SO,translated,
+graphics,file_select_ta_records,File select (options graphic),TIME ATTACK RECORDS,RÉCORDS DE RETO DE TIEMPO,RÈCORDS CONTRARELLOTGE,translated,
+graphics,file_select_gallery,File select (options graphic),GALLERY,GALERÍA,GALERIA,translated,
+graphics,file_select_fusion_link,File select (options graphic),METROID FUSION LINK,CONEXIÓN CON METROID FUSION,CONNEXIÓ A METROID FUSION,translated,
+graphics,file_select_fusion_gallery,File select (options graphic),METROID FUSION GALLERY,GALERÍA DE METROID FUSION,GALERIA DE METROID FUSION,translated,
+graphics,file_select_original,File select (options graphic),ORIGINAL METROID,METROID ORIGINAL,METROID ORIGINAL,translated,
+graphics,file_select_easy,File select (difficulty graphic),EASY,FÁCIL,FÀCIL,translated,
+graphics,file_select_normal,File select (difficulty graphic),NORMAL,NORMAL,NORMAL,translated,
+graphics,file_select_hard,File select (difficulty graphic),HARD,DIFÍCIL,DIFÍCIL,translated,
+graphics,file_select_time_attack,File select (difficulty graphic),TIMEATTACK,TIMEATTACK,TIMEATTACK,translated,
 graphics,unknown_plasma,"Status screen, unknown item revealed (fully powered suit)",PLASMA,PLASMA,PLASMA,translated,
 graphics,unknown_space_jump,"Status screen, unknown item revealed (fully powered suit)",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
 graphics,unknown_gravity,"Status screen, unknown item revealed (fully powered suit)",GRAVITY,GRAVITATORIO,GRAVITATORI,translated,

@@ -107,6 +107,28 @@ Approved by Guillem:
   saved game, and the corrupt-file and Fusion link messages special conditions: not seen yet
   (widths checked by the linter only).
 
+## File select graphics
+
+- `gfx/menus/file_select/{large_text,options_text,difficulty_text}_spanish.png`, made by
+  `tools/gfx_file_select.py` from the five vanilla sheets (letters cut by their fill shapes,
+  Spanish letters first; spacing as in the vanilla labels).
+- Large labels: DADES DE LA SAMUS (centred like every title; its L, which no title has, is
+  drawn from the title E), OPCIONS, COPIA, ESBORRA. The compressed sheet is 3 words bigger than
+  the Spanish fixed-size array: `sFileSelectLargeTextSpanishGfx` is declared unsized under
+  LANG_CA (`src/data/menus/file_select_data.c` and its header), so the self-test stays
+  byte-identical.
+- Options list: SO, PROVA DE SO, RÈCORDS CONTRARELLOTGE (the unlock message now says the same),
+  GALERIA, CONNEXIÓ A METROID FUSION, GALERIA DE METROID FUSION, METROID ORIGINAL (as in
+  Spanish). È takes the É accent mirrored.
+- Difficulty labels: FÀCIL (À: the Á accent mirrored), NORMAL, DIFÍCIL; TIMEATTACK stays (as
+  in every language: CONTRARELLOTGE can't fit 40 px).
+- Seen in game: the file select (title, COPIA, ESBORRA, OPCIONS) and the options screen (SO,
+  CONNEXIÓ A METROID FUSION). The unlocked options and the difficulty labels need saves.
+
+### PROPOSED terms in use (file select graphics) — to confirm
+
+So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion (glossary rows).
+
 ## Title screen menu
 
 - `gfx/menus/title_screen/spanish_menu_{top,bottom}.png`, made by `tools/gfx_title_menu.py`:

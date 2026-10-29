@@ -36,6 +36,6 @@ FILE_SCREEN_TEXT_CANT_COPY_TIME_ATTACK = "No pots copiar dades\nde contrarellotg
 FILE_SCREEN_TEXT_LINKING_ERROR_TRY_AGAIN = "Error de connexió. Torna-ho a provar."
 FILE_SCREEN_TEXT_LINKING_ERROR_CHECK_CONNECTION = "S'ha produït un\nerror de connexió.\nComprova els cables\ni torna-ho a provar."
 FILE_SCREEN_TEXT_GALLERY_UNLOCK = "S'ha afegit {COLOR(5)}Galeria{COLOR(0)}\na la pantalla\n{COLOR(6)}OPCIONS{COLOR(0)}."
-FILE_SCREEN_TEXT_TIME_ATTACK_RECORD_UNLOCK = "S'ha afegit {COLOR(5)}Rècords\nde contrarellotge{COLOR(0)} a la\npantalla {COLOR(6)}OPCIONS{COLOR(0)}."
+FILE_SCREEN_TEXT_TIME_ATTACK_RECORD_UNLOCK = "S'ha afegit {COLOR(5)}Rècords\ncontrarellotge{COLOR(0)} a la\npantalla {COLOR(6)}OPCIONS{COLOR(0)}."
 FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK = "S'ha afegit {COLOR(5)}Prova\nde so{COLOR(0)} a la\npantalla {COLOR(6)}OPCIONS{COLOR(0)}."
 FILE_SCREEN_TEXT_NES_METROID_UNLOCK = "S'ha afegit {COLOR(5)}Metroid\noriginal{COLOR(0)} a la\npantalla {COLOR(6)}OPCIONS{COLOR(0)}."

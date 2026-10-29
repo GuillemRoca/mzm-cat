@@ -39,11 +39,16 @@ def lz_path(key):
 
 
 def array_limit(key):
-    """(symbol, max words or None) of the C array that includes the asset."""
+    """(symbol, max words or None) of the C array that includes the asset. An array declared
+    unsized for LANG_CA (#ifdef LANG_CA ... [] #else ... [N] #endif) has no limit."""
     inc = f'"extracted/data/{key}.gfx.lz.inc"'
     for c in (ROOT / "src").rglob("*.c"):
         t = c.read_text(encoding="utf-8", errors="replace")
         if inc in t:
+            m = re.search(r"#ifdef LANG_CA\s*\n\s*const u32 (\w+)\[\] = \{\s*\n#else[^\n]*\n[^\n]*\n#endif[^\n]*\n\s*#include "
+                          + re.escape(inc), t)
+            if m:
+                return m.group(1), None
             m = re.search(r"(\w+)\s*\[(\w*)\]\s*=\s*\{\s*#include " + re.escape(inc), t)
             if m:
                 return m.group(1), int(m.group(2), 0) if m.group(2) else None
