@@ -3,7 +3,7 @@
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships.
-- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus five test shortcuts. Never
+- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus six test shortcuts. Never
   distribute it.
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
@@ -113,6 +113,17 @@ build, the descriptions appear as items are collected.
 
 The same screens show the equipment names (the graphic): headings ENERGIA, RAIG, MÍSSIL,
 BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its bar.
+
+## Story texts
+
+- Intro: after the language screen, don't press anything. "Ordre d'emergència", "Exterminar
+  tots els organismes metroides del planeta Zebes..." and "I derrotar la forma de vida
+  mecànica, Mother Brain." appear under the typed English graphic.
+- Preview build: hold **L + R** and press **Left** for the next story cutscene: the Planet
+  Zebes prologue, the Mother Ship monologue (7 lines), "Aconseguiria sobreviure prou temps per
+  escapar?". A ends each one; Samus is back in the room afterwards.
+- In the release build: the prologue at the start of a new file; the other two after the Zebes
+  escape.
 
 ## Game over prompt (pilot graphic)
 

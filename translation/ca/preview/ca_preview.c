@@ -5,6 +5,8 @@
 //   L + R + B       show the next location banner (LT_BRINSTAR .. LT_STARSHIP)
 //   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
 //   L + R + UP      play the credits (no ending save is written)
+//   L + R + LEFT    play the next story text cutscene: Planet Zebes, the Mother Ship monologue,
+//                   "Could I survive" (Samus is back in the room afterwards)
 //   L + R + DOWN    give every item and full ammo; again: cycle the suit (normal, fully powered,
 //                   suitless) to see the unknown-item, real and pistol descriptions in the pause
 //                   screen. Switching to fully powered plays the unknown items' reveal.
@@ -19,10 +21,12 @@
 #include "sprite.h"
 #include "text.h"
 #include "location_text.h"
+#include "constants/cutscene.h"
 #include "constants/game_state.h"
 #include "constants/samus.h"
 #include "constants/sprite.h"
 #include "constants/text.h"
+#include "structs/cutscene.h"
 #include "structs/game_state.h"
 #include "structs/samus.h"
 #include "structs/text.h"
@@ -32,6 +36,7 @@ extern u8 gUnk_3001670[28];
 #define CA_PREVIEW_NEXT (gUnk_3001670[1])
 #define CA_PREVIEW_SLOT (gUnk_3001670[2])
 #define CA_PREVIEW_NEXT_LOCATION (gUnk_3001670[3])
+#define CA_PREVIEW_NEXT_STORY (gUnk_3001670[4])
 
 static void CaPreviewLocation(void)
 {
@@ -104,6 +109,21 @@ static void CaPreviewUpdate(void)
     if (gChangedInput & KEY_B)
     {
         CaPreviewLocation();
+        return;
+    }
+
+    if (gChangedInput & KEY_LEFT)
+    {
+        // No const table: the linker script keeps no .rodata from in_game.o
+        if (CA_PREVIEW_NEXT_STORY == 0)
+            gCurrentCutscene = CUTSCENE_INTRO_TEXT;
+        else if (CA_PREVIEW_NEXT_STORY == 1)
+            gCurrentCutscene = CUTSCENE_MOTHERSHIP_MONOLOGUE;
+        else
+            gCurrentCutscene = CUTSCENE_COULD_I_SURVIVE;
+        CA_PREVIEW_NEXT_STORY = CA_PREVIEW_NEXT_STORY >= 2 ? 0 : CA_PREVIEW_NEXT_STORY + 1;
+        gMainGameMode = GM_CUTSCENE;
+        gSubGameMode1 = 0;
         return;
     }
 

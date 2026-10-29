@@ -39,6 +39,7 @@ approving them.
 | Brinstar, Norfair, Crateria, Tourian, Chozodia | same | same | APPROVED | Area names stay unchanged. |
 | Kraid, Ridley (areas) | KRAID, RIDLEY | KRAID, RIDLEY | APPROVED | |
 | Mother Ship | nave nodriza | Nau nodrissa | APPROVED | |
+| Zero Mission (Samus's first mission) | Misión Zero | 1. Missió Zero<br>2. Missió zero | PROPOSED | 1. A name, like "Vestit Zero".<br>2. Sentence case. |
 | Space Pirate Mother Ship (banner) | NAVE NODRIZA PIRATA | Nau nodrissa pirata | APPROVED | Banner shows NAU NODRISSA PIRATA. |
 | Planet Zebes | PLANETA ZEBES | Planeta Zebes | APPROVED | Banner text, as in Spanish and English. |
 | Save Room | ESTACIÓN DE GUARDADO | Sala de guardat | APPROVED | Chosen by Guillem; same verb as the save prompts (Guardar？, Partida guardada). |

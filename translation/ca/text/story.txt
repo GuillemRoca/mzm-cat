@@ -2,3 +2,9 @@
 #
 # One entry per line: ID = "text", with the IDs and codes of src/data/text_data.c.
 # IDs missing here show in English. See translation/ca/README.md.
+STORY_TEXT_PLANET_ZEBES = "{GAP(8)}Planeta Zebes... Fa molt, en temps de pau,\n{GAP(8)}abans que el mal s'escampés per les\n{GAP(8)}cavernes, aquest lloc era casa meva. Ara,\n{GAP(8)}per fi, explicaré la meva primera batalla\n{GAP(8)}aquí... L'anomenada Missió Zero.\n{GAP(138)}-Samus Aran-"
+STORY_TEXT_THE_TIMING = "La fuga no podia arribar en pitjor moment.\nEls pirates de l'espai m'havien atacat i\ndeixat gairebé indefensa, sense el vestit.\nPer protegir-me només tenia la meva pistola\nd'emergència, més aviat inútil. Infiltrar-me\naixí armada a la nau nodrissa pirata potser\nera una bogeria, però no tenia elecció..."
+STORY_TEXT_COULD_I_SURVIVE = "Aconseguiria sobreviure prou temps\nper escapar？"
+STORY_TEXT_EMERGENCY = "{GAP(68)}Ordre d'emergència"
+STORY_TEXT_EXTERMINATE = "{GAP(40)}Exterminar tots els organismes\n{GAP(42)}metroides del planeta Zebes..."
+STORY_TEXT_DEFEAT = "{GAP(26)}I derrotar la forma de vida mecànica,\n{GAP(80)}Mother Brain."

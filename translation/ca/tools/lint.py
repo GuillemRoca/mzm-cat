@@ -8,12 +8,14 @@ Errors (exit 1):
   - characters missing from charmap.txt, unknown {CODES}
   - control codes (COLOR, INDENT, DELAY, buttons and other named codes) that differ from the
     Spanish original, in order; or a different number of lines (\\n) where the box is fixed
+    (story screens: more lines than any shipped language uses for that text)
   - a line that crosses 224 px (the game would wrap it and, in banners, lose the rest)
 Warnings (exit 1 with --release):
   - stale centring GAPs (fix with gap.py fix), a number of GAPs on a line that matches neither
     the Spanish nor the English, or a
     different FileScreen GAP value (those are Yes/No positions)
-  - a FileScreen line wider than any shipped language's (the pop-up may be narrower)
+  - a FileScreen line wider than any shipped language's (the pop-up may be narrower); a story
+    line wider than the widest line any shipped language uses for that text
   - text identical to the Spanish original (copied by mistake?)
 TODO (never fail): · used while font/glyphs/0357.png doesn't exist yet.
 Untranslated IDs show in English; --release fails if any remain.
@@ -28,7 +30,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 import gap  # noqa: E402
 
-FIXED_LINES = {"message", "location", "story", "file_screen"}
+FIXED_LINES = {"message", "location", "file_screen"}
+# Story screens have room for more lines and differ between languages (German and English use
+# 7 and 8 where the Spanish uses 6): bounded by the shipped languages instead.
+SHIPPED_BOUNDS = {"story"}
 LOOKALIKES = {"’": "'", "‘": "'", "“": "”", "–": "-", "—": "-", "€": "(not in the font)"}
 
 
@@ -98,10 +103,18 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
             ca_lines, es_lines = text.split("\\n"), es.split("\\n")
             if category in FIXED_LINES and len(ca_lines) != len(es_lines):
                 err(f"{len(ca_lines)} lines, the Spanish has {len(es_lines)} (the box is fixed)")
+            if category in SHIPPED_BOUNDS:
+                most = max(len(strings[o[idx]].split("\\n")) for o in others if idx in o)
+                if len(ca_lines) > most:
+                    err(f"{len(ca_lines)} lines, no shipped language uses more than {most}")
+                widest_any = max(catext.line_layout(l, w)["pen_end"] for o in others if idx in o
+                                 for l in catext.split_lines(strings[o[idx]]))
             for ln, line in enumerate(catext.split_lines(text), 1):
                 lay = catext.line_layout(line, w)
                 if lay["overflow"]:
                     err(f"line {ln} is {lay['pen_end']} px, over the {catext.LINE_LIMIT} px limit")
+                elif category in SHIPPED_BOUNDS and lay["pen_end"] > widest_any:
+                    warn(f"line {ln} is {lay['pen_end']} px, wider than any shipped language ({widest_any} px)")
                 elif category == "file_screen":
                     widest = max((catext.line_layout(l, w)["pen_end"]
                                   for o in others if idx in o

@@ -41,7 +41,39 @@ Approved by Guillem:
 | tombarella, gir | Screw Attack, Space Jump | "Fes tombarelles…", "en ple gir" (short form in the same entry). |
 | dany | Varia Suit, Gravity Suit | "Redueix el dany…". |
 
-## Game over prompt (pilot graphic) — DECIDED
+## PROPOSED terms in use (Story block)
+
+Option 1 of each glossary row. To confirm:
+
+| Term | ID | Notes |
+|---|---|---|
+| pirates de l'espai | STORY_TEXT_THE_TIMING | First use of "Space Pirates" in running text. |
+| metroides (organismes metroides) | STORY_TEXT_EXTERMINATE | "Metroid organisms": adapted as a common noun, here an adjective. |
+| Missió Zero | STORY_TEXT_PLANET_ZEBES | "My so-called Zero Mission". |
+
+## Line notes (Story block)
+
+Story screens take as many lines as the longest shipped language uses for that text (the
+linter checks it): THE_TIMING has 7 lines (Spanish 6, German 7, English 8), so the Space
+Pirates' attack and the "rather useless" pistol of the English stay. Lines are kept within the
+widest shipped line of each text.
+
+- **STORY_TEXT_PLANET_ZEBES**: "Planeta Zebes... Fa molt, en temps de pau, abans que el mal
+  s'escampés per les cavernes, aquest lloc era casa meva. Ara, per fi, explicaré la meva
+  primera batalla aquí... L'anomenada Missió Zero." ("haunted" as "s'escampés per": spread
+  through). The signature keeps its vanilla position.
+- **STORY_TEXT_THE_TIMING**: "La fuga no podia arribar en pitjor moment." for "The timing of
+  my escape couldn't have been worse"; pluperfect for the attack that came before.
+- **STORY_TEXT_COULD_I_SURVIVE**: two lines like the Spanish ("Aconseguiria sobreviure prou
+  temps / per escapar?").
+- **Intro subtitles** (EMERGENCY, EXTERMINATE, DEFEAT): under the typed English graphic, as
+  in every language. Orders in the infinitive, like the Spanish ("Exterminar…", "I
+  derrotar…"). "planeta Zebes" in lowercase in running text (IEC: generic noun + name); the
+  banner keeps "PLANETA ZEBES". Mother Brain without an article, as an apposition.
+- All six checked in game (intro after the language screen; story cutscenes with the preview
+  L+R+Left).
+
+ — DECIDED
 
 - `gfx/menus/game_over/text_prompt_spanish.png`, made by `tools/gfx_game_over.py` from the
   glyphs of the five vanilla prompts: "TORNAR-HO A PROVAR?" / "SÍ (CONTINUA)" / "NO (SURT)".

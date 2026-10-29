@@ -185,7 +185,12 @@ tiempos de paz, antes de que el mal
 arrasara las cavernas, era mi hogar.
 Ahora debo narrar la historia de mi
 primera batalla... La Misión Zero.
--Samus Aran-",,untranslated,
+-Samus Aran-","Planeta Zebes... Fa molt, en temps de pau,
+abans que el mal s'escampés per les
+cavernes, aquest lloc era casa meva. Ara,
+per fi, explicaré la meva primera batalla
+aquí... L'anomenada Missió Zero.
+-Samus Aran-",translated,
 story,STORY_TEXT_THE_TIMING,"Story text (intro, escapes, ending)","The timing of my escape couldn't have
 been worse. I was attacked by Space
 Pirates and left nearly defenseless,
@@ -198,16 +203,25 @@ Como única protección tenía mi pistola
 de emergencia, que no es precisamente
 una gran arma. Puede que infiltrarme en
 la nave nodriza pirata así armada fuera
-estúpido, pero no tenía otra opción...",,untranslated,
+estúpido, pero no tenía otra opción...","La fuga no podia arribar en pitjor moment.
+Els pirates de l'espai m'havien atacat i
+deixat gairebé indefensa, sense el vestit.
+Per protegir-me només tenia la meva pistola
+d'emergència, més aviat inútil. Infiltrar-me
+així armada a la nau nodrissa pirata potser
+era una bogeria, però no tenia elecció...",translated,
 story,STORY_TEXT_COULD_I_SURVIVE,"Story text (intro, escapes, ending)",Could I survive long enough to escape?,"¿Podría sobrevivir lo suficiente
-para escapar?",,untranslated,
-story,STORY_TEXT_EMERGENCY,"Story text (intro, escapes, ending)",Emergency Order,Orden de emergencia,,untranslated,
+para escapar?","Aconseguiria sobreviure prou temps
+per escapar?",translated,
+story,STORY_TEXT_EMERGENCY,"Story text (intro, escapes, ending)",Emergency Order,Orden de emergencia,Ordre d'emergència,translated,
 story,STORY_TEXT_EXTERMINATE,"Story text (intro, escapes, ending)","Exterminate all Metroid organisms
 on Planet Zebes...","Exterminar a todos los organismos
-Metroid del Planeta Zebes...",,untranslated,
+Metroid del Planeta Zebes...","Exterminar tots els organismes
+metroides del planeta Zebes...",translated,
 story,STORY_TEXT_DEFEAT,"Story text (intro, escapes, ending)","And defeat the mechanical life-form,
 Mother Brain.","Y derrotar a la forma de vida mecánica
-Mother Brain.",,untranslated,
+Mother Brain.","I derrotar la forma de vida mecànica,
+Mother Brain.",translated,
 file_screen,FILE_SCREEN_TEXT_START_GAME,File select,"Start Game
 Start Game (Link)","Jugar
 Jugar (Link)",,untranslated,

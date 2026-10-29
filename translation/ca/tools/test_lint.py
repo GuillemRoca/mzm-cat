@@ -115,6 +115,14 @@ class LintTest(unittest.TestCase):
         items, _ = self.run_lint({"message": [extra]})
         self.assertTrue(any("2 GAPs" in m for _, _, m in items), items)
 
+    def test_story_lines_bounded_by_shipped_languages(self):
+        seven = "\\n".join(["Línia"] * 7)
+        items, _ = self.run_lint({"story": [f'STORY_TEXT_THE_TIMING = "{seven}"']})
+        self.assertFalse(any("lines" in m for _, _, m in items), items)
+        nine = "\\n".join(["Línia"] * 9)
+        items, _ = self.run_lint({"story": [f'STORY_TEXT_THE_TIMING = "{nine}"']})
+        self.assertOnly(items, "error", "no shipped language uses more than 8")
+
     def test_file_screen_gap_positions(self):
         line = 'FILE_SCREEN_TEXT_COPY_CONFIRM = "Vols sobreescriure\\naquest fitxer？\\n{GAP(30)}Sí{GAP(34)}No"'
         items, _ = self.run_lint({"file_screen": [line]})
