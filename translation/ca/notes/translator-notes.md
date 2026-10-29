@@ -73,9 +73,9 @@ widest shipped line of each text.
 - All six checked in game (intro after the language screen; story cutscenes with the preview
   L+R+Left).
 
-## PROPOSED terms in use (FileScreen block)
+## Terms used in the FileScreen block — APPROVED
 
-Option 1 of each glossary row. To confirm:
+Approved by Guillem:
 
 | Term | Where | Notes |
 |---|---|---|
@@ -106,6 +106,17 @@ Option 1 of each glossary row. To confirm:
 - Seen in game: Juga and the difficulty menu. The copy and erase pop-ups need a file with a
   saved game, and the corrupt-file and Fusion link messages special conditions: not seen yet
   (widths checked by the linter only).
+
+## Title screen menu
+
+- `gfx/menus/title_screen/spanish_menu_{top,bottom}.png`, made by `tools/gfx_title_menu.py`:
+  "JUGA" (approved Start Game) and "Idioma" (the same word as the Spanish, untouched). JUGA is
+  the Spanish JUGAR without its R. The bottom half's C array has no word to spare, so the label
+  sits at the most centred column that still compresses small enough: centre 49 instead of
+  47.5, 1.5 px right of the vanilla labels (not visible in game next to "Idioma").
+- `gfx.py` now also tries an optimal LZ77 parse and keeps the smaller result (the greedy
+  gbagfx parse was a word too big even at that column).
+- Checked in game, both entries selected.
 
 ## Game over prompt (pilot graphic) — DECIDED
 

@@ -86,6 +86,8 @@ def graphic_rows():
         ("game_over_prompt", "Game over screen", "TRY AGAIN?\nYES (RETURN TO GAME)\nNO (TO TITLE SCREEN)",
          "¿VOLVER A INTENTARLO?\nSÍ (CONTINUAR)\nNO (SALIR)", "\n".join(gfx_game_over.CATALAN),
          "menus/game_over/text_prompt_spanish"),
+        ("title_start", "Title screen menu", "START GAME", "JUGAR", "JUGA", "menus/title_screen/spanish_menu_top"),
+        ("title_language", "Title screen menu", "Language", "Idioma", "Idioma", "menus/title_screen/spanish_menu_top"),
         ("pause_tab_l", "Pause screen, L tab (Easy Sleep)", "SLEEP", "SALVAP.", menu["L"],
          "menus/pause_screen/menu_names_spanish"),
         ("pause_tab_r", "Pause screen, R tab (status)", "STATUS", "ESTADO", menu["R"],

@@ -125,9 +125,14 @@ BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its 
 - In the release build: the prologue at the start of a new file; the other two after the Zebes
   escape.
 
+## Title screen
+
+After the intro (or Start): "JUGA" and "Idioma", centred one above the other; Up/Down moves the
+highlight between them.
+
 ## File select
 
-Title → JUGAR → file select. On an empty file, A shows "Juga" and then "Dificultat / FÀCIL /
+Title → JUGA → file select. On an empty file, A shows "Juga" and then "Dificultat / FÀCIL /
 NORMAL". With a saved game (save once at a save station): A on that file shows "Continua /
 Nova partida", COPIAR shows "Tria el fitxer que vols copiar." and "Tria el fitxer on vols
 copiar les dades.", BORRAR "Tria el fitxer que vols esborrar." and "Vols esborrar aquest

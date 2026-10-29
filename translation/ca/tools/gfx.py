@@ -87,7 +87,59 @@ def encode(png, num_tiles, tmp):
     tiles.write_bytes(data[:end])
     lz = Path(tmp) / "edited.4bpp.lz"
     gbagfx(tiles, lz)
-    return data[:end], lz.read_bytes()
+    best = lz77_optimal(data[:end])
+    return data[:end], min(lz.read_bytes(), best, key=len)
+
+
+def lz77_optimal(data, min_disp=2):
+    """GBA LZ77 (type 0x10) with an optimal parse: the fewest bits for the given data, where
+    gbagfx's greedy parse can come out a word too big for a fixed-size C array. Matches never
+    point to the previous byte (min_disp 2), so the data can be decompressed straight to VRAM."""
+    n = len(data)
+    by_prefix, longest = {}, [(0, 0)] * n
+    for i in range(n):
+        best_len, best_disp = 0, 0
+        if i + 3 <= n:
+            for j in reversed(by_prefix.get(data[i:i + 3], [])):
+                disp = i - j
+                if disp > 4096:
+                    break
+                if disp < min_disp:
+                    continue
+                k = 3
+                while k < 18 and i + k < n and data[j + k] == data[i + k]:
+                    k += 1
+                if k > best_len:
+                    best_len, best_disp = k, disp
+                    if k == 18:
+                        break
+        longest[i] = (best_len, best_disp)
+        if i >= 2:
+            by_prefix.setdefault(data[i - 2:i + 1], []).append(i - 2)
+    cost, choice = [0] * (n + 1), [None] * n
+    for i in range(n - 1, -1, -1):
+        cost[i], choice[i] = 9 + cost[i + 1], (1, 0)
+        length, disp = longest[i]
+        for k in range(3, length + 1):
+            if 17 + cost[i + k] < cost[i]:
+                cost[i], choice[i] = 17 + cost[i + k], (k, disp)
+    out = bytearray([0x10, n & 0xFF, (n >> 8) & 0xFF, (n >> 16) & 0xFF])
+    i = 0
+    while i < n:
+        flag_at, flags = len(out), 0
+        out.append(0)
+        for bit in range(8):
+            if i >= n:
+                break
+            k, disp = choice[i]
+            if disp:
+                flags |= 0x80 >> bit
+                out += bytes([((k - 3) << 4) | ((disp - 1) >> 8), (disp - 1) & 0xFF])
+            else:
+                out.append(data[i])
+            i += k
+        out[flag_at] = flags
+    return bytes(out)
 
 
 def vanilla_tiles(key):

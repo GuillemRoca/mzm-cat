@@ -425,6 +425,8 @@ SÍ (CONTINUAR)
 NO (SALIR)","TORNAR-HO A PROVAR?
 SÍ (CONTINUA)
 NO (SURT)",translated,
+graphics,title_start,Title screen menu,START GAME,JUGAR,JUGA,translated,
+graphics,title_language,Title screen menu,Language,Idioma,Idioma,translated,
 graphics,pause_tab_l,"Pause screen, L tab (Easy Sleep)",SLEEP,SALVAP.,REPÒS,translated,
 graphics,pause_tab_r,"Pause screen, R tab (status)",STATUS,ESTADO,ESTAT,translated,
 graphics,pause_change_area,"Pause screen, map: change area",CHANGE AREAS,CAMBIAR ZONA,CANVIA ZONA,translated,

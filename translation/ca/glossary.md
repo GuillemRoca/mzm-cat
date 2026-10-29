@@ -98,13 +98,13 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 |---|---|---|---|---|
 | Save (verb) | Guardar | Guardar | APPROVED | Chosen by Guillem over "desar", to match "Sala de guardat". |
 | Save complete | Datos almacenados | Partida guardada | APPROVED | |
-| Yes / No | Sí / No | Sí / No | PROPOSED | Only option; widths match the Spanish, so the cursor positions carry over. |
-| Start Game | Jugar | 1. Juga<br>2. Comença la partida<br>3. Jugar | PROPOSED | 1. Imperative, like the other menu commands (Softcatalà style).<br>2. Literal, may not fit.<br>3. Infinitive, mirrors the Spanish. |
+| Yes / No | Sí / No | Sí / No | APPROVED | Only option; widths match the Spanish, so the cursor positions carry over. |
+| Start Game | Jugar | Juga | APPROVED | Imperative, like the other menu commands (Softcatalà style). |
 | Language (title menu) | Idioma | Idioma | APPROVED | Common in menus. |
 | Copy / Erase / Options | COPIAR / BORRAR / OPCIONES | 1. Copia / Esborra / Opcions<br>2. Copiar / Esborrar / Opcions | PROPOSED | 1. Imperative commands (Softcatalà).<br>2. Infinitives like the Spanish. |
 | Samus Data (file select title) | DATOS DE SAMUS | 1. Dades de la Samus<br>2. Partides | PROPOSED | 1. Literal, with the personal article.<br>2. Shorter, says what the screen holds. |
-| Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | PROPOSED | Only option; each label must fit 40 px (difficulty graphic). |
-| Time Attack | TIME ATTACK | 1. Contrarellotge<br>2. Time Attack | PROPOSED | 1. Natural Catalan sports term.<br>2. Kept as in the Spanish. |
+| Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | APPROVED | Only option; each label must fit 40 px (difficulty graphic). |
+| Time Attack | TIME ATTACK | Contrarellotge | APPROVED | Natural Catalan sports term. |
 | Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | PROPOSED | Only option. *pause box* |
 | Change area (map) | CAMBIAR ZONA | 1. Canvia zona<br>2. Canvia d'àrea | PROPOSED | 1. Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn).<br>2. Uses "àrea" like the English, needs À. |
 | Energy (status) | ENERGÍA | Energia | APPROVED | Only option. *pause box* |
@@ -112,13 +112,13 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
 | Misc (status group) | OTROS | Altres | APPROVED | Mirrors the Spanish. *pause box* |
 | Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | APPROVED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
-| Gallery | Galería | Galeria | PROPOSED | Only option. |
-| Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
-| Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |
-| Data file / save file (file select) | archivo | 1. fitxer<br>2. partida | PROPOSED | 1. The standard computing term ("Tria el fitxer…", "Fitxer A malmès").<br>2. What a player calls it; "Partida guardada" already uses it for the saved game. |
-| New (file select: new game) | Nuevo | 1. Nova partida<br>2. Nova | PROPOSED | 1. Says what it starts.<br>2. Shorter, like the Spanish "Nuevo". |
-| Password (Time Attack) | Contraseña | Contrasenya | PROPOSED | Only option. |
-| Linking / link (Fusion link) | Conectando / conexión | Connectant / connexió | PROPOSED | Only option. |
+| Gallery | Galería | Galeria | APPROVED | Only option. |
+| Sound Test | Prueba de sonido | Prova de so | APPROVED | Literal. |
+| Original Metroid | Metroid original | Metroid original | APPROVED | Only option. |
+| Data file / save file (file select) | archivo | fitxer | APPROVED | The standard computing term ("Tria el fitxer…", "Fitxer A malmès"). |
+| New (file select: new game) | Nuevo | Nova partida | APPROVED | Says what it starts. |
+| Password (Time Attack) | Contraseña | Contrasenya | APPROVED | Only option. |
+| Linking / link (Fusion link) | Conectando / conexión | Connectant / connexió | APPROVED | Only option. |
 | Easy Sleep | salvapantallas (tab SALVAP.) | Mode repòs (tab REPÒS) | APPROVED | Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä). |
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |
