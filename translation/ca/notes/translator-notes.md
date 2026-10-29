@@ -76,11 +76,21 @@ Approved by Guillem:
   ATAC ESPIRAL, SALT ESPACIAL (55 of 55 px), PISTOLA.
 - Checked in game with the normal suit (unknown items), the fully powered suit and suitless.
 
-### PROPOSED terms in use (equipment names) — to confirm
+### Terms used in the equipment names — APPROVED
 
-Option 1 of each glossary row: Míssil (heading MÍSSIL), Vestit gravitatori (GRAVITATORI), Raig
-de plasma (PLASMA), Salt espacial (SALT ESPACIAL), Pistola (PISTOLA), and the status groups
-Energia, Raig, Altres, and Arma (new: the suitless group, GUN in English).
+Approved by Guillem: Míssil (heading MÍSSIL), Vestit gravitatori (GRAVITATORI), Raig de plasma
+(PLASMA), Salt espacial (SALT ESPACIAL), Pistola (PISTOLA), and the status groups Energia,
+Raig, Altres and Arma (the suitless group, GUN in English).
+
+## Unknown item names (revealed with the fully powered suit)
+
+- `gfx/menus/pause_screen/map_screen_unknown_items_names_spanish.png`, made by
+  `tools/gfx_unknown_items.py`: the three names drawn as sprites over the status screen bars
+  while the fully powered suit reveals them. PLASMA stays; "SALTO ESPACIAL" (drawn without its
+  space in the Spanish) becomes SALT ESPACIAL (54 of 55 px, with the space), GRAVITATORIO
+  becomes GRAVITATORI, matching the equipment names. Letters are cut from the Spanish names,
+  same font as the status screen items.
+- Checked in game: preview L+R+Down twice plays the reveal; all three names flash in their bars.
 
 ## Language selector
 

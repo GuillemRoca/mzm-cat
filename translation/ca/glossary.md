@@ -53,11 +53,11 @@ approving them.
 |---|---|---|---|---|
 | Power Suit | traje | Vestit | APPROVED | *pause box* |
 | Varia Suit | Traje climático | Vestit climàtic | APPROVED | *pause box* |
-| Gravity Suit | (Traje) gravitatorio | 1. Vestit gravitatori<br>2. Vestit de gravetat | PROPOSED | 1. Your preference; mirrors "climàtic" as an adjective. *pause box*<br>2. Noun complement; also common. |
+| Gravity Suit | (Traje) gravitatorio | Vestit gravitatori | APPROVED | Your preference; mirrors "climàtic" as an adjective. *pause box* |
 | Fully Powered Suit | traje totalmente equipado | Vestit complet | APPROVED | short. |
 | Zero Suit | (no name in text) | 1. Vestit Zero<br>2. vestit zero | PROPOSED | 1. Your preference; "Zero" as the suit's name, like "Mission Zero".<br>2. Fully sentence case. |
 | Energy Tank | Tanque de energía | Tanc d'energia | APPROVED | the established series term. |
-| Missile | Misil | Míssil | PROPOSED | 1. Míssil: only option. *pause box* (MISIL) |
+| Missile | Misil | Míssil | APPROVED | Míssil: only option. *pause box* (MISIL) |
 | Missile Tank | Tanque de misiles | Tanc de míssils | APPROVED | parallel to "Tanc d'energia". |
 | Super Missile | Supermisil | Supermíssil | APPROVED | one word like the Spanish. *pause box* (SÚPER) |
 | Super Missile Tank | Tanque de supermisiles | Tanc de supermíssils | APPROVED | Follows "Tanc de míssils" and "Supermíssil". |
@@ -68,14 +68,14 @@ approving them.
 | Charge Beam | Rayo Recarga | Raig de càrrega | APPROVED | *pause box* (RECARGA) |
 | Ice Beam | Rayo de Hielo | Raig de gel | APPROVED | parallel to the Spanish. *pause box* (HIELO) |
 | Wave Beam | Rayo de Ondas | Raig d'ones | APPROVED | Your preference. *pause box* (ONDAS) |
-| Plasma Beam | (Rayo) Plasma | 1. Raig de plasma<br>2. Raig plasmàtic | PROPOSED | 1. Your preference. *pause box* (PLASMA)<br>2. Adjective, less natural. |
+| Plasma Beam | (Rayo) Plasma | Raig de plasma | APPROVED | Your preference. *pause box* (PLASMA) |
 | Morph Ball | Morfosfera | Morfosfera | APPROVED | *pause box* |
 | Speed Booster | Aceleración | Acceleració | APPROVED | *pause box* |
 | Hi-Jump | Supersalto | Supersalt | APPROVED | *pause box* |
 | Screw Attack | Salto en barrena | Atac espiral | APPROVED | *pause box* |
-| Space Jump | Salto espacial | 1. Salt espacial<br>2. Salt a l'espai | PROPOSED | 1. Your preference; mirrors the Spanish. *pause box*<br>2. More literal, longer. |
+| Space Jump | Salto espacial | Salt espacial | APPROVED | Your preference; mirrors the Spanish. *pause box* |
 | Power Grip | Agarre | Arrapada | APPROVED | *pause box* |
-| Pistol (Zero Suit) | Pistola | Pistola | PROPOSED | 1. Pistola: only option. *pause box* |
+| Pistol (Zero Suit) | Pistola | Pistola | APPROVED | Pistola: only option. *pause box* |
 | Unknown Item | Objeto desconocido | Objecte desconegut | APPROVED | literal. |
 | Hatch (door) | escotilla | comporta | APPROVED | A sealed door that opens like a gate; reads as sci-fi. Used in the descriptions ("comportes vermelles"). |
 | Charge Attack | Ataque carga | Atac de càrrega | APPROVED | Parallel to "Raig de càrrega". |
@@ -106,11 +106,11 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Time Attack | TIME ATTACK | 1. Contrarellotge<br>2. Time Attack | PROPOSED | 1. Natural Catalan sports term.<br>2. Kept as in the Spanish. |
 | Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | PROPOSED | Only option. *pause box* |
 | Change area (map) | CAMBIAR ZONA | 1. Canvia zona<br>2. Canvia d'àrea | PROPOSED | 1. Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn).<br>2. Uses "àrea" like the English, needs À. |
-| Energy (status) | ENERGÍA | Energia | PROPOSED | Only option. *pause box* |
-| Beam (status group) | RAYO | Raig | PROPOSED | Only option. *pause box* |
+| Energy (status) | ENERGÍA | Energia | APPROVED | Only option. *pause box* |
+| Beam (status group) | RAYO | Raig | APPROVED | Only option. *pause box* |
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
-| Misc (status group) | OTROS | 1. Altres<br>2. Diversos | PROPOSED | 1. Mirrors the Spanish. *pause box*<br>2. Slightly more precise. |
-| Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | PROPOSED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
+| Misc (status group) | OTROS | Altres | APPROVED | Mirrors the Spanish. *pause box* |
+| Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | APPROVED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
 | Gallery | Galería | Galeria | PROPOSED | Only option. |
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |

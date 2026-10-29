@@ -385,5 +385,8 @@ graphics,status_screw,"Status screen, equipment item",SCREW ATTACK,S. EN BARRENA
 graphics,status_space,"Status screen, equipment item",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
 graphics,status_gun,"Status screen, equipment heading",GUN,PISTOLA,ARMA,translated,
 graphics,status_pistol,"Status screen, equipment item",PISTOL,LÁSER,PISTOLA,translated,
+graphics,unknown_plasma,"Status screen, unknown item revealed (fully powered suit)",PLASMA,PLASMA,PLASMA,translated,
+graphics,unknown_space_jump,"Status screen, unknown item revealed (fully powered suit)",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
+graphics,unknown_gravity,"Status screen, unknown item revealed (fully powered suit)",GRAVITY,GRAVITATORIO,GRAVITATORI,translated,
 credits,translation,"Staff credits, TRANSLATION section",,,"CATALAN
 Guillem Roca Castany",translated,

@@ -24,6 +24,7 @@ import catext  # noqa: E402
 import gencredits  # noqa: E402
 import gfx_equipment_names  # noqa: E402
 import gfx_game_over  # noqa: E402
+import gfx_unknown_items  # noqa: E402
 import gfx_menu_names  # noqa: E402
 
 OUT = catext.CA / "translations.csv"
@@ -97,6 +98,10 @@ def graphic_rows():
         kind = "heading" if key in eq.HEADINGS else "item"
         g.append((f"status_{key}", f"Status screen, equipment {kind}", en, es, eq.catalan(key),
                   "menus/pause_screen/equipment_names_spanish"))
+    for key, (_, _, es, en, ca) in gfx_unknown_items.NAMES.items():
+        es = {"SALTOESPACIAL": "SALTO ESPACIAL"}.get(es, es)    # drawn without the space
+        g.append((f"unknown_{key}", "Status screen, unknown item revealed (fully powered suit)", en, es,
+                  ca or es, "menus/pause_screen/map_screen_unknown_items_names_spanish"))
     rows = [{"section": "graphics", "id": id_, "where": where, "english": en, "spanish": es, "catalan": ca,
              "status": "translated" if (catext.CA / "gfx" / f"{key}.png").exists() else "untranslated"}
             for id_, where, en, es, ca, key in g]

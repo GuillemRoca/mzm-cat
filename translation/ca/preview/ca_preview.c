@@ -7,7 +7,7 @@
 //   L + R + UP      play the credits (no ending save is written)
 //   L + R + DOWN    give every item and full ammo; again: cycle the suit (normal, fully powered,
 //                   suitless) to see the unknown-item, real and pistol descriptions in the pause
-//                   screen
+//                   screen. Switching to fully powered plays the unknown items' reveal.
 //
 // The banner is spawned with a harmless message as its behaviour (no item, save or escape side
 // effects), then its text is swapped for the previewed one: TextStartMessage() copies the
@@ -113,6 +113,9 @@ static void CaPreviewUpdate(void)
             BBF_CHARGE_BEAM | BBF_BOMBS))
         {
             gEquipment.suitType = gEquipment.suitType >= SUIT_SUITLESS ? SUIT_NORMAL : gEquipment.suitType + 1;
+            // As after the Chozo ruins test: the status screen reveals the unknown items
+            if (gEquipment.suitType == SUIT_FULLY_POWERED)
+                gPauseScreenFlag = PAUSE_SCREEN_FULLY_POWERED_SUIT_ITEMS;
             return;
         }
         gEquipment.beamBombs = BBF_LONG_BEAM | BBF_ICE_BEAM | BBF_WAVE_BEAM | BBF_PLASMA_BEAM |

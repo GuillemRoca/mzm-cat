@@ -106,7 +106,10 @@ line per page (A for the next page). Every page must fit, with the arrow after t
 
 Press **L + R + Down** again (before pausing) to cycle the suit: normal (Plasma Beam, Gravity
 Suit and Space Jump show "Anàlisi no concloent."), fully powered (their real descriptions),
-suitless (the pistol). In the release build, the descriptions appear as items are collected.
+suitless (the pistol). Switching to fully powered plays the reveal of the unknown items, as
+after the Chozo ruins test: PLASMA, GRAVITATORI and SALT ESPACIAL flash in their bars (A goes
+through their descriptions; afterwards Samus is back at the start of Brinstar). In the release
+build, the descriptions appear as items are collected.
 
 The same screens show the equipment names (the graphic): headings ENERGIA, RAIG, MÍSSIL,
 BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its bar.
