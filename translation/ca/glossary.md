@@ -29,7 +29,7 @@ approving them.
 | Mecha Ridley | Mecha Ridley | Mecha Ridley | APPROVED | |
 | Chozo | Chozo | Chozo | APPROVED | |
 | Galactic Federation | (not in MZM) | Federació Galàctica | PROPOSED | 1. Federació Galàctica: keeps its capitals per the naming policy; only reasonable rendering. |
-| Space Pirates | piratas (Nave nodriza pirata) | 1. pirates de l'espai<br>2. pirates espacials<br>3. pirates | PROPOSED | 1. Literal, natural Catalan; your preference.<br>2. Adjectival like the Spanish, a little more technical.<br>3. For tight boxes, where context makes "de l'espai" redundant. |
+| Space Pirates | piratas (Nave nodriza pirata) | pirates de l'espai | APPROVED | Literal, natural Catalan; your preference. |
 
 ## Places
 
@@ -39,7 +39,7 @@ approving them.
 | Brinstar, Norfair, Crateria, Tourian, Chozodia | same | same | APPROVED | Area names stay unchanged. |
 | Kraid, Ridley (areas) | KRAID, RIDLEY | KRAID, RIDLEY | APPROVED | |
 | Mother Ship | nave nodriza | Nau nodrissa | APPROVED | |
-| Zero Mission (Samus's first mission) | Misión Zero | 1. Missió Zero<br>2. Missió zero | PROPOSED | 1. A name, like "Vestit Zero".<br>2. Sentence case. |
+| Zero Mission (Samus's first mission) | Misión Zero | Missió Zero | APPROVED | A name, like "Vestit Zero". |
 | Space Pirate Mother Ship (banner) | NAVE NODRIZA PIRATA | Nau nodrissa pirata | APPROVED | Banner shows NAU NODRISSA PIRATA. |
 | Planet Zebes | PLANETA ZEBES | Planeta Zebes | APPROVED | Banner text, as in Spanish and English. |
 | Save Room | ESTACIÓN DE GUARDADO | Sala de guardat | APPROVED | Chosen by Guillem; same verb as the save prompts (Guardar？, Partida guardada). |
@@ -89,7 +89,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 
 | English | Spanish (EU) | Catalan | status | notes |
 |---|---|---|---|---|
-| Metroid (species) | Metroid | 1. metroide / metroides<br>2. Metroid (invariable) | PROPOSED | 1. Your preference; adapted as a common noun, plural with -s.<br>2. Kept as in English and Spanish, but awkward in Catalan plurals. |
+| Metroid (species) | Metroid | metroide / metroides | APPROVED | Your preference; adapted as a common noun, plural with -s. |
 | Kraid, Ridley, Mecha Ridley, Mother Brain | same | same | APPROVED | See Characters. |
 
 ## UI terms
@@ -115,6 +115,10 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Gallery | Galería | Galeria | PROPOSED | Only option. |
 | Sound Test | Prueba de sonido | 1. Prova de so<br>2. Test de so | PROPOSED | 1. Literal.<br>2. Shorter, common in Catalan games. |
 | Original Metroid | Metroid original | Metroid original | PROPOSED | Only option. |
+| Data file / save file (file select) | archivo | 1. fitxer<br>2. partida | PROPOSED | 1. The standard computing term ("Tria el fitxer…", "Fitxer A malmès").<br>2. What a player calls it; "Partida guardada" already uses it for the saved game. |
+| New (file select: new game) | Nuevo | 1. Nova partida<br>2. Nova | PROPOSED | 1. Says what it starts.<br>2. Shorter, like the Spanish "Nuevo". |
+| Password (Time Attack) | Contraseña | Contrasenya | PROPOSED | Only option. |
+| Linking / link (Fusion link) | Conectando / conexión | Connectant / connexió | PROPOSED | Only option. |
 | Easy Sleep | salvapantallas (tab SALVAP.) | Mode repòs (tab REPÒS) | APPROVED | Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä). |
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | 1. Missió complerta!<br>2. Missió acomplerta! | PROPOSED | 1. Standard; buildable from the existing ending glyphs.<br>2. Also correct, more formal. |

@@ -224,145 +224,199 @@ Mother Brain.","I derrotar la forma de vida mecànica,
 Mother Brain.",translated,
 file_screen,FILE_SCREEN_TEXT_START_GAME,File select,"Start Game
 Start Game (Link)","Jugar
-Jugar (Link)",,untranslated,
+Jugar (Link)","Juga
+Juga (Link)",translated,
 file_screen,FILE_SCREEN_TEXT_COPY_SOURCE_CHOOSE,File select,"Choose a data file
 to copy.","Elige el archivo
-que quieres copiar.",,untranslated,
+que quieres copiar.","Tria el fitxer
+que vols copiar.",translated,
 file_screen,FILE_SCREEN_TEXT_COPY_DESTINATION_CHOOSE,File select,"Choose a file to copy
 the data to.","Elige un archivo al
-que copiar los datos.",,untranslated,
+que copiar los datos.","Tria el fitxer on vols
+copiar les dades.",translated,
 file_screen,FILE_SCREEN_TEXT_COPY_CONFIRM,File select,"OK to copy over
 this data?
 Yes  No","¿Quieres sobrescribir
 este archivo?
-Sí  No",,untranslated,
+Sí  No","Vols sobreescriure
+aquest fitxer?
+Sí  No",translated,
 file_screen,FILE_SCREEN_TEXT_ERASE_CHOOSE,File select,"Choose a data file to
 erase.","Elige el archivo
-que quieres borrar.",,untranslated,
+que quieres borrar.","Tria el fitxer
+que vols esborrar.",translated,
 file_screen,FILE_SCREEN_TEXT_ERASE_CONFIRM,File select,"OK to erase this
 data file?
 Yes  No","¿Quieres borrar
 este archivo?
-Sí  No",,untranslated,
+Sí  No","Vols esborrar
+aquest fitxer?
+Sí  No",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_A_CORRUPT_REVERT,File select,"File A is corrupted.
 Reverting to past data.","Archivo A dañado.
 Usando datos
-anteriores.",,untranslated,
+anteriores.","Fitxer A malmès.
+Recuperant les
+dades anteriors.",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_B_CORRUPT_REVERT,File select,"File B is corrupted.
 Reverting to past data.","Archivo B dañado.
 Usando datos
-anteriores.",,untranslated,
+anteriores.","Fitxer B malmès.
+Recuperant les
+dades anteriors.",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_C_CORRUPT_REVERT,File select,"File C is corrupted.
 Reverting to past data.","Archivo C dañado.
 Usando datos
-anteriores.",,untranslated,
+anteriores.","Fitxer C malmès.
+Recuperant les
+dades anteriors.",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_A_CORRUPT_ERASE,File select,"File A is corrupted.
 Erasing File A...","Archivo A dañado.
-Borrando archivo A...",,untranslated,
+Borrando archivo A...","Fitxer A malmès.
+Esborrant fitxer A...",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_B_CORRUPT_ERASE,File select,"File B is corrupted.
 Erasing File B...","Archivo B dañado.
-Borrando archivo B...",,untranslated,
+Borrando archivo B...","Fitxer B malmès.
+Esborrant fitxer B...",translated,
 file_screen,FILE_SCREEN_TEXT_FILE_C_CORRUPT_ERASE,File select,"File C is corrupted.
 Erasing File C...","Archivo C dañado.
-Borrando archivo C...",,untranslated,
+Borrando archivo C...","Fitxer C malmès.
+Esborrant fitxer C...",translated,
 file_screen,FILE_SCREEN_TEXT_ERASE_ALL_REFORMAT,File select,"OK to erase all Samus data
 and reformat save files?","¿Quieres borrar todos los datos
-y reformatear los archivos?",,untranslated,
+y reformatear los archivos?","Vols esborrar totes les dades
+i tornar a formatar els fitxers?",translated,
 file_screen,FILE_SCREEN_TEXT_ERASE_ALL,File select,"OK to erase all Samus
 save data?","¿Quieres borrar todos los
-datos guardados?",,untranslated,
+datos guardados?","Vols esborrar totes les
+dades guardades?",translated,
 file_screen,FILE_SCREEN_TEXT_CONTINUE_NEW,File select,"Continue
 New","Continuar
-Nuevo",,untranslated,
+Nuevo","Continua
+Nova partida",translated,
 file_screen,FILE_SCREEN_TEXT_CONTINUE_NEW_TIME_ATTACK,File select,"Continue
 New
 New Time Attack","Continuar
 Nuevo
-Nuevo reto de tiempo",,untranslated,
+Nuevo reto de tiempo","Continua
+Nova partida
+Nova contrarellotge",translated,
 file_screen,FILE_SCREEN_TEXT_MESSAGE_OPTION,File select,"Message Options
   Kanji
   Hiragana","Opciones de mensaje
   Kanji
-  Hiragana",,untranslated,
+  Hiragana","Opcions de missatge
+  Kanji
+  Hiragana",translated,
 file_screen,FILE_SCREEN_TEXT_DIFFICULTY,File select,"Difficulty Setting
   EASY
   NORMAL","Dificultad
   FÁCIL
-  NORMAL",,untranslated,
+  NORMAL","Dificultat
+  FÀCIL
+  NORMAL",translated,
 file_screen,FILE_SCREEN_TEXT_DIFFICULTY_HARD,File select,"Difficulty Level
   EASY
   NORMAL
   HARD","Nivel de dificultad
   FÁCIL
   NORMAL
-  DIFÍCIL",,untranslated,
+  DIFÍCIL","Nivell de dificultat
+  FÀCIL
+  NORMAL
+  DIFÍCIL",translated,
 file_screen,FILE_SCREEN_TEXT_ERASE_FILE_CONFIRM,File select,"OK to erase all saved
 data?
 (　　　 will not be erased.)
 Yes  No","¿Quieres borrar todos
 los datos guardados?
 (　　　no se borrará).
-Sí  No",,untranslated,
+Sí  No","Vols esborrar totes
+les dades guardades?
+(　　　no s'esborrarà).
+Sí  No",translated,
 file_screen,FILE_SCREEN_TEXT_LINKING_PLEASE_WAIT,File select,"Linking...
 Please wait a moment.","Conectando...
-Espera un momento.",,untranslated,
+Espera un momento.","Connectant...
+Espera un moment.",translated,
 file_screen,FILE_SCREEN_TEXT_UNABLE_TO_DETECT_FUSION,File select,"Unable to detect a
 Metroid Fusion
 Game Pak.","No se ha detectado
 ningún cartucho de
-Metroid Fusion.",,untranslated,
-file_screen,FILE_SCREEN_TEXT_LINKING_ERROR,File select,Linking error.,Error de conexión.,,untranslated,
+Metroid Fusion.","No s'ha detectat
+cap cartutx de
+Metroid Fusion.",translated,
+file_screen,FILE_SCREEN_TEXT_LINKING_ERROR,File select,Linking error.,Error de conexión.,Error de connexió.,translated,
 file_screen,FILE_SCREEN_TEXT_TURN_OFF_CONFIRM_LINK,File select,"Turn the system OFF
 and confirm that the
 Game Link cable is
 properly connected.","Apaga la consola y
 comprueba que el cable
 Game Link está bien
-conectado.",,untranslated,
+conectado.","Apaga la consola i
+comprova que el cable
+Game Link estigui ben
+connectat.",translated,
 file_screen,FILE_SCREEN_TEXT_DO_NOT_TURN_POWER_OFF,File select,"Do not turn the
 POWER OFF.","No apagues
-la consola (OFF).",,untranslated,
+la consola (OFF).","No apaguis
+la consola (OFF).",translated,
 file_screen,FILE_SCREEN_TEXT_DATA_UPLOAD_COMPLETE,File select,"Data upload
 complete.","Descarga de
-datos finalizada.",,untranslated,
+datos finalizada.","Transferència de
+dades completada.",translated,
 file_screen,FILE_SCREEN_TEXT_LINK_COMPLETE,File select,Link complete. You may turn POWER OFF.,"Conexión finalizada.
-Puedes apagar la consola (OFF).",,untranslated,
-file_screen,FILE_SCREEN_TEXT_BEST_TIME,File select,Best Time,Mejor tiempo,,untranslated,
-file_screen,FILE_SCREEN_TEXT_BEST_TIME_100,File select,Best Time100%,Mejor tiempo100%,,untranslated,
+Puedes apagar la consola (OFF).","Connexió completada.
+Ja pots apagar la consola (OFF).",translated,
+file_screen,FILE_SCREEN_TEXT_BEST_TIME,File select,Best Time,Mejor tiempo,Millor temps,translated,
+file_screen,FILE_SCREEN_TEXT_BEST_TIME_100,File select,Best Time100%,Mejor tiempo100%,Millor temps100%,translated,
 file_screen,FILE_SCREEN_TEXT_ID_PASSWORD,File select,"ID
 Password","ID
-Contraseña",,untranslated,
+Contraseña","ID
+Contrasenya",translated,
 file_screen,FILE_SCREEN_TEXT_CANT_COPY_TIME_ATTACK,File select,"You can't copy
 Time Attack data.","No puedes copiar datos
-de retos de tiempo.",,untranslated,
-file_screen,FILE_SCREEN_TEXT_LINKING_ERROR_TRY_AGAIN,File select,Linking error. Try again.,Error de conexión. Vuelve a intentarlo.,,untranslated,
+de retos de tiempo.","No pots copiar dades
+de contrarellotge.",translated,
+file_screen,FILE_SCREEN_TEXT_LINKING_ERROR_TRY_AGAIN,File select,Linking error. Try again.,Error de conexión. Vuelve a intentarlo.,Error de connexió. Torna-ho a provar.,translated,
 file_screen,FILE_SCREEN_TEXT_LINKING_ERROR_CHECK_CONNECTION,File select,"A linking error has
 occurred. Please
 check the connection
 and try again.","Se ha producido un
 error de conexión.
 Comprueba los cables
-y vuelve a intentarlo.",,untranslated,
+y vuelve a intentarlo.","S'ha produït un
+error de connexió.
+Comprova els cables
+i torna-ho a provar.",translated,
 file_screen,FILE_SCREEN_TEXT_GALLERY_UNLOCK,File select,"Gallery has been
 added to the
 OPTIONS screen.","Se ha añadido Galería
 a la pantalla
-OPCIONES.",,untranslated,
+OPCIONES.","S'ha afegit Galeria
+a la pantalla
+OPCIONS.",translated,
 file_screen,FILE_SCREEN_TEXT_TIME_ATTACK_RECORD_UNLOCK,File select,"Time Attack Records
 has been added to
 the OPTIONS screen.","Se ha añadido Récords
 de reto de tiempo a la
-pantalla OPCIONES.",,untranslated,
+pantalla OPCIONES.","S'ha afegit Rècords
+de contrarellotge a la
+pantalla OPCIONS.",translated,
 file_screen,FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK,File select,"Sound Test has
 been added to the
 OPTIONS screen.","Se ha añadido Prueba
 de sonido a la
-pantalla OPCIONES.",,untranslated,
+pantalla OPCIONES.","S'ha afegit Prova
+de so a la
+pantalla OPCIONS.",translated,
 file_screen,FILE_SCREEN_TEXT_NES_METROID_UNLOCK,File select,"Original Metroid has
 been added to the
 OPTIONS screen.","Se ha añadido Metroid
 original a la
-pantalla OPCIONES.",,untranslated,
+pantalla OPCIONES.","S'ha afegit Metroid
+original a la
+pantalla OPCIONS.",translated,
 graphics,language_select,"Language selector, 5th entry",(Spanish slot),Español,Català,translated,
 graphics,game_over_prompt,Game over screen,"TRY AGAIN?
 YES (RETURN TO GAME)

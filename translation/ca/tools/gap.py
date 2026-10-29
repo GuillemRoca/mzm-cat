@@ -10,7 +10,8 @@ Rules (reverse-engineered from all EU languages; text.c only advances the pen by
   message, location   GAP = round_half_even((220 - w) / 2) on every line
   story               GAP = floor((224 - w) / 2) on lines that start with a GAP, except in
                       STORY_TEXT_PLANET_ZEBES, whose GAP(8) margins and GAP(138) are fixed
-  file_screen         GAPs are positions (Yes/No columns), never recomputed
+  file_screen         GAPs are positions (Yes/No columns), never recomputed, except the
+                      "Best Time" labels: GAP = floor((96 - w) / 2)
   description         no GAPs
 w is the sum of the line's glyph widths. GAPs and INDENTs after the leading GAP are layout
 the translator chose (e.g. the extra GAP(8) in the Spanish save prompt) and are not counted.
@@ -25,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 
 FIXED = {"STORY_TEXT_PLANET_ZEBES"}
+CENTRED_FILE_SCREEN = {"FILE_SCREEN_TEXT_BEST_TIME", "FILE_SCREEN_TEXT_BEST_TIME_100"}
 LEAD_GAP = re.compile(r"^\{GAP\((\d+)\)\}")
 
 
@@ -33,6 +35,8 @@ def rule(category, idx):
         return lambda w: round((220 - w) / 2)  # Python rounds half to even
     if category == "story" and idx not in FIXED:
         return lambda w: math.floor((224 - w) / 2)
+    if category == "file_screen" and idx in CENTRED_FILE_SCREEN:
+        return lambda w: math.floor((96 - w) / 2)
     return None
 
 
@@ -64,8 +68,6 @@ def cmd_vanilla():
     w = catext.widths(catalan=False)
     total = diffs = 0
     for category in catext.CATEGORIES:
-        if rule(category, "") is None and category != "story":
-            continue
         for lang in catext.LANGUAGES:
             for idx, sym in catext.table(tables, lang, category):
                 text = strings[sym]

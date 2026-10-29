@@ -14,7 +14,8 @@ Warnings (exit 1 with --release):
   - stale centring GAPs (fix with gap.py fix), a number of GAPs on a line that matches neither
     the Spanish nor the English, or a
     different FileScreen GAP value (those are Yes/No positions)
-  - a FileScreen line wider than any shipped language's (the pop-up may be narrower); a story
+  - a FileScreen line wider than any shipped line drawn into the same text area (pop-ups have
+    four, from sFileScreenMessagesInfo; other FileScreen texts: that text's widest line); a story
     line wider than the widest line any shipped language uses for that text
   - text identical to the Spanish original (copied by mistake?)
 TODO (never fail): · used while font/glyphs/0357.png doesn't exist yet.
@@ -35,6 +36,37 @@ FIXED_LINES = {"message", "location", "file_screen"}
 # 7 and 8 where the Spanish uses 6): bounded by the shipped languages instead.
 SHIPPED_BOUNDS = {"story"}
 LOOKALIKES = {"’": "'", "‘": "'", "“": "”", "–": "-", "—": "-", "€": "(not in the font)"}
+
+
+_FILE_SCREEN_REGIONS = None
+
+
+def file_screen_regions():
+    """{FileScreen ID: {text area}} from sFileScreenMessagesInfo: the file select draws each
+    pop-up into one of four VRAM text areas (the same text can use several)."""
+    global _FILE_SCREEN_REGIONS
+    if _FILE_SCREEN_REGIONS is None:
+        src = (catext.ROOT / "src/data/menus/file_select_data.c").read_text(encoding="utf-8")
+        block = re.search(r"sFileScreenMessagesInfo\[[^]]*\]\[3\] = \{(.*?)\n\};", src, re.S).group(1)
+        _FILE_SCREEN_REGIONS = {}
+        for idx, area in re.findall(r"\{\s*(FILE_SCREEN_TEXT_\w+),\s*(\d+),\s*\d+\s*\}", block):
+            _FILE_SCREEN_REGIONS.setdefault(idx, set()).add(int(area))
+    return _FILE_SCREEN_REGIONS
+
+
+def file_screen_bound(idx, strings, others, w):
+    """(px, description) a FileScreen line may take: the widest line any shipped language draws
+    into the same text area (the narrowest of its areas), or, for texts drawn elsewhere, the
+    widest line of that text in any shipped language."""
+    regions = file_screen_regions()
+    def widest(ids):
+        return max((catext.line_layout(l, w)["pen_end"] for o in others for i in ids if i in o
+                    for l in catext.split_lines(strings[o[i]])), default=0)
+    if idx in regions:
+        bounds = [(widest([i for i, a in regions.items() if area in a]), area) for area in regions[idx]]
+        px, area = min(bounds)
+        return px, f"in text area {area}"
+    return widest([idx]), "of this text"
 
 
 def control_codes(text):
@@ -116,19 +148,16 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
                 elif category in SHIPPED_BOUNDS and lay["pen_end"] > widest_any:
                     warn(f"line {ln} is {lay['pen_end']} px, wider than any shipped language ({widest_any} px)")
                 elif category == "file_screen":
-                    widest = max((catext.line_layout(l, w)["pen_end"]
-                                  for o in others if idx in o
-                                  for k, l in enumerate(catext.split_lines(strings[o[idx]]), 1) if k == ln),
-                                 default=0)
+                    widest, where = file_screen_bound(idx, strings, others, w)
                     if lay["pen_end"] > widest:
-                        warn(f"line {ln} is {lay['pen_end']} px, wider than any shipped language ({widest} px)")
+                        warn(f"line {ln} is {lay['pen_end']} px, wider than any shipped line {where} ({widest} px)")
             ca_gaps, es_gaps, en_gaps = gaps_per_line(text), gaps_per_line(es), gaps_per_line(en)
             for ln, (cg, eg) in enumerate(zip(ca_gaps, es_gaps), 1):
                 # Either vanilla layout is fine (e.g. the save prompt centred like the English)
                 eng = en_gaps[ln - 1] if ln <= len(en_gaps) else eg
                 if len(cg) != len(eg) and len(cg) != len(eng):
                     warn(f"line {ln} has {len(cg)} GAPs, the Spanish has {len(eg)} and the English {len(eng)}")
-                elif category == "file_screen" and cg != eg:
+                elif category == "file_screen" and cg != eg and gap.rule(category, idx) is None:
                     warn(f"line {ln} GAPs {cg} differ from the Spanish {eg} (Yes/No positions)")
             for line, old, new in gap.recompute(category, idx, text, w)[1]:
                 warn(f"line {line}: stale GAP({old}), should be GAP({new}) (gap.py fix)")
