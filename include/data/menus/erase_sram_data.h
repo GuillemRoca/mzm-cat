@@ -18,14 +18,22 @@ extern const u32 sEraseSramMenuConfirmEnglishGfx[191];
 extern const u32 sEraseSramMenuConfirmFrenchGfx[209];
 extern const u32 sEraseSramMenuConfirmGermanGfx[222];
 extern const u32 sEraseSramMenuConfirmItalianGfx[201];
+#ifdef LANG_CA
+extern const u32 sEraseSramMenuConfirmSpanishGfx[];
+#else // !LANG_CA
 extern const u32 sEraseSramMenuConfirmSpanishGfx[204];
+#endif // LANG_CA
 
 extern const u32 sEraseSramMenuQuestionJapaneseGfx[245];
 extern const u32 sEraseSramMenuQuestionEnglishGfx[185];
 extern const u32 sEraseSramMenuQuestionFrenchGfx[187];
 extern const u32 sEraseSramMenuQuestionGermanGfx[205];
 extern const u32 sEraseSramMenuQuestionItalianGfx[221];
+#ifdef LANG_CA
+extern const u32 sEraseSramMenuQuestionSpanishGfx[];
+#else // !LANG_CA
 extern const u32 sEraseSramMenuQuestionSpanishGfx[208];
+#endif // LANG_CA
 
 extern const u32 sEraseSramMenuBoxTileTable[137];
 extern const u32 sEraseSramMenuBackgroundTileTable[368];

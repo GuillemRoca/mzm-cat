@@ -393,6 +393,9 @@ const u16 sChozodiaEscapeOam_MissionAccomplishedItalian_Frame0[OAM_DATA_SIZE(17)
     OAM_ENTRY(71, -11, OAM_DIMS_8x16, OAM_NO_FLIP, 0xb0, 0, 0)
 };
 
+#ifdef LANG_CA
+#include "ca/mission_accomplished.inc"
+#else // !LANG_CA
 const u16 sChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0[OAM_DATA_SIZE(16)] = {
     16,
     OAM_ENTRY(-74, -11, OAM_DIMS_8x16, OAM_NO_FLIP, 0xb1, 0, 0),
@@ -412,6 +415,7 @@ const u16 sChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0[OAM_DATA_SIZE(16)
     OAM_ENTRY(51, -11, OAM_DIMS_16x16, OAM_NO_FLIP, 0x100, 0, 0),
     OAM_ENTRY(64, -11, OAM_DIMS_8x16, OAM_NO_FLIP, 0xb0, 0, 0)
 };
+#endif // LANG_CA
 
 #endif // REGION_EU
 

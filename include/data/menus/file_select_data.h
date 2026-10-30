@@ -37,7 +37,11 @@ extern const u32 sFileSelectLargeTextEnglishGfx[332];
 extern const u32 sFileSelectLargeTextGermanGfx[391];
 extern const u32 sFileSelectLargeTextFrenchGfx[392];
 extern const u32 sFileSelectLargeTextItalianGfx[353];
+#ifdef LANG_CA
+extern const u32 sFileSelectLargeTextSpanishGfx[];
+#else // !LANG_CA
 extern const u32 sFileSelectLargeTextSpanishGfx[364];
+#endif // LANG_CA
 
 extern const u32 sFileSelectDifficultyTextEnglishGfx[67];
 extern const u32 sFileSelectDifficultyTextGermanGfx[70];

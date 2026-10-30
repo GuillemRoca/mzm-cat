@@ -757,6 +757,9 @@ static const u16 sEndingImageOam_NewRecordItalian[OAM_DATA_SIZE(6)] = {
     OAM_ENTRY(21, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x5c, 5, 0)
 };
 
+#ifdef LANG_CA
+#include "ca/ending_oam.inc"
+#else // !LANG_CA
 static const u16 sFullLinesSpanishOam_0[OAM_DATA_SIZE(5)] = {
     5,
     OAM_ENTRY(-70, -16, OAM_DIMS_32x16, OAM_NO_FLIP, 0x80, 0, 0),
@@ -957,6 +960,7 @@ static const u16 sFullLinesSpanishOam_2[OAM_DATA_SIZE(7)] = {
     OAM_ENTRY(78, -16, OAM_DIMS_8x16, OAM_NO_FLIP, 0x194, 1, 0),
     OAM_ENTRY(-18, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x1c8, 1, 0)
 };
+#endif // LANG_CA
 
 static const u16 sEndingImageOam_NewRecordSpanish[OAM_DATA_SIZE(6)] = {
     6,
@@ -4242,6 +4246,9 @@ const u16* const sEndingImagesPalPointers[ENDING_IMAGE_COUNT] = {
 
 #if defined(REGION_EU)
 
+#ifdef LANG_CA
+#include "ca/credits.inc"
+#else // !LANG_CA
 const struct CreditsEntry sCredits[308] = {
     [0] = {
         .type = CREDIT_LINE_TYPE_WHITE_BIG,
@@ -5476,6 +5483,7 @@ const struct CreditsEntry sCredits[308] = {
         .text = ""
     }
 };
+#endif // LANG_CA
 
 #elif defined(REGION_JP)
 
@@ -7580,7 +7588,11 @@ const u32 sEndingImageTextGermanGfx[726] = {
 const u32 sEndingImageTextItalianGfx[883] = {
     #include "extracted/data/ending/text_italian.gfx.lz.inc"
 };
+#ifdef LANG_CA
+const u32 sEndingImageTextSpanishGfx[] = {
+#else // !LANG_CA
 const u32 sEndingImageTextSpanishGfx[773] = {
+#endif // LANG_CA
     #include "extracted/data/ending/text_spanish.gfx.lz.inc"
 };
 #endif // REGION_EU

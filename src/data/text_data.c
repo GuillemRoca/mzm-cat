@@ -913,6 +913,9 @@ static const u16* sItalianTextPointers_Location[] = {
     [LT_UNUSED_18] = sItalianText_Location_Unused18
 };
 
+#ifdef LANG_CA
+#include "ca/text_message.inc"
+#else // !LANG_CA
 const u16 sSpanishText_Message_Dummy[] = INCTEXT("{GAP(36)}DUMMY MESSAGE (OBJ Cell B1)\n{GAP(110)}");
 const u16 sSpanishText_Message_EnergyTankAcquired[] = INCTEXT("{GAP(40)}{COLOR(5)}Tanque de energía almacenado.\n{GAP(40)}{COLOR(0)}Capacidad de energía ampliada.");
 const u16 sSpanishText_Message_MissileTankAcquired[] = INCTEXT("{GAP(43)}{COLOR(5)}Tanque de misiles almacenado.\n{GAP(44)}{COLOR(0)}Capacidad de misiles ampliada.");
@@ -994,7 +997,11 @@ static const u16* sSpanishTextPointers_Message[] = {
     [MESSAGE_PRESS_SELECT_L_AND_R] = sSpanishText_Message_PressSelectLAndR,
     [MESSAGE_EASY_SLEEP_PROMPT] = sSpanishText_Message_EasySleepPrompt
 };
+#endif // LANG_CA
 
+#ifdef LANG_CA
+#include "ca/text_location.inc"
+#else // !LANG_CA
 const u16 sSpanishText_Location_Brinstar[] = INCTEXT("{GAP(86)}BRINSTAR");
 const u16 sSpanishText_Location_Kraid[] = INCTEXT("{GAP(96)}KRAID");
 const u16 sSpanishText_Location_Norfair[] = INCTEXT("{GAP(90)}NORFAIR");
@@ -1050,6 +1057,7 @@ static const u16* sSpanishTextPointers_Location[] = {
     [LT_UNUSED_17] = sSpanishText_Location_Unused17,
     [LT_UNUSED_18] = sSpanishText_Location_Unused18
 };
+#endif // LANG_CA
 
 #endif // REGION_EU
 
@@ -1974,6 +1982,9 @@ const u16* sItalianTextPointers_FileScreen[] = {
 
 const u16 sAlign_10 = 0;
 
+#ifdef LANG_CA
+#include "ca/text_description.inc"
+#else // !LANG_CA
 const u16 sSpanishText_Description_LongBeam[] = INCTEXT("Dispara desde lejos con este rayo.\nPulsa {L_button} + {B_button} para disparos diagonales.");
 const u16 sSpanishText_Description_ChargeBeam[] = INCTEXT("Mantén {B_button} para cargar. Luego suelta.\nAtaque carga: salta una vez cargado.");
 const u16 sSpanishText_Description_IceBeam[] = INCTEXT("Este rayo congela a algunos enemigos.\nUn enemigo congelado es inofensivo.");
@@ -2015,7 +2026,11 @@ const u16* sSpanishTextPointers_Description[] = {
     [DESCRIPTION_TEXT_UNKNOWN_ITEM] = sSpanishText_Description_UnknownItem,
     [DESCRIPTION_TEXT_PISTOL] = sSpanishText_Description_Pistol
 };
+#endif // LANG_CA
 
+#ifdef LANG_CA
+#include "ca/text_story.inc"
+#else // !LANG_CA
 const u16 sSpanishText_Story_PlanetZebes[] = INCTEXT("{GAP(8)}El Planeta Zebes... Hace mucho, en\n{GAP(8)}tiempos de paz, antes de que el mal\n{GAP(8)}arrasara las cavernas, era mi hogar.\n{GAP(8)}Ahora debo narrar la historia de mi\n{GAP(8)}primera batalla... La Misión Zero.\n{GAP(138)}-Samus Aran-");
 const u16 sSpanishText_Story_TheTiming[] = INCTEXT("Mi huida me dejó indefensa, sin mi traje.\nComo única protección tenía mi pistola\nde emergencia, que no es precisamente\nuna gran arma. Puede que infiltrarme en\nla nave nodriza pirata así armada fuera\nestúpido, pero no tenía otra opción...");
 const u16 sSpanishText_Story_CouldISurvive[] = INCTEXT("¿Podría sobrevivir lo suficiente\npara escapar？");
@@ -2031,7 +2046,11 @@ const u16* sSpanishTextPointers_Story[] = {
     [STORY_TEXT_EXTERMINATE] = sSpanishText_Story_Exterminate,
     [STORY_TEXT_DEFEAT] = sSpanishText_Story_Defeat
 };
+#endif // LANG_CA
 
+#ifdef LANG_CA
+#include "ca/text_file_screen.inc"
+#else // !LANG_CA
 const u16 sSpanishText_FileScreen_StartGame[] = INCTEXT("Jugar\nJugar (Link)");
 const u16 sSpanishText_FileScreen_CopySourceChoose[] = INCTEXT("Elige el archivo\nque quieres copiar.");
 const u16 sSpanishText_FileScreen_CopyDestinationChoose[] = INCTEXT("Elige un archivo al\nque copiar los datos.");
@@ -2109,6 +2128,7 @@ const u16* sSpanishTextPointers_FileScreen[] = {
     [FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK] = sSpanishText_FileScreen_SoundTestUnlock,
     [FILE_SCREEN_TEXT_NES_METROID_UNLOCK] = sSpanishText_FileScreen_NesMetroidUnlock
 };
+#endif // LANG_CA
 
 #elif defined(REGION_US_BETA)
 

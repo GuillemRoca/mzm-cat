@@ -93,7 +93,11 @@ extern const u32 sEndingImageTextHiraganaGfx[511];
 extern const u32 sEndingImageTextFrenchGfx[759];
 extern const u32 sEndingImageTextGermanGfx[726];
 extern const u32 sEndingImageTextItalianGfx[883];
+#ifdef LANG_CA
+extern const u32 sEndingImageTextSpanishGfx[];
+#else // !LANG_CA
 extern const u32 sEndingImageTextSpanishGfx[773];
+#endif // LANG_CA
 #endif // REGION_EU
 
 extern const u8 sEndingImageNumbersGfx_Upper[10 * 64];

@@ -1,0 +1,104 @@
+# Catalan translation CI: translation/ca/tools/ci.sh does the work and runs the same locally.
+# It checks vanilla EU against mzm_eu.sha1, runs the LANG_CA self-test (vanilla text through
+# the Catalan plumbing must be byte-identical), lints the translation, builds mzm_eu_ca.gba and
+# uploads the .bps patch and the lint report. The ROMs themselves are never uploaded.
+#
+# The base ROM is never in this repository. See translation/ca/README.md ("Base ROM in CI")
+# for the two ways to supply it: a private ROM repository (vars.BASEROM_REPO plus
+# secrets.BASEROM_REPO_KEY), or a private link (secrets.BASEROM_EU_URL).
+#
+# A v* tag is a release: its build runs in release mode, and release.yml publishes its patch.
+name: Catalan
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Release mode (fail on lint warnings and untranslated text)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: catalan-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AGBCC_COMMIT: 59b966ed1b8f371856dcf99f1546c2fe89c678ca
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # the tags, so the patch is named after the release (git describe)
+          fetch-depth: 0
+
+      - name: Install packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq binutils-arm-none-eabi libpng-dev libmgba-dev pkg-config python3-pil
+
+      # Restore and save are separate so the build is cached even when a later step fails.
+      - name: Restore agbcc
+        id: agbcc
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/agbcc
+          key: agbcc-${{ env.AGBCC_COMMIT }}-ubuntu-24.04
+
+      - name: Build agbcc
+        if: steps.agbcc.outputs.cache-hit != 'true'
+        run: |
+          git clone -q https://github.com/jiangzhengwenjz/agbcc ~/agbcc
+          git -C ~/agbcc checkout -q "$AGBCC_COMMIT"
+          cd ~/agbcc && ./build.sh > build.log 2>&1 || { tail -50 build.log; exit 1; }
+
+      - name: Save agbcc
+        if: steps.agbcc.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/agbcc
+          key: agbcc-${{ env.AGBCC_COMMIT }}-ubuntu-24.04
+
+      - name: Put agbcc on PATH
+        run: echo "$HOME/agbcc" >> "$GITHUB_PATH"
+
+      - name: Checkout private ROM repository
+        if: vars.BASEROM_REPO != ''
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.BASEROM_REPO }}
+          ssh-key: ${{ secrets.BASEROM_REPO_KEY }}
+          path: .baserom
+          persist-credentials: false
+
+      - name: Get base ROM
+        env:
+          BASEROM_DIR: ${{ github.workspace }}/.baserom
+          BASEROM_EU_URL: ${{ secrets.BASEROM_EU_URL }}
+        run: |
+          translation/ca/tools/get_baserom.sh eu
+          rm -rf .baserom
+
+      - name: Build, test, lint and patch
+        env:
+          RELEASE: ${{ (inputs.release || startsWith(github.ref, 'refs/tags/v')) && '1' || '0' }}
+        run: translation/ca/tools/ci.sh
+
+      - name: Upload patch and lint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mzm-cat-${{ github.sha }}
+          path: |
+            translation/ca/dist/*.bps
+            translation/ca/dist/lint.txt
+            translation/ca/dist/lint.json
+          if-no-files-found: ignore
