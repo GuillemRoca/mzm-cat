@@ -164,7 +164,7 @@ So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion.
 - Seen in game: "MISSIÓ COMPLERTA!" and the whole results screen (both lines typed and whole,
   the last line). The NOU / RÈCORD! box needs a new best time: checked in the PNG only.
 
-### Terms used in the ending graphics — PROPOSED
+### Terms used in the ending graphics — APPROVED
 
 Temps total de joc (Clear time), Objectes aconseguits (item collection rate), Fins a la propera
 missió! (See you next mission!).

@@ -126,6 +126,6 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | Missió complerta! | APPROVED | Standard; buildable from the existing ending glyphs. |
 | New Record | ¡NUEVO RÉCORD! | Nou rècord! | APPROVED | Only option. |
-| Clear Time (ending) | TIEMPO INVERTIDO | Temps total de joc | PROPOSED | Must have 15 letters, like the Spanish (fixed table of typed sprites). "Temps de joc" alone is 10. |
-| Item collection rate (ending) | PORCENTAJE DE OBJETOS | Objectes aconseguits | PROPOSED | Must have 19 letters. The percentage is shown under it, so the label names what it counts. |
-| See you next mission! (ending) | ¡Hasta la próxima misión! | Fins a la propera missió! | PROPOSED | Natural farewell; "propera" over "pròxima" (standard, and fits the font without a new accent). |
+| Clear Time (ending) | TIEMPO INVERTIDO | Temps total de joc | APPROVED | Must have 15 letters, like the Spanish (fixed table of typed sprites). "Temps de joc" alone is 10. |
+| Item collection rate (ending) | PORCENTAJE DE OBJETOS | Objectes aconseguits | APPROVED | Must have 19 letters. The percentage is shown under it, so the label names what it counts. |
+| See you next mission! (ending) | ¡Hasta la próxima misión! | Fins a la propera missió! | APPROVED | Natural farewell; "propera" over "pròxima" (standard, and fits the font without a new accent). |
