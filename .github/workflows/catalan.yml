@@ -6,6 +6,8 @@
 # The base ROM is never in this repository. See translation/ca/README.md ("Base ROM in CI")
 # for the two ways to supply it: a private ROM repository (vars.BASEROM_REPO plus
 # secrets.BASEROM_REPO_KEY), or a private link (secrets.BASEROM_EU_URL).
+#
+# A v* tag is a release: its build runs in release mode, and release.yml publishes its patch.
 name: Catalan
 
 on:
@@ -34,11 +36,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # the tags, so the patch is named after the release (git describe)
+          fetch-depth: 0
 
       - name: Install packages
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq binutils-arm-none-eabi libpng-dev libmgba-dev pkg-config
+          sudo apt-get install -y -qq binutils-arm-none-eabi libpng-dev libmgba-dev pkg-config python3-pil
 
       # Restore and save are separate so the build is cached even when a later step fails.
       - name: Restore agbcc
@@ -84,7 +89,7 @@ jobs:
 
       - name: Build, test, lint and patch
         env:
-          RELEASE: ${{ inputs.release && '1' || '0' }}
+          RELEASE: ${{ (inputs.release || startsWith(github.ref, 'refs/tags/v')) && '1' || '0' }}
         run: translation/ca/tools/ci.sh
 
       - name: Upload patch and lint report

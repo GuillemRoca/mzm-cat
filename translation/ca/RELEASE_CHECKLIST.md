@@ -8,8 +8,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] CI green on the release commit, run with **release mode** (Actions → Catalan → Run
       workflow → release): lint has 0 errors, 0 warnings, 0 TODOs and 127/127 translated.
 - [ ] Vanilla EU still matches `mzm_eu.sha1`, and the LANG_CA self-test is byte-identical (CI).
-- [ ] `translation/ca/VERSION` bumped (e.g. `1.0.0`), committed and tagged `ca-v1.0.0`; the patch
-      file name carries that version.
+- [ ] Release commit on `main` tagged `v1.0.0` and the tag pushed; its build (release mode) is
+      green and its patch is `mzm-cat-v1.0.0.bps` (see README, "Releasing").
 - [ ] `gap.py check` clean; `gfx.py roundtrip` all identical; `translations.csv` current and
       every row "translated" or "same as English".
 - [ ] Every PROPOSED glossary term in use is confirmed (APPROVED) or listed as an open choice
@@ -56,4 +56,5 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Patch applied with Flips and with Rom Patcher JS to a **clean EU dump** (SHA1 above): the
       result boots and matches the CI build's SHA1.
 - [ ] Vanilla EU saves load and play correctly with the patched ROM (language slot = Catalan).
-- [ ] Release notes: base ROM name and SHA1, version, how to apply, credits, licence.
+- [ ] Release notes in `.github/release-notes/v1.0.0.md`: base ROM name and SHA1, version, how
+      to apply, credits, licence. Pushing them to `main` publishes the release.

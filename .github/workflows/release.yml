@@ -1,0 +1,71 @@
+# Publishes a GitHub release for each tag that has notes in .github/release-notes/<tag>.md
+# and no release yet, and keeps existing releases' notes in step with those files. A new
+# release gets the .bps that the Catalan workflow built and checked for the tag's commit
+# (never a ROM, never the preview patch), waiting for that build if it's still running.
+#
+# To release: push the tag, then push the notes file. See translation/ca/README.md ("Releasing").
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/release-notes/**
+      - .github/workflows/release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  publish:
+    # Only in this fork: never publish anything from a copy of it.
+    if: github.repository == 'GuillemRoca/mzm-cat'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish the releases that are missing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for notes in .github/release-notes/v*.md; do
+            tag=$(basename "$notes" .md)
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release edit "$tag" --notes-file "$notes" >/dev/null
+              echo "$tag: already released; notes updated"
+              continue
+            fi
+            if ! git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+              echo "$tag: no such tag yet"
+              continue
+            fi
+            # The build of the commit the tag points to now: a moved tag keeps its old runs.
+            commit=$(git rev-parse "refs/tags/$tag^{commit}")
+            run=$(gh run list --workflow catalan.yml --branch "$tag" --commit "$commit" \
+              --limit 1 --json databaseId --jq '.[0].databaseId // empty')
+            if [ -z "$run" ]; then
+              echo "::error::$tag: no Catalan run for $commit"
+              exit 1
+            fi
+            # Waits for the build if it's still running; fails if it failed.
+            if ! gh run watch "$run" --exit-status --interval 30 >/dev/null; then
+              echo "::error::$tag: Catalan run $run for $commit didn't pass"
+              exit 1
+            fi
+            dir=$(mktemp -d)
+            gh run download "$run" --dir "$dir"
+            bps=$(find "$dir" -name "mzm-cat-$tag.bps" -print -quit)
+            if [ -z "$bps" ]; then
+              echo "::error::$tag: run $run has no mzm-cat-$tag.bps"
+              exit 1
+            fi
+            gh release create "$tag" "$bps" --verify-tag \
+              --title "Metroid: Zero Mission en català ${tag#v}" --notes-file "$notes"
+            echo "$tag: released with $(basename "$bps") from run $run"
+          done

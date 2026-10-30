@@ -2,7 +2,8 @@
 
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
-- `mzm-cat-<version>.bps`: the real game, what a release ships.
+- `mzm-cat-<version>.bps`: the real game, what a release ships. `<version>` is the tag
+  (`v1.0.0`), or the last tag plus the commit.
 - `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus seven test shortcuts. Never
   distribute it.
 

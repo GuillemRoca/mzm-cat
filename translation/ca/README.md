@@ -15,7 +15,6 @@ gfx/<asset>.png       edited graphics; <asset> is the path under data/ without .
 identical.txt         IDs whose Catalan is meant to equal the English
 glossary.md           terminology (APPROVED / PROPOSED), STYLE.md, notes/translator-notes.md
 RELEASE_CHECKLIST.md  what a release needs
-VERSION               version in the patch name
 ca.mk                 the LANG_CA build, included from the top-level Makefile
 include/ca/layout.h   per-language layout constants
 credits.txt           the Catalan translators, added to the staff credits
@@ -48,7 +47,7 @@ translation/ca/tools/ci.sh                   # everything CI runs, plus the .bps
 ```
 
 Switching between these is safe: objects that depend on the mode are rebuilt automatically.
-Tools need python3, cpp, libpng-dev (gbagfx) and, for the emulator tools, libmgba-dev.
+Tools need python3 with Pillow, cpp, libpng-dev (gbagfx) and, for the emulator tools, libmgba-dev.
 
 ## Translating text
 
@@ -90,6 +89,20 @@ See `TESTING.md` for playtesting in mGBA, with the preview build that shows ever
 
 `make ca-emu-tools` builds `build/gbashot` (headless mGBA: scripted input, screenshots, save
 states) and `build/bpscheck` (checks a patch with mGBA's own loader).
+
+## Releasing
+
+A release is a `v*` tag (`v1.0.0`) on `main` plus its notes in `.github/release-notes/<tag>.md`,
+in Catalan with an English summary. Go through `RELEASE_CHECKLIST.md` first.
+
+1. Tag the release commit and push the tag: `git tag v1.0.0 && git push origin v1.0.0`. The Catalan
+   workflow builds it in release mode and names the patch `mzm-cat-v1.0.0.bps`.
+2. Push the notes file to `main`. `.github/workflows/release.yml` waits for the tag's build,
+   then publishes the release "Metroid: Zero Mission en català 1.0.0" with that patch and nothing
+   else.
+
+Editing a released notes file and pushing it updates that release's notes. Builds that aren't
+on a tag are named after the last tag and the commit (`mzm-cat-v1.0.0-3-gabc1234.bps`).
 
 ## Base ROM
 

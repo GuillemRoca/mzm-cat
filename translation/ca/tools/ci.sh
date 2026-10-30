@@ -3,6 +3,7 @@
 #
 #   translation/ca/tools/ci.sh            usual checks; fails on lint errors
 #   RELEASE=1 translation/ca/tools/ci.sh  also fails on lint warnings and untranslated text
+#                                         (CI sets it on v* tags, which are releases)
 #
 # Needs the base ROM (see translation/ca/README.md), agbcc and arm-none-eabi binutils on PATH,
 # libpng-dev for gbagfx, and libmgba-dev to check the patch with mGBA's own loader.
@@ -64,10 +65,8 @@ sha1sum mzm_eu_ca.gba
 endstep
 
 step "Patch"
-VERSION=$(cat "$CA/VERSION")
-if git describe --always --dirty > /dev/null 2>&1; then
-    VERSION="$VERSION+$(git describe --always --dirty)"
-fi
+# The tag on a release commit (v1.0.0), else the last tag plus the commit (v1.0.0-3-gabc1234).
+VERSION=$(git describe --tags --match 'v*' --always --dirty 2>/dev/null || echo dev)
 rm -f "$DIST"/*.bps
 PATCH="$DIST/mzm-cat-$VERSION.bps"
 python3 "$CA/tools/bps.py" create mzm_eu_baserom.gba mzm_eu_ca.gba "$PATCH" \
