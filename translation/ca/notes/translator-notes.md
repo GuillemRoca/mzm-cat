@@ -16,6 +16,9 @@ from the vanilla array. The rows added are taken from the empty lines before the
 the credits scroll for exactly as long as vanilla and stay in time with the music. The credits
 fonts have no accents (the heading would read "CATALA"), so the heading is in English like the
 other languages'. Checked in game.
+The rest of the credits stays as in vanilla (decided by Guillem): the EU staff list, its section
+headings and the copyright lines are one English list shared by all five languages (the Spanish
+game shows them in English too), so translating them would change every language's credits.
 
 ## Terms used in the Message block — APPROVED
 
