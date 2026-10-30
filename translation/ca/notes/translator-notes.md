@@ -141,6 +141,34 @@ So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion.
   (`src/data/menus/erase_sram_data.c` and its header).
 - Checked in game (L+R held at power on), both screens and both answers.
 
+## Ending graphics
+
+- `gfx/ending/text_spanish.png` and `gfx/ending/numbers_misc_spanish.png`, made by
+  `tools/gfx_ending.py`; the sprites that place them come from `tools/genending.py` at build
+  time (`ca/ending_oam.inc`, `ca/mission_accomplished.inc`), both from the layout of
+  `tools/ending_layout.py`.
+- Results screen: each line is typed one sprite per letter from the sheet's alphabet, then
+  replaced by the whole line. The tables of typed letters have a fixed size (15 and 19 in
+  Spanish, no code change allowed), so the Catalan lines have exactly as many letters: "TEMPS
+  TOTAL DE JOC" (15) and "OBJECTES ACONSEGUITS" (19). Letter advances and the word space are
+  the vanilla ones; both lines are centred (173 and 187 px).
+- Last line: "Fins a la propera missió!" (152 px, 12 narrower than the Spanish), from the
+  letters of the German, French, Italian and Spanish last lines; the English line is in another
+  font. The F, which none has, is drawn from the H.
+- Best-time box: "NOU / RÈCORD!". RÈCORD takes the É accent mirrored; the NOU tab is the Italian
+  NUOVO tab with its N, O and U, centred like the Spanish tab.
+- "MISSIÓ COMPLERTA!" (Chozodia escape) uses the letter sheet all languages share: only its 16
+  sprites change, as many as the Spanish ¡MISIÓN CUMPLIDA!.
+- `sEndingImageTextSpanishGfx` compresses bigger than its Spanish array: declared unsized under
+  LANG_CA (`src/data/ending_and_gallery_data.c` and its header).
+- Seen in game: "MISSIÓ COMPLERTA!" and the whole results screen (both lines typed and whole,
+  the last line). The NOU / RÈCORD! box needs a new best time: checked in the PNG only.
+
+### Terms used in the ending graphics — PROPOSED
+
+Temps total de joc (Clear time), Objectes aconseguits (item collection rate), Fins a la propera
+missió! (See you next mission!).
+
 ## Title screen menu
 
 - `gfx/menus/title_screen/spanish_menu_{top,bottom}.png`, made by `tools/gfx_title_menu.py`:

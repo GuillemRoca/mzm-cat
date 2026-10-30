@@ -13,6 +13,8 @@
 #   ca/text_<category>.inc     the Spanish blocks of src/data/text_data.c, in Catalan
 #   ca/char_widths.inc         the EU sCharacterWidths with font/widths.txt applied
 #   ca/credits.inc             the EU sCredits with the translators in credits.txt
+#   ca/ending_oam.inc          the Spanish ending sprites (typed lines, whole lines)
+#   ca/mission_accomplished.inc  the Spanish "Mission accomplished" sprites
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
 # and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
 # Objects are built in-tree for both modes, so every object that depends on the mode
@@ -35,6 +37,8 @@ CA_PREVIEW ?= 0
 CA_TEXT_INCS := $(foreach c,message location description story file_screen,$(CA_INC)/ca/text_$(c).inc)
 CA_WIDTHS_INC := $(CA_INC)/ca/char_widths.inc
 CA_CREDITS_INC := $(CA_INC)/ca/credits.inc
+CA_ENDING_INC := $(CA_INC)/ca/ending_oam.inc
+CA_MISSION_INC := $(CA_INC)/ca/mission_accomplished.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
@@ -73,7 +77,8 @@ ifeq ($(LANG_CA),1)
 
   src/data/text_data.s: $(CA_TEXT_INCS) $(CA_FONT_INC)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
-  src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC)
+  src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC) $(CA_ENDING_INC)
+  src/data/chozodia_escape_data.s: $(CA_MISSION_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
   $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
 
@@ -98,6 +103,15 @@ $(CA_WIDTHS_INC): $(wildcard $(CA_DIR)/font/widths.txt) src/data/menus/pause_scr
 $(CA_CREDITS_INC): $(CA_DIR)/credits.txt src/data/ending_and_gallery_data.c $(CA_TOOLS)/gencredits.py $(CA_STAMP)
 	$(MSG) CREDITS $@
 	$Q$(PYTHON) $(CA_TOOLS)/gencredits.py $@ $(CA_CREDITS_FLAGS)
+
+CA_ENDING_DEPS := $(CA_TOOLS)/genending.py $(CA_TOOLS)/ending_layout.py $(CA_STAMP)
+$(CA_ENDING_INC): src/data/ending_and_gallery_data.c $(wildcard $(CA_DIR)/gfx/ending/text_spanish.png) $(CA_ENDING_DEPS)
+	$(MSG) ENDING $@
+	$Q$(PYTHON) $(CA_TOOLS)/genending.py ending $@ $(CA_CREDITS_FLAGS)
+
+$(CA_MISSION_INC): src/data/chozodia_escape_data.c $(CA_ENDING_DEPS)
+	$(MSG) ENDING $@
+	$Q$(PYTHON) $(CA_TOOLS)/genending.py mission $@ $(CA_CREDITS_FLAGS)
 
 $(CA_FONT_INC): data/text_characters.gfx $(wildcard $(CA_DIR)/font/glyphs/*.png) $(wildcard $(CA_DIR)/font/widths.txt) $(CA_TOOLS)/font.py $(CA_GBAGFX) $(CA_STAMP)
 	$(MSG) FONT $@

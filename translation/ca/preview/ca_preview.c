@@ -5,6 +5,7 @@
 //   L + R + B       show the next location banner (LT_BRINSTAR .. LT_STARSHIP)
 //   L + R + A       set energy to 0, to reach the game over screen (Start would pause)
 //   L + R + UP      play the credits (no ending save is written)
+//   L + R + RIGHT   play the Chozodia escape's end: "Mission accomplished", then the credits
 //   L + R + LEFT    play the next story text cutscene: Planet Zebes, the Mother Ship monologue,
 //                   "Could I survive" (Samus is back in the room afterwards)
 //   L + R + DOWN    give every item and full ammo; again: cycle the suit (normal, fully powered,
@@ -147,6 +148,13 @@ static void CaPreviewUpdate(void)
         gEquipment.maxMissiles = gEquipment.currentMissiles = 250;
         gEquipment.maxSuperMissiles = gEquipment.currentSuperMissiles = 30;
         gEquipment.maxPowerBombs = gEquipment.currentPowerBombs = 9;
+        return;
+    }
+
+    if (gChangedInput & KEY_RIGHT)
+    {
+        gMainGameMode = GM_CHOZODIA_ESCAPE;
+        gSubGameMode1 = 0;
         return;
     }
 

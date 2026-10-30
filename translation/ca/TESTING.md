@@ -3,7 +3,7 @@
 Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships.
-- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus six test shortcuts. Never
+- `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus seven test shortcuts. Never
   distribute it.
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
@@ -20,8 +20,8 @@ Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same
 4. Title: press Start, then A on the first option. File A → A → pick a difficulty. Skip the
    intro with A. Once Samus can move, save a state (Shift+F1) to come back here.
 
-Graphics that aren't redrawn yet (title, file select, pause screen, ending) still show Spanish;
-text that isn't translated yet shows in English.
+Every graphic of the Spanish slot is redrawn in Catalan; the area names of the map are shared by
+all languages and stay as they are.
 
 ## Every Message line (preview build)
 
@@ -157,6 +157,16 @@ Preview build: hold **L + R** and press **Up**. The credits start right away (no
 written). In the TRANSLATION section, after "ITALIAN / Massimo Maietti", comes
 "CATALAN / Guillem Roca Castany" (`credits.txt`); the credits must still end in time with the
 music. In the release build, finish the game.
+
+## Ending
+
+Preview build: hold **L + R** and press **Right**. The end of the Chozodia escape plays: the
+ship takes off and "MISSIÓ COMPLERTA!" appears, then the credits. After the credits (a little over
+two minutes; **L + R + Up** starts them directly), the results screen types "TEMPS TOTAL
+DE JOC" and "OBJECTES ACONSEGUITS" letter by letter, then shows them whole with the time and
+the percentage, and "Fins a la propera missió!" in blue underneath. With a new best time, the box
+beside the time reads "NOU / RÈCORD!". In the
+release build, finish the game.
 
 ## Where the messages appear in normal play
 

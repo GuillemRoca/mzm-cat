@@ -157,10 +157,26 @@ def letters(im, asset, slot):
 
 
 def cut(im, asset, slot, span):
+    """The letter's columns. The outline column on each side keeps the rows of the letter's
+    own ink, and a one-pixel corner: a longer run above or below is a taller neighbour's
+    shared outline."""
     a = ASSETS[asset]
     top = ASSETS[asset]["slots"][slot][0] * a["band"]
-    return [{y: im.getpixel((x, top + y)) for y in range(a["band"]) if im.getpixel((x, top + y)) != a.get("bg", 0)}
+    cols = [{y: im.getpixel((x, top + y)) for y in range(a["band"]) if im.getpixel((x, top + y)) != a.get("bg", 0)}
             for x in range(*span)]
+    if len(cols) > 2:
+        for edge, inner in ((0, 1), (-1, -2)):
+            if not cols[inner]:
+                continue
+            lo, hi = min(cols[inner]), max(cols[inner])
+            col = cols[edge]
+            keep = {y for y in col if lo <= y <= hi}
+            if lo - 1 in col and lo - 2 not in col:
+                keep.add(lo - 1)
+            if hi + 1 in col and hi + 2 not in col:
+                keep.add(hi + 1)
+            cols[edge] = {y: v for y, v in col.items() if y in keep}
+    return cols
 
 
 def harvest(images, asset):
@@ -173,6 +189,8 @@ def harvest(images, asset):
             spans = letters(images[lang], asset, slot)
             chars = text.replace(" ", "")
             if len(spans) != len(chars):
+                if ASSETS[asset].get("lenient"):         # some letters touch: skip that sheet
+                    continue
                 sys.exit(f"error: {asset} {lang} {slot}: {len(spans)} letters for {text!r}")
             k = 0
             for w in text.split(" "):

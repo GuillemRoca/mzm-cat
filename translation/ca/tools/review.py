@@ -21,7 +21,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
+import ending_layout  # noqa: E402
 import gencredits  # noqa: E402
+import gfx_ending  # noqa: E402
 import gfx_equipment_names  # noqa: E402
 import gfx_erase_sram  # noqa: E402
 import gfx_file_select  # noqa: E402
@@ -118,8 +120,23 @@ def graphic_rows():
         es = {"SALTOESPACIAL": "SALTO ESPACIAL"}.get(es, es)    # drawn without the space
         g.append((f"unknown_{key}", "Status screen, unknown item revealed (fully powered suit)", en, es,
                   ca or es, "menus/pause_screen/map_screen_unknown_items_names_spanish"))
+    end = ending_layout.CATALAN
+    g += [
+        ("ending_clear_time", "Ending results screen", "CLEAR TIME", "TIEMPO INVERTIDO", end["ClearTime"],
+         "ending/text_spanish"),
+        ("ending_collecting", "Ending results screen", "YOUR RATE FOR COLLECTING ITEMS IS",
+         "PORCENTAJE DE OBJETOS", end["Collecting"], "ending/text_spanish"),
+        ("ending_last_line", "Ending results screen, last line", gfx_ending.LAST_VANILLA[0],
+         gfx_ending.LAST_VANILLA[-1], gfx_ending.LAST_CATALAN, "ending/text_spanish"),
+        ("ending_new_record", "Ending results screen, best time", "NEW\nRECORD", "NUEVO\nRÉCORD!",
+         "NOU\nRÈCORD!", "ending/numbers_misc_spanish"),
+        # sprites of the letter sheet all languages share: no graphic of its own
+        ("mission_accomplished", "Chozodia escape, after the ship takes off", "MISSION ACCOMPLISHED!",
+         "¡MISIÓN CUMPLIDA!", end["MissionAccomplished"], None),
+    ]
     rows = [{"section": "graphics", "id": id_, "where": where, "english": en, "spanish": es, "catalan": ca,
-             "status": "translated" if (catext.CA / "gfx" / f"{key}.png").exists() else "untranslated"}
+             "status": "translated" if key is None or (catext.CA / "gfx" / f"{key}.png").exists()
+             else "untranslated"}
             for id_, where, en, es, ca, key in g]
     rows.append({"section": "credits", "id": "translation", "where": "Staff credits, TRANSLATION section",
                  "english": "", "spanish": "", "catalan": "\n".join([heading] + names), "status": "translated"})
