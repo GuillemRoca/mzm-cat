@@ -469,7 +469,15 @@ graphics,file_select_original,File select (options graphic),ORIGINAL METROID,MET
 graphics,file_select_easy,File select (difficulty graphic),EASY,FÁCIL,FÀCIL,translated,
 graphics,file_select_normal,File select (difficulty graphic),NORMAL,NORMAL,NORMAL,translated,
 graphics,file_select_hard,File select (difficulty graphic),HARD,DIFÍCIL,DIFÍCIL,translated,
-graphics,file_select_time_attack,File select (difficulty graphic),TIMEATTACK,TIMEATTACK,TIMEATTACK,translated,
+graphics,file_select_time_attack,File select (difficulty graphic),TIMEATTACK,TIMEATTACK,C.RELLOTGE,translated,
+graphics,erase_question,Erase-save screen (L+R at power on),"Do you want to
+erase all saved data?","¿Quieres borrar todos
+los datos guardados?","Vols esborrar totes les
+dades guardades?",translated,
+graphics,erase_confirm,Erase-save screen (L+R at power on),"Are you sure you want
+to erase all saved data?","¿Seguro que quieres
+borrar todos los datos?","Segur que vols esborrar
+totes les dades?",translated,
 graphics,unknown_plasma,"Status screen, unknown item revealed (fully powered suit)",PLASMA,PLASMA,PLASMA,translated,
 graphics,unknown_space_jump,"Status screen, unknown item revealed (fully powered suit)",SPACE JUMP,SALTO ESPACIAL,SALT ESPACIAL,translated,
 graphics,unknown_gravity,"Status screen, unknown item revealed (fully powered suit)",GRAVITY,GRAVITATORIO,GRAVITATORI,translated,

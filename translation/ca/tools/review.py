@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import catext  # noqa: E402
 import gencredits  # noqa: E402
 import gfx_equipment_names  # noqa: E402
+import gfx_erase_sram  # noqa: E402
 import gfx_file_select  # noqa: E402
 import gfx_game_over  # noqa: E402
 import gfx_unknown_items  # noqa: E402
@@ -107,8 +108,12 @@ def graphic_rows():
             en, es = texts[fs.LANGS.index("english")], texts[fs.LANGS.index("spanish")]
             g.append((f"file_select_{slot}", f"File select ({asset.replace('_text', '')} graphic)", en, es,
                       fs.CATALAN[asset].get(slot, es), f"menus/file_select/{asset}_spanish"))
-    g.append(("file_select_time_attack", "File select (difficulty graphic)", "TIMEATTACK", "TIMEATTACK",
-              "TIMEATTACK", "menus/file_select/difficulty_text_spanish"))
+    er = gfx_erase_sram
+    for screen, lines in er.VANILLA.items():
+        texts = list(zip(*lines.values()))                   # per language: (line 1, line 2)
+        g.append((f"erase_{screen}", "Erase-save screen (L+R at power on)",
+                  "\n".join(texts[fs.LANGS.index("english")]), "\n".join(texts[fs.LANGS.index("spanish")]),
+                  "\n".join(er.CATALAN[screen].values()), f"menus/erase_sram/{screen}_spanish"))
     for key, (_, _, es, en, ca) in gfx_unknown_items.NAMES.items():
         es = {"SALTOESPACIAL": "SALTO ESPACIAL"}.get(es, es)    # drawn without the space
         g.append((f"unknown_{key}", "Status screen, unknown item revealed (fully powered suit)", en, es,

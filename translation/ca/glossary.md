@@ -104,7 +104,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Copy / Erase / Options | COPIAR / BORRAR / OPCIONES | Copia / Esborra / Opcions | APPROVED | Imperative commands (Softcatalà). |
 | Samus Data (file select title) | DATOS DE SAMUS | Dades de la Samus | APPROVED | Literal, with the personal article. |
 | Easy / Normal / Hard | FÁCIL / NORMAL / DIFÍCIL | Fàcil / Normal / Difícil | APPROVED | Only option; each label must fit 40 px (difficulty graphic). |
-| Time Attack | TIME ATTACK | Contrarellotge | APPROVED | Natural Catalan sports term. |
+| Time Attack | TIME ATTACK | Contrarellotge | APPROVED | Natural Catalan sports term. "C.RELLOTGE" in the 40-px difficulty label (chosen by Guillem). |
 | Map / Status (pause tabs) | MAPA / ESTADO | Mapa / Estat | APPROVED | Only option. *pause box* |
 | Change area (map) | CAMBIAR ZONA | Canvia zona | APPROVED | Imperative per the menu convention, like the Italian "Cambia area"; drawn in the pause graphic (V drawn). |
 | Energy (status) | ENERGÍA | Energia | APPROVED | Only option. *pause box* |
@@ -112,9 +112,9 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Suit (status group) | TRAJE | Vestit | APPROVED | *pause box* |
 | Misc (status group) | OTROS | Altres | APPROVED | Mirrors the Spanish. *pause box* |
 | Gun (status group, suitless) | PISTOLA (item: LÁSER) | Arma (item: Pistola) | APPROVED | Follows the English GUN / PISTOL; the Spanish has PISTOLA / LÁSER. *pause box* |
-| Sound (options: stereo/mono) | SONIDO | So | PROPOSED | Only option. |
-| Time Attack Records (options) | RÉCORDS DE RETO DE TIEMPO | Rècords contrarellotge | PROPOSED | "contrarellotge" as an adjective, like "etapa contrarellotge"; "Rècords de contrarellotge" doesn't fit the options graphic (138 of 128 px). |
-| Metroid Fusion link (options) | CONEXIÓN CON METROID FUSION | Connexió a Metroid Fusion | PROPOSED | Like "connexió a Internet"; "amb" doesn't fit (131 of 128 px) and the font has no B. |
+| Sound (options: stereo/mono) | SONIDO | So | APPROVED | Only option. |
+| Time Attack Records (options) | RÉCORDS DE RETO DE TIEMPO | Rècords contrarellotge | APPROVED | "contrarellotge" as an adjective, like "etapa contrarellotge"; "Rècords de contrarellotge" doesn't fit the options graphic (138 of 128 px). |
+| Metroid Fusion link (options) | CONEXIÓN CON METROID FUSION | Connexió a Metroid Fusion | APPROVED | Like "connexió a Internet"; "amb" doesn't fit (131 of 128 px) and the font has no B. |
 | Gallery | Galería | Galeria | APPROVED | Only option. |
 | Sound Test | Prueba de sonido | Prova de so | APPROVED | Literal. |
 | Original Metroid | Metroid original | Metroid original | APPROVED | Only option. |

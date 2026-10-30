@@ -9,7 +9,8 @@ menu.tt and options.tt; slots below as (band, first column, last column + 1)):
                    COPIA, ESBORRA (outline 5-8, fill in the label's colours).
   options_text     the options list, 16-px font (fill 4, outline 1).
   difficulty_text  8-px font (fill 1, outline 6) under each file: FÀCIL, NORMAL, DIFÍCIL and
-                   TIMEATTACK (kept: CONTRARELLOTGE can't fit 40 px).
+                   C.RELLOTGE for TIMEATTACK (its narrow letters; R, L, O, G and the full stop
+                   drawn in DRAWN, as CONTRARELLOTGE can't fit 40 px).
 Letters are cut where two columns without fill meet (outlines touch in all three fonts).
 Glyphs are cut from the labels of all five languages (texts in VANILLA), the Spanish sheet is
 the base, and each Catalan label replaces its slot, aligned like the vanilla labels. Letters
@@ -39,7 +40,7 @@ ASSETS = {
         "gallery": (1, 0, 128), "fusion_link": (1, 128, 256),
         "fusion_gallery": (2, 0, 128), "original": (2, 128, 256)}),
     "difficulty_text": dict(row=5, band=8, body=range(2, 8), outline={0, 6}, slots={
-        "easy": (0, 0, 40), "normal": (0, 40, 80), "hard": (0, 80, 120)}),
+        "easy": (0, 0, 40), "normal": (0, 40, 80), "hard": (0, 80, 120), "time_attack": (0, 120, 160)}),
 }
 VANILLA = {
     "large_text": {
@@ -62,14 +63,15 @@ VANILLA = {
     "difficulty_text": {
         "easy": ["EASY", "LEICHT", "FACILE", "FACILE", "FÁCIL"],
         "normal": ["NORMAL", "NORMAL", "NORMAL", "NORMALE", "NORMAL"],
-        "hard": ["HARD", "SCHWER", "DIFFICILE", "DIFFICILE", "DIFÍCIL"]},
+        "hard": ["HARD", "SCHWER", "DIFFICILE", "DIFFICILE", "DIFÍCIL"],
+        "time_attack": ["TIMEATTACK"] * 5},
 }
 CATALAN = {
     "large_text": {"title": "DADES DE LA SAMUS", "options": "OPCIONS", "copy": "COPIA", "erase": "ESBORRA"},
     "options_text": {"sound": "SO", "sound_test": "PROVA DE SO", "ta_records": "RÈCORDS CONTRARELLOTGE",
                      "gallery": "GALERIA", "fusion_link": "CONNEXIÓ A METROID FUSION",
                      "fusion_gallery": "GALERIA DE METROID FUSION"},   # METROID ORIGINAL as in Spanish
-    "difficulty_text": {"easy": "FÀCIL"},                              # NORMAL, DIFÍCIL as in Spanish
+    "difficulty_text": {"easy": "FÀCIL", "time_attack": "C.RELLOTGE"},  # NORMAL, DIFÍCIL as in Spanish
 }
 # Glyphs made from others: (asset, char) -> (source char, how)
 DERIVED = {("options_text", "È"): ("É", "mirror accent"), ("difficulty_text", "À"): ("Á", "mirror accent")}
@@ -94,14 +96,24 @@ DRAWN = {
         ".........",
         ".........",
         "........."],
+    # TIMEATTACK's narrow letters (fill 1 on outline 6, 2-3 columns wide): the ones
+    # C.RELLOTGE needs and it doesn't have
+    ("difficulty_text", "R"): [".....", "66666", "61166", "61616", "61166", "61616", "61616", "66666"],
+    ("difficulty_text", "L"): ["....", "6666", "6166", "6166", "6166", "6166", "6116", "6666"],
+    ("difficulty_text", "O"): [".....", "66666", "61116", "61616", "61616", "61616", "61116", "66666"],
+    ("difficulty_text", "G"): [".....", "66666", "61116", "61666", "61616", "61616", "61116", "66666"],
+    ("difficulty_text", "."): ["...", "...", "...", "...", "...", "666", "616", "666"],
 }
 
 
 def load(asset, lang, tmp):
+    """The vanilla sheet of an asset, by default data/menus/file_select/<asset>_<lang>.gfx.lz
+    with palette.pal (other tools reuse this module with "dir", "name" and "palette")."""
     a = ASSETS[asset]
+    d = a.get("dir", "menus/file_select")
     raw, png, pal = (Path(tmp) / f"{asset}_{lang}.{e}" for e in ("4bpp", "png", "gbapal"))
-    pal.write_bytes((ROOT / "data/menus/file_select/palette.pal").read_bytes()[a["row"] * 32:(a["row"] + 1) * 32])
-    subprocess.run([GBAGFX, ROOT / f"data/menus/file_select/{asset}_{lang}.gfx.lz", raw], check=True)
+    pal.write_bytes((ROOT / "data" / d / a.get("palette", "palette.pal")).read_bytes()[a["row"] * 32:(a["row"] + 1) * 32])
+    subprocess.run([GBAGFX, ROOT / f"data/{d}/{a.get('name', asset)}_{lang}.gfx.lz", raw], check=True)
     subprocess.run([GBAGFX, raw, png, "-palette", pal, "-width", "32"], check=True)
     im = Image.open(png)
     im.load()
@@ -117,7 +129,7 @@ def letters(im, asset, slot):
     band, x0, x1 = a["slots"][slot]
     top = band * a["band"]
     def px(x, y):
-        return im.getpixel((x, top + y)) if 0 <= x < im.width else 0
+        return im.getpixel((x, top + y)) if 0 <= x < im.width else a.get("bg", 0)
     fill = {(x, y) for x in range(x0, x1) for y in range(a["band"]) if px(x, y) not in a["outline"]}
     shapes = []
     while fill:
@@ -140,14 +152,14 @@ def letters(im, asset, slot):
         else:
             merged.append([s, e])
     def ink(x):
-        return any(px(x, y) != 0 for y in range(a["band"]))
+        return any(px(x, y) != a.get("bg", 0) for y in range(a["band"]))
     return [[s - 1 if ink(s - 1) else s, e + 1 if ink(e) else e] for s, e in merged]
 
 
 def cut(im, asset, slot, span):
     a = ASSETS[asset]
     top = ASSETS[asset]["slots"][slot][0] * a["band"]
-    return [{y: im.getpixel((x, top + y)) for y in range(a["band"]) if im.getpixel((x, top + y)) != 0}
+    return [{y: im.getpixel((x, top + y)) for y in range(a["band"]) if im.getpixel((x, top + y)) != a.get("bg", 0)}
             for x in range(*span)]
 
 
@@ -242,12 +254,14 @@ def compose(asset, images, glyphs, spacing):
         if asset == "large_text" and slot == "title":
             # centred like every language's title
             left = round((x0 + x1) / 2 - len(cols) / 2)
+        elif "left" in a:
+            left = a["left"]                           # one margin for all the lines
         else:
             left = spans[0][0]                         # where the Spanish label starts
             left = min(left, x1 - len(cols))
         for x in range(x0, x1):
             for y in range(a["band"]):
-                img.putpixel((x, top + y), 0)
+                img.putpixel((x, top + y), a.get("bg", 0))
         for dx, col in enumerate(cols):
             for y, v in col.items():
                 img.putpixel((left + dx, top + y), v)

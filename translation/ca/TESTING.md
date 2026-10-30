@@ -130,6 +130,11 @@ BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its 
 After the intro (or Start): "JUGA" and "Idioma", centred one above the other; Up/Down moves the
 highlight between them.
 
+## Erase-save screens
+
+Hold L + R while the game starts: "Vols esborrar totes les dades guardades?", No / Sí; Sí
+opens "Segur que vols esborrar totes les dades?" (No / Sí). Answer No to keep the saves.
+
 ## File select
 
 The file select shows "DADES DE LA SAMUS" and COPIA / ESBORRA / OPCIONS; OPCIONS lists SO and

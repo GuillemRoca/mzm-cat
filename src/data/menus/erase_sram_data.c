@@ -355,7 +355,11 @@ const u32 sEraseSramMenuConfirmGermanGfx[222] = {
 const u32 sEraseSramMenuConfirmItalianGfx[201] = {
     #include "extracted/data/menus/erase_sram/confirm_italian.gfx.lz.inc"
 };
+#ifdef LANG_CA
+const u32 sEraseSramMenuConfirmSpanishGfx[] = {
+#else // !LANG_CA
 const u32 sEraseSramMenuConfirmSpanishGfx[204] = {
+#endif // LANG_CA
     #include "extracted/data/menus/erase_sram/confirm_spanish.gfx.lz.inc"
 };
 
@@ -374,7 +378,11 @@ const u32 sEraseSramMenuQuestionGermanGfx[205] = {
 const u32 sEraseSramMenuQuestionItalianGfx[221] = {
     #include "extracted/data/menus/erase_sram/question_italian.gfx.lz.inc"
 };
+#ifdef LANG_CA
+const u32 sEraseSramMenuQuestionSpanishGfx[] = {
+#else // !LANG_CA
 const u32 sEraseSramMenuQuestionSpanishGfx[208] = {
+#endif // LANG_CA
     #include "extracted/data/menus/erase_sram/question_spanish.gfx.lz.inc"
 };
 

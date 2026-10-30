@@ -120,14 +120,26 @@ Approved by Guillem:
 - Options list: SO, PROVA DE SO, RÈCORDS CONTRARELLOTGE (the unlock message now says the same),
   GALERIA, CONNEXIÓ A METROID FUSION, GALERIA DE METROID FUSION, METROID ORIGINAL (as in
   Spanish). È takes the É accent mirrored.
-- Difficulty labels: FÀCIL (À: the Á accent mirrored), NORMAL, DIFÍCIL; TIMEATTACK stays (as
-  in every language: CONTRARELLOTGE can't fit 40 px).
+- Difficulty labels: FÀCIL (À: the Á accent mirrored), NORMAL, DIFÍCIL, and C.RELLOTGE for
+  TIMEATTACK (Guillem's abbreviation: CONTRARELLOTGE can't fit 40 px). It uses TIMEATTACK's
+  narrow letters; R, L, O, G and the full stop are drawn in the same style (34 of 40 px).
 - Seen in game: the file select (title, COPIA, ESBORRA, OPCIONS) and the options screen (SO,
   CONNEXIÓ A METROID FUSION). The unlocked options and the difficulty labels need saves.
 
-### PROPOSED terms in use (file select graphics) — to confirm
+### Terms used in the file select graphics — APPROVED
 
-So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion (glossary rows).
+So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion.
+
+## Erase-save screens
+
+- `gfx/menus/erase_sram/{question,confirm}_spanish.png`, made by `tools/gfx_erase_sram.py`
+  with the file select composer: "Vols esborrar totes les / dades guardades?" (the same as
+  FILE_SCREEN_TEXT_ERASE_ALL) and "Segur que vols esborrar / totes les dades?". The answers
+  No / Sí are the Spanish ones. The Spanish margins are kept (8 and 0 px).
+- Both compress bigger than the Spanish fixed-size arrays (215 of 208 and 237 of 204 words):
+  `sEraseSramMenu{Question,Confirm}SpanishGfx` are declared unsized under LANG_CA
+  (`src/data/menus/erase_sram_data.c` and its header).
+- Checked in game (L+R held at power on), both screens and both answers.
 
 ## Title screen menu
 
