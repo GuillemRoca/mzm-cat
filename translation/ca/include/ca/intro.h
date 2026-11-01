@@ -21,6 +21,8 @@ extern const u16 sCaIntroDefeatTheTextOam[];
 extern const IntroTextAction sCaIntroEmergencyOrderActions[];
 extern const IntroTextAction sCaIntroExterminateAllActions[];
 extern const IntroTextAction sCaIntroDefeatTheActions[];
+extern const u16 sCaIntroStartX[];
+extern const u16 sCaIntroStartY[];
 
 #define CA_INTRO_CATALAN (gLanguage == LANGUAGE_SPANISH)
 
@@ -32,8 +34,18 @@ extern const IntroTextAction sCaIntroDefeatTheActions[];
 #define sIntroExterminateAllActions (CA_INTRO_CATALAN ? sCaIntroExterminateAllActions : sIntroExterminateAllActions)
 #define sIntroDefeatTheActions (CA_INTRO_CATALAN ? sCaIntroDefeatTheActions : sIntroDefeatTheActions)
 
-// No subtitles: the story text never starts, and reads as finished
-#define TextStartStory(textId) do { if (!CA_INTRO_CATALAN) TextStartStory(textId); } while (0)
+// No subtitles: the story text never starts, and reads as finished. Instead, on the first frame
+// of each text (before any typing), the cursor moves to where the centred Catalan text starts.
+#define CA_INTRO_PART(textId) ((textId) == STORY_TEXT_EMERGENCY ? 0 : (textId) == STORY_TEXT_EXTERMINATE ? 1 : 2)
+#define TextStartStory(textId) do {                                  \
+    if (!CA_INTRO_CATALAN)                                           \
+        TextStartStory(textId);                                      \
+    else                                                             \
+    {                                                                \
+        INTRO_DATA.charDrawerX = sCaIntroStartX[CA_INTRO_PART(textId)]; \
+        INTRO_DATA.charDrawerY = sCaIntroStartY[CA_INTRO_PART(textId)]; \
+    }                                                                \
+} while (0)
 #define TextProcessStory() (CA_INTRO_CATALAN ? TRUE : TextProcessStory())
 
 #endif // !CA_SELFTEST

@@ -10,12 +10,16 @@ Other languages show subtitles under the English. In the Spanish slot, translati
 ca/intro.h makes src/intro.c type these Catalan texts instead, without subtitles, like English.
 
 Each text is a frame of 8x16 sprites, one per cell, and a list of actions (one per typing step)
-that reveals the cells. Every word sits in a box: a cell before it holds its left edge (LEAD),
+that reveals the cells. A typing cursor follows them from a start set by the code: ca/intro.h
+moves the start of each Catalan text (sCaIntroStartX/Y) so its first line is centred and the
+text block sits where the English one does; later lines start at a fixed column, so they are
+centred to the nearest cell with invisible PAD cells, typed silently. Every word sits in a box: a cell before it holds its left edge (LEAD),
 a cell after it its right edge (TRAIL); a space between words is one cell with both edges, and
 punctuation cells carry the right edge. The rules are checked by rebuilding the vanilla English
 data from its text before anything is written.
 """
 import argparse
+import math
 import re
 import sys
 from pathlib import Path
@@ -44,7 +48,8 @@ LETTERS.update(NEW)
 LEAD, TRAIL, SPACE = 0x3, 0x1c, 0x1d
 COMMA, HYPHEN, PERIOD = 0x5d, 0x5e, 0x5f      # each with the right edge of its word
 ELLIPSIS = [0x1e, 0x1f, 0x1f]                 # the first dot with the right edge
-GAPS = {LEAD, SPACE}                          # a step after these is a SPACE action (no sound)
+PAD = 0x40                                    # an empty cell (tiles 0x40 and 0x60 are blank)
+GAPS = {LEAD, SPACE, PAD}                     # a step after these is a SPACE action (no sound)
 LINE_HEIGHT = 24                              # IntroProcessText's new line
 SCREEN_HALF_W, SCREEN_H, OAM_Y = 120, 160, 128
 
@@ -71,13 +76,19 @@ def cells(line):
     return out
 
 
-def layout(lines, x_first, x_next, y_first):
-    """(frame entries [(x, y, tile)], actions)."""
+def layout(lines, x_first, x_next, y_first, centre=False):
+    """(frame entries [(x, y, tile)], actions). x and y are relative to the sprite origin (screen
+    x 120, y 128). With centre, the first line starts where it is centred (x_first is ignored:
+    the cursor start moves with it) and later lines get PAD cells up to the nearest centring."""
     entries, actions = [], ["START"]
     for k, line in enumerate(lines):
         c = cells(line)
         last = k == len(lines) - 1
         x0 = x_first if k == 0 else x_next
+        if centre and k == 0:
+            x0 = -4 * len(c)
+        elif centre:
+            c = [PAD] * max(0, math.floor(-(x_next + 4 * len(c)) / 8 + 0.5)) + c
         y = y_first + k * LINE_HEIGHT
         if x0 + 8 * len(c) > SCREEN_HALF_W or OAM_Y + y + 16 > SCREEN_H:
             sys.exit(f"error: {line!r} doesn't fit the screen ({len(c)} cells from x = {x0})")
@@ -88,7 +99,7 @@ def layout(lines, x_first, x_next, y_first):
         # (lines that go on; the vanilla last lines end on a lone SKIP)
         pair = not last or c[-1] == TRAIL
         singles = range(2, len(c) - 2 if pair else len(c) - 1)
-        actions += ["SPACE" if c[j - 1] in GAPS else "NONE" for j in singles]
+        actions += ["SPACE" if c[j] == PAD or c[j - 1] in GAPS else "NONE" for j in singles]
         actions.append("SKIP_CHARACTER")
     actions.append("COUNT")
     return entries, actions
@@ -115,20 +126,28 @@ def generate(src):
         entries, actions, x_first, x_next, y_first = v[part]
         if layout(ENGLISH[part], x_first, x_next, y_first) != (entries, actions):
             sys.exit(f"error: genintro.py's rules don't rebuild the vanilla {part} data")
-    text = []
+    text, starts = [], []
     for part in PARTS:
         _, _, x_first, x_next, y_first = v[part]
         if x_next is None:
             if len(CATALAN[part]) > 1:
                 sys.exit(f"error: {part} has one line in vanilla, so its new-line indent is unknown")
             x_next = x_first
-        entries, actions = layout(CATALAN[part], x_first, x_next, y_first)
+        # the block's middle where the English block's is: half a line up per extra line
+        y_first -= LINE_HEIGHT * (len(CATALAN[part]) - len(ENGLISH[part])) // 2
+        entries, actions = layout(CATALAN[part], x_first, x_next, y_first, centre=True)
+        # the cursor starts on the first letter, a cell after the first line's LEAD
+        starts.append((SCREEN_HALF_W + entries[0][0] + 8, OAM_Y + y_first + LINE_HEIGHT))
         oam = ",\n".join(f"    OAM_ENTRY({x}, {y}, OAM_DIMS_8x16, OAM_NO_FLIP, {t:#x}, 1, 0)" for x, y, t in entries)
         acts = ",\n".join(f"    INTRO_TEXT_ACTION_{a}" for a in actions)
         text.append(f"// {' / '.join(CATALAN[part])}\n"
                     f"const u16 sCaIntro{part}TextOam[OAM_DATA_SIZE({len(entries)})] = {{\n"
                     f"    {len(entries)},\n{oam}\n}};\n\n"
                     f"const IntroTextAction sCaIntro{part}Actions[{len(actions)}] = {{\n{acts}\n}};\n")
+    xs, ys = (", ".join(str(s[i]) for s in starts) for i in (0, 1))
+    text.append(f"// the cursor's start for each text ({', '.join(PARTS)}), set by ca/intro.h\n"
+                f"const u16 sCaIntroStartX[{len(PARTS)}] = {{ {xs} }};\n"
+                f"const u16 sCaIntroStartY[{len(PARTS)}] = {{ {ys} }};\n")
     return "\n".join(text)
 
 

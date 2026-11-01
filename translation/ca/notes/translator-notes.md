@@ -83,9 +83,14 @@ Decided by Guillem: the intro types its text in Catalan, without subtitles, as t
 intro does (every other language keeps the typed English with subtitles).
 - The texts are the approved subtitles in capitals: "ORDRE D'EMERGÈNCIA", "EXTERMINAR TOTS
   ELS / ORGANISMES METROIDES DEL / PLANETA ZEBES..." and "I DERROTAR LA FORMA / DE VIDA
-  MECÀNICA, / MOTHER BRAIN.". The intro starts each line at a fixed column (code), so the two
-  longer texts take three lines instead of two; the screen below is empty without subtitles.
-  The Catalan typing takes about a second longer in all than the English.
+  MECÀNICA, / MOTHER BRAIN.". The two longer texts take three lines instead of two; the screen
+  below is empty without subtitles. The Catalan typing takes about a second longer in all than
+  the English.
+- Centred (asked by Guillem): the code starts each line at a fixed column, which the typing
+  cursor follows. `ca/intro.h` moves the start of each text, so the first line is centred and
+  the block sits half a line higher per extra line (its middle where the English block's is);
+  later lines restart at the code's column, so `genintro.py` puts invisible cells in front,
+  typed silently, centring them to the nearest cell (within 4 px, like the English lines).
 - Typed with sprites of `intro/text_and_ship`, shared by every language: È, À and the apostrophe
   are drawn by `tools/gfx_intro.py` in three cells no frame uses (the accent sits in the black
   band above the letter). `tools/genintro.py` generates the sprite frames and typing steps; it
