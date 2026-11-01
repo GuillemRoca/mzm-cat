@@ -117,9 +117,12 @@ BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its 
 
 ## Story texts
 
-- Intro: after the language screen, don't press anything. "Ordre d'emergència", "Exterminar
-  tots els organismes metroides del planeta Zebes..." and "I derrotar la forma de vida
-  mecànica, Mother Brain." appear under the typed English graphic.
+- Intro: after the language screen, don't press anything. The intro types "ORDRE
+  D'EMERGÈNCIA", then "EXTERMINAR TOTS ELS / ORGANISMES METROIDES DEL / PLANETA ZEBES..." and
+  "I DERROTAR LA FORMA / DE VIDA MECÀNICA, / MOTHER BRAIN." in Catalan, letter by letter, with
+  no subtitles (like the English intro). Each box must close after its word, and the cursor
+  must follow the letters onto each new line. Pick English, Deutsch, Français or Italiano to
+  check their intro is unchanged (English typed, subtitles in the other three).
 - Preview build: hold **L + R** and press **Left** for the next story cutscene: the Planet
   Zebes prologue, the Mother Ship monologue (7 lines), "Aconseguiria sobreviure prou temps per
   escapar?". A ends each one; Samus is back in the room afterwards.

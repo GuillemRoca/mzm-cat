@@ -69,12 +69,31 @@ widest shipped line of each text.
   my escape couldn't have been worse"; pluperfect for the attack that came before.
 - **STORY_TEXT_COULD_I_SURVIVE**: two lines like the Spanish ("Aconseguiria sobreviure prou
   temps / per escapar?").
-- **Intro subtitles** (EMERGENCY, EXTERMINATE, DEFEAT): under the typed English graphic, as
-  in every language. Orders in the infinitive, like the Spanish ("Exterminar…", "I
-  derrotar…"). "planeta Zebes" in lowercase in running text (IEC: generic noun + name); the
-  banner keeps "PLANETA ZEBES". Mother Brain without an article, as an apposition.
+- **Intro subtitles** (EMERGENCY, EXTERMINATE, DEFEAT): orders in the infinitive, like the
+  Spanish ("Exterminar…", "I derrotar…"). "planeta Zebes" in lowercase in running text (IEC:
+  generic noun + name); the banner keeps "PLANETA ZEBES". Mother Brain without an article, as
+  an apposition. The Catalan intro no longer shows them (see "Intro text"): they stay
+  translated, as the Spanish slot's story text.
 - All six checked in game (intro after the language screen; story cutscenes with the preview
   L+R+Left).
+
+## Intro text — DECIDED
+
+Decided by Guillem: the intro types its text in Catalan, without subtitles, as the English
+intro does (every other language keeps the typed English with subtitles).
+- The texts are the approved subtitles in capitals: "ORDRE D'EMERGÈNCIA", "EXTERMINAR TOTS
+  ELS / ORGANISMES METROIDES DEL / PLANETA ZEBES..." and "I DERROTAR LA FORMA / DE VIDA
+  MECÀNICA, / MOTHER BRAIN.". The intro starts each line at a fixed column (code), so the two
+  longer texts take three lines instead of two; the screen below is empty without subtitles.
+  The Catalan typing takes about a second longer in all than the English.
+- Typed with sprites of `intro/text_and_ship`, shared by every language: È, À and the apostrophe
+  are drawn by `tools/gfx_intro.py` in three cells no frame uses (the accent sits in the black
+  band above the letter). `tools/genintro.py` generates the sprite frames and typing steps; it
+  first rebuilds the vanilla English data from its text, to prove its rules.
+- Code: `src/intro.c` includes `ca/intro.h` (LANG_CA only), which redefines the names it uses
+  so that, in the Spanish slot, it reads the Catalan frames and starts no subtitles. Not in the
+  self-test build, which stays byte-identical.
+- Checked in game: the three texts in Catalan, and the English intro identical to vanilla.
 
 ## Terms used in the FileScreen block — APPROVED
 

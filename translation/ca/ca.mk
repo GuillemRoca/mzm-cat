@@ -15,6 +15,7 @@
 #   ca/credits.inc             the EU sCredits with the translators in credits.txt
 #   ca/ending_oam.inc          the Spanish ending sprites (typed lines, whole lines)
 #   ca/mission_accomplished.inc  the Spanish "Mission accomplished" sprites
+#   ca/intro_text.inc          the Catalan typed intro text (ca/intro.h selects it)
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
 # and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
 # Objects are built in-tree for both modes, so every object that depends on the mode
@@ -39,6 +40,7 @@ CA_WIDTHS_INC := $(CA_INC)/ca/char_widths.inc
 CA_CREDITS_INC := $(CA_INC)/ca/credits.inc
 CA_ENDING_INC := $(CA_INC)/ca/ending_oam.inc
 CA_MISSION_INC := $(CA_INC)/ca/mission_accomplished.inc
+CA_INTRO_INC := $(CA_INC)/ca/intro_text.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
@@ -79,6 +81,7 @@ ifeq ($(LANG_CA),1)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
   src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC) $(CA_ENDING_INC)
   src/data/chozodia_escape_data.s: $(CA_MISSION_INC)
+  src/data/intro_data.s: $(CA_INTRO_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
   $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
 
@@ -112,6 +115,10 @@ $(CA_ENDING_INC): src/data/ending_and_gallery_data.c $(wildcard $(CA_DIR)/gfx/en
 $(CA_MISSION_INC): src/data/chozodia_escape_data.c $(CA_ENDING_DEPS)
 	$(MSG) ENDING $@
 	$Q$(PYTHON) $(CA_TOOLS)/genending.py mission $@ $(CA_CREDITS_FLAGS)
+
+$(CA_INTRO_INC): src/data/intro_data.c $(CA_TOOLS)/genintro.py $(CA_STAMP)
+	$(MSG) INTRO $@
+	$Q$(PYTHON) $(CA_TOOLS)/genintro.py $@ $(CA_CREDITS_FLAGS)
 
 $(CA_FONT_INC): data/text_characters.gfx $(wildcard $(CA_DIR)/font/glyphs/*.png) $(wildcard $(CA_DIR)/font/widths.txt) $(CA_TOOLS)/font.py $(CA_GBAGFX) $(CA_STAMP)
 	$(MSG) FONT $@

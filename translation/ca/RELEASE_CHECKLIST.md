@@ -15,7 +15,7 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Every PROPOSED glossary term in use is confirmed (APPROVED) or listed as an open choice
       in `notes/translator-notes.md`.
 
-## Graphics (all 17 language assets reviewed)
+## Graphics (all 18 language assets reviewed)
 
 - [ ] Pause screen: equipment names, menu names, unknown-item names. Every name checked for
       width inside its fixed box (`gfx.py export` to compare with the Spanish).
@@ -27,12 +27,14 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Ending: text, typed-letter OAM frames, numbers/misc, "New record".
 - [ ] "Mission Accomplished" OAM frame.
 - [ ] Language selector shows "Català" in the Spanish slot.
+- [ ] Intro: the typed text in Catalan (È, À, apostrophe), no subtitles; the other languages'
+      intros unchanged.
 
 ## Playthrough coverage (Catalan slot, real hardware or mGBA)
 
 - [ ] Language selector → title → file select: new file, copy, erase, erase all, difficulty,
       options (gallery, sound test, time attack records, original Metroid when unlocked).
-- [ ] Intro: "Emergency order" sequence and the Planet Zebes prologue.
+- [ ] Intro: "Ordre d'emergència" sequence (typed in Catalan) and the Planet Zebes prologue.
 - [ ] Every item pickup banner, including all three Unknown Items and the Fully Powered Suit.
 - [ ] Save station (prompt, Yes/No, complete), map stations (all five), recharge stations.
 - [ ] Every area and room banner, including Chozo Ruins and the Mother Ship.

@@ -489,5 +489,14 @@ RECORD","NUEVO
 RÉCORD!","NOU
 RÈCORD!",translated,
 graphics,mission_accomplished,"Chozodia escape, after the ship takes off",MISSION ACCOMPLISHED!,¡MISIÓN CUMPLIDA!,MISSIÓ COMPLERTA!,translated,
+graphics,intro_EmergencyOrder,"Intro, typed text",EMERGENCY ORDER,"(the English, with Spanish subtitles)",ORDRE D'EMERGÈNCIA,translated,
+graphics,intro_ExterminateAll,"Intro, typed text","EXTERMINATE ALL METROID
+ORGANISMS ON PLANET ZEBES...","(the English, with Spanish subtitles)","EXTERMINAR TOTS ELS
+ORGANISMES METROIDES DEL
+PLANETA ZEBES...",translated,
+graphics,intro_DefeatThe,"Intro, typed text","AND DEFEAT THE MECHANICAL
+LIFE-FORM, MOTHER BRAIN.","(the English, with Spanish subtitles)","I DERROTAR LA FORMA
+DE VIDA MECÀNICA,
+MOTHER BRAIN.",translated,
 credits,translation,"Staff credits, TRANSLATION section",,,"CATALAN
 Guillem Roca Castany",translated,

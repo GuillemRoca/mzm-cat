@@ -16,5 +16,6 @@
   "menus/file_select/difficulty_text_spanish":             {"palette": "menus/file_select/palette.pal", "row": 5, "vram_max": 1024},
   "ending/text_spanish":                                   {"palette": "ending/image_text.pal", "row": 0, "vram_max": 28672},
   "ending/numbers_misc_spanish":                           {"palette": "ending/image_text.pal", "row": 0, "vram_max": 4096},
-  "menus/language_select/background":                      {"palette": "menus/language_select/background.pal", "row": 0, "vram_max": 63488}
+  "menus/language_select/background":                      {"palette": "menus/language_select/background.pal", "row": 0, "vram_max": 63488},
+  "intro/text_and_ship":                                   {"palette": "intro/text_and_ship.pal", "row": 1, "vram_max": 19456}
 }

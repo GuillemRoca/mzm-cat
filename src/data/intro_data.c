@@ -456,6 +456,10 @@ const IntroTextAction sIntroDefeatTheActions[50] = {
 };
 
 
+#ifdef LANG_CA
+#include "ca/intro_text.inc"
+#endif // LANG_CA
+
 const u32 sIntroTextAndShipFlyingInGfx[1310] = {
     #include "extracted/data/intro/text_and_ship.gfx.lz.inc"
 };

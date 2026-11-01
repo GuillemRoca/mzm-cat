@@ -29,6 +29,7 @@ import gfx_erase_sram  # noqa: E402
 import gfx_file_select  # noqa: E402
 import gfx_game_over  # noqa: E402
 import gfx_unknown_items  # noqa: E402
+import genintro  # noqa: E402
 import gfx_menu_names  # noqa: E402
 
 OUT = catext.CA / "translations.csv"
@@ -134,6 +135,12 @@ def graphic_rows():
         ("mission_accomplished", "Chozodia escape, after the ship takes off", "MISSION ACCOMPLISHED!",
          "¡MISIÓN CUMPLIDA!", end["MissionAccomplished"], None),
     ]
+    # the Spanish intro types the English text and adds subtitles (story section); the Catalan
+    # one types Catalan, without subtitles
+    for part in genintro.PARTS:
+        g.append((f"intro_{part}", "Intro, typed text", "\n".join(genintro.ENGLISH[part]),
+                  "(the English, with Spanish subtitles)", "\n".join(genintro.CATALAN[part]),
+                  "intro/text_and_ship"))
     rows = [{"section": "graphics", "id": id_, "where": where, "english": en, "spanish": es, "catalan": ca,
              "status": "translated" if key is None or (catext.CA / "gfx" / f"{key}.png").exists()
              else "untranslated"}
