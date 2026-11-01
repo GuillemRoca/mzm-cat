@@ -21,6 +21,9 @@ extern const u16 sCaIntroDefeatTheTextOam[];
 extern const IntroTextAction sCaIntroEmergencyOrderActions[];
 extern const IntroTextAction sCaIntroExterminateAllActions[];
 extern const IntroTextAction sCaIntroDefeatTheActions[];
+extern const u16 sCaIntroEmergencyOrderCursor[];
+extern const u16 sCaIntroExterminateAllCursor[];
+extern const u16 sCaIntroDefeatTheCursor[];
 extern const u16 sCaIntroStartX[];
 extern const u16 sCaIntroStartY[];
 
@@ -34,8 +37,8 @@ extern const u16 sCaIntroStartY[];
 #define sIntroExterminateAllActions (CA_INTRO_CATALAN ? sCaIntroExterminateAllActions : sIntroExterminateAllActions)
 #define sIntroDefeatTheActions (CA_INTRO_CATALAN ? sCaIntroDefeatTheActions : sIntroDefeatTheActions)
 
-// No subtitles: the story text never starts, and reads as finished. Instead, on the first frame
-// of each text (before any typing), the cursor moves to where the centred Catalan text starts.
+// No subtitles: the story text never starts. Instead, on the first frame of each text (before
+// any typing), the cursor moves to where the centred Catalan text starts.
 #define CA_INTRO_PART(textId) ((textId) == STORY_TEXT_EMERGENCY ? 0 : (textId) == STORY_TEXT_EXTERMINATE ? 1 : 2)
 #define TextStartStory(textId) do {                                  \
     if (!CA_INTRO_CATALAN)                                           \
@@ -46,7 +49,20 @@ extern const u16 sCaIntroStartY[];
         INTRO_DATA.charDrawerY = sCaIntroStartY[CA_INTRO_PART(textId)]; \
     }                                                                \
 } while (0)
-#define TextProcessStory() (CA_INTRO_CATALAN ? TRUE : TextProcessStory())
+// TextProcessStory runs every frame just before the typing step while it returns FALSE. Here
+// it places the cursor when a step is about to move it (unk_A == 1) and the generated table has
+// a position for that step: a cell before the line's first letter, as the step adds a cell.
+// The code's own new line would send the cursor back to its fixed column instead.
+#define CA_INTRO_CURSOR                                                                     \
+    (INTRO_DATA.stage == 0 ? sCaIntroEmergencyOrderCursor                                   \
+     : INTRO_DATA.stage == 3 ? sCaIntroExterminateAllCursor                                 \
+     : sCaIntroDefeatTheCursor)[INTRO_DATA.currentCharacter]
+#define TextProcessStory()                                                                  \
+    (!CA_INTRO_CATALAN ? TextProcessStory()                                                 \
+     : INTRO_DATA.unk_A == 1 && CA_INTRO_CURSOR != 0                                        \
+         ? (INTRO_DATA.charDrawerX = (CA_INTRO_CURSOR & 0xFF) - 8,                          \
+            INTRO_DATA.charDrawerY = CA_INTRO_CURSOR >> 8, FALSE)                            \
+     : FALSE)
 
 #endif // !CA_SELFTEST
 

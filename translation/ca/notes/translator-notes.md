@@ -86,11 +86,12 @@ intro does (every other language keeps the typed English with subtitles).
   MECÀNICA, / MOTHER BRAIN.". The two longer texts take three lines instead of two; the screen
   below is empty without subtitles. The Catalan typing takes about a second longer in all than
   the English.
-- Centred (asked by Guillem): the code starts each line at a fixed column, which the typing
-  cursor follows. `ca/intro.h` moves the start of each text, so the first line is centred and
-  the block sits half a line higher per extra line (its middle where the English block's is);
-  later lines restart at the code's column, so `genintro.py` puts invisible cells in front,
-  typed silently, centring them to the nearest cell (within 4 px, like the English lines).
+- Centred (asked by Guillem): every line is centred, and the block sits half a line higher per
+  extra line (its middle where the English block's is). The typing cursor follows a start the
+  code sets, and the code's new line sends it back to a fixed column, so `ca/intro.h` places it
+  itself: at the start of each text, and on the frame each later line's first step moves it.
+  Those lines start with an ordinary step instead of the code's new line, and the cursor jumps
+  from one line's end to the next line's first letter, as in English.
 - Typed with sprites of `intro/text_and_ship`, shared by every language: È, À and the apostrophe
   are drawn by `tools/gfx_intro.py` in three cells no frame uses (the accent sits in the black
   band above the letter). `tools/genintro.py` generates the sprite frames and typing steps; it

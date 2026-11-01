@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generates the Catalan typed text of the intro for LANG_CA=1:
 
-  genintro.py OUT [--vanilla]    ca/intro_text.inc: sCaIntro<Part>TextOam and sCaIntro<Part>Actions
-                                 (--vanilla: nothing, for the plumbing self-test)
+  genintro.py OUT [--vanilla]    ca/intro_text.inc: sCaIntro<Part>TextOam, Actions and Cursor,
+                                 and sCaIntroStartX/Y (--vanilla: nothing, for the self-test)
 
 The intro types three texts letter by letter with sprites from intro/text_and_ship (shared by
 every language): EMERGENCY ORDER, EXTERMINATE ALL METROID..., AND DEFEAT THE MECHANICAL...
@@ -10,16 +10,19 @@ Other languages show subtitles under the English. In the Spanish slot, translati
 ca/intro.h makes src/intro.c type these Catalan texts instead, without subtitles, like English.
 
 Each text is a frame of 8x16 sprites, one per cell, and a list of actions (one per typing step)
-that reveals the cells. A typing cursor follows them from a start set by the code: ca/intro.h
-moves the start of each Catalan text (sCaIntroStartX/Y) so its first line is centred and the
-text block sits where the English one does; later lines start at a fixed column, so they are
-centred to the nearest cell with invisible PAD cells, typed silently. Every word sits in a box: a cell before it holds its left edge (LEAD),
+that reveals the cells. Every word sits in a box: a cell before it holds its left edge (LEAD),
 a cell after it its right edge (TRAIL); a space between words is one cell with both edges, and
 punctuation cells carry the right edge. The rules are checked by rebuilding the vanilla English
 data from its text before anything is written.
+
+A typing cursor follows the letters from a start the code sets, and the code's new-line step
+sends it back to a fixed column. To centre every Catalan line, ca/intro.h places the cursor
+itself: at the start of each text (sCaIntroStartX/Y), and on the frame each later line's first
+step moves it (sCaIntro<Part>Cursor). Those lines start with an ordinary step, so the code
+doesn't move the cursor back. The text block sits half a line higher per extra line, with its
+middle where the English block's is.
 """
 import argparse
-import math
 import re
 import sys
 from pathlib import Path
@@ -48,8 +51,7 @@ LETTERS.update(NEW)
 LEAD, TRAIL, SPACE = 0x3, 0x1c, 0x1d
 COMMA, HYPHEN, PERIOD = 0x5d, 0x5e, 0x5f      # each with the right edge of its word
 ELLIPSIS = [0x1e, 0x1f, 0x1f]                 # the first dot with the right edge
-PAD = 0x40                                    # an empty cell (tiles 0x40 and 0x60 are blank)
-GAPS = {LEAD, SPACE, PAD}                     # a step after these is a SPACE action (no sound)
+GAPS = {LEAD, SPACE}                          # a step after these is a SPACE action (no sound)
 LINE_HEIGHT = 24                              # IntroProcessText's new line
 SCREEN_HALF_W, SCREEN_H, OAM_Y = 120, 160, 128
 
@@ -77,32 +79,34 @@ def cells(line):
 
 
 def layout(lines, x_first, x_next, y_first, centre=False):
-    """(frame entries [(x, y, tile)], actions). x and y are relative to the sprite origin (screen
-    x 120, y 128). With centre, the first line starts where it is centred (x_first is ignored:
-    the cursor start moves with it) and later lines get PAD cells up to the nearest centring."""
-    entries, actions = [], ["START"]
+    """(frame entries [(x, y, tile)], actions, cursor). x and y are relative to the sprite origin
+    (screen x 120, y 128). Without centre, the vanilla layout: lines start at x_first, then
+    x_next. With centre, every line is centred, and each later line starts with a
+    SKIP_CHARACTER (the same two cells as the code's NEW_LINE, without the move back to its
+    column); cursor gives, for each action, 0 or where ca/intro.h puts the cursor (y << 8 | x on
+    screen, the first letter's cell)."""
+    entries, actions, cursor = [], ["START"], [0]
     for k, line in enumerate(lines):
         c = cells(line)
         last = k == len(lines) - 1
-        x0 = x_first if k == 0 else x_next
-        if centre and k == 0:
-            x0 = -4 * len(c)
-        elif centre:
-            c = [PAD] * max(0, math.floor(-(x_next + 4 * len(c)) / 8 + 0.5)) + c
+        x0 = -4 * len(c) if centre else x_first if k == 0 else x_next
         y = y_first + k * LINE_HEIGHT
-        if x0 + 8 * len(c) > SCREEN_HALF_W or OAM_Y + y + 16 > SCREEN_H:
+        if x0 < -SCREEN_HALF_W or x0 + 8 * len(c) > SCREEN_HALF_W or OAM_Y + y + 16 > SCREEN_H:
             sys.exit(f"error: {line!r} doesn't fit the screen ({len(c)} cells from x = {x0})")
         entries += [(x0 + 8 * i, y, t) for i, t in enumerate(c)]
-        if k:
-            actions.append("NEW_LINE")                  # the line's LEAD and first letter
+        if k:                                           # the line's LEAD and first letter
+            actions.append("SKIP_CHARACTER" if centre else "NEW_LINE")
+            cursor.append((OAM_Y + y + LINE_HEIGHT) << 8 | (SCREEN_HALF_W + x0 + 8) if centre else 0)
         # the line's last cell is revealed with the one before it when it closes the word box
         # (lines that go on; the vanilla last lines end on a lone SKIP)
         pair = not last or c[-1] == TRAIL
         singles = range(2, len(c) - 2 if pair else len(c) - 1)
-        actions += ["SPACE" if c[j] == PAD or c[j - 1] in GAPS else "NONE" for j in singles]
+        actions += ["SPACE" if c[j - 1] in GAPS else "NONE" for j in singles]
         actions.append("SKIP_CHARACTER")
+        cursor += [0] * (len(singles) + 1)
     actions.append("COUNT")
-    return entries, actions
+    cursor.append(0)
+    return entries, actions, cursor
 
 
 def vanilla(src):
@@ -124,26 +128,25 @@ def generate(src):
     v = vanilla(src)
     for part in PARTS:                       # the rules must rebuild the English data
         entries, actions, x_first, x_next, y_first = v[part]
-        if layout(ENGLISH[part], x_first, x_next, y_first) != (entries, actions):
+        if layout(ENGLISH[part], x_first, x_next, y_first)[:2] != (entries, actions):
             sys.exit(f"error: genintro.py's rules don't rebuild the vanilla {part} data")
     text, starts = [], []
     for part in PARTS:
         _, _, x_first, x_next, y_first = v[part]
-        if x_next is None:
-            if len(CATALAN[part]) > 1:
-                sys.exit(f"error: {part} has one line in vanilla, so its new-line indent is unknown")
-            x_next = x_first
         # the block's middle where the English block's is: half a line up per extra line
         y_first -= LINE_HEIGHT * (len(CATALAN[part]) - len(ENGLISH[part])) // 2
-        entries, actions = layout(CATALAN[part], x_first, x_next, y_first, centre=True)
+        entries, actions, cursor = layout(CATALAN[part], x_first, x_next, y_first, centre=True)
         # the cursor starts on the first letter, a cell after the first line's LEAD
         starts.append((SCREEN_HALF_W + entries[0][0] + 8, OAM_Y + y_first + LINE_HEIGHT))
         oam = ",\n".join(f"    OAM_ENTRY({x}, {y}, OAM_DIMS_8x16, OAM_NO_FLIP, {t:#x}, 1, 0)" for x, y, t in entries)
         acts = ",\n".join(f"    INTRO_TEXT_ACTION_{a}" for a in actions)
+        cur = ", ".join(f"{c:#x}" if c else "0" for c in cursor)
         text.append(f"// {' / '.join(CATALAN[part])}\n"
                     f"const u16 sCaIntro{part}TextOam[OAM_DATA_SIZE({len(entries)})] = {{\n"
                     f"    {len(entries)},\n{oam}\n}};\n\n"
-                    f"const IntroTextAction sCaIntro{part}Actions[{len(actions)}] = {{\n{acts}\n}};\n")
+                    f"const IntroTextAction sCaIntro{part}Actions[{len(actions)}] = {{\n{acts}\n}};\n\n"
+                    f"// per action: where the cursor goes at a line's first step (y << 8 | x), or 0\n"
+                    f"const u16 sCaIntro{part}Cursor[{len(cursor)}] = {{ {cur} }};\n")
     xs, ys = (", ".join(str(s[i]) for s in starts) for i in (0, 1))
     text.append(f"// the cursor's start for each text ({', '.join(PARTS)}), set by ca/intro.h\n"
                 f"const u16 sCaIntroStartX[{len(PARTS)}] = {{ {xs} }};\n"

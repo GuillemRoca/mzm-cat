@@ -61,9 +61,6 @@ def main():
         gfx.export(KEY, png, tmp)
         img = Image.open(png)
         img.load()
-    x0, y0 = cell(genintro.PAD)
-    if any(img.getpixel((x0 + x, y0 + y)) for x in range(8) for y in range(16)):
-        sys.exit(f"error: cell {genintro.PAD:#x}, genintro's invisible PAD, isn't blank")
     for ch, base in (("È", "E"), ("À", "A")):
         tile = genintro.NEW[ch]
         copy_cell(img, genintro.LETTERS[base], tile)
