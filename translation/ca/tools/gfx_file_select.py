@@ -16,7 +16,8 @@ Glyphs are cut from the labels of all five languages (texts in VANILLA), the Spa
 the base, and each Catalan label replaces its slot, aligned like the vanilla labels. Letters
 no sheet has are made from others: the title's L is drawn from the title E (DRAWN), and È and
 À take the É and Á accents mirrored.
-Writes OUT_DIR/<asset>_spanish.png.
+Writes OUT_DIR/<asset>_german.png: Catalan takes the German slot, so these replace the German
+sheets (the Spanish ones stay vanilla).
 """
 import argparse
 import subprocess
@@ -297,7 +298,7 @@ def main():
         with tempfile.TemporaryDirectory() as tmp:
             images = {lang: load(asset, lang, tmp) for lang in LANGS}
         glyphs, spacing = harvest(images, asset)
-        compose(asset, images, glyphs, spacing).save(out / f"{asset}_spanish.png")
+        compose(asset, images, glyphs, spacing).save(out / f"{asset}_german.png")
 
 
 if __name__ == "__main__":

@@ -5,6 +5,28 @@ who still needs to confirm it.
 
 ## Decisions
 
+### Language slot: German — DECIDED
+Decided by Guillem: Catalan takes the German slot (`LANGUAGE_GERMAN`, the 2nd entry of the
+language selector) instead of the Spanish one, so the Spanish game stays intact. The Catalan
+was first laid out in the Spanish slot, and moving it changes none of its text or art:
+- Text: the Catalan replaces the German pointer tables (`catext.SLOT`); the linter still
+  compares it with the vanilla Spanish (`catext.REFERENCE`), which it was modelled on (both
+  tables have the same IDs, and nothing in the text depends on the slot).
+- Graphics: still composed on the Spanish sheets, now written to the German assets
+  (`*_german.png`); every one is pixel-identical to before except the language selector (see
+  below) and the title menu, whose label could move to its centre (see "Title screen menu").
+- Per-language layouts: the German helmet position (`ca/layout.h`), and in the ending the
+  Spanish typed-letter tables, record box and "Mission accomplished" frame, copied to the German
+  symbols by `tools/genending.py`. The German tables take the Spanish sizes (15 and 19 letters,
+  `ca/layout.h`).
+- Checked: every Spanish symbol in the ROM is identical to vanilla; the Spanish, English,
+  French and Italian games show the same frames as vanilla from the language screen to the
+  file select (only the language screen differs, with "Català" for "Deutsch"); and in the
+  German slot, in game: intro, title, file select, prologue, message banner, pause screens,
+  game over, "MISSIÓ COMPLERTA!" and the results screen.
+- Saves made with Catalan in the Spanish slot (test builds before this change) now open in
+  Spanish: pick Català again on the language screen.
+
 ### Middle dot glyph (font/glyphs/0357.png) — DECIDED
 Option A: dot at mid x-height, width 2. Confirmed by Guillem at the Phase 2 checkpoint.
 
@@ -73,7 +95,7 @@ widest shipped line of each text.
   Spanish ("Exterminar…", "I derrotar…"). "planeta Zebes" in lowercase in running text (IEC:
   generic noun + name); the banner keeps "PLANETA ZEBES". Mother Brain without an article, as
   an apposition. The Catalan intro no longer shows them (see "Intro text"): they stay
-  translated, as the Spanish slot's story text.
+  translated, as the slot's story text.
 - All six checked in game (intro after the language screen; story cutscenes with the preview
   L+R+Left).
 
@@ -97,7 +119,7 @@ intro does (every other language keeps the typed English with subtitles).
   band above the letter). `tools/genintro.py` generates the sprite frames and typing steps; it
   first rebuilds the vanilla English data from its text, to prove its rules.
 - Code: `src/intro.c` includes `ca/intro.h` (LANG_CA only), which redefines the names it uses
-  so that, in the Spanish slot, it reads the Catalan frames and starts no subtitles. Not in the
+  so that, in the German slot, it reads the Catalan frames and starts no subtitles. Not in the
   self-test build, which stays byte-identical.
 - Checked in game: the three texts in Catalan, and the English intro identical to vanilla.
 
@@ -137,14 +159,12 @@ Approved by Guillem:
 
 ## File select graphics
 
-- `gfx/menus/file_select/{large_text,options_text,difficulty_text}_spanish.png`, made by
+- `gfx/menus/file_select/{large_text,options_text,difficulty_text}_german.png`, made by
   `tools/gfx_file_select.py` from the five vanilla sheets (letters cut by their fill shapes,
-  Spanish letters first; spacing as in the vanilla labels).
+  Spanish letters first, on the Spanish sheet; spacing as in the vanilla labels).
 - Large labels: DADES DE LA SAMUS (centred like every title; its L, which no title has, is
-  drawn from the title E), OPCIONS, COPIA, ESBORRA. The compressed sheet is 3 words bigger than
-  the Spanish fixed-size array: `sFileSelectLargeTextSpanishGfx` is declared unsized under
-  LANG_CA (`src/data/menus/file_select_data.c` and its header), so the self-test stays
-  byte-identical.
+  drawn from the title E), OPCIONS, COPIA, ESBORRA. The compressed sheet (367 words) fits the
+  German fixed-size array (391); it was 3 words too big for the Spanish one.
 - Options list: SO, PROVA DE SO, RÈCORDS CONTRARELLOTGE (the unlock message now says the same),
   GALERIA, CONNEXIÓ A METROID FUSION, GALERIA DE METROID FUSION, METROID ORIGINAL (as in
   Spanish). È takes the É accent mirrored.
@@ -160,35 +180,40 @@ So (sound option), Rècords contrarellotge, Connexió a Metroid Fusion.
 
 ## Erase-save screens
 
-- `gfx/menus/erase_sram/{question,confirm}_spanish.png`, made by `tools/gfx_erase_sram.py`
+- `gfx/menus/erase_sram/{question,confirm}_german.png`, made by `tools/gfx_erase_sram.py`
   with the file select composer: "Vols esborrar totes les / dades guardades?" (the same as
   FILE_SCREEN_TEXT_ERASE_ALL) and "Segur que vols esborrar / totes les dades?". The answers
   No / Sí are the Spanish ones. The Spanish margins are kept (8 and 0 px).
-- Both compress bigger than the Spanish fixed-size arrays (215 of 208 and 237 of 204 words):
-  `sEraseSramMenu{Question,Confirm}SpanishGfx` are declared unsized under LANG_CA
-  (`src/data/menus/erase_sram_data.c` and its header).
+- Both compress bigger than the German fixed-size arrays (215 of 205 and 237 of 222 words):
+  `sEraseSramMenu{Question,Confirm}GermanGfx` are declared unsized under LANG_CA
+  (`src/data/menus/erase_sram_data.c` and its header), so the self-test stays byte-identical.
 - Checked in game (L+R held at power on), both screens and both answers.
 
 ## Ending graphics
 
-- `gfx/ending/text_spanish.png` and `gfx/ending/numbers_misc_spanish.png`, made by
-  `tools/gfx_ending.py`; the sprites that place them come from `tools/genending.py` at build
-  time (`ca/ending_oam.inc`, `ca/mission_accomplished.inc`), both from the layout of
-  `tools/ending_layout.py`.
+- `gfx/ending/text_german.png` and `gfx/ending/numbers_misc_german.png`, made by
+  `tools/gfx_ending.py` on the Spanish sheets; the sprites that place them come from
+  `tools/genending.py` at build time (`ca/ending_oam.inc`, `ca/ending_tables.inc`,
+  `ca/mission_accomplished.inc`), both from the layout of `tools/ending_layout.py`: the Spanish
+  sprites and tables, with the Catalan letters, as the German ones.
 - Results screen: each line is typed one sprite per letter from the sheet's alphabet, then
-  replaced by the whole line. The tables of typed letters have a fixed size (15 and 19 in
-  Spanish, no code change allowed), so the Catalan lines have exactly as many letters: "TEMPS
-  TOTAL DE JOC" (15) and "OBJECTES ACONSEGUITS" (19). Letter advances and the word space are
-  the vanilla ones; both lines are centred (173 and 187 px).
+  replaced by the whole line. The Catalan lines were made with exactly as many letters as the
+  Spanish tables of typed letters (15 and 19): "TEMPS TOTAL DE JOC" (15) and "OBJECTES
+  ACONSEGUITS" (19). In the German slot those tables replace the German ones (13 and 14
+  letters), whose sizes follow under LANG_CA (`ca/layout.h`; the code takes `ARRAY_SIZE`). Letter
+  advances and the word space are the vanilla ones; both lines are centred (173 and 187 px).
 - Last line: "Fins a la propera missió!" (152 px, 12 narrower than the Spanish), from the
   letters of the German, French, Italian and Spanish last lines; the English line is in another
   font. The F, which none has, is drawn from the H.
 - Best-time box: "NOU / RÈCORD!". RÈCORD takes the É accent mirrored; the NOU tab is the Italian
-  NUOVO tab with its N, O and U, centred like the Spanish tab.
+  NUOVO tab with its N, O and U, centred like the Spanish tab, and placed by the Spanish box's
+  sprites (`sEndingImageOam_NewRecordGerman` is a copy of the Spanish frame).
 - "MISSIÓ COMPLERTA!" (Chozodia escape) uses the letter sheet all languages share: only its 16
-  sprites change, as many as the Spanish ¡MISIÓN CUMPLIDA!.
-- `sEndingImageTextSpanishGfx` compresses bigger than its Spanish array: declared unsized under
-  LANG_CA (`src/data/ending_and_gallery_data.c` and its header).
+  sprites change, as many as the Spanish ¡MISIÓN CUMPLIDA! (the German frame has 21, and is
+  declared unsized under LANG_CA in `include/data/chozodia_escape_data.h`).
+- `sEndingImageTextGermanGfx` and `sEndingImageNumbersMiscGermanGfx` compress bigger than their
+  German arrays (764 of 726 and 211 of 209 words): declared unsized under LANG_CA
+  (`src/data/ending_and_gallery_data.c` and its header).
 - Seen in game: "MISSIÓ COMPLERTA!" and the whole results screen (both lines typed and whole,
   the last line). The NOU / RÈCORD! box needs a new best time: checked in the PNG only.
 
@@ -199,29 +224,32 @@ missió! (See you next mission!).
 
 ## Title screen menu
 
-- `gfx/menus/title_screen/spanish_menu_{top,bottom}.png`, made by `tools/gfx_title_menu.py`:
-  "JUGA" (approved Start Game) and "Idioma" (the same word as the Spanish, untouched). JUGA is
-  the Spanish JUGAR without its R. The bottom half's C array has no word to spare, so the label
-  sits at the most centred column that still compresses small enough: centre 49 instead of
-  47.5, 1.5 px right of the vanilla labels (not visible in game next to "Idioma").
+- `gfx/menus/title_screen/german_menu_{top,bottom}.png`, made by `tools/gfx_title_menu.py` on
+  the Spanish sheets: "JUGA" (approved Start Game) and "Idioma" (the same word as the Spanish,
+  untouched). JUGA is the Spanish JUGAR without its R. The label sits at the most centred column
+  that still compresses small enough: in the German arrays (89 and 75 words) that is centre 47,
+  half a pixel from the vanilla labels' 47.5. (In the Spanish slot, whose bottom array had no
+  word to spare, it had to sit at centre 49.)
 - `gfx.py` now also tries an optimal LZ77 parse and keeps the smaller result (the greedy
   gbagfx parse was a word too big even at that column).
-- Checked in game, both entries selected.
+- Checked in game, both entries selected (at centre 49, in the Spanish slot); at centre 47 in
+  the German slot, seen in game with JUGA selected.
 
 ## Game over prompt (pilot graphic) — DECIDED
 
-- `gfx/menus/game_over/text_prompt_spanish.png`, made by `tools/gfx_game_over.py` from the
+- `gfx/menus/game_over/text_prompt_german.png`, made by `tools/gfx_game_over.py` from the
   glyphs of the five vanilla prompts: "TORNAR-HO A PROVAR?" / "SÍ (CONTINUA)" / "NO (SURT)".
   Imperatives and the hyphenated "tornar-ho" chosen by Guillem; the hyphen isn't in any vanilla
   prompt, so it is drawn like the middle bar of the red E.
 - No space before "?" (Catalan typography), unlike the EU art. The off-screen katakana label
   (a developer note, "Spanish") is dropped.
-- Layout: options left-aligned at x = 86, helmet at 88 px (`include/ca/layout.h`, vanilla
-  Spanish 82 px). Checked in game for both options.
+- Layout: options left-aligned at x = 86, helmet at 88 px (`include/ca/layout.h`, the German
+  entry of `sGameOverSamusHeadXPositions`; vanilla German 66 px, Spanish 82 px). Checked in game
+  for both options, in the German slot.
 
 ## Pause menu names (menu_names graphic)
 
-- `gfx/menus/pause_screen/menu_names_spanish.png`, made by `tools/gfx_menu_names.py`: L tab
+- `gfx/menus/pause_screen/menu_names_german.png`, made by `tools/gfx_menu_names.py`: L tab
   "REPÒS", R tab "ESTAT", area label "CANVIA ZONA" (both copies).
 - No vanilla tab has an accented letter: Ò follows the German Ä of the label font (accent on top,
   4-row body), with a 2-px grave stroke (candidates a/b/c in the tool; c chosen). V isn't in any
@@ -231,7 +259,7 @@ missió! (See you next mission!).
 
 ## Equipment names (status screen graphic)
 
-- `gfx/menus/pause_screen/equipment_names_spanish.png`, made by `tools/gfx_equipment_names.py`
+- `gfx/menus/pause_screen/equipment_names_german.png`, made by `tools/gfx_equipment_names.py`
   from the glyphs of the English, Spanish and Italian sheets. Every name has a fixed run of
   tiles (5 to 7, the POWER bomb only 4); names are left-aligned like vanilla. The headings'
   letters touch, so they are cut by hand; the item letters are cut automatically, keeping the
@@ -251,7 +279,7 @@ Raig, Altres and Arma (the suitless group, GUN in English).
 
 ## Unknown item names (revealed with the fully powered suit)
 
-- `gfx/menus/pause_screen/map_screen_unknown_items_names_spanish.png`, made by
+- `gfx/menus/pause_screen/map_screen_unknown_items_names_german.png`, made by
   `tools/gfx_unknown_items.py`: the three names drawn as sprites over the status screen bars
   while the fully powered suit reveals them. PLASMA stays; "SALTO ESPACIAL" (drawn without its
   space in the Spanish) becomes SALT ESPACIAL (54 of 55 px, with the space), GRAVITATORIO
@@ -262,10 +290,11 @@ Raig, Altres and Arma (the suitless group, GUN in English).
 ## Language selector
 
 - `gfx/menus/language_select/background.png`, made by `tools/gfx_language_select.py`: "Català"
-  in the Spanish slot (5th entry), left-aligned like the other labels, 38 of 48 px, so the
-  tilemap is unchanged. "a", "t" and "l" are cut from "Italiano"; the capital C (stair corners
-  like the D of "Deutsch", mirrored) and the grave accent (rows 3-5 like the ñ tilde, 2-px
-  stroke; candidates a/b in the tool, a chosen) are drawn. Checked in game, selected and not.
+  in the German slot (2nd entry, in place of "Deutsch"), left-aligned like the other labels, 38
+  of 56 px, so the tilemap is unchanged; "Español" stays as in vanilla. "a", "t" and "l" are cut
+  from "Italiano"; the capital C (stair corners like the D of "Deutsch", mirrored) and the grave
+  accent (rows 3-5 like the ñ tilde, 2-px stroke; candidates a/b in the tool, a chosen) are
+  drawn. Checked in game, selected and not.
 
 ## Line notes (Message block)
 

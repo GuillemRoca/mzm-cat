@@ -2,12 +2,14 @@
 """Composes the Catalan game over prompt from the glyphs of the five vanilla EU prompts.
 
   gfx_game_over.py OUT.png        (needs data/ extracted and the gbagfx in build/)
+                                  OUT.png: translation/ca/gfx/menus/game_over/text_prompt_german.png
 
 The prompt (menus/game_over/text_prompt_*.gfx.lz) is three 16-px lines of an outlined font:
 the question in red, the two options in blue. Each glyph's fill is cut out of a vanilla line
 whose text is known, with one outline column on each side, and the Catalan lines are set with
 the vanilla spacing. Glyphs no prompt has (the hyphen) are drawn in DRAWN, in the same style.
-Options are left-aligned, and the options block plus the Samus helmet
+The Spanish prompt is the base; the result replaces the German slot's. Options are
+left-aligned, and the options block plus the Samus helmet
 (~24 px to the left) is centred on screen, as in vanilla. Prints the helmet X for
 translation/ca/include/ca/layout.h: in every EU language it is the options' left edge + 2 px.
 """

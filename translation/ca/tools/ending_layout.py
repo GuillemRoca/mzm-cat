@@ -6,8 +6,9 @@ gfx_ending.py (the graphics), so both agree.
 Ending results screen (src/data/ending_and_gallery_data.c): each line is typed one letter
 per sprite (sClearTime*/sCollecting*Oam_N: one 16x16 or 8x16 sprite of a letter of the
 alphabet in ending/text_*), then shown whole (sFullLines*Oam_0 and _3: 32x16 sprites of the
-line drawn in the same sheet, rows 0-1 and 2-3). The tables sEndingImageOam_ClearTime_Spanish
-[15] and _Collecting_Spanish[19] have a fixed size, so the Catalan lines have as many letters.
+line drawn in the same sheet, rows 0-1 and 2-3). The Catalan is laid out on the Spanish
+sprites, which genending.py copies to the German slot: sEndingImageOam_ClearTime_Spanish[15] and
+_Collecting_Spanish[19] become the German tables, so the Catalan lines have as many letters.
 "Mission accomplished" (src/data/chozodia_escape_data.c): one frame of 16 letter sprites from a
 sheet shared by all languages; the Catalan line has 16 too.
 Letter metrics (tile, size, y, advance) come from the vanilla lines whose text is known

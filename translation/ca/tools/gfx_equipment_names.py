@@ -2,6 +2,7 @@
 """Composes the Catalan status-screen equipment names from the glyphs of the vanilla EU sheets.
 
   gfx_equipment_names.py OUT.png   (needs data/ extracted and build/gbagfx)
+  OUT.png: translation/ca/gfx/menus/pause_screen/equipment_names_german.png (the German slot's)
 
 menus/pause_screen/equipment_names_*.gfx.lz is a sheet of 160 tiles. Each name has a fixed run
 of tiles, the same in every language (src/data/menus/pause_screen: status_screen.tt and

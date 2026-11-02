@@ -22,11 +22,12 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Area names (map, Chozo statue hints, minimap): unchanged by policy; confirmed on screen.
 - [ ] Erase SRAM: question and confirmation.
 - [ ] Title screen: menu top and bottom.
-- [ ] Game over prompt, with `sGameOverSamusHeadXPositions[LANGUAGE_SPANISH]` adjusted.
+- [ ] Game over prompt, with `sGameOverSamusHeadXPositions[LANGUAGE_GERMAN]` adjusted.
 - [ ] File select: options, large text, difficulty labels (40 px each).
 - [ ] Ending: text, typed-letter OAM frames, numbers/misc, "New record".
 - [ ] "Mission Accomplished" OAM frame.
-- [ ] Language selector shows "Català" in the Spanish slot.
+- [ ] Language selector shows "Català" in the German slot (2nd entry), and "Español" as in vanilla.
+- [ ] Spanish (and English, French, Italian) unchanged: same screens as the vanilla EU game.
 - [ ] Intro: the typed text in Catalan (È, À, apostrophe), no subtitles; the other languages'
       intros unchanged.
 

@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""Composes the Catalan title screen menu: "JUGA" and "Idioma".
+"""Composes the Catalan title screen menu, for the German slot: "JUGA" and "Idioma".
 
   gfx_title_menu.py OUT_DIR   (needs data/ extracted and build/gbagfx)
 
-menus/title_screen/spanish_menu_top and _bottom are the upper and lower halves (8 rows each)
-of the two menu labels, each centred on its own column: the first at x = 47.5, the second at
-x = 127.5 (the same in all five EU languages). "Idioma" is the same word in Catalan and stays.
-"JUGAR" becomes "JUGA": the Spanish letters are 7 columns each, starting with a shared outline
-column (x = 30, 37, 44, 51, 58) and closed by one more (x = 65, the same as each letter's
-first), so dropping the R keeps x = 30..58, and the label is moved to stay centred.
-The compressed halves must fit their fixed-size C arrays (the bottom one has no word to
-spare), so the label goes to the most centred column whose graphics still fit: x = 35, centre
-49 (x = 33 and 34, centres 47 and 48, compress one word too big).
-Writes OUT_DIR/spanish_menu_top.png and OUT_DIR/spanish_menu_bottom.png.
+menus/title_screen/<language>_menu_top and _bottom are the upper and lower halves (8 rows
+each) of the two menu labels, each centred on its own column: the first at x = 47.5, the
+second at x = 127.5 (the same in all five EU languages). The Spanish sheets are the base:
+"Idioma" is the same word in Catalan and stays. "JUGAR" becomes "JUGA": the Spanish letters
+are 7 columns each, starting with a shared outline column (x = 30, 37, 44, 51, 58) and closed
+by one more (x = 65, the same as each letter's first), so dropping the R keeps x = 30..58, and
+the label is moved to stay centred.
+The compressed halves must fit the German slot's fixed-size C arrays, so the label goes to the
+most centred column whose graphics still fit: x = 33, centre 47 (x = 33 and 34 are equally
+centred). In the Spanish arrays, which are smaller, only x = 35 (centre 49) fit.
+Writes OUT_DIR/german_menu_top.png and OUT_DIR/german_menu_bottom.png.
 """
 import argparse
 import sys
@@ -24,7 +25,9 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gfx  # noqa: E402
 
-KEYS = ("menus/title_screen/spanish_menu_top", "menus/title_screen/spanish_menu_bottom")
+# German-slot asset: the Spanish sheet it is composed on
+KEYS = {"menus/title_screen/german_menu_top": "menus/title_screen/spanish_menu_top",
+        "menus/title_screen/german_menu_bottom": "menus/title_screen/spanish_menu_bottom"}
 LABEL = (30, 66)        # JUGAR, closing column included
 KEEP = (30, 59)         # JUGA: up to the A's closing column
 CENTRE = 47.5
@@ -64,9 +67,9 @@ def main():
     width = KEEP[1] - KEEP[0]
     with tempfile.TemporaryDirectory() as tmp:
         images = {}
-        for key in KEYS:
+        for key, base in KEYS.items():
             png = Path(tmp) / "in.png"
-            gfx.export(key, png, tmp)
+            gfx.export(base, png, tmp, like=key)
             images[key] = Image.open(png)
             images[key].load()
         # most centred first

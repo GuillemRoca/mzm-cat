@@ -499,6 +499,9 @@ static const u16* sEnglishTextPointers_Location[LT_COUNT] = {
 
 #ifdef REGION_EU
 
+#ifdef LANG_CA
+#include "ca/text_message.inc"
+#else // !LANG_CA
 const u16 sGermanText_Message_Dummy[] = INCTEXT("{GAP(36)}DUMMY MESSAGE (OBJ Cell B1)\n{GAP(110)}");
 const u16 sGermanText_Message_EnergyTankAcquired[] = INCTEXT("{GAP(56)}{COLOR(5)}Energie-Tank erhalten.\n{GAP(46)}{COLOR(0)}Energiekapazität erweitert.");
 const u16 sGermanText_Message_MissileTankAcquired[] = INCTEXT("{GAP(49)}{COLOR(5)}Missile Container erhalten.\n{GAP(44)}{COLOR(0)}Missile-Kapazität erweitert.");
@@ -580,7 +583,11 @@ static const u16* sGermanTextPointers_Message[] = {
     [MESSAGE_PRESS_SELECT_L_AND_R] = sGermanText_Message_PressSelectLAndR,
     [MESSAGE_EASY_SLEEP_PROMPT] = sGermanText_Message_EasySleepPrompt
 };
+#endif // LANG_CA
 
+#ifdef LANG_CA
+#include "ca/text_location.inc"
+#else // !LANG_CA
 const u16 sGermanText_Location_Brinstar[] = INCTEXT("{GAP(86)}BRINSTAR");
 const u16 sGermanText_Location_Kraid[] = INCTEXT("{GAP(96)}KRAID");
 const u16 sGermanText_Location_Norfair[] = INCTEXT("{GAP(90)}NORFAIR");
@@ -636,6 +643,7 @@ static const u16* sGermanTextPointers_Location[] = {
     [LT_UNUSED_17] = sGermanText_Location_Unused17,
     [LT_UNUSED_18] = sGermanText_Location_Unused18
 };
+#endif // LANG_CA
 
 const u16 sFrenchText_Message_Dummy[] = INCTEXT("{GAP(36)}DUMMY MESSAGE (OBJ Cell B1)\n{GAP(110)}");
 const u16 sFrenchText_Message_EnergyTankAcquired[] = INCTEXT("{GAP(47)}{COLOR(5)}Réserve d'Energie obtenue.\n{GAP(56)}{COLOR(0)}Jauge d'énergie accrue.");
@@ -913,9 +921,6 @@ static const u16* sItalianTextPointers_Location[] = {
     [LT_UNUSED_18] = sItalianText_Location_Unused18
 };
 
-#ifdef LANG_CA
-#include "ca/text_message.inc"
-#else // !LANG_CA
 const u16 sSpanishText_Message_Dummy[] = INCTEXT("{GAP(36)}DUMMY MESSAGE (OBJ Cell B1)\n{GAP(110)}");
 const u16 sSpanishText_Message_EnergyTankAcquired[] = INCTEXT("{GAP(40)}{COLOR(5)}Tanque de energía almacenado.\n{GAP(40)}{COLOR(0)}Capacidad de energía ampliada.");
 const u16 sSpanishText_Message_MissileTankAcquired[] = INCTEXT("{GAP(43)}{COLOR(5)}Tanque de misiles almacenado.\n{GAP(44)}{COLOR(0)}Capacidad de misiles ampliada.");
@@ -997,11 +1002,7 @@ static const u16* sSpanishTextPointers_Message[] = {
     [MESSAGE_PRESS_SELECT_L_AND_R] = sSpanishText_Message_PressSelectLAndR,
     [MESSAGE_EASY_SLEEP_PROMPT] = sSpanishText_Message_EasySleepPrompt
 };
-#endif // LANG_CA
 
-#ifdef LANG_CA
-#include "ca/text_location.inc"
-#else // !LANG_CA
 const u16 sSpanishText_Location_Brinstar[] = INCTEXT("{GAP(86)}BRINSTAR");
 const u16 sSpanishText_Location_Kraid[] = INCTEXT("{GAP(96)}KRAID");
 const u16 sSpanishText_Location_Norfair[] = INCTEXT("{GAP(90)}NORFAIR");
@@ -1057,7 +1058,6 @@ static const u16* sSpanishTextPointers_Location[] = {
     [LT_UNUSED_17] = sSpanishText_Location_Unused17,
     [LT_UNUSED_18] = sSpanishText_Location_Unused18
 };
-#endif // LANG_CA
 
 #endif // REGION_EU
 
@@ -1560,6 +1560,9 @@ const u16* sEnglishTextPointers_FileScreen[FILE_SCREEN_TEXT_COUNT] = {
 
 const u16 sAlign_3 = 0;
 
+#ifdef LANG_CA
+#include "ca/text_description.inc"
+#else // !LANG_CA
 const u16 sGermanText_Description_LongBeam[] = INCTEXT("Feuere mit diesem Beam weiter reichende Schüsse\nab. Drücke {L_button} + {B_button}, um diagonal zu feuern.");
 const u16 sGermanText_Description_ChargeBeam[] = INCTEXT("Halte {B_button} zum Aufladen. Zum Feuern loslassen.\nCharge Attack: Salto bei voller Aufladung.");
 const u16 sGermanText_Description_IceBeam[] = INCTEXT("Dieser Beam fixiert Gegner durch Einfrieren.\nAuf eingefrorenen Gegnern kannst du stehen.");
@@ -1601,9 +1604,13 @@ const u16* sGermanTextPointers_Description[] = {
     [DESCRIPTION_TEXT_UNKNOWN_ITEM] = sGermanText_Description_UnknownItem,
     [DESCRIPTION_TEXT_PISTOL] = sGermanText_Description_Pistol
 };
+#endif // LANG_CA
 
 const u16 sAlign_4 = 0;
 
+#ifdef LANG_CA
+#include "ca/text_story.inc"
+#else // !LANG_CA
 const u16 sGermanText_Story_PlanetZebes[] = INCTEXT("Der Planet Zebes... Einst, in friedvolleren\nZeiten, war er meine Heimat -- lange bevor\ndas Böse die Tunnelsysteme heimsuchte.\nNun endlich werde ich die Geschichte meiner\nersten Schlacht erzählen, die hier stattfand...\nMeine Zero Mission.\n{GAP(138)}-Samus Aran-");
 const u16 sGermanText_Story_TheTiming[] = INCTEXT("Meine Flucht ließ mich wehrlos zurück,\nich verlor meinen Power Suit. Zu meinem\nSchutz blieb mir lediglich meine eher nutzlose\nNotfall-Pistole. Es mag wahnsinnig erscheinen,\nmit dieser Bewaffnung in das Mutterschiff der\nWeltraumpiraten einzudringen.\nDoch ich hatte keine Wahl...");
 const u16 sGermanText_Story_CouldISurvive[] = INCTEXT("Würde ich lange genug überleben,\num entkommen zu können？");
@@ -1619,9 +1626,13 @@ const u16* sGermanTextPointers_Story[] = {
     [STORY_TEXT_EXTERMINATE] = sGermanText_Story_Exterminate,
     [STORY_TEXT_DEFEAT] = sGermanText_Story_Defeat
 };
+#endif // LANG_CA
 
 const u16 sAlign_5 = 0;
 
+#ifdef LANG_CA
+#include "ca/text_file_screen.inc"
+#else // !LANG_CA
 const u16 sGermanText_FileScreen_StartGame[] = INCTEXT("Spiel starten\nSpiel starten (Link)");
 const u16 sGermanText_FileScreen_CopySourceChoose[] = INCTEXT("Bitte eine Datei zum\nKopieren auswählen.");
 const u16 sGermanText_FileScreen_CopyDestinationChoose[] = INCTEXT("Diese Datei wohin\nkopieren？");
@@ -1699,6 +1710,7 @@ const u16* sGermanTextPointers_FileScreen[] = {
     [FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK] = sGermanText_FileScreen_SoundTestUnlock,
     [FILE_SCREEN_TEXT_NES_METROID_UNLOCK] = sGermanText_FileScreen_NesMetroidUnlock
 };
+#endif // LANG_CA
 
 const u16 sFrenchText_Description_LongBeam[] = INCTEXT("Permet d'atteindre une cible éloignée.\nAppuie sur {L_button} + {B_button} pour tirer en biais.");
 const u16 sFrenchText_Description_ChargeBeam[] = INCTEXT("Charge en maintenant {B_button}. \nRelâche pour tirer.");
@@ -1982,9 +1994,6 @@ const u16* sItalianTextPointers_FileScreen[] = {
 
 const u16 sAlign_10 = 0;
 
-#ifdef LANG_CA
-#include "ca/text_description.inc"
-#else // !LANG_CA
 const u16 sSpanishText_Description_LongBeam[] = INCTEXT("Dispara desde lejos con este rayo.\nPulsa {L_button} + {B_button} para disparos diagonales.");
 const u16 sSpanishText_Description_ChargeBeam[] = INCTEXT("Mantén {B_button} para cargar. Luego suelta.\nAtaque carga: salta una vez cargado.");
 const u16 sSpanishText_Description_IceBeam[] = INCTEXT("Este rayo congela a algunos enemigos.\nUn enemigo congelado es inofensivo.");
@@ -2026,11 +2035,7 @@ const u16* sSpanishTextPointers_Description[] = {
     [DESCRIPTION_TEXT_UNKNOWN_ITEM] = sSpanishText_Description_UnknownItem,
     [DESCRIPTION_TEXT_PISTOL] = sSpanishText_Description_Pistol
 };
-#endif // LANG_CA
 
-#ifdef LANG_CA
-#include "ca/text_story.inc"
-#else // !LANG_CA
 const u16 sSpanishText_Story_PlanetZebes[] = INCTEXT("{GAP(8)}El Planeta Zebes... Hace mucho, en\n{GAP(8)}tiempos de paz, antes de que el mal\n{GAP(8)}arrasara las cavernas, era mi hogar.\n{GAP(8)}Ahora debo narrar la historia de mi\n{GAP(8)}primera batalla... La Misión Zero.\n{GAP(138)}-Samus Aran-");
 const u16 sSpanishText_Story_TheTiming[] = INCTEXT("Mi huida me dejó indefensa, sin mi traje.\nComo única protección tenía mi pistola\nde emergencia, que no es precisamente\nuna gran arma. Puede que infiltrarme en\nla nave nodriza pirata así armada fuera\nestúpido, pero no tenía otra opción...");
 const u16 sSpanishText_Story_CouldISurvive[] = INCTEXT("¿Podría sobrevivir lo suficiente\npara escapar？");
@@ -2046,11 +2051,7 @@ const u16* sSpanishTextPointers_Story[] = {
     [STORY_TEXT_EXTERMINATE] = sSpanishText_Story_Exterminate,
     [STORY_TEXT_DEFEAT] = sSpanishText_Story_Defeat
 };
-#endif // LANG_CA
 
-#ifdef LANG_CA
-#include "ca/text_file_screen.inc"
-#else // !LANG_CA
 const u16 sSpanishText_FileScreen_StartGame[] = INCTEXT("Jugar\nJugar (Link)");
 const u16 sSpanishText_FileScreen_CopySourceChoose[] = INCTEXT("Elige el archivo\nque quieres copiar.");
 const u16 sSpanishText_FileScreen_CopyDestinationChoose[] = INCTEXT("Elige un archivo al\nque copiar los datos.");
@@ -2128,7 +2129,6 @@ const u16* sSpanishTextPointers_FileScreen[] = {
     [FILE_SCREEN_TEXT_SOUND_TEST_UNLOCK] = sSpanishText_FileScreen_SoundTestUnlock,
     [FILE_SCREEN_TEXT_NES_METROID_UNLOCK] = sSpanishText_FileScreen_NesMetroidUnlock
 };
-#endif // LANG_CA
 
 #elif defined(REGION_US_BETA)
 

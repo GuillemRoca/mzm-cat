@@ -17,12 +17,14 @@ Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same
    automatically (Flips or Rom Patcher JS work too).
 2. Open `mzm.gba`. Default keys: A = X, B = Z, L = A, R = S, Start = Enter, Select = Backspace.
    Save state: Shift+F1…F9; load: F1…F9.
-3. On the language screen pick the **5th entry ("Català")**: it is the Spanish slot.
+3. On the language screen pick the **2nd entry ("Català")**: it is the German slot. The 5th
+   entry, Español, is the vanilla Spanish game.
 4. Title: press Start, then A on the first option. File A → A → pick a difficulty. Skip the
    intro with A. Once Samus can move, save a state (Shift+F1) to come back here.
 
-Every graphic of the Spanish slot is redrawn in Catalan; the area names of the map are shared by
-all languages and stay as they are.
+Every graphic of the German slot is redrawn in Catalan; the area names of the map are shared by
+all languages and stay as they are. The other four languages, Spanish included, must look and
+play exactly as in vanilla: only the language screen differs, with "Català" where "Deutsch" was.
 
 ## Every Message line (preview build)
 
@@ -121,7 +123,7 @@ BOMBA, VESTIT, ALTRES (ARMA when suitless) and every item name, each inside its 
   D'EMERGÈNCIA", then "EXTERMINAR TOTS ELS / ORGANISMES METROIDES DEL / PLANETA ZEBES..." and
   "I DERROTAR LA FORMA / DE VIDA MECÀNICA, / MOTHER BRAIN." in Catalan, letter by letter, with
   no subtitles (like the English intro). Every line must be centred, each box must close after
-  its word, and the cursor must follow the letters onto each new line. Pick English, Deutsch, Français or Italiano to
+  its word, and the cursor must follow the letters onto each new line. Pick English, Français, Italiano or Español to
   check their intro is unchanged (English typed, subtitles in the other three).
 - Preview build: hold **L + R** and press **Left** for the next story cutscene: the Planet
   Zebes prologue, the Mother Ship monologue (7 lines), "Aconseguiria sobreviure prou temps per

@@ -1,8 +1,10 @@
 # Catalan translation build hooks, included from the top-level Makefile.
 #
-#   make eu LANG_CA=1                 mzm_eu_ca.gba: Catalan in the Spanish slot
-#   make eu LANG_CA=1 CA_SELFTEST=1   same plumbing with the vanilla Spanish text, font and
-#                                     widths: must be byte-identical to vanilla mzm_eu.gba
+#   make eu LANG_CA=1                 mzm_eu_ca.gba: Catalan in the German slot (Spanish and
+#                                     the other languages stay as in vanilla)
+#   make eu LANG_CA=1 CA_SELFTEST=1   same plumbing with the vanilla German text, font, widths,
+#                                     sprites and graphics: must be byte-identical to vanilla
+#                                     mzm_eu.gba
 #   make eu LANG_CA=1 CA_PREVIEW=1    mzm_eu_ca_preview.gba, a test build that is never released:
 #                                     L+R+SELECT next message, L+R+B next location banner,
 #                                     L+R+A game over, L+R+UP credits, L+R+DOWN all items,
@@ -10,11 +12,12 @@
 #                                     (translation/ca/preview/ca_preview.c, translation/ca/TESTING.md)
 #
 # With LANG_CA=1, generated includes go in $(CA_INC), which is searched before include/:
-#   ca/text_<category>.inc     the Spanish blocks of src/data/text_data.c, in Catalan
+#   ca/text_<category>.inc     the German blocks of src/data/text_data.c, in Catalan
 #   ca/char_widths.inc         the EU sCharacterWidths with font/widths.txt applied
 #   ca/credits.inc             the EU sCredits with the translators in credits.txt
-#   ca/ending_oam.inc          the Spanish ending sprites (typed lines, whole lines)
-#   ca/mission_accomplished.inc  the Spanish "Mission accomplished" sprites
+#   ca/ending_oam.inc          the German ending sprites (typed lines, whole lines, record box)
+#   ca/ending_tables.inc       the German ending tables that type and show them
+#   ca/mission_accomplished.inc  the German "Mission accomplished" sprites
 #   ca/intro_text.inc          the Catalan typed intro text (ca/intro.h selects it)
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
 # and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
@@ -39,13 +42,14 @@ CA_TEXT_INCS := $(foreach c,message location description story file_screen,$(CA_
 CA_WIDTHS_INC := $(CA_INC)/ca/char_widths.inc
 CA_CREDITS_INC := $(CA_INC)/ca/credits.inc
 CA_ENDING_INC := $(CA_INC)/ca/ending_oam.inc
+CA_TABLES_INC := $(CA_INC)/ca/ending_tables.inc
 CA_MISSION_INC := $(CA_INC)/ca/mission_accomplished.inc
 CA_INTRO_INC := $(CA_INC)/ca/intro_text.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
   CPPFLAGS += -DCA_SELFTEST
-  CA_GENTEXT_FLAGS := --fallback spanish
+  CA_GENTEXT_FLAGS := --fallback vanilla
   CA_FONT_FLAGS := --vanilla
   CA_CREDITS_FLAGS := --vanilla
   CA_GFX_PNGS :=
@@ -62,12 +66,15 @@ CA_GFX_INCS := $(patsubst $(CA_DIR)/gfx/%.png,$(CA_INC)/extracted/data/%.gfx.lz.
 CA_MODE := LANG_CA=$(LANG_CA) CA_SELFTEST=$(CA_SELFTEST) CA_PREVIEW=$(CA_PREVIEW) GFX=$(CA_GFX_PNGS)
 $(shell mkdir -p $(CA_BUILD) && (echo '$(CA_MODE)' | cmp -s - $(CA_STAMP) || echo '$(CA_MODE)' > $(CA_STAMP)))
 
-# Objects whose output depends on the mode: sources that mention LANG_CA, plus sources that
-# include any asset we can override (the font, every graphic in gfx_assets.json), whether or
-# not it has a PNG right now: removing a PNG must rebuild its object too.
+# Objects whose output depends on the mode: sources that mention LANG_CA, sources that include
+# a header that does (e.g. the German ending table sizes, which src/ending_and_gallery.c takes
+# ARRAY_SIZE of), plus sources that include any asset we can override (the font, every graphic
+# in gfx_assets.json), whether or not it has a PNG right now: removing a PNG must rebuild its
+# object too.
 CA_GFX_KEYS := $(shell sed -n 's/^  "\([a-z][^"]*\)": *{.*/\1/p' $(CA_TOOLS)/gfx_assets.json)
 CA_SHADOWABLE := extracted/data/text_characters.gfx.inc $(CA_GFX_KEYS:%=extracted/data/%.gfx.lz.inc)
-CA_AFFECTED := $(shell grep -rlF --include='*.c' $(foreach p,LANG_CA CA_PREVIEW $(CA_SHADOWABLE),-e '$(p)') src)
+CA_HEADERS := $(patsubst include/%,"%",$(shell grep -rlF --include='*.h' -e LANG_CA include))
+CA_AFFECTED := $(shell grep -rlF --include='*.c' $(foreach p,LANG_CA CA_PREVIEW $(CA_SHADOWABLE) $(CA_HEADERS),-e '$(p)') src)
 $(CA_AFFECTED:.c=.s): $(CA_STAMP)
 
 ifeq ($(LANG_CA),1)
@@ -79,7 +86,7 @@ ifeq ($(LANG_CA),1)
 
   src/data/text_data.s: $(CA_TEXT_INCS) $(CA_FONT_INC)
   src/data/menus/pause_screen_data.s: $(CA_WIDTHS_INC)
-  src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC) $(CA_ENDING_INC)
+  src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC) $(CA_ENDING_INC) $(CA_TABLES_INC)
   src/data/chozodia_escape_data.s: $(CA_MISSION_INC)
   src/data/intro_data.s: $(CA_INTRO_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
@@ -108,9 +115,13 @@ $(CA_CREDITS_INC): $(CA_DIR)/credits.txt src/data/ending_and_gallery_data.c $(CA
 	$Q$(PYTHON) $(CA_TOOLS)/gencredits.py $@ $(CA_CREDITS_FLAGS)
 
 CA_ENDING_DEPS := $(CA_TOOLS)/genending.py $(CA_TOOLS)/ending_layout.py $(CA_STAMP)
-$(CA_ENDING_INC): src/data/ending_and_gallery_data.c $(wildcard $(CA_DIR)/gfx/ending/text_spanish.png) $(CA_ENDING_DEPS)
+$(CA_ENDING_INC): src/data/ending_and_gallery_data.c $(wildcard $(CA_DIR)/gfx/ending/text_german.png) $(CA_ENDING_DEPS)
 	$(MSG) ENDING $@
 	$Q$(PYTHON) $(CA_TOOLS)/genending.py ending $@ $(CA_CREDITS_FLAGS)
+
+$(CA_TABLES_INC): src/data/ending_and_gallery_data.c $(CA_ENDING_DEPS)
+	$(MSG) ENDING $@
+	$Q$(PYTHON) $(CA_TOOLS)/genending.py tables $@ $(CA_CREDITS_FLAGS)
 
 $(CA_MISSION_INC): src/data/chozodia_escape_data.c $(CA_ENDING_DEPS)
 	$(MSG) ENDING $@

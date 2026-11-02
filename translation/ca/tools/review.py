@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Writes translation/ca/translations.csv: every game string in English, Spanish and Catalan,
-side by side, to compare during a playthrough.
+side by side, to compare during a playthrough. Catalan takes the German slot; the Spanish is
+there as the reference the Catalan is modelled on (catext.REFERENCE).
 
   review.py            regenerate the CSV
   review.py --check    fail if the CSV is out of date (CI)
@@ -86,51 +87,51 @@ def graphic_rows():
     menu = gfx_menu_names.CATALAN
     heading, names = gencredits.read_credits()
     g = [  # id, where, english, spanish, catalan, the PNG that draws it
-        ("language_select", "Language selector, 5th entry", "(Spanish slot)", "Español", "Català",
+        ("language_select", "Language selector, 2nd entry (German slot)", "Deutsch", "Deutsch", "Català",
          "menus/language_select/background"),
         ("game_over_prompt", "Game over screen", "TRY AGAIN?\nYES (RETURN TO GAME)\nNO (TO TITLE SCREEN)",
          "¿VOLVER A INTENTARLO?\nSÍ (CONTINUAR)\nNO (SALIR)", "\n".join(gfx_game_over.CATALAN),
-         "menus/game_over/text_prompt_spanish"),
-        ("title_start", "Title screen menu", "START GAME", "JUGAR", "JUGA", "menus/title_screen/spanish_menu_top"),
-        ("title_language", "Title screen menu", "Language", "Idioma", "Idioma", "menus/title_screen/spanish_menu_top"),
+         "menus/game_over/text_prompt_german"),
+        ("title_start", "Title screen menu", "START GAME", "JUGAR", "JUGA", "menus/title_screen/german_menu_top"),
+        ("title_language", "Title screen menu", "Language", "Idioma", "Idioma", "menus/title_screen/german_menu_top"),
         ("pause_tab_l", "Pause screen, L tab (Easy Sleep)", "SLEEP", "SALVAP.", menu["L"],
-         "menus/pause_screen/menu_names_spanish"),
+         "menus/pause_screen/menu_names_german"),
         ("pause_tab_r", "Pause screen, R tab (status)", "STATUS", "ESTADO", menu["R"],
-         "menus/pause_screen/menu_names_spanish"),
+         "menus/pause_screen/menu_names_german"),
         ("pause_change_area", "Pause screen, map: change area", "CHANGE AREAS", "CAMBIAR ZONA", menu["area"],
-         "menus/pause_screen/menu_names_spanish"),
+         "menus/pause_screen/menu_names_german"),
     ]
     eq = gfx_equipment_names
     for key, (en, es) in eq.SHOWN.items():
         kind = "heading" if key in eq.HEADINGS else "item"
         g.append((f"status_{key}", f"Status screen, equipment {kind}", en, es, eq.catalan(key),
-                  "menus/pause_screen/equipment_names_spanish"))
+                  "menus/pause_screen/equipment_names_german"))
     fs = gfx_file_select
     for asset, labels in fs.VANILLA.items():
         for slot, texts in labels.items():
             en, es = texts[fs.LANGS.index("english")], texts[fs.LANGS.index("spanish")]
             g.append((f"file_select_{slot}", f"File select ({asset.replace('_text', '')} graphic)", en, es,
-                      fs.CATALAN[asset].get(slot, es), f"menus/file_select/{asset}_spanish"))
+                      fs.CATALAN[asset].get(slot, es), f"menus/file_select/{asset}_german"))
     er = gfx_erase_sram
     for screen, lines in er.VANILLA.items():
         texts = list(zip(*lines.values()))                   # per language: (line 1, line 2)
         g.append((f"erase_{screen}", "Erase-save screen (L+R at power on)",
                   "\n".join(texts[fs.LANGS.index("english")]), "\n".join(texts[fs.LANGS.index("spanish")]),
-                  "\n".join(er.CATALAN[screen].values()), f"menus/erase_sram/{screen}_spanish"))
+                  "\n".join(er.CATALAN[screen].values()), f"menus/erase_sram/{screen}_german"))
     for key, (_, _, es, en, ca) in gfx_unknown_items.NAMES.items():
         es = {"SALTOESPACIAL": "SALTO ESPACIAL"}.get(es, es)    # drawn without the space
         g.append((f"unknown_{key}", "Status screen, unknown item revealed (fully powered suit)", en, es,
-                  ca or es, "menus/pause_screen/map_screen_unknown_items_names_spanish"))
+                  ca or es, "menus/pause_screen/map_screen_unknown_items_names_german"))
     end = ending_layout.CATALAN
     g += [
         ("ending_clear_time", "Ending results screen", "CLEAR TIME", "TIEMPO INVERTIDO", end["ClearTime"],
-         "ending/text_spanish"),
+         "ending/text_german"),
         ("ending_collecting", "Ending results screen", "YOUR RATE FOR COLLECTING ITEMS IS",
-         "PORCENTAJE DE OBJETOS", end["Collecting"], "ending/text_spanish"),
+         "PORCENTAJE DE OBJETOS", end["Collecting"], "ending/text_german"),
         ("ending_last_line", "Ending results screen, last line", gfx_ending.LAST_VANILLA[0],
-         gfx_ending.LAST_VANILLA[-1], gfx_ending.LAST_CATALAN, "ending/text_spanish"),
+         gfx_ending.LAST_VANILLA[-1], gfx_ending.LAST_CATALAN, "ending/text_german"),
         ("ending_new_record", "Ending results screen, best time", "NEW\nRECORD", "NUEVO\nRÉCORD!",
-         "NOU\nRÈCORD!", "ending/numbers_misc_spanish"),
+         "NOU\nRÈCORD!", "ending/numbers_misc_german"),
         # sprites of the letter sheet all languages share: no graphic of its own
         ("mission_accomplished", "Chozodia escape, after the ship takes off", "MISSION ACCOMPLISHED!",
          "¡MISIÓN CUMPLIDA!", end["MissionAccomplished"], None),

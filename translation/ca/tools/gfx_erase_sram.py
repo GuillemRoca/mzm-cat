@@ -8,7 +8,7 @@ outline 3, background F): the question on the left, the answers ("No" / "Sí", k
 Spanish) from x = 200. Uses the file select composer (gfx_file_select.py): letters are cut
 from the five vanilla sheets by their fill shapes, and each Catalan line is set where the
 Spanish line starts, with the vanilla spacing.
-Writes OUT_DIR/question_spanish.png and OUT_DIR/confirm_spanish.png.
+Writes OUT_DIR/question_german.png and OUT_DIR/confirm_german.png (the German slot's sheets).
 """
 import argparse
 import sys
@@ -55,7 +55,7 @@ def main():
         with tempfile.TemporaryDirectory() as tmp:
             images = {lang: fs.load(name, lang, tmp) for lang in fs.LANGS}
         glyphs, spacing = fs.harvest(images, name)
-        fs.compose(name, images, glyphs, spacing).save(out / f"{name}_spanish.png")
+        fs.compose(name, images, glyphs, spacing).save(out / f"{name}_german.png")
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ PROPOSED term that AM2R-cat already translates, and reports any APPROVED term th
 translates differently. The reference folder is gitignored.
 
 Names marked *pause box* are drawn inside the fixed-size pause-screen graphics
-(`menus/pause_screen/equipment_names_spanish`): check their rendered width there before
+(`menus/pause_screen/equipment_names_german`): check their rendered width there before
 approving them.
 
 ## Characters and factions

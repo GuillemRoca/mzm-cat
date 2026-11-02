@@ -1,9 +1,15 @@
 # Metroid: Zero Mission en català
 
-A Catalan fan translation built from this decompilation. Catalan replaces the Spanish slot
-(`LANGUAGE_SPANISH`) of the EU build, and releases are `.bps` patches against the vanilla EU ROM
-(SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`, also in `mzm_eu.sha1`). Everything about the
-translation lives under `translation/ca/`. The ROM is never committed or distributed.
+A Catalan fan translation built from this decompilation. Catalan replaces the German slot
+(`LANGUAGE_GERMAN`, the 2nd entry of the language selector) of the EU build; Spanish, English,
+French and Italian stay exactly as in vanilla. Releases are `.bps` patches against the vanilla EU
+ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`, also in `mzm_eu.sha1`). Everything about
+the translation lives under `translation/ca/`. The ROM is never committed or distributed.
+
+The Catalan was first laid out in the Spanish slot, and the vanilla Spanish stays its model:
+the linter compares the text's control codes and layout with the Spanish (`catext.REFERENCE`),
+the graphics are composed on the Spanish sheets, and the ending sprites are the Spanish ones,
+all written to the German slot (`catext.SLOT`).
 
 ## Layout
 
@@ -25,25 +31,28 @@ build/, dist/         generated files and CI outputs; gitignored
 ```
 
 Upstream files touched: `Makefile` (one `include`); `#ifdef LANG_CA` wraps around vanilla code
-in `src/data/text_data.c`, the EU half of `sCharacterWidths` in
-`src/data/menus/pause_screen_data.c`, the Spanish helmet position in
-`src/data/menus/game_over_data.c`, the EU `sCredits` and the Spanish ending sprites
-(`sFullLinesSpanishOam_0` to `sFullLinesSpanishOam_2`) in `src/data/ending_and_gallery_data.c`,
-the Spanish "Mission accomplished" frame in `src/data/chozodia_escape_data.c`, the generated
-Catalan intro text in `src/data/intro_data.c` (selected by `ca/intro.h`, included by
-`src/intro.c`), and the sizes of
-`sFileSelectLargeTextSpanishGfx`, `sEraseSramMenu{Question,Confirm}SpanishGfx` and
-`sEndingImageTextSpanishGfx` in `src/data/menus/{file_select,erase_sram}_data.c`,
+in `src/data/text_data.c` (the German blocks), the EU half of `sCharacterWidths` in
+`src/data/menus/pause_screen_data.c`, the German helmet position in
+`src/data/menus/game_over_data.c`, the EU `sCredits`, the German ending sprites
+(`sFullLinesGermanOam_0` to `sEndingImageOam_NewRecordGerman`) and tables
+(`sEndingImageOam_{FullLines,ClearTime,Collecting}_German`) in
+`src/data/ending_and_gallery_data.c`, the German "Mission accomplished" frame in
+`src/data/chozodia_escape_data.c`, the generated Catalan intro text in `src/data/intro_data.c`
+(selected by `ca/intro.h`, included by `src/intro.c`), and the sizes of
+`sEraseSramMenu{Question,Confirm}GermanGfx`, `sEndingImageTextGermanGfx` and
+`sEndingImageNumbersMiscGermanGfx` in `src/data/menus/erase_sram_data.c`,
 `src/data/ending_and_gallery_data.c` and their headers (unsized for LANG_CA, where the Catalan
-graphics compress bigger); the `CA_PREVIEW` hook in `src/in_game.c`; and
-`.github/workflows/catalan.yml`.
+graphics compress bigger); in `include/data/ending_and_gallery_data.h`, the sizes of the German
+typed-letter tables (`ca/layout.h`) and, in `include/data/chozodia_escape_data.h`, of the German
+"Mission accomplished" frame; the `CA_PREVIEW` hook in `src/in_game.c`; and
+`.github/workflows/catalan.yml`. No Spanish data is touched.
 
 ## Building
 
 ```sh
 make extract REGION=eu                       # once, from your base ROM (below)
 make eu                                      # vanilla: still matches mzm_eu.sha1
-make eu LANG_CA=1                            # mzm_eu_ca.gba, Catalan in the Spanish slot
+make eu LANG_CA=1                            # mzm_eu_ca.gba, Catalan in the German slot
 make eu LANG_CA=1 CA_SELFTEST=1              # plumbing self-test: byte-identical to vanilla
 translation/ca/tools/ci.sh                   # everything CI runs, plus the .bps in dist/
 ```
@@ -53,9 +62,10 @@ Tools need python3 with Pillow, cpp, libpng-dev (gbagfx) and, for the emulator t
 
 ## Translating text
 
-Each `text/<category>.txt` line is `ID = "text"`, with the IDs of the Spanish pointer tables in
-`src/data/text_data.c` and the same codes and escapes (`{COLOR(5)}`, `{A_button}`, `\n`). IDs left
-out show in English, so the game always builds.
+Each `text/<category>.txt` line is `ID = "text"`, with the IDs of the pointer tables in
+`src/data/text_data.c` (the German ones, which the Catalan replaces; every language has the same
+IDs) and the codes and escapes of the Spanish original (`{COLOR(5)}`, `{A_button}`, `\n`). IDs
+left out show in English, so the game always builds.
 
 ```sh
 python3 translation/ca/tools/gap.py fix      # recompute the centring GAPs
@@ -76,7 +86,7 @@ The linter compares each entry with the Spanish original: control codes, line co
 ```sh
 make ca-tools                                            # builds the vendored gbagfx
 python3 translation/ca/tools/gfx.py export --all         # vanilla assets -> build/gfx/*.png
-cp translation/ca/build/gfx/menus/game_over/text_prompt_spanish.png \
+cp translation/ca/build/gfx/menus/game_over/text_prompt_german.png \
    translation/ca/gfx/menus/game_over/                   # then edit it
 python3 translation/ca/tools/font.py export 357 g.png    # a glyph, to edit
 ```

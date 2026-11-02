@@ -24,6 +24,12 @@ CATEGORIES = {
     "file_screen": ("FileScreen", "file_screen.txt"),
 }
 LANGUAGES = ["English", "German", "French", "Italian", "Spanish"]
+# Catalan takes the place of German (LANGUAGE_GERMAN, the 2nd entry of the language selector):
+# the generated text replaces the German pointer tables. Spanish stays as in vanilla.
+SLOT = "German"
+# The vanilla translation the Catalan text is modelled on: the linter compares control codes,
+# line counts and GAP layout with it. Independent of the slot (both tables share their IDs).
+REFERENCE = "Spanish"
 
 LINE_LIMIT = 224  # text.c: a glyph that would end past 224 px forces a new line
 MAX_LINES = {"message": 2, "location": 1, "description": None, "story": None, "file_screen": 4}

@@ -2,6 +2,7 @@
 """Composes the Catalan pause-screen menu names from the glyphs of the five vanilla EU sheets.
 
   gfx_menu_names.py OUT.png [--accent a|b|c]   (needs data/ extracted and build/gbagfx)
+  OUT.png: translation/ca/gfx/menus/pause_screen/menu_names_german.png (the German slot's)
 
 menus/pause_screen/menu_names_*.gfx.lz is one 8-px row of 22 tiles: the top bar with the L tab
 (Easy Sleep) and the R tab (status screen) in tiles 0-9, then two copies of the area-change

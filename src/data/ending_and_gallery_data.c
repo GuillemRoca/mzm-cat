@@ -757,9 +757,6 @@ static const u16 sEndingImageOam_NewRecordItalian[OAM_DATA_SIZE(6)] = {
     OAM_ENTRY(21, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x5c, 5, 0)
 };
 
-#ifdef LANG_CA
-#include "ca/ending_oam.inc"
-#else // !LANG_CA
 static const u16 sFullLinesSpanishOam_0[OAM_DATA_SIZE(5)] = {
     5,
     OAM_ENTRY(-70, -16, OAM_DIMS_32x16, OAM_NO_FLIP, 0x80, 0, 0),
@@ -960,7 +957,6 @@ static const u16 sFullLinesSpanishOam_2[OAM_DATA_SIZE(7)] = {
     OAM_ENTRY(78, -16, OAM_DIMS_8x16, OAM_NO_FLIP, 0x194, 1, 0),
     OAM_ENTRY(-18, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x1c8, 1, 0)
 };
-#endif // LANG_CA
 
 static const u16 sEndingImageOam_NewRecordSpanish[OAM_DATA_SIZE(6)] = {
     6,
@@ -972,6 +968,9 @@ static const u16 sEndingImageOam_NewRecordSpanish[OAM_DATA_SIZE(6)] = {
     OAM_ENTRY(22, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x5c, 5, 0)
 };
 
+#ifdef LANG_CA
+#include "ca/ending_oam.inc"
+#else // !LANG_CA
 static const u16 sFullLinesGermanOam_0[OAM_DATA_SIZE(5)] = {
     5,
     OAM_ENTRY(-58, -16, OAM_DIMS_32x16, OAM_NO_FLIP, 0x80, 0, 0),
@@ -1144,6 +1143,7 @@ static const u16 sEndingImageOam_NewRecordGerman[OAM_DATA_SIZE(6)] = {
     OAM_ENTRY(6, 0, OAM_DIMS_16x8, OAM_NO_FLIP, 0x5a, 5, 0),
     OAM_ENTRY(22, 0, OAM_DIMS_8x8, OAM_NO_FLIP, 0x5c, 5, 0)
 };
+#endif // LANG_CA
 
 #else // !REGION_EU
 
@@ -2578,6 +2578,9 @@ const struct EndingImageOam sEndingImageOam_Collecting_English[17] = {
 
 #ifdef REGION_EU
 
+#ifdef LANG_CA
+#include "ca/ending_tables.inc"
+#else // !LANG_CA
 const struct EndingImageOam sEndingImageOam_FullLines_German[ENDING_IMAGE_LINE_COUNT] = {
     [0] = {
         .type = ENDING_OAM_TYPE_LINE,
@@ -2850,6 +2853,7 @@ const struct EndingImageOam sEndingImageOam_Collecting_German[14] = {
         .pFrame = sCollectingGermanOam_13
     }
 };
+#endif // LANG_CA
 
 const struct EndingImageOam sEndingImageOam_FullLines_French[ENDING_IMAGE_LINE_COUNT] = {
     [0] = {
@@ -7582,17 +7586,17 @@ const u32 sEndingImageTextHiraganaGfx[511] = {
 const u32 sEndingImageTextFrenchGfx[759] = {
     #include "extracted/data/ending/text_french.gfx.lz.inc"
 };
+#ifdef LANG_CA
+const u32 sEndingImageTextGermanGfx[] = {
+#else // !LANG_CA
 const u32 sEndingImageTextGermanGfx[726] = {
+#endif // LANG_CA
     #include "extracted/data/ending/text_german.gfx.lz.inc"
 };
 const u32 sEndingImageTextItalianGfx[883] = {
     #include "extracted/data/ending/text_italian.gfx.lz.inc"
 };
-#ifdef LANG_CA
-const u32 sEndingImageTextSpanishGfx[] = {
-#else // !LANG_CA
 const u32 sEndingImageTextSpanishGfx[773] = {
-#endif // LANG_CA
     #include "extracted/data/ending/text_spanish.gfx.lz.inc"
 };
 #endif // REGION_EU
@@ -7608,7 +7612,11 @@ const u32 sEndingImageNumbersMiscEnglishGfx[218] = {
     #include "extracted/data/ending/numbers_misc_english.gfx.lz.inc"
 };
 #ifdef REGION_EU
+#ifdef LANG_CA
+const u32 sEndingImageNumbersMiscGermanGfx[] = {
+#else // !LANG_CA
 const u32 sEndingImageNumbersMiscGermanGfx[209] = {
+#endif // LANG_CA
     #include "extracted/data/ending/numbers_misc_german.gfx.lz.inc"
 };
 const u32 sEndingImageNumbersMiscFrenchGfx[217] = {

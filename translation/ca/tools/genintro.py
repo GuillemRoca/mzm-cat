@@ -6,7 +6,7 @@
 
 The intro types three texts letter by letter with sprites from intro/text_and_ship (shared by
 every language): EMERGENCY ORDER, EXTERMINATE ALL METROID..., AND DEFEAT THE MECHANICAL...
-Other languages show subtitles under the English. In the Spanish slot, translation/ca/include/
+Other languages show subtitles under the English. In the German slot, translation/ca/include/
 ca/intro.h makes src/intro.c type these Catalan texts instead, without subtitles, like English.
 
 Each text is a frame of 8x16 sprites, one per cell, and a list of actions (one per typing step)

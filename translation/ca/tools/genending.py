@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-"""Generates the Catalan ending sprites for LANG_CA=1:
+"""Generates the Catalan ending sprites for LANG_CA=1, in the German slot:
 
-  genending.py ending OUT [--vanilla]    ca/ending_oam.inc: the Spanish typed letters and whole
-                                         lines of the ending results screen
-  genending.py mission OUT [--vanilla]   ca/mission_accomplished.inc: the Spanish "Mission
+  genending.py ending OUT [--vanilla]    ca/ending_oam.inc: the typed letters and whole lines
+                                         of the ending results screen, and the new record box
+  genending.py tables OUT [--vanilla]    ca/ending_tables.inc: the tables that type and show
+                                         those sprites (sEndingImageOam_*_German)
+  genending.py mission OUT [--vanilla]   ca/mission_accomplished.inc: the "Mission
                                          accomplished" frame
---vanilla reproduces the vanilla blocks (plumbing self-test).
+--vanilla reproduces the vanilla German blocks (plumbing self-test).
 
-Each output replaces a `#ifdef LANG_CA` block of src/data/ending_and_gallery_data.c or
-src/data/chozodia_escape_data.c with the same symbols and sizes. The typed letters and the
-two result lines come from ending_layout.py; the last line ("Fins a la propera missió!")
-from the ink of translation/ca/gfx/ending/text_spanish.png (rows 8-9, and the 8x8 tiles of
-row 10 that hold descenders), drawn from the sheet's left edge by gfx_ending.py.
+Each output replaces the German `#ifdef LANG_CA` block of src/data/ending_and_gallery_data.c
+or src/data/chozodia_escape_data.c. The Catalan was laid out on the Spanish sprites (letter
+counts, spawn delays, positions, the record box), so each output is the vanilla Spanish block
+with the Catalan sprites, renamed to the German symbols; the Spanish data itself is untouched.
+The German table sizes follow (translation/ca/include/ca/layout.h). The typed letters and the
+two result lines come from ending_layout.py; the last line ("Fins a la propera missió!") from
+the ink of translation/ca/gfx/ending/text_german.png (rows 8-9, and the 8x8 tiles of row 10
+that hold descenders), drawn from the sheet's left edge by gfx_ending.py.
 """
 import argparse
 import re
@@ -23,15 +28,45 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ending_layout as L  # noqa: E402
 
-PNG = L.ROOT / "translation" / "ca" / "gfx" / "ending" / "text_spanish.png"
+PNG = L.ROOT / "translation" / "ca" / "gfx" / "ending" / "text_german.png"
 LAST_TILE, LAST_ROW = 0x180, 64          # the last line: rows 8-9 of the sheet, descenders in row 10
 
 
+# Symbols of the Spanish template and the German symbols they become.
+RENAMES = [
+    (r"\bs(FullLines|ClearTime|Collecting)SpanishOam_", r"s\1GermanOam_"),
+    (r"\bsEndingImageOam_NewRecordSpanish\b", "sEndingImageOam_NewRecordGerman"),
+    (r"\bsEndingImageOam_(FullLines|ClearTime|Collecting)_Spanish\b", r"sEndingImageOam_\1_German"),
+    (r"\bsChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0\b", "sChozodiaEscapeOam_MissionAccomplishedGerman_Frame0"),
+]
+
+
 def block(src, inc):
+    """The vanilla German code of the `#ifdef LANG_CA` block that includes `inc`."""
     m = re.search(r'#ifdef LANG_CA\n#include "' + re.escape(inc) + r'"\n#else // !LANG_CA\n(.*?)\n#endif // LANG_CA', src, re.S)
     if not m:
         sys.exit(f"error: no LANG_CA block for {inc}")
+    if "German" not in m.group(1) or "Spanish" in m.group(1):
+        sys.exit(f"error: the LANG_CA block for {inc} must be the German one")
     return m.group(1)
+
+
+def template(src, first, last):
+    """The vanilla Spanish code from the declaration of `first` to the end of `last`'s."""
+    decl = r"^(?:static )?const [^\n=]*\b{}\["
+    start = re.search(decl.format(first), src, re.M)
+    end = start and re.compile(decl.format(last) + r".*?^\};", re.M | re.S).search(src, start.start())
+    if not end or "#" in src[start.start():end.end()]:
+        sys.exit(f"error: no vanilla block from {first} to {last}")
+    return src[start.start():end.end()]
+
+
+def to_german(text):
+    for pat, new in RENAMES:
+        text = re.sub(pat, new, text)
+    if "Spanish" in text:
+        sys.exit("error: a Spanish symbol is left in the German block: " + re.search(r"\w*Spanish\w*", text).group(0))
+    return text
 
 
 def entry(x, y, dims, tile, pal):
@@ -75,9 +110,10 @@ def last_line():
 
 def ending(vanilla):
     src = L.ENDING_C.read_text(encoding="utf-8")
-    text = block(src, "ca/ending_oam.inc")
+    german = block(src, "ca/ending_oam.inc")
     if vanilla:
-        return text
+        return german
+    text = template(src, "sFullLinesSpanishOam_0", "sEndingImageOam_NewRecordSpanish")
     layout, _ = L.ending()
     for key, (full, _) in L.FULL_LINES.items():
         line = layout[key]
@@ -89,26 +125,37 @@ def ending(vanilla):
             sys.exit(f"error: {key}: {len(line['letters'])} Catalan letters, the table has {n}")
     if PNG.exists():
         text = replace_frame(text, "sFullLinesSpanishOam_2", [entry(x, y, d, t, 1) for x, y, d, t in last_line()])
-    return text
+    return to_german(text)
+
+
+def tables(vanilla):
+    """The Spanish tables (their letter counts, spawn delays and positions), as the German."""
+    src = L.ENDING_C.read_text(encoding="utf-8")
+    german = block(src, "ca/ending_tables.inc")
+    if vanilla:
+        return german
+    return to_german(template(src, "sEndingImageOam_FullLines_Spanish", "sEndingImageOam_Collecting_Spanish"))
 
 
 def mission(vanilla):
     src = L.CHOZODIA_C.read_text(encoding="utf-8")
-    text = block(src, "ca/mission_accomplished.inc")
+    german = block(src, "ca/mission_accomplished.inc")
     if vanilla:
-        return text
+        return german
+    name = "sChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0"
     entries, _ = L.mission()
-    return replace_frame(text, "sChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0",
+    text = replace_frame(template(src, name, name), name,
                          [entry(x, y, d, t, 0) for x, y, d, t in entries], static=False, size=16)
+    return to_german(text)
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("what", choices=["ending", "mission"])
+    ap.add_argument("what", choices=["ending", "tables", "mission"])
     ap.add_argument("out")
     ap.add_argument("--vanilla", action="store_true")
     a = ap.parse_args()
-    text = ending(a.vanilla) if a.what == "ending" else mission(a.vanilla)
+    text = {"ending": ending, "tables": tables, "mission": mission}[a.what](a.vanilla)
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(f"// Generated by translation/ca/tools/genending.py. Do not edit.\n{text}\n", encoding="utf-8")

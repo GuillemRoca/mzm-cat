@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """Generates translation/ca/build/include/ca/text_<category>.inc for LANG_CA=1.
 
-The output is the vanilla Spanish block of src/data/text_data.c (the `#else // !LANG_CA`
-branch around `#include "ca/text_<category>.inc"`), with every string replaced by its
-Catalan text, or by the English (EU) text where no translation exists yet. Symbol names,
-linkage and pointer-table order therefore stay exactly as upstream. INCTEXT is converted
-here, because tools/preproc.py only processes the .c file itself, not its includes.
+The output is the vanilla German block of src/data/text_data.c (the `#else // !LANG_CA`
+branch around `#include "ca/text_<category>.inc"`): Catalan takes the German slot
+(catext.SLOT). Every string is replaced by its Catalan text, or by the English (EU) text where
+no translation exists yet. Symbol names, linkage and pointer-table order therefore stay exactly
+as upstream, and the Spanish block is never touched. INCTEXT is converted here, because
+tools/preproc.py only processes the .c file itself, not its includes.
 
-usage: gentext.py CATEGORY OUTPUT [--fallback english|spanish]
-  --fallback spanish ignores the translation and reproduces vanilla (plumbing self-test).
+usage: gentext.py CATEGORY OUTPUT [--fallback english|vanilla]
+  --fallback vanilla ignores the translation and reproduces the vanilla German block
+  (plumbing self-test).
 """
 import argparse
 import re
@@ -22,18 +24,21 @@ from preproc import convert_inctext  # noqa: E402
 STRING_RE = re.compile(r'^(const u16 (s\w+)\[\] = INCTEXT\(")(.*)("\);)$')
 
 
-def spanish_block(category):
+def slot_block(category):
     src = catext.TEXT_DATA.read_text(encoding="utf-8")
     inc = f'#include "ca/text_{category}.inc"'
     m = re.search(r"#ifdef LANG_CA\n" + re.escape(inc) + r"\n#else // !LANG_CA\n(.*?)\n#endif // LANG_CA",
                   src, re.S)
     if not m:
         sys.exit(f"error: no LANG_CA block for {category} in {catext.TEXT_DATA}")
+    table = f"s{catext.SLOT}TextPointers_{catext.CATEGORIES[category][0]}"
+    if not re.search(r"const u16\* " + table + r"\[", m.group(1)):
+        sys.exit(f"error: the LANG_CA block for {category} must be the {catext.SLOT} one ({table})")
     return m.group(1)
 
 
 def generate(category, fallback="english"):
-    block = spanish_block(category)
+    block = slot_block(category)
     ids_by_symbol = {}
     for idx, sym in re.findall(r"^\s*\[(\w+)\] = (\w+),?$", block, re.M):
         ids_by_symbol.setdefault(sym, []).append(idx)
@@ -74,7 +79,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("category", choices=sorted(catext.CATEGORIES))
     ap.add_argument("output")
-    ap.add_argument("--fallback", choices=["english", "spanish"], default="english")
+    ap.add_argument("--fallback", choices=["english", "vanilla"], default="english")
     a = ap.parse_args()
     out = Path(a.output)
     out.parent.mkdir(parents=True, exist_ok=True)

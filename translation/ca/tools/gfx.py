@@ -7,7 +7,7 @@
   gfx.py roundtrip [KEY...]    asset -> PNG -> 4bpp -> LZ77 -> decompress, compared with the
                                vanilla tiles byte for byte (all assets if no KEY)
 
-KEY is the asset's path under data/ without `.gfx.lz`, e.g. menus/game_over/text_prompt_spanish.
+KEY is the asset's path under data/ without `.gfx.lz`, e.g. menus/game_over/text_prompt_german.
 PNGs are 32 tiles (256 px) wide in VRAM order, indexed with the asset's 16-colour palette row.
 Only pixel indices matter: keep the PNG's palette order when editing. Vanilla exports stay in
 build/ and are never committed; commit only edited PNGs under translation/ca/gfx/.
@@ -70,10 +70,12 @@ def decompress(key, tmp):
     return raw
 
 
-def export(key, png, tmp):
+def export(key, png, tmp, like=None):
+    """Vanilla asset -> PNG. `like` is the gfx_assets.json key whose palette row to use, for a
+    vanilla sheet that isn't in it (the Spanish sheet a German-slot asset is composed on)."""
     raw = decompress(key, tmp)
     pal = Path(tmp) / "row.gbapal"
-    palette_row(key, pal)
+    palette_row(like or key, pal)
     png.parent.mkdir(parents=True, exist_ok=True)
     gbagfx(raw, png, "-palette", pal, "-width", WIDTH_TILES)
     return raw.read_bytes()

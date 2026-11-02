@@ -1911,11 +1911,7 @@ const u32 sFileSelectLargeTextFrenchGfx[392] = {
 const u32 sFileSelectLargeTextItalianGfx[353] = {
     #include "extracted/data/menus/file_select/large_text_italian.gfx.lz.inc"
 };
-#ifdef LANG_CA
-const u32 sFileSelectLargeTextSpanishGfx[] = {
-#else // !LANG_CA
 const u32 sFileSelectLargeTextSpanishGfx[364] = {
-#endif // LANG_CA
     #include "extracted/data/menus/file_select/large_text_spanish.gfx.lz.inc"
 };
 

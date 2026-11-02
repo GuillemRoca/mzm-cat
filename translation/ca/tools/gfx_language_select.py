@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Composes the language selector with "Català" in the Spanish slot.
+"""Composes the language selector with "Català" in the German slot (2nd entry).
 
   gfx_language_select.py OUT.png [--grave a|b]   (needs data/ extracted and build/gbagfx)
 
 menus/language_select/background.gfx.lz starts with a 256x16 strip of the five labels (top
-tiles 0x00-0x1F, bottom 0x20-0x3F), each left-aligned in its range: English, Deutsch,
-Français, Italiano, Español (x 208-256, tiles 0x1A-0x1F and 0x3A-0x3F, which only the Spanish
-label uses). The font is outlined: background F, outline 1, fill 4, capitals on rows 4-12,
-x-height 7-11, accents on rows 3-5 like the ñ tilde. Each lowercase glyph is a 7-px cell with
-its own outline columns, so cells cut from a vanilla label set side by side with the vanilla
-spacing. "a", "t" and "l" come from "Italiano"; C and the grave accent are drawn in DRAWN.
-The tilemap is unchanged: "Català" (38 px) fits the Spanish label's 6 tiles.
+tiles 0x00-0x1F, bottom 0x20-0x3F), each left-aligned in its range: English (x 0-48),
+Deutsch (x 48-104, tiles 0x06-0x0C and 0x26-0x2C, which only the German label uses),
+Français, Italiano, Español (x 208-256). The sheet is shared by every language, so only the
+Deutsch range changes: Español and the others stay vanilla. The font is outlined: background
+F, outline 1, fill 4, capitals on rows 4-12, x-height 7-11, accents on rows 3-5 like the ñ
+tilde. Each lowercase glyph is a 7-px cell with its own outline columns, so cells cut from a
+vanilla label set side by side with the vanilla spacing. "a", "t" and "l" come from
+"Italiano"; C and the grave accent are drawn in DRAWN.
+The tilemap is unchanged: "Català" (38 px) fits the German label's 7 tiles.
 """
 import argparse
 import sys
@@ -24,7 +26,7 @@ import gfx  # noqa: E402
 
 KEY = "menus/language_select/background"
 BG = 0xF
-SPANISH = (208, 256)
+GERMAN = (48, 104)
 ITALIANO = 160
 # Cells cut from "Italiano" (x offsets in its range): a, then "tal" in one piece, so the l's
 # serif overhanging the a stays as vanilla draws it.
@@ -74,7 +76,7 @@ def main():
     for col, extra in zip(a_grave, drawn(GRAVE[a.grave], 3)):
         col.update(extra)
     cols = drawn(C, 3) + cells["a"] + cells["tal"] + a_grave
-    x0, x1 = SPANISH
+    x0, x1 = GERMAN
     if len(cols) > x1 - x0:
         sys.exit(f"error: 'Català' is {len(cols)} px, the label has {x1 - x0}")
 

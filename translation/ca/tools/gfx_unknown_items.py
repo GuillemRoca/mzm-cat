@@ -2,6 +2,8 @@
 """Composes the Catalan names of the three unknown items, as revealed on the status screen.
 
   gfx_unknown_items.py OUT.png   (needs data/ extracted and build/gbagfx)
+  OUT.png: translation/ca/gfx/menus/pause_screen/map_screen_unknown_items_names_german.png
+  (the German slot's)
 
 menus/pause_screen/map_screen_unknown_items_names_*.gfx.lz is one 8-px row: an icon, then the
 three names between divider columns (6), drawn as sprites over the placeholder bars of the

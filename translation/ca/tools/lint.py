@@ -3,8 +3,11 @@
 
   lint.py [--release] [--json OUT] [--text-dir DIR]
 
+The text replaces the German pointer tables (catext.SLOT); the vanilla Spanish
+(catext.REFERENCE), which the Catalan is modelled on, is what it is compared with.
+
 Errors (exit 1):
-  - malformed lines, duplicate IDs, IDs that aren't in the Spanish pointer table
+  - malformed lines, duplicate IDs, IDs that aren't in the German (slot) pointer table
   - characters missing from charmap.txt, unknown {CODES}
   - control codes (COLOR, INDENT, DELAY, buttons and other named codes) that differ from the
     Spanish original, in order; or a different number of lines (\\n) where the box is fixed
@@ -97,26 +100,28 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
     middot_fixed = Path(middot_glyph).exists()
     progress = {}
     for category in catext.CATEGORIES:
-        spanish = catext.table(tables, "Spanish", category)
+        slot = catext.table(tables, catext.SLOT, category)
+        reference = dict(catext.table(tables, catext.REFERENCE, category))
         english = dict(catext.table(tables, "English", category))
         others = [dict(catext.table(tables, l, category)) for l in catext.LANGUAGES]
-        if [i for i, _ in spanish] != [i for i, _ in catext.table(tables, "English", category)]:
-            rep.add("error", catext.TEXT_DATA, 0, category, "Spanish and English pointer tables differ")
+        for lang in (catext.SLOT, catext.REFERENCE):
+            if [i for i, _ in catext.table(tables, lang, category)] != [i for i, _ in catext.table(tables, "English", category)]:
+                rep.add("error", catext.TEXT_DATA, 0, category, f"{lang} and English pointer tables differ")
         try:
             entries, path = catext.read_translation(category, text_dir)
         except ValueError as e:
             rep.add("error", text_dir / catext.CATEGORIES[category][1], 0, None, str(e))
             entries, path = {}, text_dir / catext.CATEGORIES[category][1]
         rel = path.relative_to(catext.ROOT) if path.is_relative_to(catext.ROOT) else path
-        known = {i for i, _ in spanish}
+        known = {i for i, _ in slot}
         for idx in sorted(set(entries) - known):
-            rep.add("error", rel, entries[idx][1], idx, "not in the Spanish pointer table (extra string)")
+            rep.add("error", rel, entries[idx][1], idx, f"not in the {catext.SLOT} pointer table (extra string)")
         done = 0
-        for idx, sym in spanish:
+        for idx, _ in slot:
             if idx not in entries:
                 continue
             text, n = entries[idx]
-            es, en = strings[sym], strings[english[idx]]
+            es, en = strings[reference[idx]], strings[english[idx]]
             if text != en or idx in identical:
                 done += 1
             err = lambda msg: rep.add("error", rel, n, idx, msg)  # noqa: E731
@@ -163,7 +168,7 @@ def lint(text_dir=catext.CA / "text", middot_glyph=catext.CA / "font" / "glyphs"
                 warn(f"line {line}: stale GAP({old}), should be GAP({new}) (gap.py fix)")
             if text == es and idx not in identical:
                 warn("identical to the Spanish original")
-        progress[category] = (done, len(spanish))
+        progress[category] = (done, len(slot))
     return rep, progress
 
 
