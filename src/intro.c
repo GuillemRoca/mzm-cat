@@ -18,6 +18,10 @@
 #include "structs/game_state.h"
 #include "structs/intro.h"
 
+#ifdef LANG_CA
+#include "ca/intro.h"
+#endif // LANG_CA
+
 /**
  * @brief 800f4 | 90 | V-blank code for the intro
  * 

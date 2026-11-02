@@ -60,6 +60,9 @@ ifeq ($(DEBUG),1)
 	TARGET := $(TARGET)_debug
 endif
 
+# Catalan translation: make eu LANG_CA=1 (see translation/ca/README.md)
+include translation/ca/ca.mk
+
 BASEROM := $(TARGET)_baserom.gba
 TARGET := $(TARGET).gba
 

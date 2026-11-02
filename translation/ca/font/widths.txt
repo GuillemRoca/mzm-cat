@@ -1,0 +1,3 @@
+# Width overrides for glyphs we edit, applied to the EU sCharacterWidths with LANG_CA=1.
+# One per line: HEXID WIDTH  # comment
+0357 2  # · punt volat: redrawn at mid x-height, so l·l reads as one word (glyphs/0357.png)
