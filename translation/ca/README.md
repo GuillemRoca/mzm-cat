@@ -78,6 +78,25 @@ python3 translation/ca/tools/review.py       # refresh translations.csv (CI chec
 status) for checking during a playthrough. Write your remarks in its `notes` column:
 regenerating keeps them.
 
+### Reviewing in Poedit
+
+```sh
+python3 translation/ca/tools/po.py export                 # translation/ca/build/mzm-cat-ca.po
+python3 translation/ca/tools/po.py import FILE.po --dry-run   # show what would change
+python3 translation/ca/tools/po.py import FILE.po         # write it back
+```
+
+CI also puts `mzm-cat-ca.po` in each run's artifact, so it can be downloaded without building.
+In Poedit each entry is a text ID (the context): English source, Catalan translation, and in the
+sidebar the Spanish, where it shows and its line limits. Line breaks are real line breaks. Keep
+the game's codes (`{COLOR(5)}`, `{A_button}`, …); the `{GAP(n)}` at the start of a line is
+recomputed on import, so changing a line's length needs no arithmetic. Use ” for quotation
+marks (the game has no straight quote; the import refuses it). Poedit's Comment field is the
+`notes` column of `translations.csv`: notes go both ways. Import writes `text/*.txt`, fixes the
+GAPs, regenerates the CSV and runs the linter, which reports lines that are too wide or have
+lost a code. Entries left empty keep their text; "Needs work" entries are imported and listed.
+Graphics strings (menus, ending, intro) aren't in the `.po`: they are drawn by `tools/gfx_*.py`.
+
 The linter compares each entry with the Spanish original: control codes, line count, and width
 (no line may pass 224 px). `gap.py vanilla` shows the GAP rules reproduce all 545 shipped GAPs.
 

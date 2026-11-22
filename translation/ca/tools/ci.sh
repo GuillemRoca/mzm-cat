@@ -7,7 +7,8 @@
 #
 # Needs the base ROM (see translation/ca/README.md), agbcc and arm-none-eabi binutils on PATH,
 # libpng-dev for gbagfx, and libmgba-dev to check the patch with mGBA's own loader.
-# Outputs in translation/ca/dist/: mzm-cat-<version>.bps, lint.txt, lint.json. No ROM is ever copied there.
+# Outputs in translation/ca/dist/: mzm-cat-<version>.bps, lint.txt, lint.json, mzm-cat-ca.po (for
+# Poedit). No ROM is ever copied there.
 set -euo pipefail
 
 ROOT=$(cd "$(dirname "$0")/../../.." && pwd)
@@ -26,7 +27,7 @@ step "Base ROM"
 endstep
 
 step "Tool tests"
-python3 -m unittest "$CA/tools/test_lint.py"
+python3 -m unittest "$CA/tools/test_lint.py" "$CA/tools/test_po.py"
 python3 "$CA/tools/gap.py" vanilla
 make ca-tools > /dev/null
 python3 "$CA/tools/gfx.py" roundtrip
@@ -57,6 +58,7 @@ LINT=${PIPESTATUS[0]}
 set -e
 [ "$LINT" = 0 ] || { echo "error: lint failed" >&2; exit 1; }
 python3 "$CA/tools/review.py" --check
+python3 "$CA/tools/po.py" export "$DIST/mzm-cat-ca.po"
 endstep
 
 step "Catalan EU"

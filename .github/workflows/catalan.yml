@@ -101,4 +101,5 @@ jobs:
             translation/ca/dist/*.bps
             translation/ca/dist/lint.txt
             translation/ca/dist/lint.json
+            translation/ca/dist/mzm-cat-ca.po
           if-no-files-found: ignore

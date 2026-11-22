@@ -1,11 +1,12 @@
 # Testing the Catalan build in mGBA
 
-Two builds come out of CI (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`):
+Each CI run's artifact (Actions → Catalan → the run → Artifacts → `mzm-cat-<commit>`) holds:
 
 - `mzm-cat-<version>.bps`: the real game, what a release ships. `<version>` is the tag
   (`v1.0.0`), or the last tag plus the commit.
 - `mzm-cat-<version>-PREVIEW-TEST-ONLY.bps`: the same game plus seven test shortcuts. Never
   distribute it.
+- `mzm-cat-ca.po`: every text string for Poedit (see "Reviewing in Poedit" in `README.md`).
 
 Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same two ROMs
 (`mzm_eu_ca.gba`, `mzm_eu_ca_preview.gba`).
