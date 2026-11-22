@@ -13,8 +13,8 @@ const u8 sKraid_34_Bg1[144] = {
     #include "extracted/data/rooms/kraid/kraid_34_bg1.gfx.inc"
 };
 
-const u8 sKraid_34_Spriteset0[ENEMY_ROOM_DATA_ARRAY_SIZE(2)] = {
-	7, 5, SPRITESET_IDX(0),
-	ROOM_SPRITE_DATA_TERMINATOR
+const struct SpriteSpawn sKraid_34_SpriteLayer0[2] = {
+    { .y = 7, .x = 5, .id = SPRITESET_IDX(0) },
+    SPRITE_SPAWN_TERMINATOR
 };
 
