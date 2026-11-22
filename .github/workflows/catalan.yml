@@ -5,7 +5,8 @@
 #
 # The base ROM is never in this repository. See translation/ca/README.md ("Base ROM in CI")
 # for the two ways to supply it: a private ROM repository (vars.BASEROM_REPO plus
-# secrets.BASEROM_REPO_KEY), or a private link (secrets.BASEROM_EU_URL).
+# secrets.BASEROM_REPO_KEY, and vars.BASEROM_REPO_PATH if the ROM is in a folder), or a private
+# link (secrets.BASEROM_EU_URL).
 #
 # A v* tag is a release: its build runs in release mode, and release.yml publishes its patch.
 name: Catalan
@@ -77,11 +78,13 @@ jobs:
           repository: ${{ vars.BASEROM_REPO }}
           ssh-key: ${{ secrets.BASEROM_REPO_KEY }}
           path: .baserom
+          # only the ROM's folder (the whole repository if vars.BASEROM_REPO_PATH is unset)
+          sparse-checkout: ${{ vars.BASEROM_REPO_PATH }}
           persist-credentials: false
 
       - name: Get base ROM
         env:
-          BASEROM_DIR: ${{ github.workspace }}/.baserom
+          BASEROM_DIR: ${{ github.workspace }}/.baserom/${{ vars.BASEROM_REPO_PATH }}
           BASEROM_EU_URL: ${{ secrets.BASEROM_EU_URL }}
         run: |
           translation/ca/tools/get_baserom.sh eu

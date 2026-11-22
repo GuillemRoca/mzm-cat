@@ -160,15 +160,17 @@ so the 8 MB ROM can't be a secret itself. Pick one of these.
 **Option A (recommended): a private ROM repository with a read-only deploy key.** It stays
 private, never expires, and is the same approach upstream metroidret/mzm uses.
 
-1. Create a **private** repository, e.g. `GuillemRoca/mzm-roms`, and commit your dump at its root
-   as `mzm_eu_baserom.gba`. It must never be public.
+1. Create a **private** repository, e.g. `GuillemRoca/mzm-roms`, and commit your dump as
+   `mzm_eu_baserom.gba`, at its root or in a folder. It must never be public.
 2. Make a key pair just for this (no passphrase):
    `ssh-keygen -t ed25519 -N "" -C "mzm-cat CI" -f mzm-roms-ci`
 3. In **mzm-roms**: Settings → Deploy keys → Add deploy key. Paste `mzm-roms-ci.pub` and leave
    "Allow write access" **unchecked**.
 4. In **mzm-cat**: Settings → Secrets and variables → Actions.
    - Secrets tab: new secret `BASEROM_REPO_KEY` = the full contents of `mzm-roms-ci` (the private key).
-   - Variables tab: new variable `BASEROM_REPO` = `GuillemRoca/mzm-roms`.
+   - Variables tab: new variable `BASEROM_REPO` = `GuillemRoca/mzm-roms`. If the ROM is in a
+     folder, also `BASEROM_REPO_PATH` = that folder (e.g. `metroid-zero-mission`): CI then
+     checks out only that folder.
 5. Delete both key files.
 
 The same with the `gh` CLI:
@@ -177,6 +179,7 @@ The same with the `gh` CLI:
 gh repo deploy-key add mzm-roms-ci.pub -R GuillemRoca/mzm-roms -t "mzm-cat CI"
 gh secret set BASEROM_REPO_KEY -R GuillemRoca/mzm-cat < mzm-roms-ci
 gh variable set BASEROM_REPO -R GuillemRoca/mzm-cat --body GuillemRoca/mzm-roms
+gh variable set BASEROM_REPO_PATH -R GuillemRoca/mzm-cat --body metroid-zero-mission  # if in a folder
 rm mzm-roms-ci mzm-roms-ci.pub
 ```
 
