@@ -21,6 +21,10 @@
 #include "structs/game_state.h"
 #include "structs/samus.h"
 
+#ifdef LANG_CA
+#include "ca/game_over.h"
+#endif // LANG_CA
+
 static u32 GameOverProcessInput(void);
 static void GameOverUpdateTextGfx(void);
 static void GameOverInit(void);
@@ -320,6 +324,9 @@ static void GameOverInit(void)
     LZ77UncompVram(sGameOverTextAndBackgroundGfx, VRAM_BASE + 0x4000);
     LZ77UncompVram(sFileSelectObjIconsGfx, VRAM_OBJ);
     LZ77UncompVram(sGameOverTextPromptGfxPointers[gLanguage], VRAM_BASE + 0xA800);
+#ifdef LANG_CA
+    CA_GAME_OVER_LOAD_TITLE();
+#endif // LANG_CA
 
     WRITE_16(REG_BG0CNT, CREATE_BGCNT(1, 0, BGCNT_HIGH_PRIORITY, BGCNT_SIZE_256x256));
     WRITE_16(REG_BG1CNT, CREATE_BGCNT(1, 1, BGCNT_HIGH_MID_PRIORITY, BGCNT_SIZE_256x256));

@@ -26,7 +26,11 @@ extern const u16 sChozodiaEscapeOam_BlueShipVeryClose_Frame0[OAM_DATA_SIZE(4)];
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedEnglish_Frame0[OAM_DATA_SIZE(20)];
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedHiragana_Frame0[OAM_DATA_SIZE(9)];
 #ifdef REGION_EU
+#ifdef LANG_CA
+extern const u16 sChozodiaEscapeOam_MissionAccomplishedGerman_Frame0[];
+#else // !LANG_CA
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedGerman_Frame0[OAM_DATA_SIZE(21)];
+#endif // LANG_CA
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedFrench_Frame0[OAM_DATA_SIZE(15)];
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedItalian_Frame0[OAM_DATA_SIZE(17)];
 extern const u16 sChozodiaEscapeOam_MissionAccomplishedSpanish_Frame0[OAM_DATA_SIZE(16)];

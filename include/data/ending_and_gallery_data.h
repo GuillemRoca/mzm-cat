@@ -7,6 +7,10 @@
 #include "structs/ending_and_gallery.h"
 #include "oam.h"
 
+#ifdef LANG_CA
+#include "ca/layout.h"
+#endif // LANG_CA
+
 extern const u16 sEndingImageTextPal[14 * 16];
 
 // ...
@@ -43,8 +47,13 @@ extern const struct EndingImageOam sEndingImageOam_YourRate_English[11];
 extern const struct EndingImageOam sEndingImageOam_Collecting_English[17];
 #ifdef REGION_EU
 extern const struct EndingImageOam sEndingImageOam_FullLines_German[ENDING_IMAGE_LINE_COUNT];
+#ifdef LANG_CA
+extern const struct EndingImageOam sEndingImageOam_ClearTime_German[CA_ENDING_CLEAR_TIME_LETTERS];
+extern const struct EndingImageOam sEndingImageOam_Collecting_German[CA_ENDING_COLLECTING_LETTERS];
+#else // !LANG_CA
 extern const struct EndingImageOam sEndingImageOam_ClearTime_German[13];
 extern const struct EndingImageOam sEndingImageOam_Collecting_German[14];
+#endif // LANG_CA
 extern const struct EndingImageOam sEndingImageOam_FullLines_French[ENDING_IMAGE_LINE_COUNT];
 extern const struct EndingImageOam sEndingImageOam_ClearTime_French[16];
 extern const struct EndingImageOam sEndingImageOam_Collecting_French[20];
@@ -91,7 +100,11 @@ extern const u32 sEndingImageTextEnglishGfx[803];
 extern const u32 sEndingImageTextHiraganaGfx[511];
 #ifdef REGION_EU
 extern const u32 sEndingImageTextFrenchGfx[759];
+#ifdef LANG_CA
+extern const u32 sEndingImageTextGermanGfx[];
+#else // !LANG_CA
 extern const u32 sEndingImageTextGermanGfx[726];
+#endif // LANG_CA
 extern const u32 sEndingImageTextItalianGfx[883];
 extern const u32 sEndingImageTextSpanishGfx[773];
 #endif // REGION_EU
@@ -101,7 +114,11 @@ extern const u8 sEndingImageNumbersGfx_Lower[10 * 64];
 
 extern const u32 sEndingImageNumbersMiscEnglishGfx[218];
 #ifdef REGION_EU
+#ifdef LANG_CA
+extern const u32 sEndingImageNumbersMiscGermanGfx[];
+#else // !LANG_CA
 extern const u32 sEndingImageNumbersMiscGermanGfx[209];
+#endif // LANG_CA
 extern const u32 sEndingImageNumbersMiscFrenchGfx[217];
 extern const u32 sEndingImageNumbersMiscItalianGfx[208];
 extern const u32 sEndingImageNumbersMiscSpanishGfx[225];

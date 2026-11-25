@@ -1,0 +1,6 @@
+# The Catalan translators in the staff credits, after the Italian translator in the
+# TRANSLATION section (tools/gencredits.py builds the credits from this file).
+#   heading = the language line, blue: A-Z . , & only (the credits fonts have no accents)
+#   name    = one line per person, white: A-Z a-z space . , - (30 characters at most)
+heading = CATALAN
+name = Guillem Roca Castany
