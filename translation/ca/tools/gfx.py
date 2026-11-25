@@ -149,6 +149,29 @@ def lz77_optimal(data, min_disp=2):
     return bytes(out)
 
 
+def lz77_decompress(lz):
+    """GBA LZ77 (type 0x10) data -> bytes: any LZ77 asset, whatever its extension (tilemaps)."""
+    if lz[0] != 0x10:
+        sys.exit("error: not GBA LZ77 data")
+    n = int.from_bytes(lz[1:4], "little")
+    out, i = bytearray(), 4
+    while len(out) < n:
+        flags = lz[i]
+        i += 1
+        for bit in range(8):
+            if len(out) >= n:
+                break
+            if flags & (0x80 >> bit):
+                length, disp = (lz[i] >> 4) + 3, ((lz[i] & 0xF) << 8 | lz[i + 1]) + 1
+                i += 2
+                for _ in range(length):
+                    out.append(out[-disp])
+            else:
+                out.append(lz[i])
+                i += 1
+    return bytes(out[:n])
+
+
 def vanilla_tiles(key):
     with tempfile.TemporaryDirectory() as tmp:
         return len(decompress(key, tmp).read_bytes()) // 32

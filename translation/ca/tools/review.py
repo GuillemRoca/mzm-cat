@@ -29,6 +29,7 @@ import gfx_equipment_names  # noqa: E402
 import gfx_erase_sram  # noqa: E402
 import gfx_file_select  # noqa: E402
 import gfx_game_over  # noqa: E402
+import gfx_game_over_title  # noqa: E402
 import gfx_unknown_items  # noqa: E402
 import genintro  # noqa: E402
 import gfx_menu_names  # noqa: E402
@@ -86,9 +87,11 @@ def graphic_rows():
     """Strings drawn in graphics (vanilla English and Spanish as on screen), and the credits."""
     menu = gfx_menu_names.CATALAN
     heading, names = gencredits.read_credits()
-    g = [  # id, where, english, spanish, catalan, the PNG that draws it
+    g = [  # id, where, english, spanish, catalan, the PNG that draws it (under gfx/, or a path)
         ("language_select", "Language selector, 2nd entry (German slot)", "Deutsch", "Deutsch", "Català",
          "menus/language_select/background"),
+        ("game_over_title", "Game over screen, title", "GAME OVER", "GAME OVER",
+         "\n".join(gfx_game_over_title.CATALAN), gfx_game_over_title.OUT),
         ("game_over_prompt", "Game over screen", "TRY AGAIN?\nYES (RETURN TO GAME)\nNO (TO TITLE SCREEN)",
          "¿VOLVER A INTENTARLO?\nSÍ (CONTINUAR)\nNO (SALIR)", "\n".join(gfx_game_over.CATALAN),
          "menus/game_over/text_prompt_german"),
@@ -143,7 +146,8 @@ def graphic_rows():
                   "(the English, with Spanish subtitles)", "\n".join(genintro.CATALAN[part]),
                   "intro/text_and_ship"))
     rows = [{"section": "graphics", "id": id_, "where": where, "english": en, "spanish": es, "catalan": ca,
-             "status": "translated" if key is None or (catext.CA / "gfx" / f"{key}.png").exists()
+             "status": "translated" if key is None or (
+                 key if isinstance(key, Path) else catext.CA / "gfx" / f"{key}.png").exists()
              else "untranslated"}
             for id_, where, en, es, ca, key in g]
     rows.append({"section": "credits", "id": "translation", "where": "Staff credits, TRANSLATION section",

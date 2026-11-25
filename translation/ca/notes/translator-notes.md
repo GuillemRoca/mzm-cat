@@ -23,7 +23,8 @@ was first laid out in the Spanish slot, and moving it changes none of its text o
   French and Italian games show the same frames as vanilla from the language screen to the
   file select (only the language screen differs, with "Català" for "Deutsch"); and in the
   German slot, in game: intro, title, file select, prologue, message banner, pause screens,
-  game over, "MISSIÓ COMPLERTA!" and the results screen.
+  game over, "MISSIÓ COMPLERTA!" and the results screen. (The game over title came later: see
+  "Game over title".)
 - Saves made with Catalan in the Spanish slot (test builds before this change) now open in
   Spanish: pick Català again on the language screen.
 
@@ -246,6 +247,29 @@ missió! (See you next mission!).
 - Layout: options left-aligned at x = 86, helmet at 88 px (`include/ca/layout.h`, the German
   entry of `sGameOverSamusHeadXPositions`; vanilla German 66 px, Spanish 82 px). Checked in game
   for both options, in the German slot.
+
+## Game over title — DECIDED
+
+- "FI DE LA PARTIDA", Guillem's wording ("Fi de la partida"), in capitals like the vanilla
+  "GAME OVER", whose font has no lower case.
+- "GAME OVER" is one graphic for every language (the end of
+  `menus/game_over/text_and_background`, placed by `menus/game_over/text.tt` on a background
+  layer of its own), so overriding it would change the other four languages. Instead the German
+  slot loads a Catalan title over it: `screens/game_over_title.png`, cut into tiles and a
+  tilemap by `tools/gengameover.py`, loaded by `include/ca/game_over.h` at the end of
+  `GameOverInit`'s graphics. The other languages keep "GAME OVER".
+- At the vanilla letter size the text is 285 px, so it is two lines, "FI DE LA" / "PARTIDA"
+  (133 and 139 px), centred, at y = 9 and 41 (31 px each, outlines included): 9 px under the
+  top of the screen, 11 px above the prompt, which starts at y = 83. It takes 111 tiles of the
+  192 there are before the prompt's.
+- Letters (`tools/gfx_game_over_title.py`): A, E and R are the vanilla ones. F, L and I are the
+  E's stem with or without its bars, D the O with a full stem, P the R without its leg (the
+  bowl's lower corner cut like its upper one), T a plain bar over a stem. Their gradient is the
+  vanilla colours 4 to 9, so the letters "breathe" like the vanilla ones.
+- Checked in game, in the German slot: both options, and the letters' animation (the same
+  colours as the vanilla title's, frame by frame). The game over
+  screens of the other four languages are pixel-identical to the build before this change
+  (nine frames each, from the fade in to the return to the title).
 
 ## Pause menu names (menu_names graphic)
 

@@ -123,6 +123,7 @@ MZM's text names no regular enemies; only these appear (messages, story, banners
 | Password (Time Attack) | Contraseña | Contrasenya | APPROVED | Only option. |
 | Linking / link (Fusion link) | Conectando / conexión | Connectant / connexió | APPROVED | Only option. |
 | Easy Sleep | salvapantallas (tab SALVAP.) | Mode repòs (tab REPÒS) | APPROVED | Describes the feature (the GBA sleeps); the pause tab says REPÒS (Ò drawn like the German Ä). |
+| Game Over (game over title) | GAME OVER | Fi de la partida | APPROVED | Guillem's wording. Drawn in capitals on two lines, FI DE LA / PARTIDA, in the German slot only: the other languages share the vanilla graphic (tools/gfx_game_over_title.py). |
 | Try again? / Yes (continue) / No (quit) (game over) | ¿VOLVER A INTENTARLO? / SÍ (CONTINUAR) / NO (SALIR) | TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT) | APPROVED | Imperatives, as decided for menu commands. The hyphen is drawn for the prompt font (tools/gfx_game_over.py). |
 | Mission Accomplished | ¡MISIÓN CUMPLIDA! | Missió complerta! | APPROVED | Standard; buildable from the existing ending glyphs. |
 | New Record | ¡NUEVO RÉCORD! | Nou rècord! | APPROVED | Only option. |

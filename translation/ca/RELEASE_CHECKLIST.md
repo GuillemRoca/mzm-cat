@@ -22,7 +22,8 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Area names (map, Chozo statue hints, minimap): unchanged by policy; confirmed on screen.
 - [ ] Erase SRAM: question and confirmation.
 - [ ] Title screen: menu top and bottom.
-- [ ] Game over prompt, with `sGameOverSamusHeadXPositions[LANGUAGE_GERMAN]` adjusted.
+- [ ] Game over prompt, with `sGameOverSamusHeadXPositions[LANGUAGE_GERMAN]` adjusted, and the
+      title "FI DE LA / PARTIDA" (the other languages still show "GAME OVER").
 - [ ] File select: options, large text, difficulty labels (40 px each).
 - [ ] Ending: text, typed-letter OAM frames, numbers/misc, "New record".
 - [ ] "Mission Accomplished" OAM frame.
@@ -44,7 +45,7 @@ vanilla EU ROM (SHA1 `0fd107445a42e6f3a3e5ce8c865f412583179903`); never distribu
 - [ ] Zebes escape, Zero Suit section (story text, pistol description), Chozodia escape,
       Mission Accomplished.
 - [ ] Ending: clear time, collection rate, New record, "next mission" line, credits.
-- [ ] Game over prompt (both options).
+- [ ] Game over: the title and the prompt (both options).
 - [ ] Time Attack and its password/ID screen; Fusion link messages (at least the error ones).
 
 ## Credits

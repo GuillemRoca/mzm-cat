@@ -19,8 +19,10 @@
 #   ca/ending_tables.inc       the German ending tables that type and show them
 #   ca/mission_accomplished.inc  the German "Mission accomplished" sprites
 #   ca/intro_text.inc          the Catalan typed intro text (ca/intro.h selects it)
+#   ca/game_over_title.inc     the Catalan game over title (ca/game_over.h loads it)
 #   extracted/data/...inc      overrides of extracted assets (font, edited graphics)
-# and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants).
+# and $(CA_DIR)/include holds hand-written headers (ca/layout.h: per-language layout constants;
+# ca/intro.h and ca/game_over.h: what only the German slot does).
 # Objects are built in-tree for both modes, so every object that depends on the mode
 # also depends on $(CA_STAMP), which changes whenever the mode does.
 
@@ -45,6 +47,7 @@ CA_ENDING_INC := $(CA_INC)/ca/ending_oam.inc
 CA_TABLES_INC := $(CA_INC)/ca/ending_tables.inc
 CA_MISSION_INC := $(CA_INC)/ca/mission_accomplished.inc
 CA_INTRO_INC := $(CA_INC)/ca/intro_text.inc
+CA_GAME_OVER_INC := $(CA_INC)/ca/game_over_title.inc
 CA_FONT_INC := $(CA_INC)/extracted/data/text_characters.gfx.inc
 
 ifeq ($(CA_SELFTEST),1)
@@ -89,6 +92,7 @@ ifeq ($(LANG_CA),1)
   src/data/ending_and_gallery_data.s: $(CA_CREDITS_INC) $(CA_ENDING_INC) $(CA_TABLES_INC)
   src/data/chozodia_escape_data.s: $(CA_MISSION_INC)
   src/data/intro_data.s: $(CA_INTRO_INC)
+  src/data/menus/game_over_data.s: $(CA_GAME_OVER_INC)
   # Over-approximate: an edited graphic rebuilds every affected object, which is cheap.
   $(CA_AFFECTED:.c=.s): $(CA_GFX_INCS) $(wildcard $(CA_DIR)/include/ca/*.h)
 
@@ -130,6 +134,10 @@ $(CA_MISSION_INC): src/data/chozodia_escape_data.c $(CA_ENDING_DEPS)
 $(CA_INTRO_INC): src/data/intro_data.c $(CA_TOOLS)/genintro.py $(CA_STAMP)
 	$(MSG) INTRO $@
 	$Q$(PYTHON) $(CA_TOOLS)/genintro.py $@ $(CA_CREDITS_FLAGS)
+
+$(CA_GAME_OVER_INC): $(wildcard $(CA_DIR)/screens/game_over_title.png) $(CA_TOOLS)/gengameover.py $(CA_TOOLS)/gfx.py $(CA_TOOLS)/gfx_assets.json $(CA_STAMP)
+	$(MSG) GAMEOVER $@
+	$Q$(PYTHON) $(CA_TOOLS)/gengameover.py $@ $(CA_CREDITS_FLAGS)
 
 $(CA_FONT_INC): data/text_characters.gfx $(wildcard $(CA_DIR)/font/glyphs/*.png) $(wildcard $(CA_DIR)/font/widths.txt) $(CA_TOOLS)/font.py $(CA_GBAGFX) $(CA_STAMP)
 	$(MSG) FONT $@

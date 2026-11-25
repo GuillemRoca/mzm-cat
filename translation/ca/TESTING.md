@@ -23,8 +23,9 @@ Locally, `make eu LANG_CA=1` and `make eu LANG_CA=1 CA_PREVIEW=1` build the same
 4. Title: press Start, then A on the first option. File A → A → pick a difficulty. Skip the
    intro with A. Once Samus can move, save a state (Shift+F1) to come back here.
 
-Every graphic of the German slot is redrawn in Catalan; the area names of the map are shared by
-all languages and stay as they are. The other four languages, Spanish included, must look and
+Every graphic of the German slot is redrawn in Catalan, and so is the game over title, which
+the other languages share and keep as "GAME OVER"; the area names of the map are shared by all
+languages and stay as they are. The other four languages, Spanish included, must look and
 play exactly as in vanilla: only the language screen differs, with "Català" where "Deutsch" was.
 
 ## Every Message line (preview build)
@@ -152,11 +153,14 @@ copiar les dades.", BORRAR "Tria el fitxer que vols esborrar." and "Vols esborra
 fitxer?". Time Attack, the unlock messages and the Fusion link need later saves or a second
 GBA.
 
-## Game over prompt (pilot graphic)
+## Game over
 
 Preview build: hold **L + R** and press **A**. Energy drops to 0 and the game over screen
-appears: "TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT)". Up/Down moves the Samus helmet, which
-must sit just left of the option text for both options. In the release build, die normally.
+appears: the title "FI DE LA / PARTIDA" on two lines, its letters glowing in waves like the
+vanilla "GAME OVER", and under it "TORNAR-HO A PROVAR? / SÍ (CONTINUA) / NO (SURT)". Up/Down
+moves the Samus helmet, which must sit just left of the option text for both options. In the
+release build, die normally. In English, Français, Italiano and Español the title must still be
+"GAME OVER".
 
 ## Credits
 

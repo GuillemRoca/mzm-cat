@@ -18,6 +18,8 @@ text/<category>.txt   the Catalan text: message, location, description, story, f
 font/glyphs/XXXX.png  edited glyphs (char ID in hex), drawn over the extracted EU font
 font/widths.txt       sCharacterWidths overrides for those glyphs
 gfx/<asset>.png       edited graphics; <asset> is the path under data/ without .gfx.lz
+screens/<name>.png    graphics drawn as they show on screen, where only Catalan replaces a
+                      graphic every language shares (the game over title)
 identical.txt         IDs whose Catalan is meant to equal the English
 glossary.md           terminology (APPROVED / PROPOSED), STYLE.md, notes/translator-notes.md
 RELEASE_CHECKLIST.md  what a release needs
@@ -32,8 +34,9 @@ build/, dist/         generated files and CI outputs; gitignored
 
 Upstream files touched: `Makefile` (one `include`); `#ifdef LANG_CA` wraps around vanilla code
 in `src/data/text_data.c` (the German blocks), the EU half of `sCharacterWidths` in
-`src/data/menus/pause_screen_data.c`, the German helmet position in
-`src/data/menus/game_over_data.c`, the EU `sCredits`, the German ending sprites
+`src/data/menus/pause_screen_data.c`, the German helmet position and the generated Catalan title
+in `src/data/menus/game_over_data.c` (loaded by `ca/game_over.h`, included by
+`src/menus/game_over.c`, in a line added to `GameOverInit`), the EU `sCredits`, the German ending sprites
 (`sFullLinesGermanOam_0` to `sEndingImageOam_NewRecordGerman`) and tables
 (`sEndingImageOam_{FullLines,ClearTime,Collecting}_German`) in
 `src/data/ending_and_gallery_data.c`, the German "Mission accomplished" frame in
@@ -113,6 +116,14 @@ python3 translation/ca/tools/font.py export 357 g.png    # a glyph, to edit
 Keep each PNG's palette and indices; the build re-encodes the PNG and refuses graphics that
 overflow their VRAM space or a fixed-size C array. Never commit the vanilla exports in `build/`.
 `gfx_assets.json` records each asset's palette row and VRAM limit.
+
+A graphic that every language shares can't be overridden like that without changing the other
+languages. The game over title is the one case: `screens/game_over_title.png` is its background
+layer as it shows on screen (256 x 80, row 0 of `menus/game_over/palette.pal`), composed by
+`tools/gfx_game_over_title.py` from the vanilla letters. `tools/gengameover.py` cuts it into
+tiles and a tilemap at build time, and `include/ca/game_over.h` loads them over the vanilla
+"GAME OVER" in the German slot only. Edit the PNG (keeping its palette) and rebuild; it can use
+192 tiles.
 
 ## Testing in the emulator
 

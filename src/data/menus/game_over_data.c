@@ -43,6 +43,10 @@ const u32 sGameOver_454520[160] = {
     #include "extracted/data/menus/game_over/454520.tt.inc"
 };
 
+#ifdef LANG_CA
+#include "ca/game_over_title.inc"
+#endif // LANG_CA
+
 const struct GameOverDynamicPalette sGameOverDynamicPalette_Empty = {
     .timer = 0,
     .enableFlags = 0,
